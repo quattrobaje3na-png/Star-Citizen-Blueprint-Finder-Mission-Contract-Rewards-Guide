@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>STAR CITIZEN BLUEPRINT FINDER: MISSION & CONTRACTS REWARD GUIDE</title>
+    <style>
+        :root { 
+            --bg-base: #09090b; --bg-card: #141417; --border: #27272a; 
+            --text-main: #f8fafc; --text-muted: #94a3b8; 
+            --accent: #f97316; --theme: #00e5ff; --success: #10b981;
+            --weapon-color: #3b82f6; --armor-color: #a855f7; --ammo-color: #eab308; --warning: #ef4444;
+        }
+        
+        * { box-sizing: border-box; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-base); color: var(--text-main); margin: 0; padding: 20px; }
+        #main-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        .explorer-header { background: var(--bg-card); padding: 20px; border-radius: 8px; border: 1px solid var(--border); border-top: 3px solid var(--accent); }
+        .search-container { display: flex; gap: 10px; margin-top: 15px; }
+        input[type="text"] { flex: 1; background: var(--bg-base); border: 1px solid var(--border); color: var(--text-main); padding: 10px; border-radius: 4px; }
+        
+        .tab-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab { padding: 10px 20px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; border-radius: 4px; transition: all 0.2s ease; }
+        .tab:hover { background: rgba(255,255,255,0.05); }
+        .tab.active { border-bottom: 2px solid var(--accent); color: var(--accent); }
+
+        .item-group { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+        
+        /* Card Formatting */
+        .blueprint-card, .armor-set-box { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            padding: 15px; 
+            border-radius: 8px; 
+            display: flex; 
+            flex-direction: column; 
+            max-height: 420px; 
+        }
+        .blueprint-card.weapon { border-left: 4px solid var(--weapon-color); }
+        .blueprint-card.ammo { border-left: 4px solid var(--ammo-color); }
+        .armor-set-box { background: rgba(168, 85, 247, 0.05); border-color: var(--armor-color); }
+        
+        .armor-set-title { font-weight: bold; color: var(--armor-color); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: flex-start;}
+        .armor-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; flex-shrink: 0; }
+        .armor-tile { background: var(--bg-base); border: 1px solid var(--border); padding: 10px; font-size: 0.85rem; border-radius: 4px; text-align: center; transition: all 0.2s; }
+        
+        /* Interactive Tile Classes */
+        .armor-tile.interactive { cursor: pointer; border-color: rgba(0, 229, 255, 0.4); }
+        .armor-tile.interactive:hover { background: rgba(0, 229, 255, 0.1); border-color: var(--theme); }
+        .armor-tile.active-piece { border-color: var(--accent) !important; background: rgba(249, 115, 22, 0.1) !important; color: var(--accent); font-weight: bold; }
+
+        .tag { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: var(--border); color: var(--text-muted); text-transform: uppercase; height: fit-content; white-space: nowrap; margin-left: 10px;}
+        
+        /* Scrollable area for missions */
+        .mission-scroll-area {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-top: 15px;
+            padding-right: 5px;
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+        }
+        
+        .mission-header { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: bold; margin-bottom: 5px; padding-left: 5px;}
+        .mission-list { margin-top: 0; font-size: 0.85rem; color: var(--success); list-style-type: none; padding-left: 5px;}
+        .mission-list li { margin-bottom: 6px; padding-left: 10px; border-left: 2px solid var(--success); }
+
+        /* Fixed Expand Button */
+        .expand-btn {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--theme);
+            padding: 10px 0 0 0;
+            margin-top: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-top: 1px solid var(--border);
+            transition: color 0.2s;
+            flex-shrink: 0;
+        }
+        .expand-btn:hover { color: var(--accent); }
+
+        /* Modal Pop-up Styling */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 1000; justify-content: center; align-items: center; padding: 20px;
+            backdrop-filter: blur(3px);
+        }
+        .modal-content {
+            background: var(--bg-card); border: 1px solid var(--border); border-top: 4px solid var(--accent);
+            border-radius: 8px; width: 100%; max-width: 600px; max-height: 85vh; display: flex; flex-direction: column;
+            position: relative; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .modal-close {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: color 0.2s;
+        }
+        .modal-close:hover { color: var(--warning); }
+        .modal-title-area { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; padding-right: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;}
+        .modal-missions-container { overflow-y: auto; padding-right: 10px; font-size: 1rem; }
+        .modal-missions-container .mission-list { font-size: 1rem; }
+        .modal-missions-container .mission-list li { margin-bottom: 10px; }
+        .modal-missions-container .mission-header { display: none; }
+
+    </style>
+</head>
+<body>
+
+<div id="missionModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-close" onclick="closeModal(event)">&times;</div>
+        <div class="modal-title-area">
+            <span id="modalTitleText" style="font-size: 1.3rem; font-weight: bold; color: var(--text-main);"></span>
+            <span id="modalTag" class="tag" style="margin-left: 15px; margin-top: 4px;"></span>
+        </div>
+        <div class="modal-missions-container" id="modalMissionsContent"></div>
+    </div>
+</div>
+
+<div id="main-grid">
+    <div class="explorer-header">
+        <div style="font-size: 1.4rem; font-weight: 800;">Star Citizen Blueprint Finder: Mission Contract Rewards Guide</div>
+        <div id="statusIndicator" style="margin-top: 10px; font-size: 0.9rem; color: var(--theme);">Fetching database...</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by item name or set..." onkeyup="filterItems()">
+        </div>
+    </div>
+
+    <div class="tab-container">
+        <div class="tab active" onclick="switchTab('weapons')">WEAPONS</div>
+        <div class="tab" onclick="switchTab('armor')">ARMOR SETS</div>
+        <div class="tab" onclick="switchTab('ammo')">AMMO</div>
+    </div>
+
+    <div id="weaponsView" class="item-group"></div>
+    <div id="armorView" class="item-group" style="display:none;"></div>
+    <div id="ammoView" class="item-group" style="display:none;"></div>
+</div>
+
+<script>
+    let weaponsList = [];
+    let armorSets = {};
+    let ammoList = [];
+
+    window.onload = async function() {
+        const statusEl = document.getElementById('statusIndicator');
+        try {
+            // Fetches directly from the root GitHub Pages directory
+            const response = await fetch('blueprint_explorer_data.json');
+            
+            if (!response.ok) {
+                throw new Error(`HTTP Error ${response.status}: File not found.`);
+            }
+            
+            const data = await response.json();
+            
+            if (!data.items) {
+                throw new Error("File missing 'items' array. Run the Python compiler.");
+            }
+
+            processDatabase(data.items);
+            
+        } catch (error) {
+            statusEl.style.color = 'var(--warning)';
+            statusEl.innerText = `Error loading data: ${error.message}`;
+            console.error("Database link error:", error);
+        }
+    };
+
+    function processDatabase(items) {
+        weaponsList = [];
+        armorSets = {};
+        ammoList = [];
+
+        items.forEach(item => {
+            if (item.type === 'weapons') {
+                weaponsList.push(item);
+            } else if (item.type === 'armor') {
+                let setName = item.name
+                    .replace(/\b(Helmet|Core|Arms|Legs|Backpack|Suit|Undersuit)\b/gi, '')
+                    .replace(/\s{2,}/g, ' ')
+                    .trim();
+                
+                if (!armorSets[setName]) {
+                    armorSets[setName] = { parts: [], subtype: item.subtype, missions: new Set(), partsData: {} };
+                }
+                armorSets[setName].parts.push(item.name);
+                armorSets[setName].partsData[item.name] = item.missions;
+                item.missions.forEach(m => armorSets[setName].missions.add(m));
+            } else if (item.type === 'ammo') {
+                ammoList.push(item);
+            }
+        });
+
+        render();
+    }
+
+    function switchTab(tab) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        document.getElementById('weaponsView').style.display = 'none';
+        document.getElementById('armorView').style.display = 'none';
+        document.getElementById('ammoView').style.display = 'none';
+
+        document.getElementById(tab + 'View').style.display = 'grid';
+    }
+
+    function openModal(titleText, tagText, encodedHTML) {
+        document.getElementById('modalTitleText').innerText = decodeURIComponent(titleText);
+        document.getElementById('modalTag').innerText = decodeURIComponent(tagText);
+        document.getElementById('modalMissionsContent').innerHTML = decodeURIComponent(encodedHTML);
+        document.getElementById('missionModal').style.display = 'flex';
+    }
+
+    function closeModal(e) {
+        if(e) e.stopPropagation();
+        document.getElementById('missionModal').style.display = 'none';
+    }
+
+    function toggleMissionView(baseAreaId, specificContainerId, element) {
+        const parentBox = element.closest('.armor-set-box');
+        const defaultContainer = document.getElementById(`${baseAreaId}-default`);
+        const specificContainer = document.getElementById(specificContainerId);
+        const parentGrid = element.closest('.armor-tiles');
+
+        parentBox.querySelectorAll('.mission-view-container').forEach(c => c.style.display = 'none');
+
+        if (element.classList.contains('active-piece')) {
+            element.classList.remove('active-piece');
+            defaultContainer.style.display = 'flex';
+        } else {
+            parentGrid.querySelectorAll('.armor-tile').forEach(t => t.classList.remove('active-piece'));
+            element.classList.add('active-piece');
+            specificContainer.style.display = 'flex';
+        }
+    }
+
+    function safeEncode(str) {
+        if (!str) return "";
+        return encodeURIComponent(str).replace(/'/g, "%27").replace(/"/g, "%22");
+    }
+
+    function render() {
+        const wView = document.getElementById('weaponsView');
+        const filteredWeapons = weaponsList.filter(w => w.missions.length > 0);
+        
+        wView.innerHTML = filteredWeapons.map(w => {
+            let listHTML = `<div class="mission-header">Obtained From:</div><ul class="mission-list">${w.missions.map(m => `<li>${m}</li>`).join('')}</ul>`;
+            let encodedList = safeEncode(listHTML);
+                
+            return `
+            <div class="blueprint-card weapon search-target">
+                <div style="flex-shrink: 0;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <span style="font-weight:bold;" class="search-text">${w.name}</span>
+                        <span class="tag">${w.subtype || 'weapon'}</span>
+                    </div>
+                </div>
+                <div class="mission-scroll-area">
+                    ${listHTML}
+                </div>
+                <div class="expand-btn" onclick="openModal('${safeEncode(w.name)}', '${safeEncode(w.subtype || 'weapon')}', '${encodedList}')">⤢ Click to expand full list</div>
+            </div>
+        `}).join('');
+
+        const amView = document.getElementById('ammoView');
+        const filteredAmmo = ammoList.filter(a => a.missions.length > 0);
+        
+        amView.innerHTML = filteredAmmo.map(a => {
+            let listHTML = `<div class="mission-header">Obtained From:</div><ul class="mission-list">${a.missions.map(m => `<li>${m}</li>`).join('')}</ul>`;
+            let encodedList = safeEncode(listHTML);
+                
+            return `
+            <div class="blueprint-card ammo search-target">
+                <div style="flex-shrink: 0;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <span style="font-weight:bold;" class="search-text">${a.name}</span>
+                        <span class="tag">${a.subtype || 'ammo'}</span>
+                    </div>
+                </div>
+                <div class="mission-scroll-area">
+                    ${listHTML}
+                </div>
+                <div class="expand-btn" onclick="openModal('${safeEncode(a.name)}', '${safeEncode(a.subtype || 'ammo')}', '${encodedList}')">⤢ Click to expand full list</div>
+            </div>
+        `}).join('');
+
+        const aView = document.getElementById('armorView');
+        const requiredPieces = ['helmet', 'core', 'arms', 'legs'];
+        
+        let availableArmor = Object.keys(armorSets).filter(setName => armorSets[setName].missions.size > 0);
+        
+        availableArmor.sort((a, b) => {
+            const partsA = armorSets[a].parts.map(p => p.toLowerCase());
+            const partsB = armorSets[b].parts.map(p => p.toLowerCase());
+            
+            const aComplete = requiredPieces.every(req => partsA.some(p => p.includes(req)));
+            const bComplete = requiredPieces.every(req => partsB.some(p => p.includes(req)));
+            
+            if (aComplete && !bComplete) return -1;
+            if (!aComplete && bComplete) return 1;
+            return a.localeCompare(b); 
+        });
+        
+        aView.innerHTML = availableArmor.map(setName => {
+            const set = armorSets[setName];
+            const partStrings = set.parts.map(p => p.toLowerCase());
+            const isComplete = requiredPieces.every(req => partStrings.some(p => p.includes(req)));
+            
+            let allSame = true;
+            if (set.parts.length > 1) {
+                const firstMissions = [...set.partsData[set.parts[0]]].sort().join('|');
+                for (let i = 1; i < set.parts.length; i++) {
+                    if ([...set.partsData[set.parts[i]]].sort().join('|') !== firstMissions) {
+                        allSame = false;
+                        break;
+                    }
+                }
+            }
+            
+            const sortedParts = set.parts.sort((a, b) => {
+                const order = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
+                let indexA = order.findIndex(o => a.toLowerCase().includes(o));
+                let indexB = order.findIndex(o => b.toLowerCase().includes(o));
+                if(indexA === -1) indexA = 99;
+                if(indexB === -1) indexB = 99;
+                return indexA - indexB;
+            });
+
+            let mArray = Array.from(set.missions);
+            let defaultListHTML = `<div class="mission-header">Set Obtained From:</div><ul class="mission-list">${mArray.map(m => `<li>${m}</li>`).join('')}</ul>`;
+            let encodedDefaultList = safeEncode(defaultListHTML);
+            
+            let defaultMissionHTML = `
+                <div class="mission-scroll-area">${defaultListHTML}</div>
+                <div class="expand-btn" onclick="openModal('${safeEncode(setName + ' SET')}', '${safeEncode(set.subtype || 'armor')}', '${encodedDefaultList}')">⤢ Click to expand full list</div>
+            `;
+            
+            let instructionTag = !allSame 
+                ? `<div style="font-size: 0.75rem; color: var(--theme); margin-top: 10px; margin-bottom: -5px; flex-shrink: 0;">* Pieces have different loot pools. Click a tile to filter.</div>` 
+                : '';
+
+            let baseAreaId = `mission-area-${setName.replace(/[^a-zA-Z0-9]/g, '-')}`;
+            let defaultContainer = `<div id="${baseAreaId}-default" class="mission-view-container" style="display: flex; flex-direction: column; overflow: hidden; flex-grow: 1;">${defaultMissionHTML}</div>`;
+
+            let specificContainers = "";
+
+            let tilesHTML = sortedParts.map(p => {
+                if (allSame) {
+                    return `<div class="armor-tile">${p}</div>`;
+                } else {
+                    let pieceId = p.replace(/[^a-zA-Z0-9]/g, '-');
+                    let specificContainerId = `${baseAreaId}-${pieceId}`;
+                    let pieceMissions = set.partsData[p];
+                    
+                    let specificListHTML = pieceMissions.length > 0 
+                        ? `<div class="mission-header">${p} Obtained From:</div><ul class="mission-list">${pieceMissions.map(m => `<li>${m}</li>`).join('')}</ul>`
+                        : `<div class="mission-header">${p} Obtained From:</div><div style="color:var(--warning); font-size:0.8rem; margin-top:5px; padding-left:10px;">Loot Pool Unknown</div>`;
+                    
+                    let specificMissionHTML = `<div class="mission-scroll-area">${specificListHTML}</div>`;
+                    if (pieceMissions.length > 0) {
+                        let encodedSpecificList = safeEncode(specificListHTML);
+                        specificMissionHTML += `<div class="expand-btn" onclick="openModal('${safeEncode(p)}', '${safeEncode(set.subtype || 'armor')}', '${encodedSpecificList}')">⤢ Click to expand full list</div>`;
+                    }
+                    
+                    specificContainers += `<div id="${specificContainerId}" class="mission-view-container" style="display: none; flex-direction: column; overflow: hidden; flex-grow: 1;">${specificMissionHTML}</div>`;
+                    
+                    return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseAreaId}', '${specificContainerId}', this)">${p}</div>`;
+                }
+            }).join('');
+            
+            let warningTag = isComplete ? "" : `<span class="tag" style="background:var(--warning); color:white; border:none;">INCOMPLETE</span>`;
+
+            return `
+            <div class="armor-set-box search-target">
+                <div class="armor-set-title" style="flex-shrink: 0;">
+                    <div style="display:flex; align-items:center;">
+                        <span class="search-text">${setName} SET</span>
+                        ${warningTag}
+                    </div>
+                    <span class="tag">${set.subtype || 'armor'}</span>
+                </div>
+                ${instructionTag}
+                <div class="armor-tiles" style="margin-top: 10px;">
+                    ${tilesHTML}
+                </div>
+                <div class="mission-views-wrapper" style="display: flex; flex-direction: column; overflow: hidden; flex-grow: 1;">
+                    ${defaultContainer}
+                    ${specificContainers}
+                </div>
+            </div>
+        `}).join('');
+        
+        document.getElementById('statusIndicator').style.color = 'var(--success)';
+        document.getElementById('statusIndicator').innerText = `Database Loaded! Showing ${filteredWeapons.length} weapons, ${filteredAmmo.length} ammo items, and ${availableArmor.length} armor sets.`;
+    }
+
+    function filterItems() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let targets = document.querySelectorAll('.search-target');
+        targets.forEach(target => {
+            let text = target.querySelector('.search-text').innerText.toLowerCase();
+            target.style.display = text.includes(input) ? "" : "none";
+        });
+    }
+</script>
+</body>
+</html>
