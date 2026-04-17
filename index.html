@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>STAR CITIZEN BLUEPRINT FINDER: MISSION & CONTRACTS REWARD GUIDE</title>
     <style>
+
+        .advisory-box {
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid var(--theme);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+.advisory-box span {
+    color: var(--theme);
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+}
         :root { 
             --bg-base: #09090b; --bg-card: #141417; --border: #27272a; 
             --text-main: #f8fafc; --text-muted: #94a3b8; 
@@ -112,6 +130,42 @@
     </style>
 </head>
 <body>
+
+    <div id="missionModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-close" onclick="closeModal(event)">&times;</div>
+        <div class="modal-title-area">
+            <span id="modalTitleText" style="font-size: 1.3rem; font-weight: bold; color: var(--text-main);"></span>
+            <span id="modalTag" class="tag" style="margin-left: 15px; margin-top: 4px;"></span>
+        </div>
+        <div class="modal-missions-container" id="modalMissionsContent"></div>
+    </div>
+</div>
+
+<div id="main-grid">
+    <div class="explorer-header">
+        <div style="font-size: 1.4rem; font-weight: 800;">Star Citizen Blueprint Finder: Mission Contract Rewards Guide</div>
+        <div id="statusIndicator" style="margin-top: 10px; font-size: 0.9rem; color: var(--theme);">Fetching database...</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by item name or set..." onkeyup="filterItems()">
+        </div>
+    </div>
+
+    <div class="advisory-box">
+        <span>⚠️ Contract Reward Advisory</span>
+        Completing a contract grants you a <b>random blueprint</b> from the reward pool tied to that specific mission. If you do not receive the specific blueprint you are looking for, you will need to repeat the contract until it drops.
+    </div>
+
+    <div class="tab-container">
+        <div class="tab active" onclick="switchTab('weapons')">WEAPONS</div>
+        <div class="tab" onclick="switchTab('armor')">ARMOR SETS</div>
+        <div class="tab" onclick="switchTab('ammo')">AMMO</div>
+    </div>
+
+    <div id="weaponsView" class="item-group"></div>
+    <div id="armorView" class="item-group" style="display:none;"></div>
+    <div id="ammoView" class="item-group" style="display:none;"></div>
+</div>
 
 <div id="missionModal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
