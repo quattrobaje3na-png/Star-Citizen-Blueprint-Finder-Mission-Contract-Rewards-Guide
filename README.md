@@ -1,8 +1,10 @@
-The Ultimate 4.X Mission Intel Tool for Star Citizen Crafting. 
+The Ultimate 4.X Mission Intel Tool for Star Citizen Crafting Blueprints. 
+the tool has been updated for 4.7.2. 
 
 🛠️ CONTRACT REWARDS DATABASE
 Stop guessing which missions are worth your time. Choose between Weapons, Armor Sets, or Ammo & Consumables. 
-The tool instantly filters the database to show you exactly which mission contracts and factions provide the blueprints you are looking for. 
+The tool instantly filters the database to show you exactly which mission contracts and factions provide the blueprints you are looking for within Stanton, Pyro, and Nyx. 
+
 Complete Armor Sets are intelligently weighted to the top of the list to help you finish your loadouts faster.
 The tool is designed for simplicity and ease of navigation, making it useful for long time players and new players alike. 
 
