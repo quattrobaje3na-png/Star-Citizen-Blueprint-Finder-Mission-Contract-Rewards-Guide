@@ -1,4 +1,5 @@
 The Ultimate 4.X Mission Intel Tool for Star Citizen Crafting. 
+Updated for 4.7.2. 
 
 🛠️ CONTRACT REWARDS DATABASE
 Stop guessing which missions are worth your time. Choose between Weapons, Armor Sets, or Ammo & Consumables. 
