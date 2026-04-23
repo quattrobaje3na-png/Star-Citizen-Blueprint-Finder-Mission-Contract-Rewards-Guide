@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>STAR CITIZEN BLUEPRINT FINDER: MISSION &amp; CONTRACTS REWARD GUIDE FOR 4.7.2</title>
+    <title>STAR CITIZEN BLUEPRINT FINDER: MISSION &amp; CONTRACTS REWARD GUIDE</title>
     <style>
         /* ── Variables ─────────────────────────────────────────────────── */
         :root {
@@ -54,6 +54,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 15px;
+            align-items: start;
         }
 
         /* ── Header ─────────────────────────────────────────────────────── */
@@ -149,8 +150,19 @@
         /* ── Tabs & Filters ─────────────────────────────────────────────── */
         .controls-container {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-and-filter-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 100%;
         }
 
         .tab-container { 
@@ -206,19 +218,25 @@
             background: rgba(255,255,255,0.05);
         }
 
-        .system-filter-btn.stanton { color: var(--stanton-color); }
+        .system-filter-btn.stanton {
+            color: var(--stanton-color);
+        }
         .system-filter-btn.stanton.active {
             background: rgba(59,130,246,0.15);
             border-color: var(--stanton-color);
         }
 
-        .system-filter-btn.pyro { color: var(--pyro-color); }
+        .system-filter-btn.pyro {
+            color: var(--pyro-color);
+        }
         .system-filter-btn.pyro.active {
             background: rgba(239,68,68,0.15);
             border-color: var(--pyro-color);
         }
 
-        .system-filter-btn.nyx { color: var(--nyx-color); }
+        .system-filter-btn.nyx {
+            color: var(--nyx-color);
+        }
         .system-filter-btn.nyx.active {
             background: rgba(168,85,247,0.15);
             border-color: var(--nyx-color);
@@ -230,26 +248,42 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 15px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
-            max-height: 420px;
+            gap: 4px;
         }
+        
+        .blueprint-card {
+            height: 420px;
+        }
+        
+        .armor-set-box {
+            height: 440px;
+        }
+        
         .blueprint-card.weapon { border-left: 4px solid var(--weapon-color); }
         .blueprint-card.ammo   { border-left: 4px solid var(--ammo-color); }
-        .armor-set-box { background: rgba(168,85,247,0.05); border-color: var(--armor-color); }
+        .armor-set-box { 
+            background: rgba(168,85,247,0.04); 
+            border-color: rgba(168,85,247,0.3);
+            border-left: 4px solid var(--armor-color);
+        }
 
         /* ── Tag ────────────────────────────────────────────────────────── */
         .tag {
-            font-size: 0.7rem;
-            padding: 2px 6px;
+            font-size: 0.68rem;
+            padding: 3px 8px;
             border-radius: 4px;
-            background: var(--border);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
             color: var(--text-muted);
             text-transform: uppercase;
             white-space: nowrap;
             height: fit-content;
             margin-left: 10px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
         }
 
         /* ── Card / Armor headers ───────────────────────────────────────── */
@@ -258,51 +292,82 @@
             justify-content: space-between;
             align-items: flex-start;
             flex-shrink: 0;
+            gap: 10px;
+            margin-bottom: 2px;
+            min-height: 44px;
         }
-        .card-name { font-weight: 700; }
+        .card-name { 
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.3;
+            flex: 1;
+        }
 
         .armor-set-title {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             font-weight: 700;
+            font-size: 0.95rem;
             color: var(--armor-color);
             flex-shrink: 0;
+            margin-bottom: 0;
+            gap: 10px;
         }
-        .armor-set-title-left { display: flex; align-items: center; }
+        .armor-set-title-left { 
+            display: flex; 
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
 
         .armor-note {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--theme);
-            margin-top: 10px;
-            margin-bottom: -5px;
+            margin-top: 8px;
+            margin-bottom: 0;
             flex-shrink: 0;
+            font-weight: 500;
+            opacity: 0.9;
         }
 
         /* ── Armor tiles ────────────────────────────────────────────────── */
         .armor-tiles {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 8px;
             margin-top: 10px;
             flex-shrink: 0;
         }
         .armor-tile {
             background: var(--bg-base);
             border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 10px;
-            font-size: 0.85rem;
+            border-radius: 6px;
+            padding: 10px 8px;
+            font-size: 0.78rem;
+            font-weight: 500;
             text-align: center;
-            transition: background 0.2s, border-color 0.2s;
+            transition: all 0.15s ease;
+            line-height: 1.3;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            word-break: break-word;
         }
-        .armor-tile.interactive { cursor: pointer; border-color: rgba(0,229,255,0.4); }
-        .armor-tile.interactive:hover { background: rgba(0,229,255,0.1); border-color: var(--theme); }
+        .armor-tile.interactive { 
+            cursor: pointer; 
+            border-color: rgba(0,229,255,0.3);
+        }
+        .armor-tile.interactive:hover { 
+            background: rgba(0,229,255,0.08); 
+            border-color: var(--theme);
+        }
         .armor-tile.active-piece {
             border-color: var(--accent) !important;
-            background: rgba(249,115,22,0.1) !important;
+            background: rgba(249,115,22,0.12) !important;
             color: var(--accent);
-            font-weight: 700;
+            font-weight: 600;
         }
 
         /* ── Mission area ───────────────────────────────────────────────── */
@@ -313,8 +378,8 @@
             flex-grow: 1;
             overflow-y: auto;
             border-top: 1px solid var(--border);
-            margin-top: 15px;
-            padding: 10px 5px 0;
+            margin-top: 12px;
+            padding: 12px 6px 0;
         }
 
         .mission-header {
@@ -332,32 +397,43 @@
         .mission-list li {
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            margin-bottom: 7px;
-            padding: 7px 10px;
-            border-left: 2px solid var(--success);
-            border-radius: 0 3px 3px 0;
-            background: rgba(16,185,129,0.04);
+            gap: 4px;
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            border-left: 3px solid var(--success);
+            border-radius: 0 4px 4px 0;
+            background: rgba(16,185,129,0.05);
+            transition: background 0.15s ease;
+        }
+        .mission-list li:hover {
+            background: rgba(16,185,129,0.08);
         }
         .mission-list li.unlawful {
             border-left-color: var(--warning);
-            background: rgba(239,68,68,0.04);
+            background: rgba(239,68,68,0.05);
+        }
+        .mission-list li.unlawful:hover {
+            background: rgba(239,68,68,0.08);
         }
 
         /* Top row inside each list item */
         .mission-meta {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            gap: 6px;
+            align-items: flex-start;
+            gap: 8px;
         }
+        
         .mission-meta-left {
             display: flex;
             align-items: center;
-            gap: 5px;
-            min-width: 0;
+            gap: 6px;
             flex-wrap: wrap;
+            row-gap: 4px;
+            min-width: 0;
+            flex: 1 1 auto;
         }
+        
         .mission-type-tag {
             font-size: 0.65rem;
             font-weight: 700;
@@ -377,12 +453,18 @@
             font-weight: 600;
             color: var(--theme);
             letter-spacing: 0.02em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: break-word;
         }
 
         /* System Badge */
+        .mission-meta-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+        
         .mission-system-badge {
             font-size: 0.6rem;
             font-weight: 700;
@@ -658,7 +740,7 @@
     <div class="explorer-header">
         <div class="explorer-header-top">
             <div class="explorer-header-titles">
-                <div class="explorer-title">Star Citizen Blueprint Finder: Mission Contract Rewards Guide For 4.7.2</div>
+                <div class="explorer-title">Star Citizen Blueprint Finder: Mission Contract Rewards Guide</div>
                 <div id="statusIndicator">Fetching database...</div>
             </div>
             
@@ -693,7 +775,7 @@
             <div class="legend-item">
                 <div class="legend-swatch">
                     <div class="leg-bar leg-bar-green"></div>
-                    <span class="leg-badge leg-verified">&#x2713; Lawful</span>
+                    <span class="leg-badge leg-verified">&#x2713; Verified</span>
                 </div>
                 <div class="legend-text">
                     <strong>Lawful (Verified Tab)</strong>
@@ -704,7 +786,7 @@
             <div class="legend-item">
                 <div class="legend-swatch">
                     <div class="leg-bar leg-bar-red"></div>
-                    <span class="leg-badge leg-unverified">&#x26A0; Unlawful</span>
+                    <span class="leg-badge leg-unverified">&#x26A0; Unverified</span>
                 </div>
                 <div class="legend-text">
                     <strong>Unlawful (Unverified Tab)</strong>
@@ -755,17 +837,19 @@
     </div>
 
     <div class="controls-container">
-        <div class="tab-container">
-            <div class="tab active" onclick="switchTab('weapons', this)">WEAPONS</div>
-            <div class="tab"        onclick="switchTab('armor',   this)">ARMOR SETS</div>
-            <div class="tab"        onclick="switchTab('ammo',    this)">AMMO</div>
-        </div>
+        <div class="tab-and-filter-row">
+            <div class="tab-container">
+                <div class="tab active" onclick="switchTab('weapons', this)">WEAPONS</div>
+                <div class="tab"        onclick="switchTab('armor',   this)">ARMOR SETS</div>
+                <div class="tab"        onclick="switchTab('ammo',    this)">AMMO</div>
+            </div>
 
-        <div class="system-filters">
-            <span class="filter-label">Filter by System:</span>
-            <button class="system-filter-btn stanton active" onclick="toggleSystemFilter('stanton', this)">Stanton</button>
-            <button class="system-filter-btn pyro active" onclick="toggleSystemFilter('pyro', this)">Pyro</button>
-            <button class="system-filter-btn nyx active" onclick="toggleSystemFilter('nyx', this)">Nyx</button>
+            <div class="system-filters">
+                <span class="filter-label">FILTER BY SYSTEM:</span>
+                <button class="system-filter-btn stanton active" onclick="toggleSystemFilter('stanton', this)">STANTON</button>
+                <button class="system-filter-btn pyro active" onclick="toggleSystemFilter('pyro', this)">PYRO</button>
+                <button class="system-filter-btn nyx active" onclick="toggleSystemFilter('nyx', this)">NYX</button>
+            </div>
         </div>
     </div>
 
@@ -780,36 +864,7 @@
     let weaponsList = [];
     let armorSets   = {};
     let ammoList    = [];
-    let activeSystemFilters = new Set(['stanton', 'pyro', 'nyx']);
-
-    // The Failsafe Parser: Neutralizes JSON object dictionaries
-    function extractText(val) {
-        if (val === null || val === undefined) return "";
-        let obj = val;
-        
-        if (typeof val === 'string') {
-            let t = val.trim();
-            if (t.startsWith('{') && t.endsWith('}')) {
-                try { obj = JSON.parse(t); } catch(e) {}
-            } else {
-                return t;
-            }
-        }
-        
-        if (typeof obj === 'object' && obj !== null) {
-            if (Array.isArray(obj)) return obj.map(extractText).join(", ");
-            if (obj.en) return obj.en;
-            if (obj.English) return obj.English;
-            if (obj.name) return obj.name;
-            if (obj.productName) return obj.productName;
-            
-            const strVal = Object.values(obj).find(v => typeof v === 'string');
-            if (strVal) return strVal;
-            
-            return JSON.stringify(obj); 
-        }
-        return String(obj);
-    }
+    let activeSystemFilters = new Set(['stanton', 'pyro', 'nyx']); // All active by default
 
     /* ── Boot ───────────────────────────────────────────────────────────── */
     window.onload = async function () {
@@ -819,11 +874,9 @@
             if (!response.ok) throw new Error(`HTTP ${response.status}: File not found.`);
 
             const data = await response.json();
-            
-            let itemsArray = Array.isArray(data) ? data : (data.items || []);
-            if (itemsArray.length === 0) throw new Error("Missing 'items' array. Run the Python compiler.");
+            if (!data.items) throw new Error("Missing 'items' array. Run the Python compiler.");
 
-            processDatabase(itemsArray);
+            processDatabase(data.items);
         } catch (err) {
             statusEl.style.color = 'var(--warning)';
             statusEl.textContent = `Error loading data: ${err.message}`;
@@ -840,20 +893,15 @@
             activeSystemFilters.add(system);
             btn.classList.add('active');
         }
-        render(); 
+        render(); // Re-render with new filters
     }
 
     /* ── Filter missions by active systems ──────────────────────────────── */
     function filterMissionsBySystem(missions) {
-        if (activeSystemFilters.size === 0) return []; 
+        if (activeSystemFilters.size === 0) return []; // No systems selected
         return missions.filter(m => {
-            let systemText = "";
-            if (typeof m === 'object' && m !== null) {
-                systemText = extractText(m.system).toLowerCase();
-            }
-            // If the database has no system defined, assume Stanton so they don't vanish
-            if (!systemText) systemText = 'stanton';
-            return activeSystemFilters.has(systemText);
+            const system = (m.system || '').toLowerCase();
+            return activeSystemFilters.has(system);
         });
     }
 
@@ -864,41 +912,38 @@
         ammoList    = [];
 
         items.forEach(item => {
-            const name = extractText(item.name || item.productName || "");
-            if (!name || name === "Unknown") return;
+            const type = (item.type || '').toLowerCase();
+            const name = item.name || '';
 
-            const type = extractText(item.type || "").toLowerCase();
-            const subtype = extractText(item.subtype || "Standard");
-            const missions = Array.isArray(item.missions) ? item.missions : [];
-            
-            const isAmmo = /magazine|battery|shell|canister/i.test(name) || type === 'ammo' || type === 'ammunition';
-
-            if (isAmmo) {
-                ammoList.push({ name, subtype, missions });
-            } else if (type === 'weapon' || type === 'weapons' || type === 'fps weapon') {
-                weaponsList.push({ name, subtype, missions });
+            if (type === 'weapon' || type === 'weapons' || type === 'fps weapon') {
+                weaponsList.push(item);
+            } else if (type === 'ammo') {
+                ammoList.push(item);
             } else if (type === 'armor' || type === 'armour') {
-                let setName = extractText(item.armorSet);
-                if (!setName || setName === "Unknown" || setName === "") {
-                    setName = name.replace(/\b(Helmet|Core|Arms|Legs|Backpack|Suit|Undersuit)\b/gi, '').replace(/\s{2,}/g, ' ').trim();
+                // Derive set name: prefer item.armorSet, else strip piece words from the item name
+                let setName = item.armorSet;
+                if (!setName || setName === 'Unknown' || setName === '') {
+                    setName = name
+                        .replace(/\b(Helmet|Core|Arms|Legs|Backpack|Suit|Undersuit)\b/gi, '')
+                        .replace(/\s{2,}/g, ' ')
+                        .trim();
                 }
-                
+                if (!setName) setName = 'Unknown Set';
+
                 if (!armorSets[setName]) {
-                    armorSets[setName] = { parts: [], subtype: subtype, partsData: {}, missions: [] };
+                    armorSets[setName] = {
+                        parts: [],
+                        partsData: {},
+                        missions: [],
+                        subtype: item.subtype
+                    };
                 }
                 armorSets[setName].parts.push(name);
-                armorSets[setName].partsData[name] = missions;
-                
-                // Keep missions as objects to preserve the system/lawful attributes
-                missions.forEach(m => {
-                    const mTitle = typeof m === 'object' && m !== null ? extractText(m.title) : extractText(m);
-                    const mSys   = typeof m === 'object' && m !== null ? extractText(m.system) : "";
-
-                    const alreadyIn = armorSets[setName].missions.some(em => {
-                        const emTitle = typeof em === 'object' && em !== null ? extractText(em.title) : extractText(em);
-                        const emSys   = typeof em === 'object' && em !== null ? extractText(em.system) : "";
-                        return emTitle === mTitle && emSys === mSys;
-                    });
+                armorSets[setName].partsData[name] = item.missions || [];
+                (item.missions || []).forEach(m => {
+                    const alreadyIn = armorSets[setName].missions.some(
+                        em => em.title === m.title && em.type === m.type && em.lawful === m.lawful && em.system === m.system
+                    );
                     if (!alreadyIn) armorSets[setName].missions.push(m);
                 });
             }
@@ -918,9 +963,12 @@
 
     /* ── Modal ──────────────────────────────────────────────────────────── */
     function openModal(titleEnc, tagEnc, listEnc) {
-        document.getElementById('modalTitleText').textContent = dec(titleEnc);
-        document.getElementById('modalTag').textContent = dec(tagEnc);
-        document.getElementById('modalMissionsContent').innerHTML = dec(listEnc);
+        const title = dec(titleEnc);
+        const tag   = dec(tagEnc);
+        const list  = dec(listEnc);
+        document.getElementById('modalTitleText').textContent = title;
+        document.getElementById('modalTag').textContent = tag;
+        document.getElementById('modalMissionsContent').innerHTML = list;
         document.getElementById('missionModal').style.display = 'flex';
     }
 
@@ -942,61 +990,54 @@
     }
 
     /* ── Helpers ─────────────────────────────────────────────────────────── */
-    function enc(str) { return encodeURIComponent(String(str)).replace(/'/g, "%27").replace(/"/g, "%22"); }
+    function enc(str) { 
+        return encodeURIComponent(String(str))
+            .replace(/'/g, "%27")
+            .replace(/"/g, "%22"); 
+    }
     function dec(str) { return decodeURIComponent(str); }
 
     function serializeMissions(missions) {
-        return JSON.stringify(missions.map(m => {
-            if (typeof m === 'object' && m !== null) {
-                return [extractText(m.title), extractText(m.type), m.lawful, extractText(m.system)];
-            }
-            return extractText(m);
-        }));
+        return JSON.stringify(missions.map(m => [m.title, m.type, m.lawful, m.system]));
     }
 
+    // Build a single mission list item
     function missionItemHTML(m) {
-        if (typeof m !== 'object' || m === null) {
-            return `<li><div class="mission-title-text">${extractText(m)}</div></li>`;
-        }
-
         const lawful   = (m.lawful === true || m.lawful === 'True' || m.lawful === 'true');
         const liClass  = lawful ? '' : ' unlawful';
         const badgeCls = lawful ? 'badge-verified'   : 'badge-unverified';
-        const badgeTxt = lawful ? '&#x2713; Lawful' : '&#x26A0; Unlawful';
-        
-        const factionText = extractText(m.faction);
-        const faction  = factionText
-            ? `<span class="mission-type-sep">·</span><span class="mission-faction-tag">${factionText}</span>`
+        const badgeTxt = lawful ? '&#x2713; Verified' : '&#x26A0; Unverified';
+        const faction  = m.faction
+            ? `<span class="mission-type-sep">·</span><span class="mission-faction-tag">${m.faction}</span>`
             : '';
         
-        let systemText = extractText(m.system).toLowerCase();
-        if (!systemText) systemText = 'stanton'; 
-        
-        const systemClass = systemText === 'stanton' ? 'stanton' : systemText === 'pyro' ? 'pyro' : systemText === 'nyx' ? 'nyx' : '';
-        const sysDisplay = systemText.charAt(0).toUpperCase() + systemText.slice(1);
-        const systemBadge = systemClass ? `<span class="mission-system-badge ${systemClass}">${sysDisplay}</span>` : '';
+        // System badge
+        const system = (m.system || '').toLowerCase();
+        const systemClass = system === 'stanton' ? 'stanton' : system === 'pyro' ? 'pyro' : system === 'nyx' ? 'nyx' : '';
+        const systemBadge = systemClass ? `<span class="mission-system-badge ${systemClass}">${m.system}</span>` : '';
 
-        const mType = extractText(m.type) || "Contract";
-        const mTitle = extractText(m.title) || "Unknown Title";
-
-        return `<li class="${liClass}" data-system="${systemText}">` +
+        return `<li class="${liClass}" data-system="${system}">` +
                    `<div class="mission-meta">` +
                        `<div class="mission-meta-left">` +
-                           `<span class="mission-type-tag">[${mType}]</span>` +
+                           `<span class="mission-type-tag">${m.type}</span>` +
                            faction +
-                           systemBadge +
                        `</div>` +
-                       `<span class="mission-badge ${badgeCls}">${badgeTxt}</span>` +
+                       `<div class="mission-meta-right">` +
+                           systemBadge +
+                           `<span class="mission-badge ${badgeCls}">${badgeTxt}</span>` +
+                       `</div>` +
                    `</div>` +
-                   `<div class="mission-title-text">${mTitle}</div>` +
+                   `<div class="mission-title-text">${m.title}</div>` +
                `</li>`;
     }
 
+    // Build a complete mission block (header + list)
     function missionListHTML(label, missions) {
         return `<div class="mission-header">${label}</div>` +
                `<ul class="mission-list">${missions.map(missionItemHTML).join('')}</ul>`;
     }
 
+    // Build the expand button
     function expandBtn(titleEnc, tagEnc, listEnc) {
         return `<div class="expand-btn" onclick="openModal('${titleEnc}','${tagEnc}','${listEnc}')">&#x2922; Click to expand full list</div>`;
     }
@@ -1017,7 +1058,10 @@
     }
 
     function renderWeapons() {
-        const items = weaponsList.filter(w => filterMissionsBySystem(w.missions).length > 0);
+        const items = weaponsList.filter(w => {
+            const filteredMissions = filterMissionsBySystem(w.missions);
+            return filteredMissions.length > 0;
+        });
         
         document.getElementById('weaponsView').innerHTML = items.map(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
@@ -1036,7 +1080,10 @@
     }
 
     function renderAmmo() {
-        const items = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0);
+        const items = ammoList.filter(a => {
+            const filteredMissions = filterMissionsBySystem(a.missions);
+            return filteredMissions.length > 0;
+        });
         
         document.getElementById('ammoView').innerHTML = items.map(a => {
             const filteredMissions = filterMissionsBySystem(a.missions);
@@ -1077,6 +1124,7 @@
 
             const filteredMissions = filterMissionsBySystem(set.missions);
 
+            // Detect whether all pieces share the same mission pool
             let allSame = true;
             if (set.parts.length > 1) {
                 const ref = serializeMissions(filterMissionsBySystem(set.partsData[set.parts[0]]));
@@ -1102,8 +1150,21 @@
 
             let specificContainersHTML = '';
 
+            // Helper to extract just the piece name (e.g. "ADP-mk4 Helmet Woodland" -> "Helmet")
+            const shortPieceName = (fullName) => {
+                // Try to find a piece-type word; return it with any modifier ("Helmet Jet", "Legs Midnight Sun")
+                const match = fullName.match(/\b(Helmet|Core|Arms|Legs|Backpack|Undersuit)\b(.*)$/i);
+                if (match) {
+                    // Strip out the set name if it appears after the piece word
+                    let rest = match[2].replace(new RegExp('\\b' + setName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i'), '').trim();
+                    return (match[1] + (rest ? ' ' + rest : '')).trim();
+                }
+                return fullName;
+            };
+
             const tilesHTML = sortedParts.map(p => {
-                if (allSame) return `<div class="armor-tile">${p}</div>`;
+                const label = shortPieceName(p);
+                if (allSame) return `<div class="armor-tile">${label}</div>`;
 
                 const pieceId     = p.replace(/[^a-zA-Z0-9]/g, '-');
                 const containerId = `${baseId}-${pieceId}`;
@@ -1112,7 +1173,7 @@
                 const specificList = missions.length > 0
                     ? missionListHTML(`${p} Obtained From:`, missions)
                     : `<div class="mission-header">${p} Obtained From:</div>
-                       <div style="color:var(--warning);font-size:0.8rem;margin-top:5px;padding-left:2px;">Loot Pool Unknown or Filtered</div>`;
+                       <div style="color:var(--warning);font-size:0.8rem;margin-top:5px;padding-left:2px;">Loot Pool Unknown or Filtered Out</div>`;
 
                 const expandHTML = missions.length > 0
                     ? expandBtn(enc(p), enc(subtype), enc(specificList))
@@ -1124,7 +1185,7 @@
                         ${expandHTML}
                     </div>`;
 
-                return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseId}','${containerId}',this)">${p}</div>`;
+                return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseId}','${containerId}',this)">${label}</div>`;
             }).join('');
 
             const incompleteTag = isComplete
