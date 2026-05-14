@@ -58822,8 +58822,8 @@
     },
     {
       "name": "A03 Sniper Rifle Magazine (15 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -61466,8 +61466,8 @@
     },
     {
       "name": "Arclight Pistol Battery (30 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Hand Mining",
@@ -62892,8 +62892,8 @@
     },
     {
       "name": "Arrowhead Sniper Rifle Battery (16 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Delivery",
@@ -63106,8 +63106,8 @@
     },
     {
       "name": "Atzkav Sniper Rifle Battery (8 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Mercenary",
@@ -63519,8 +63519,8 @@
     },
     {
       "name": "BR-2 Shotgun Magazine (12 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -70520,8 +70520,8 @@
     },
     {
       "name": "C54 SMG Magazine (50 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -73412,8 +73412,8 @@
     },
     {
       "name": "Coda Pistol Magazine (6 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -74570,8 +74570,8 @@
     },
     {
       "name": "Custodian SMG Magazine (60 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Delivery",
@@ -74608,8 +74608,8 @@
     },
     {
       "name": "Deadrig Shotgun Magazine (8 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -74924,8 +74924,8 @@
     },
     {
       "name": "Demeco LMG Battery (100 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [],
       "craftable": true,
       "blueprint": "BP_CRAFT_klwe_lmg_energy_01_mag",
@@ -74951,8 +74951,8 @@
     },
     {
       "name": "Devastator Shotgun Battery (12 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Mercenary",
@@ -75933,8 +75933,8 @@
     },
     {
       "name": "F55 LMG Magazine (150 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Bounty Hunter",
@@ -76104,8 +76104,8 @@
     },
     {
       "name": "FS-9 Magazine (75 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -76625,8 +76625,8 @@
     },
     {
       "name": "Fresnel Energy LMG Battery (165 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Investigation",
@@ -79074,8 +79074,8 @@
     },
     {
       "name": "Gallant Rifle Battery (45 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Mercenary",
@@ -85283,8 +85283,8 @@
     },
     {
       "name": "Karna Rifle Battery (35 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Mercenary",
@@ -85686,8 +85686,8 @@
     },
     {
       "name": "Killshot Rifle Magazine (45 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -87217,8 +87217,8 @@
     },
     {
       "name": "LH86 Pistol Magazine (25 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [],
       "craftable": true,
       "blueprint": "BP_CRAFT_gmni_pistol_ballistic_01_mag",
@@ -89437,8 +89437,8 @@
     },
     {
       "name": "Lumin V SMG Battery (45 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Delivery",
@@ -90387,8 +90387,8 @@
     },
     {
       "name": "P4-AR Magazine (40 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [],
       "craftable": true,
       "blueprint": "BP_CRAFT_behr_rifle_ballistic_01_mag",
@@ -90408,8 +90408,8 @@
     },
     {
       "name": "P6-LR Magazine (8 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -90500,8 +90500,8 @@
     },
     {
       "name": "P8-AR Rifle Magazine (15 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Collection",
@@ -90532,8 +90532,8 @@
     },
     {
       "name": "P8-SC SMG Magazine (45 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -90881,8 +90881,8 @@
     },
     {
       "name": "Parallax Rifle Battery (80 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Mercenary",
@@ -92798,8 +92798,8 @@
     },
     {
       "name": "Prism Laser Shotgun Battery (20 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Collection",
@@ -92856,8 +92856,8 @@
     },
     {
       "name": "Pulse Laser Pistol Battery (60 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Mercenary",
@@ -92998,8 +92998,8 @@
     },
     {
       "name": "Pulverizer LMG Magazine (120 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -93135,8 +93135,8 @@
     },
     {
       "name": "Quartz Energy SMG Battery (45 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Collection",
@@ -93289,8 +93289,8 @@
     },
     {
       "name": "R97 Shotgun Magazine (18 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -94219,8 +94219,8 @@
     },
     {
       "name": "Ravager-212 Twin Shotgun Magazine (16 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -94381,8 +94381,8 @@
     },
     {
       "name": "S-38 Magazine (20 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [],
       "craftable": true,
       "blueprint": "BP_CRAFT_behr_pistol_ballistic_01_mag",
@@ -95482,8 +95482,8 @@
     },
     {
       "name": "S71 Rifle Magazine (30 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -95823,8 +95823,8 @@
     },
     {
       "name": "Scalpel Sniper Rifle Magazine (12 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -101111,8 +101111,8 @@
     },
     {
       "name": "Tripledown Pistol Magazine (12 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "ballistic",
       "missions": [
         {
           "type": "Mercenary",
@@ -103292,8 +103292,8 @@
     },
     {
       "name": "Yubarev Pistol Battery (10 cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Mercenary",
@@ -103501,8 +103501,8 @@
     },
     {
       "name": "Zenith Laser Sniper Rifle Battery (22 Cap)",
-      "type": "unknown",
-      "subtype": "Magazine",
+      "type": "ammo",
+      "subtype": "energy",
       "missions": [
         {
           "type": "Investigation",
