@@ -1265,42 +1265,14 @@
                 return fullName;
             };
 
-            // For flight suits/undersuits, show all variants as tiles (like helmets)
-            const tilesHTML = sortedParts.map(p => {
-                const label = shortPieceName(p);
-                if (allSame) return `<div class="armor-tile">${label}</div>`;
-
-                const pieceId     = p.replace(/[^a-zA-Z0-9]/g, '-');
-                const containerId = `${baseId}-${pieceId}`;
-                const missions    = filterMissionsBySystem(set.partsData[p]);
-
-                const specificList = missions.length > 0
-                    ? missionListHTML(`${p} Obtained From:`, missions)
-                    : `<div class="mission-header">${p} Obtained From:</div>
-                       <div style="color:var(--warning);font-size:0.8rem;margin-top:5px;padding-left:2px;">Loot Pool Unknown or Filtered Out</div>`;
-
-                const expandHTML = missions.length > 0
-                    ? expandBtn(enc(p), enc(subtype), enc(specificList))
-                    : '';
-
-                specificContainersHTML += `
-                    <div id="${containerId}" class="mission-view-container" style="display:none;">
-                        <div class="mission-scroll-area">${specificList}</div>
-                        ${expandHTML}
-                    </div>`;
-
-                return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseId}','${containerId}',this)">${label}</div>`;
-            }).join('');
-
-            const incompleteTag = isComplete
-                ? ''
-                : `<span class="tag" style="background:var(--warning);color:#fff;border:none;">INCOMPLETE</span>`;
+            // Show ONE collective tile per set (represents all pieces combined)
+            const tilesHTML = `<div class="armor-tile">${setName}</div>`;
 
             const noteTag = (allSame || set.isFlightSuit || set.isUndersuit)
                 ? ''
-                : `<div class="armor-note">* Pieces have different loot pools — click a tile to filter.</div>`;
+                : `<div class="armor-note">* Pieces have different loot pools — see full list for details.</div>`;
             
-            const displayTitle = set.isFlightSuit || set.isUndersuit ? setName : setName + ' SET';
+            const displayTitle = setName + ' SET';
 
             if (set.isFlightSuit) {
                 console.log(`Rendering flight suit: ${setName} (${filteredMissions.length} missions after filter)`);
@@ -1311,7 +1283,6 @@
                     <div class="armor-set-title">
                         <div class="armor-set-title-left">
                             <span class="search-text">${displayTitle}</span>
-                            ${incompleteTag}
                         </div>
                         <span class="tag">${subtype}</span>
                     </div>
