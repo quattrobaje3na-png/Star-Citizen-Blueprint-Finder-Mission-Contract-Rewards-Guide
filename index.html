@@ -919,6 +919,8 @@
         ammoList    = [];
         shipComponentsList = [];
 
+        let flightSuitCount = 0;
+
         items.forEach(item => {
             const type = (item.type || '').toLowerCase();
             const name = item.name || '';
@@ -945,6 +947,10 @@
                             isFlightSuit: subtype === 'flight suit',
                             isUndersuit: subtype === 'undersuit'
                         };
+                        if (subtype === 'flight suit') {
+                            flightSuitCount++;
+                            console.log(`Flight suit added: ${setName} (${item.missions ? item.missions.length : 0} missions)`);
+                        }
                     }
                     armorSets[setName].partsData[name] = item.missions || [];
                 } else {
@@ -980,6 +986,9 @@
             }
         });
 
+        console.log(`Database processed: ${flightSuitCount} flight suits, ${Object.keys(armorSets).length} total armor sets`);
+        console.log('Flight suit keys in armorSets:', Object.keys(armorSets).filter(k => armorSets[k].isFlightSuit));
+        
         render();
     }
 
@@ -1177,6 +1186,10 @@
                 return a.localeCompare(b);
             });
 
+        console.log(`renderArmor: ${available.length} armor sets to render`);
+        const flightSuitsToRender = available.filter(s => armorSets[s].isFlightSuit);
+        console.log(`Flight suits to render: ${flightSuitsToRender.length}`, flightSuitsToRender);
+
         document.getElementById('armorView').innerHTML = available.map(setName => {
             const set      = armorSets[setName];
             const subtype  = set.subtype || 'armor';
@@ -1267,6 +1280,10 @@
                 : `<div class="armor-note">* Pieces have different loot pools — click a tile to filter.</div>`;
             
             const displayTitle = set.isFlightSuit || set.isUndersuit ? setName : setName + ' SET';
+
+            if (set.isFlightSuit) {
+                console.log(`Rendering flight suit: ${setName} (${filteredMissions.length} missions after filter)`);
+            }
 
             return `
                 <div class="armor-set-box search-target">
