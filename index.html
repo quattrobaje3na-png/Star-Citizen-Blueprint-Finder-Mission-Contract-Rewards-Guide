@@ -919,25 +919,9 @@
         ammoList    = [];
         shipComponentsList = [];
 
-        let flightSuitCount = 0;
-        let flightSuitDebug = [];
-
-        items.forEach((item, idx) => {
+        items.forEach(item => {
             const type = (item.type || '').toLowerCase();
             const name = item.name || '';
-            const subtype = (item.subtype || '').toLowerCase();
-
-            // Debug flight suits
-            if (name && name.toLowerCase().includes('flight suit')) {
-                flightSuitDebug.push({
-                    name,
-                    rawSubtype: item.subtype,
-                    lowercaseSubtype: subtype,
-                    typeCheck: type === 'armor' || type === 'armour',
-                    subtypeCheck: subtype === 'flight suit' || subtype === 'undersuit',
-                    willMatch: (type === 'armor' || type === 'armour') && (subtype === 'flight suit' || subtype === 'undersuit')
-                });
-            }
 
             if (type === 'weapon' || type === 'weapons' || type === 'fps weapon') {
                 weaponsList.push(item);
@@ -946,70 +930,72 @@
             } else if (type === 'shipcomponent') {
                 shipComponentsList.push(item);
             } else if (type === 'armor' || type === 'armour') {
-                // Handle flight suits and undersuits as complete 2-piece items
-                if (subtype === 'flight suit' || subtype === 'undersuit') {
-                    // For flight suits/undersuits, use the full name as the set
-                    const setName = name;
+                // Group armor by base name + style (not by piece type)
+                // "Tailwind Flight Helmet Dominion" -> group as "Tailwind Dominion"
+                // "Tailwind Flight Suit Dominion Camo" -> group as "Tailwind Dominion"
+                // "Tailwind Flight Helmet" -> group as "Tailwind Base"
+                // "Tailwind Flight Suit" -> group as "Tailwind Base"
+                
+                let setName = item.armorSet;
+                
+                if (!setName || setName === 'Unknown' || setName === '') {
+                    // Extract base name and style
+                    let baseName = name
+                        .replace(/\b(Helmet|Core|Arms|Legs|Backpack|Flight Suit|Undersuit|Suit)\b/gi, '')
+                        .replace(/\s{2,}/g, ' ')
+                        .trim();
                     
-                    if (!armorSets[setName]) {
-                        armorSets[setName] = {
-                            parts: [name],
-                            partsData: {},
-                            missions: item.missions || [],
-                            subtype: item.subtype,
-                            isFlightSuit: subtype === 'flight suit',
-                            isUndersuit: subtype === 'undersuit'
-                        };
-                        if (subtype === 'flight suit') {
-                            flightSuitCount++;
+                    // Extract style variant (last word or phrase that indicates a style/variant)
+                    // Common patterns: "Base", "Dominion", "Camo", "Heavy", "Light", "Midnight Sun", etc.
+                    let styleName = '';
+                    
+                    if (name.toLowerCase().includes('dominion')) {
+                        styleName = 'Dominion';
+                    } else if (name.toLowerCase().includes('midnight')) {
+                        styleName = 'Midnight';
+                    } else if (name.toLowerCase().includes('light')) {
+                        styleName = 'Light';
+                    } else if (name.toLowerCase().includes('heavy')) {
+                        styleName = 'Heavy';
+                    } else if (name.toLowerCase().includes('medium')) {
+                        styleName = 'Medium';
+                    } else {
+                        // Try to extract the last meaningful word as style
+                        const parts = baseName.split(/\s+/);
+                        if (parts.length > 1) {
+                            styleName = parts[parts.length - 1];
+                            baseName = parts.slice(0, -1).join(' ');
+                        } else {
+                            styleName = 'Base';
                         }
                     }
-                    armorSets[setName].partsData[name] = item.missions || [];
-                } else {
-                    // Original logic for regular armor sets
-                    let setName = item.armorSet;
-                    if (!setName || setName === 'Unknown' || setName === '') {
-                        setName = name
-                            .replace(/\b(Helmet|Core|Arms|Legs|Backpack|Suit|Undersuit)\b/gi, '')
-                            .replace(/\s{2,}/g, ' ')
-                            .trim();
-                    }
+                    
+                    // Combine: "Tailwind" + "Dominion" = "Tailwind Dominion"
+                    setName = (baseName + ' ' + styleName).trim();
                     if (!setName) setName = 'Unknown Set';
-
-                    if (!armorSets[setName]) {
-                        armorSets[setName] = {
-                            parts: [],
-                            partsData: {},
-                            missions: [],
-                            subtype: item.subtype,
-                            isFlightSuit: false,
-                            isUndersuit: false
-                        };
-                    }
-                    armorSets[setName].parts.push(name);
-                    armorSets[setName].partsData[name] = item.missions || [];
-                    (item.missions || []).forEach(m => {
-                        const alreadyIn = armorSets[setName].missions.some(
-                            em => em.title === m.title && em.type === m.type && em.lawful === m.lawful && em.system === m.system
-                        );
-                        if (!alreadyIn) armorSets[setName].missions.push(m);
-                    });
                 }
+
+                if (!armorSets[setName]) {
+                    armorSets[setName] = {
+                        parts: [],
+                        partsData: {},
+                        missions: [],
+                        subtype: item.subtype,
+                        isFlightSuit: false,
+                        isUndersuit: false
+                    };
+                }
+                armorSets[setName].parts.push(name);
+                armorSets[setName].partsData[name] = item.missions || [];
+                (item.missions || []).forEach(m => {
+                    const alreadyIn = armorSets[setName].missions.some(
+                        em => em.title === m.title && em.type === m.type && em.lawful === m.lawful && em.system === m.system
+                    );
+                    if (!alreadyIn) armorSets[setName].missions.push(m);
+                });
             }
         });
 
-        console.log(`Database processed: ${flightSuitCount} flight suits`);
-        console.log('=== FLIGHT SUIT DEBUG INFO ===');
-        flightSuitDebug.forEach((debug, i) => {
-            console.log(`${i+1}. ${debug.name}`);
-            console.log(`   rawSubtype: '${debug.rawSubtype}'`);
-            console.log(`   lowercaseSubtype: '${debug.lowercaseSubtype}'`);
-            console.log(`   typeCheck (armor/armour): ${debug.typeCheck}`);
-            console.log(`   subtypeCheck (flight suit/undersuit): ${debug.subtypeCheck}`);
-            console.log(`   WILL MATCH: ${debug.willMatch}`);
-        });
-        console.log('Armor sets with isFlightSuit=true:', Object.keys(armorSets).filter(k => armorSets[k].isFlightSuit));
-        
         render();
     }
 
@@ -1250,9 +1236,25 @@
 
             // Helper to extract just the piece name
             const shortPieceName = (fullName) => {
-                // For flight suits/undersuits, just show the type
-                if (set.isFlightSuit || set.isUndersuit) {
-                    return set.isFlightSuit ? 'Flight Suit' : 'Undersuit';
+                // For flight suits/undersuits, extract the variant name
+                if (set.isFlightSuit) {
+                    // "Tailwind Flight Suit Dominion Camo" -> "Dominion Camo"
+                    // "Tailwind Flight Suit" -> "Base" or full name if no variant
+                    const basePattern = /^(.+?(?:Flight Suit))(?:\s+(.+))?$/i;
+                    const match = fullName.match(basePattern);
+                    if (match && match[2]) {
+                        return match[2]; // Return variant name like "Dominion Camo"
+                    }
+                    // If no variant, show just the base
+                    return fullName.replace(/Flight Suit/i, '').trim() || 'Base';
+                } else if (set.isUndersuit) {
+                    // Similar logic for undersuits
+                    const basePattern = /^(.+?(?:Undersuit))(?:\s+(.+))?$/i;
+                    const match = fullName.match(basePattern);
+                    if (match && match[2]) {
+                        return match[2];
+                    }
+                    return fullName.replace(/Undersuit/i, '').trim() || 'Base';
                 }
                 // Original logic for regular armor
                 const match = fullName.match(/\b(Helmet|Core|Arms|Legs|Backpack|Undersuit)\b(.*)$/i);
@@ -1263,34 +1265,32 @@
                 return fullName;
             };
 
-            // For flight suits/undersuits, only show one tile
-            const tilesHTML = (set.isFlightSuit || set.isUndersuit) 
-                ? `<div class="armor-tile">${shortPieceName(set.parts[0])}</div>`
-                : sortedParts.map(p => {
-                    const label = shortPieceName(p);
-                    if (allSame) return `<div class="armor-tile">${label}</div>`;
+            // For flight suits/undersuits, show all variants as tiles (like helmets)
+            const tilesHTML = sortedParts.map(p => {
+                const label = shortPieceName(p);
+                if (allSame) return `<div class="armor-tile">${label}</div>`;
 
-                    const pieceId     = p.replace(/[^a-zA-Z0-9]/g, '-');
-                    const containerId = `${baseId}-${pieceId}`;
-                    const missions    = filterMissionsBySystem(set.partsData[p]);
+                const pieceId     = p.replace(/[^a-zA-Z0-9]/g, '-');
+                const containerId = `${baseId}-${pieceId}`;
+                const missions    = filterMissionsBySystem(set.partsData[p]);
 
-                    const specificList = missions.length > 0
-                        ? missionListHTML(`${p} Obtained From:`, missions)
-                        : `<div class="mission-header">${p} Obtained From:</div>
-                           <div style="color:var(--warning);font-size:0.8rem;margin-top:5px;padding-left:2px;">Loot Pool Unknown or Filtered Out</div>`;
+                const specificList = missions.length > 0
+                    ? missionListHTML(`${p} Obtained From:`, missions)
+                    : `<div class="mission-header">${p} Obtained From:</div>
+                       <div style="color:var(--warning);font-size:0.8rem;margin-top:5px;padding-left:2px;">Loot Pool Unknown or Filtered Out</div>`;
 
-                    const expandHTML = missions.length > 0
-                        ? expandBtn(enc(p), enc(subtype), enc(specificList))
-                        : '';
+                const expandHTML = missions.length > 0
+                    ? expandBtn(enc(p), enc(subtype), enc(specificList))
+                    : '';
 
-                    specificContainersHTML += `
-                        <div id="${containerId}" class="mission-view-container" style="display:none;">
-                            <div class="mission-scroll-area">${specificList}</div>
-                            ${expandHTML}
-                        </div>`;
+                specificContainersHTML += `
+                    <div id="${containerId}" class="mission-view-container" style="display:none;">
+                        <div class="mission-scroll-area">${specificList}</div>
+                        ${expandHTML}
+                    </div>`;
 
-                    return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseId}','${containerId}',this)">${label}</div>`;
-                }).join('');
+                return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseId}','${containerId}',this)">${label}</div>`;
+            }).join('');
 
             const incompleteTag = isComplete
                 ? ''
