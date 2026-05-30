@@ -931,36 +931,41 @@
                 shipComponentsList.push(item);
             } else if (type === 'armor' || type === 'armour') {
                 // Group armor by base name + style (not by piece type)
-                // "Tailwind Flight Helmet Dominion" -> group as "Tailwind Dominion"
-                // "Tailwind Flight Suit Dominion Camo" -> group as "Tailwind Dominion"
-                // "Tailwind Flight Helmet" -> group as "Tailwind Base"
-                // "Tailwind Flight Suit" -> group as "Tailwind Base"
+                // Both "Tailwind Flight Helmet Dominion Camo" and "Tailwind Flight Suit Dominion Camo" 
+                // should group as "Tailwind Dominion"
                 
                 let setName = item.armorSet;
                 
                 if (!setName || setName === 'Unknown' || setName === '') {
-                    // Extract base name and style
+                    // Step 1: Remove piece type words
                     let baseName = name
                         .replace(/\b(Helmet|Core|Arms|Legs|Backpack|Flight Suit|Undersuit|Suit)\b/gi, '')
                         .replace(/\s{2,}/g, ' ')
                         .trim();
                     
-                    // Extract style variant (last word or phrase that indicates a style/variant)
-                    // Common patterns: "Base", "Dominion", "Camo", "Heavy", "Light", "Midnight Sun", etc.
+                    // Step 2: Extract and remove style variant from the name
                     let styleName = '';
                     
-                    if (name.toLowerCase().includes('dominion')) {
+                    if (baseName.toLowerCase().includes('dominion')) {
                         styleName = 'Dominion';
-                    } else if (name.toLowerCase().includes('midnight')) {
+                        baseName = baseName.replace(/dominion/gi, '').replace(/\s{2,}/g, ' ').trim();
+                    } else if (baseName.toLowerCase().includes('camo')) {
+                        styleName = 'Camo';
+                        baseName = baseName.replace(/camo/gi, '').replace(/\s{2,}/g, ' ').trim();
+                    } else if (baseName.toLowerCase().includes('midnight')) {
                         styleName = 'Midnight';
-                    } else if (name.toLowerCase().includes('light')) {
+                        baseName = baseName.replace(/midnight/gi, '').replace(/\s{2,}/g, ' ').trim();
+                    } else if (baseName.toLowerCase().includes('light')) {
                         styleName = 'Light';
-                    } else if (name.toLowerCase().includes('heavy')) {
+                        baseName = baseName.replace(/light/gi, '').replace(/\s{2,}/g, ' ').trim();
+                    } else if (baseName.toLowerCase().includes('heavy')) {
                         styleName = 'Heavy';
-                    } else if (name.toLowerCase().includes('medium')) {
+                        baseName = baseName.replace(/heavy/gi, '').replace(/\s{2,}/g, ' ').trim();
+                    } else if (baseName.toLowerCase().includes('medium')) {
                         styleName = 'Medium';
+                        baseName = baseName.replace(/medium/gi, '').replace(/\s{2,}/g, ' ').trim();
                     } else {
-                        // Try to extract the last meaningful word as style
+                        // No recognized style - use last word as style, rest as base
                         const parts = baseName.split(/\s+/);
                         if (parts.length > 1) {
                             styleName = parts[parts.length - 1];
@@ -970,9 +975,10 @@
                         }
                     }
                     
-                    // Combine: "Tailwind" + "Dominion" = "Tailwind Dominion"
+                    // Step 3: Combine: "Tailwind" + "Dominion" = "Tailwind Dominion"
+                    // (no duplication because we removed style from baseName)
                     setName = (baseName + ' ' + styleName).trim();
-                    if (!setName) setName = 'Unknown Set';
+                    if (!setName || setName === ' ') setName = 'Unknown Set';
                 }
 
                 if (!armorSets[setName]) {
