@@ -920,11 +920,17 @@
         shipComponentsList = [];
 
         let flightSuitCount = 0;
+        let flightSuitSubtypes = [];
 
         items.forEach(item => {
             const type = (item.type || '').toLowerCase();
             const name = item.name || '';
             const subtype = (item.subtype || '').toLowerCase();
+
+            // Log any item with "flight suit" in the name
+            if (name && name.toLowerCase().includes('flight suit')) {
+                flightSuitSubtypes.push({name, subtype: item.subtype, subtypeLower: subtype});
+            }
 
             if (type === 'weapon' || type === 'weapons' || type === 'fps weapon') {
                 weaponsList.push(item);
@@ -987,6 +993,7 @@
         });
 
         console.log(`Database processed: ${flightSuitCount} flight suits, ${Object.keys(armorSets).length} total armor sets`);
+        console.log('Flight suit items found in data:', flightSuitSubtypes);
         console.log('Flight suit keys in armorSets:', Object.keys(armorSets).filter(k => armorSets[k].isFlightSuit));
         
         render();
