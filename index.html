@@ -920,16 +920,23 @@
         shipComponentsList = [];
 
         let flightSuitCount = 0;
-        let flightSuitSubtypes = [];
+        let flightSuitDebug = [];
 
-        items.forEach(item => {
+        items.forEach((item, idx) => {
             const type = (item.type || '').toLowerCase();
             const name = item.name || '';
             const subtype = (item.subtype || '').toLowerCase();
 
-            // Log any item with "flight suit" in the name
+            // Debug flight suits
             if (name && name.toLowerCase().includes('flight suit')) {
-                flightSuitSubtypes.push({name, subtype: item.subtype, subtypeLower: subtype});
+                flightSuitDebug.push({
+                    name,
+                    rawSubtype: item.subtype,
+                    lowercaseSubtype: subtype,
+                    typeCheck: type === 'armor' || type === 'armour',
+                    subtypeCheck: subtype === 'flight suit' || subtype === 'undersuit',
+                    willMatch: (type === 'armor' || type === 'armour') && (subtype === 'flight suit' || subtype === 'undersuit')
+                });
             }
 
             if (type === 'weapon' || type === 'weapons' || type === 'fps weapon') {
@@ -955,7 +962,6 @@
                         };
                         if (subtype === 'flight suit') {
                             flightSuitCount++;
-                            console.log(`Flight suit added: ${setName} (${item.missions ? item.missions.length : 0} missions)`);
                         }
                     }
                     armorSets[setName].partsData[name] = item.missions || [];
@@ -992,9 +998,9 @@
             }
         });
 
-        console.log(`Database processed: ${flightSuitCount} flight suits, ${Object.keys(armorSets).length} total armor sets`);
-        console.log('Flight suit items found in data:', flightSuitSubtypes);
-        console.log('Flight suit keys in armorSets:', Object.keys(armorSets).filter(k => armorSets[k].isFlightSuit));
+        console.log(`Database processed: ${flightSuitCount} flight suits`);
+        console.log('Flight suit debug info:', flightSuitDebug);
+        console.log('Armor sets with isFlightSuit=true:', Object.keys(armorSets).filter(k => armorSets[k].isFlightSuit));
         
         render();
     }
