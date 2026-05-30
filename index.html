@@ -906,6 +906,8 @@
         if (activeSystemFilters.size === 0) return []; // No systems selected
         return missions.filter(m => {
             const system = (m.system || '').toLowerCase();
+            // Include missions with unknown system (like flight suits) regardless of filter
+            if (system === 'unknown' || system === '') return true;
             return activeSystemFilters.has(system);
         });
     }
