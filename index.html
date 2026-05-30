@@ -1163,11 +1163,35 @@
                 const setA = armorSets[a];
                 const setB = armorSets[b];
                 
-                // Flight suits and undersuits are always complete
-                const isCompleteA = setA.isFlightSuit || setA.isUndersuit || 
-                    REQUIRED.every(r => setA.parts.map(p => p.toLowerCase()).some(p => p.includes(r)));
-                const isCompleteB = setB.isFlightSuit || setB.isUndersuit || 
-                    REQUIRED.every(r => setB.parts.map(p => p.toLowerCase()).some(p => p.includes(r)));
+                // Determine completion for each set
+                const partsA = setA.parts.map(p => p.toLowerCase());
+                const partsB = setB.parts.map(p => p.toLowerCase());
+                
+                const hasHelmetA = partsA.some(p => p.includes('helmet'));
+                const hasFlightSuitA = partsA.some(p => p.includes('flight suit'));
+                const hasUndersuitA = partsA.some(p => p.includes('undersuit'));
+                
+                let isCompleteA;
+                if (hasFlightSuitA) {
+                    isCompleteA = hasHelmetA && hasFlightSuitA;
+                } else if (hasUndersuitA && partsA.length === 1) {
+                    isCompleteA = true;
+                } else {
+                    isCompleteA = REQUIRED.every(r => partsA.some(p => p.includes(r)));
+                }
+                
+                const hasHelmetB = partsB.some(p => p.includes('helmet'));
+                const hasFlightSuitB = partsB.some(p => p.includes('flight suit'));
+                const hasUndersuitB = partsB.some(p => p.includes('undersuit'));
+                
+                let isCompleteB;
+                if (hasFlightSuitB) {
+                    isCompleteB = hasHelmetB && hasFlightSuitB;
+                } else if (hasUndersuitB && partsB.length === 1) {
+                    isCompleteB = true;
+                } else {
+                    isCompleteB = REQUIRED.every(r => partsB.some(p => p.includes(r)));
+                }
                 
                 if (isCompleteA !== isCompleteB) return isCompleteA ? -1 : 1;
                 return a.localeCompare(b);
@@ -1182,9 +1206,23 @@
             const subtype  = set.subtype || 'armor';
             const partLow  = set.parts.map(p => p.toLowerCase());
             
-            // Flight suits and undersuits are always complete (only 1 item needed)
-            const isComplete = set.isFlightSuit || set.isUndersuit || 
-                REQUIRED.every(r => partLow.some(p => p.includes(r)));
+            // Flight suits and undersuits have different completion requirements
+            // Flight suit sets: need helmet + flight suit (2 pieces)
+            const hasHelmet = partLow.some(p => p.includes('helmet'));
+            const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
+            const hasUndersuit = partLow.some(p => p.includes('undersuit'));
+            
+            let isComplete;
+            if (hasFlightSuit) {
+                // Flight suit sets are complete with helmet + flight suit
+                isComplete = hasHelmet && hasFlightSuit;
+            } else if (hasUndersuit && partLow.length === 1) {
+                // Standalone undersuit is complete
+                isComplete = true;
+            } else {
+                // Regular armor sets need 4 pieces: helmet, core, arms, legs
+                isComplete = REQUIRED.every(r => partLow.some(p => p.includes(r)));
+            }
 
             const filteredMissions = filterMissionsBySystem(set.missions);
 
