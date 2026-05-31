@@ -1094,10 +1094,13 @@
         const cCount = shipComponentsList.filter(c => filterMissionsBySystem(c.missions).length > 0).length;
         const sCount = Object.keys(armorSets).filter(s => filterMissionsBySystem(armorSets[s].missions).length > 0).length;
         const fsCount = Object.keys(armorSets).filter(s => {
+            const nameLower = s.toLowerCase();
             const parts = armorSets[s].parts.map(p => p.toLowerCase());
-            const hasFlightSuit = parts.some(p => p.includes('flight suit'));
-            const hasFlightHelmet = parts.some(p => p.includes('flight helmet'));
-            return hasFlightSuit || hasFlightHelmet;
+            const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
+            const isTailwind = nameLower.includes('tailwind');
+            const isRacing = nameLower.includes('racing');
+            const isExcluded = nameLower.includes('why not');
+            return hasFlightItem && (isTailwind || isRacing) && !isExcluded;
         }).length;
         const swCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
@@ -1182,13 +1185,19 @@
     function renderFlightSuits() {
         const PART_ORDER = ['helmet', 'flight suit'];
 
-        // Filter for ALL sets that contain flight suits OR flight helmets
+        // Filter for Tailwind variants and Racing flight suits only
         const available = Object.keys(armorSets)
             .filter(s => {
+                const nameLower = s.toLowerCase();
                 const parts = armorSets[s].parts.map(p => p.toLowerCase());
-                const hasFlightSuit = parts.some(p => p.includes('flight suit'));
-                const hasFlightHelmet = parts.some(p => p.includes('flight helmet'));
-                return hasFlightSuit || hasFlightHelmet;
+                const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
+                
+                // Only include if: Tailwind OR Racing (exclude Xanthule, A23, Why Not)
+                const isTailwind = nameLower.includes('tailwind');
+                const isRacing = nameLower.includes('racing');
+                const isExcluded = nameLower.includes('why not');
+                
+                return hasFlightItem && (isTailwind || isRacing) && !isExcluded;
             })
             .sort((a, b) => a.localeCompare(b));
 
