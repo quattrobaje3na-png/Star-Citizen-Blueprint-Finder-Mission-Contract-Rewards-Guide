@@ -1098,7 +1098,8 @@
             return hasFlightSuit && filterMissionsBySystem(armorSets[s].missions).length > 0;
         }).length;
         const swCount = shipComponentsList.filter(c => {
-            return c.subtype === 'Gun' && filterMissionsBySystem(c.missions).length > 0;
+            const subtype = c.subtype || 'unknown';
+            return subtype === 'unknown' && filterMissionsBySystem(c.missions).length > 0;
         }).length;
 
         const status = document.getElementById('statusIndicator');
@@ -1290,13 +1291,16 @@
     function renderShipWeapons() {
         const items = shipComponentsList
             .filter(c => {
-                // Only show ship component Guns
-                return c.subtype === 'Gun' && filterMissionsBySystem(c.missions).length > 0;
-            });
+                // Show all "unknown" subtype components (actual ship weapons/systems)
+                // Exclude mining lasers (Gun subtype), radar, and power
+                const subtype = c.subtype || 'unknown';
+                return subtype === 'unknown' && filterMissionsBySystem(c.missions).length > 0;
+            })
+            .sort((a, b) => a.name.localeCompare(b.name));
         
         document.getElementById('shipweaponsView').innerHTML = items.map(c => {
             const filteredMissions = filterMissionsBySystem(c.missions);
-            const subtype = c.subtype || 'weapon';
+            const subtype = c.subtype || 'component';
             const list    = missionListHTML('Obtained From:', filteredMissions);
             return `
                 <div class="blueprint-card shipcomponent search-target">
