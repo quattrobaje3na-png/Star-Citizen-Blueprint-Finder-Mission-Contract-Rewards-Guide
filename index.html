@@ -1087,8 +1087,8 @@
 
         const wCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
-            const isValid = name.includes('cannon') || name.includes('repeater') || name.includes('gatling');
-            return isValid && filterMissionsBySystem(w.missions).length > 0;
+            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+            return !isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
         }).length;
         const aCount = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0).length;
         const cCount = shipComponentsList.filter(c => filterMissionsBySystem(c.missions).length > 0).length;
@@ -1097,9 +1097,10 @@
             const hasFlightSuit = armorSets[s].parts.some(p => p.toLowerCase().includes('flight suit'));
             return hasFlightSuit && filterMissionsBySystem(armorSets[s].missions).length > 0;
         }).length;
-        const swCount = shipComponentsList.filter(c => {
-            const subtype = c.subtype || 'unknown';
-            return subtype === 'unknown' && filterMissionsBySystem(c.missions).length > 0;
+        const swCount = weaponsList.filter(w => {
+            const name = w.name.toLowerCase();
+            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+            return isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
         }).length;
 
         const status = document.getElementById('statusIndicator');
@@ -1110,10 +1111,10 @@
     function renderWeapons() {
         const items = weaponsList
             .filter(w => {
-                // Only show Cannons, Repeaters, Gatlings
+                // FPS: EXCLUDE anything with Cannon, Gatling, or Repeater in name
                 const name = w.name.toLowerCase();
-                const isValidWeapon = name.includes('cannon') || name.includes('repeater') || name.includes('gatling');
-                return isValidWeapon && filterMissionsBySystem(w.missions).length > 0;
+                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+                return !isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
             });
         
         document.getElementById('weaponsView').innerHTML = items.map(w => {
@@ -1289,27 +1290,27 @@
     }
 
     function renderShipWeapons() {
-        const items = shipComponentsList
-            .filter(c => {
-                // Show all "unknown" subtype components (actual ship weapons/systems)
-                // Exclude mining lasers (Gun subtype), radar, and power
-                const subtype = c.subtype || 'unknown';
-                return subtype === 'unknown' && filterMissionsBySystem(c.missions).length > 0;
+        const items = weaponsList
+            .filter(w => {
+                // SHIP WEAPONS: ONLY Cannon, Gatling, or Repeater in name
+                const name = w.name.toLowerCase();
+                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+                return isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
             })
             .sort((a, b) => a.name.localeCompare(b.name));
         
-        document.getElementById('shipweaponsView').innerHTML = items.map(c => {
-            const filteredMissions = filterMissionsBySystem(c.missions);
-            const subtype = c.subtype || 'component';
+        document.getElementById('shipweaponsView').innerHTML = items.map(w => {
+            const filteredMissions = filterMissionsBySystem(w.missions);
+            const subtype = w.subtype || 'weapon';
             const list    = missionListHTML('Obtained From:', filteredMissions);
             return `
-                <div class="blueprint-card shipcomponent search-target">
+                <div class="blueprint-card weapon search-target">
                     <div class="card-header">
-                        <span class="card-name search-text">${c.name}</span>
+                        <span class="card-name search-text">${w.name}</span>
                         <span class="tag">${subtype}</span>
                     </div>
                     <div class="mission-scroll-area">${list}</div>
-                    ${expandBtn(enc(c.name), enc(subtype), enc(list))}
+                    ${expandBtn(enc(w.name), enc(subtype), enc(list))}
                 </div>`;
         }).join('');
     }
