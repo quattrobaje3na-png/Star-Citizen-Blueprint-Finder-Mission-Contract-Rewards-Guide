@@ -1097,10 +1097,11 @@
             const nameLower = s.toLowerCase();
             const parts = armorSets[s].parts.map(p => p.toLowerCase());
             const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
+            const hasMissions = armorSets[s].missions.length > 0;
             const isTailwind = nameLower.includes('tailwind');
             const isRacing = nameLower.includes('racing');
-            const isExcluded = nameLower.includes('why not');
-            return hasFlightItem && (isTailwind || isRacing) && !isExcluded;
+            const isExcluded = nameLower.includes('why not') || nameLower.includes('mirai');
+            return hasFlightItem && (isTailwind || isRacing) && !isExcluded && hasMissions;
         }).length;
         const swCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
@@ -1185,19 +1186,20 @@
     function renderFlightSuits() {
         const PART_ORDER = ['helmet', 'flight suit'];
 
-        // Filter for Tailwind variants and Racing flight suits only
+        // Filter for Tailwind variants and Racing flight suits only - MUST HAVE MISSIONS
         const available = Object.keys(armorSets)
             .filter(s => {
                 const nameLower = s.toLowerCase();
                 const parts = armorSets[s].parts.map(p => p.toLowerCase());
                 const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
+                const hasMissions = armorSets[s].missions.length > 0;
                 
-                // Only include if: Tailwind OR Racing (exclude Xanthule, A23, Why Not)
+                // Only include if: Tailwind OR Racing (exclude Xanthule, A23, Why Not) AND has missions
                 const isTailwind = nameLower.includes('tailwind');
                 const isRacing = nameLower.includes('racing');
-                const isExcluded = nameLower.includes('why not');
+                const isExcluded = nameLower.includes('why not') || nameLower.includes('mirai');
                 
-                return hasFlightItem && (isTailwind || isRacing) && !isExcluded;
+                return hasFlightItem && (isTailwind || isRacing) && !isExcluded && hasMissions;
             })
             .sort((a, b) => a.localeCompare(b));
 
