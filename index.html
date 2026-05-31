@@ -845,6 +845,8 @@
                 <div class="tab"        onclick="switchTab('armor',   this)">ARMOR SETS</div>
                 <div class="tab"        onclick="switchTab('ammo',    this)">AMMO</div>
                 <div class="tab"        onclick="switchTab('components', this)">SHIP COMPONENTS</div>
+                <div class="tab"        onclick="switchTab('flightsuits', this)">FLIGHT SUITS</div>
+                <div class="tab"        onclick="switchTab('shipweapons', this)">SHIP WEAPONS</div>
             </div>
 
             <div class="system-filters">
@@ -860,6 +862,8 @@
     <div id="armorView"   class="item-group" style="display:none;"></div>
     <div id="ammoView"    class="item-group" style="display:none;"></div>
     <div id="componentsView" class="item-group" style="display:none;"></div>
+    <div id="flightsuitsView" class="item-group" style="display:none;"></div>
+    <div id="shipweaponsView" class="item-group" style="display:none;"></div>
 
 </div>
 
@@ -1076,11 +1080,18 @@
         renderAmmo();
         renderShipComponents();
         renderArmor();
+        renderFlightSuits();
+        renderShipWeapons();
 
         const wCount = weaponsList.filter(w => filterMissionsBySystem(w.missions).length > 0).length;
         const aCount = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0).length;
         const cCount = shipComponentsList.filter(c => filterMissionsBySystem(c.missions).length > 0).length;
         const sCount = Object.keys(armorSets).filter(s => filterMissionsBySystem(armorSets[s].missions).length > 0).length;
+        const fsCount = Object.keys(armorSets).filter(s => {
+            const hasFlightSuit = armorSets[s].parts.some(p => p.toLowerCase().includes('flight suit'));
+            return hasFlightSuit && filterMissionsBySystem(armorSets[s].missions).length > 0;
+        }).length;
+        const swCount = shipComponentsList.filter(c => filterMissionsBySystem(c.missions).length > 0).length;
 
         const status = document.getElementById('statusIndicator');
         status.style.color = 'var(--success)';
@@ -1088,17 +1099,27 @@
     }
 
     function renderWeapons() {
-        const items = weaponsList.filter(w => {
+        let items = weaponsList.filter(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
             return filteredMissions.length > 0;
         });
+        
+        // Add ship components if ship weapons toggle is on
+        if (showShipWeapons) {
+            const shipWeapons = shipComponentsList.filter(c => {
+                const filteredMissions = filterMissionsBySystem(c.missions);
+                return filteredMissions.length > 0;
+            });
+            items = items.concat(shipWeapons);
+        }
         
         document.getElementById('weaponsView').innerHTML = items.map(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
             const subtype = w.subtype || 'weapon';
             const list    = missionListHTML('Obtained From:', filteredMissions);
+            const cardClass = w.type === 'shipcomponent' ? 'shipcomponent' : 'weapon';
             return `
-                <div class="blueprint-card weapon search-target">
+                <div class="blueprint-card ${cardClass} search-target">
                     <div class="card-header">
                         <span class="card-name search-text">${w.name}</span>
                         <span class="tag">${subtype}</span>
@@ -1153,7 +1174,139 @@
         }).join('');
     }
 
-    function renderArmor() {
+    function renderFlightSuits() {
+        const REQUIRED   = ['helmet', 'core', 'arms', 'legs'];
+        const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
+
+        // Filter for flight suit sets only
+        const available = Object.keys(armorSets)
+            .filter(s => {
+                const isFlightSuitSet = armorSets[s].parts.some(p => p.toLowerCase().includes('flight suit'));
+                return isFlightSuitSet && filterMissionsBySystem(armorSets[s].missions).length > 0;
+            })
+            .sort((a, b) => a.localeCompare(b));
+
+        document.getElementById('flightsuitsView').innerHTML = available.map(setName => {
+            const set      = armorSets[setName];
+            const subtype  = set.subtype || 'armor';
+            const partLow  = set.parts.map(p => p.toLowerCase());
+            
+            const hasHelmet = partLow.some(p => p.includes('helmet'));
+            const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
+            const isComplete = hasHelmet && hasFlightSuit;
+
+            const filteredMissions = filterMissionsBySystem(set.missions);
+
+            let allSame = true;
+            if (set.parts.length > 1) {
+                const ref = serializeMissions(filterMissionsBySystem(set.partsData[set.parts[0]]));
+                allSame = set.parts.slice(1).every(
+                    p => serializeMissions(filterMissionsBySystem(set.partsData[p])) === ref
+                );
+            }
+
+            const sortedParts = [...set.parts].sort((a, b) => {
+                const ia = PART_ORDER.findIndex(o => a.toLowerCase().includes(o));
+                const ib = PART_ORDER.findIndex(o => b.toLowerCase().includes(o));
+                return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+            });
+
+            const baseId         = `fs-${setName.replace(/[^a-zA-Z0-9]/g, '-')}`;
+            const defaultList    = missionListHTML('Set Obtained From:', filteredMissions);
+
+            const defaultContainerHTML = `
+                <div id="${baseId}-default" class="mission-view-container" style="display:flex;">
+                    <div class="mission-scroll-area">${defaultList}</div>
+                    ${expandBtn(enc(setName + ' SET'), enc(subtype), enc(defaultList))}
+                </div>`;
+
+            let specificContainersHTML = '';
+
+            const shortPieceName = (fullName) => {
+                if (fullName.toLowerCase().includes('flight suit')) {
+                    return 'Flight Suit';
+                } else if (fullName.toLowerCase().includes('helmet')) {
+                    return 'Helmet';
+                }
+                return fullName;
+            };
+
+            const tilesHTML = sortedParts.map(p => {
+                const label = shortPieceName(p);
+                if (allSame) return `<div class="armor-tile">${label}</div>`;
+
+                const pieceId     = p.replace(/[^a-zA-Z0-9]/g, '-');
+                const containerId = `${baseId}-${pieceId}`;
+                const missions    = filterMissionsBySystem(set.partsData[p]);
+
+                const specificList = missions.length > 0
+                    ? missionListHTML(`${p} Obtained From:`, missions)
+                    : `<div class="mission-header">${p} Obtained From:</div>
+                       <div style="color:var(--warning);font-size:0.8rem;margin-top:5px;padding-left:2px;">Loot Pool Unknown or Filtered Out</div>`;
+
+                const expandHTML = missions.length > 0
+                    ? expandBtn(enc(p), enc(subtype), enc(specificList))
+                    : '';
+
+                specificContainersHTML += `
+                    <div id="${containerId}" class="mission-view-container" style="display:none;">
+                        <div class="mission-scroll-area">${specificList}</div>
+                        ${expandHTML}
+                    </div>`;
+
+                return `<div class="armor-tile interactive" onclick="toggleMissionView('${baseId}','${containerId}',this)">${label}</div>`;
+            }).join('');
+
+            const incompleteTag = isComplete
+                ? ''
+                : `<span class="tag" style="background:var(--warning);color:#fff;border:none;">INCOMPLETE</span>`;
+
+            const noteTag = allSame
+                ? ''
+                : `<div class="armor-note">* Pieces have different loot pools — click a tile to filter.</div>`;
+            
+            const displayTitle = setName + ' SET';
+
+            return `
+                <div class="armor-set-box search-target">
+                    <div class="armor-set-title">
+                        <div class="armor-set-title-left">
+                            <span class="search-text">${displayTitle}</span>
+                            ${incompleteTag}
+                        </div>
+                        <span class="tag">${subtype}</span>
+                    </div>
+                    ${noteTag}
+                    <div class="armor-tiles">${tilesHTML}</div>
+                    <div class="mission-views-wrapper">
+                        ${defaultContainerHTML}
+                        ${specificContainersHTML}
+                    </div>
+                </div>`;
+        }).join('');
+    }
+
+    function renderShipWeapons() {
+        const items = shipComponentsList.filter(c => {
+            const filteredMissions = filterMissionsBySystem(c.missions);
+            return filteredMissions.length > 0;
+        });
+        
+        document.getElementById('shipweaponsView').innerHTML = items.map(c => {
+            const filteredMissions = filterMissionsBySystem(c.missions);
+            const subtype = c.subtype || 'weapon';
+            const list    = missionListHTML('Obtained From:', filteredMissions);
+            return `
+                <div class="blueprint-card shipcomponent search-target">
+                    <div class="card-header">
+                        <span class="card-name search-text">${c.name}</span>
+                        <span class="tag">${subtype}</span>
+                    </div>
+                    <div class="mission-scroll-area">${list}</div>
+                    ${expandBtn(enc(c.name), enc(subtype), enc(list))}
+                </div>`;
+        }).join('');
+    }
         const REQUIRED   = ['helmet', 'core', 'arms', 'legs'];
         const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
 
@@ -1196,10 +1349,6 @@
                 if (isCompleteA !== isCompleteB) return isCompleteA ? -1 : 1;
                 return a.localeCompare(b);
             });
-
-        console.log(`renderArmor: ${available.length} armor sets to render`);
-        const flightSuitsToRender = available.filter(s => armorSets[s].isFlightSuit);
-        console.log(`Flight suits to render: ${flightSuitsToRender.length}`, flightSuitsToRender);
 
         document.getElementById('armorView').innerHTML = available.map(setName => {
             const set      = armorSets[setName];
