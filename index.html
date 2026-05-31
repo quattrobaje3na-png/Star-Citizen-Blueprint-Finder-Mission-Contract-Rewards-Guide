@@ -1099,27 +1099,17 @@
     }
 
     function renderWeapons() {
-        let items = weaponsList.filter(w => {
+        const items = weaponsList.filter(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
             return filteredMissions.length > 0;
         });
-        
-        // Add ship components if ship weapons toggle is on
-        if (showShipWeapons) {
-            const shipWeapons = shipComponentsList.filter(c => {
-                const filteredMissions = filterMissionsBySystem(c.missions);
-                return filteredMissions.length > 0;
-            });
-            items = items.concat(shipWeapons);
-        }
         
         document.getElementById('weaponsView').innerHTML = items.map(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
             const subtype = w.subtype || 'weapon';
             const list    = missionListHTML('Obtained From:', filteredMissions);
-            const cardClass = w.type === 'shipcomponent' ? 'shipcomponent' : 'weapon';
             return `
-                <div class="blueprint-card ${cardClass} search-target">
+                <div class="blueprint-card weapon search-target">
                     <div class="card-header">
                         <span class="card-name search-text">${w.name}</span>
                         <span class="tag">${subtype}</span>
@@ -1307,6 +1297,8 @@
                 </div>`;
         }).join('');
     }
+
+    function renderArmor() {
         const REQUIRED   = ['helmet', 'core', 'arms', 'legs'];
         const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
 
