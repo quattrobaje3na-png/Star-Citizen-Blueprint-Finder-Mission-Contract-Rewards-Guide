@@ -1087,7 +1087,7 @@
 
         const wCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
-            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
             return !isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
         }).length;
         const aCount = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0).length;
@@ -1105,7 +1105,7 @@
         }).length;
         const swCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
-            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
             return isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
         }).length;
 
@@ -1117,9 +1117,9 @@
     function renderWeapons() {
         const items = weaponsList
             .filter(w => {
-                // FPS: EXCLUDE anything with Cannon, Gatling, or Repeater in name
+                // FPS: EXCLUDE anything with Cannon, Gatling, Repeater, or Scattergun in name
                 const name = w.name.toLowerCase();
-                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
                 return !isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
             });
         
@@ -1307,9 +1307,9 @@
     function renderShipWeapons() {
         const items = weaponsList
             .filter(w => {
-                // SHIP WEAPONS: ONLY Cannon, Gatling, or Repeater in name
+                // SHIP WEAPONS: ONLY Cannon, Gatling, Repeater, or Scattergun in name
                 const name = w.name.toLowerCase();
-                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater');
+                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
                 return isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
             })
             .sort((a, b) => a.name.localeCompare(b.name));
