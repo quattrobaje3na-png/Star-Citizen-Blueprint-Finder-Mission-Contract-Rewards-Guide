@@ -1085,7 +1085,11 @@
         renderFlightSuits();
         renderShipWeapons();
 
-        const wCount = weaponsList.filter(w => filterMissionsBySystem(w.missions).length > 0).length;
+        const wCount = weaponsList.filter(w => {
+            const name = w.name.toLowerCase();
+            const isValid = name.includes('cannon') || name.includes('repeater') || name.includes('gatling');
+            return isValid && filterMissionsBySystem(w.missions).length > 0;
+        }).length;
         const aCount = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0).length;
         const cCount = shipComponentsList.filter(c => filterMissionsBySystem(c.missions).length > 0).length;
         const sCount = Object.keys(armorSets).filter(s => filterMissionsBySystem(armorSets[s].missions).length > 0).length;
@@ -1093,18 +1097,23 @@
             const hasFlightSuit = armorSets[s].parts.some(p => p.toLowerCase().includes('flight suit'));
             return hasFlightSuit && filterMissionsBySystem(armorSets[s].missions).length > 0;
         }).length;
-        const swCount = shipComponentsList.filter(c => filterMissionsBySystem(c.missions).length > 0).length;
+        const swCount = shipComponentsList.filter(c => {
+            return c.subtype === 'Gun' && filterMissionsBySystem(c.missions).length > 0;
+        }).length;
 
         const status = document.getElementById('statusIndicator');
         status.style.color = 'var(--success)';
-        status.textContent = `Database Loaded! Showing ${wCount} weapons, ${aCount} ammo, ${cCount} components, and ${sCount} armor sets.`;
+        status.textContent = `Database Loaded! ${wCount} weapons, ${aCount} ammo, ${sCount} armor sets, ${fsCount} flight suits, ${swCount} ship weapons, ${cCount} components.`;
     }
 
     function renderWeapons() {
-        const items = weaponsList.filter(w => {
-            const filteredMissions = filterMissionsBySystem(w.missions);
-            return filteredMissions.length > 0;
-        });
+        const items = weaponsList
+            .filter(w => {
+                // Only show Cannons, Repeaters, Gatlings
+                const name = w.name.toLowerCase();
+                const isValidWeapon = name.includes('cannon') || name.includes('repeater') || name.includes('gatling');
+                return isValidWeapon && filterMissionsBySystem(w.missions).length > 0;
+            });
         
         document.getElementById('weaponsView').innerHTML = items.map(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
@@ -1167,14 +1176,13 @@
     }
 
     function renderFlightSuits() {
-        const REQUIRED   = ['helmet', 'core', 'arms', 'legs'];
-        const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
+        const PART_ORDER = ['helmet', 'flight suit'];
 
-        // Filter for flight suit sets only
+        // Filter for ALL sets that contain a flight suit (including standalone racing suits)
         const available = Object.keys(armorSets)
             .filter(s => {
-                const isFlightSuitSet = armorSets[s].parts.some(p => p.toLowerCase().includes('flight suit'));
-                return isFlightSuitSet && filterMissionsBySystem(armorSets[s].missions).length > 0;
+                const hasFlightSuit = armorSets[s].parts.some(p => p.toLowerCase().includes('flight suit'));
+                return hasFlightSuit && filterMissionsBySystem(armorSets[s].missions).length > 0;
             })
             .sort((a, b) => a.localeCompare(b));
 
@@ -1185,7 +1193,8 @@
             
             const hasHelmet = partLow.some(p => p.includes('helmet'));
             const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
-            const isComplete = hasHelmet && hasFlightSuit;
+            // Complete if has flight suit (helmet optional for racing suits)
+            const isComplete = hasFlightSuit;
 
             const filteredMissions = filterMissionsBySystem(set.missions);
 
@@ -1279,10 +1288,11 @@
     }
 
     function renderShipWeapons() {
-        const items = shipComponentsList.filter(c => {
-            const filteredMissions = filterMissionsBySystem(c.missions);
-            return filteredMissions.length > 0;
-        });
+        const items = shipComponentsList
+            .filter(c => {
+                // Only show ship component Guns
+                return c.subtype === 'Gun' && filterMissionsBySystem(c.missions).length > 0;
+            });
         
         document.getElementById('shipweaponsView').innerHTML = items.map(c => {
             const filteredMissions = filterMissionsBySystem(c.missions);
