@@ -722,7 +722,198 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    
+        /* ══ Grind Planner Button ══════════════════════════════════════════ */
+        .grind-planner-btn {
+            padding: 10px 18px;
+            background: linear-gradient(135deg, rgba(249,115,22,0.15) 0%, rgba(249,115,22,0.08) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            transition: all 0.2s;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .grind-planner-btn:hover {
+            background: linear-gradient(135deg, rgba(249,115,22,0.25) 0%, rgba(249,115,22,0.15) 100%);
+            box-shadow: 0 0 12px rgba(249,115,22,0.3);
+        }
+
+        /* ══ Grind Planner Modal ═══════════════════════════════════════════ */
+        .planner-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .planner-content {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--accent);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .planner-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .planner-header h2 { margin: 0; font-size: 1.2rem; font-weight: 800; letter-spacing: 0.03em; }
+        .planner-header h2 .accent { color: var(--accent); }
+        .planner-close {
+            font-size: 2rem; color: var(--text-muted); cursor: pointer;
+            transition: color 0.2s; line-height: 1; background: none; border: none; padding: 0;
+        }
+        .planner-close:hover { color: var(--accent); }
+        .planner-body { overflow-y: auto; padding: 20px; flex: 1; }
+        .planner-step { margin-bottom: 24px; }
+        .planner-step-title {
+            font-size: 0.8rem; font-weight: 700; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.06em;
+            margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+        }
+        .planner-step-title .step-num {
+            background: var(--accent); color: var(--bg-base); width: 22px; height: 22px;
+            border-radius: 50%; display: inline-flex; align-items: center;
+            justify-content: center; font-size: 0.75rem; font-weight: 800;
+        }
+        .planner-step-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
+
+        /* Faction selector */
+        .planner-faction-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+        .planner-faction-btn {
+            padding: 10px 14px; background: var(--bg-base); border: 1px solid var(--border);
+            border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+            color: var(--text-main); text-align: left; transition: all 0.15s;
+            display: flex; justify-content: space-between; align-items: center; gap: 6px;
+        }
+        .planner-faction-btn:hover { border-color: var(--theme); background: rgba(0,229,255,0.05); }
+        .planner-faction-btn.active { border-color: var(--accent); background: rgba(249,115,22,0.1); color: var(--accent); }
+        .planner-faction-btn .bp-count { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+        .planner-faction-btn.active .bp-count { color: var(--accent); opacity: 0.8; }
+
+        /* Blueprint multi-select */
+        .planner-bp-section { background: var(--bg-base); border: 1px solid var(--border); border-radius: 6px; padding: 14px; }
+        .planner-bp-search {
+            width: 100%; padding: 8px 10px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: 4px; color: var(--text-main);
+            font-size: 0.85rem; margin-bottom: 10px; outline: none;
+        }
+        .planner-bp-search:focus { border-color: var(--theme); }
+        .planner-bp-list { max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; padding-right: 4px; }
+        .planner-bp-item {
+            display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 4px; cursor: pointer; transition: all 0.15s;
+        }
+        .planner-bp-item:hover { border-color: var(--theme); background: rgba(0,229,255,0.05); }
+        .planner-bp-item.selected { border-color: var(--accent); background: rgba(249,115,22,0.08); }
+        .planner-bp-checkbox {
+            width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 3px;
+            flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 800; color: var(--bg-base); background: transparent;
+        }
+        .planner-bp-item.selected .planner-bp-checkbox { background: var(--accent); border-color: var(--accent); }
+        .planner-bp-item.selected .planner-bp-checkbox::after { content: '✓'; }
+        .planner-bp-name { font-size: 0.85rem; font-weight: 500; flex: 1; }
+        .planner-bp-type {
+            font-size: 0.65rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 6px;
+            background: rgba(255,255,255,0.05); border-radius: 3px; flex-shrink: 0;
+        }
+
+        /* Results */
+        .planner-results { background: rgba(249,115,22,0.05); border: 1px solid rgba(249,115,22,0.3); border-radius: 6px; padding: 16px; }
+        .planner-results-empty { color: var(--text-muted); font-size: 0.85rem; text-align: center; padding: 20px; font-style: italic; }
+        .planner-summary {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+        }
+        .planner-stat { background: var(--bg-base); padding: 10px; border-radius: 4px; border: 1px solid var(--border); }
+        .planner-stat-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 4px; }
+        .planner-stat-value { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+        .planner-stat-value.theme { color: var(--theme); }
+        .planner-stat-value.success { color: var(--success); }
+        .planner-contract-list { display: flex; flex-direction: column; gap: 8px; }
+        .planner-contract {
+            background: var(--bg-base); border: 1px solid var(--border);
+            border-left: 3px solid var(--accent); border-radius: 4px; padding: 10px 12px;
+        }
+        .planner-contract.bridge { border-left-color: var(--text-muted); opacity: 0.8; }
+        .planner-contract-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+        .planner-contract-title { font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
+        .planner-contract-meta { display: flex; gap: 6px; align-items: center; font-size: 0.7rem; color: var(--text-muted); flex-wrap: wrap; }
+        .planner-contract-meta .runs { color: var(--accent); font-weight: 700; font-size: 0.75rem; }
+        .planner-contract-meta .reward { color: var(--success); font-weight: 600; }
+        .planner-contract-items { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+        .planner-contract-items strong { color: var(--armor-color); font-weight: 600; }
+
+        /* Rep rank badge (in mission list items) */
+        .mission-rep-badge {
+            font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 3px;
+            text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap;
+            flex-shrink: 0;
+            background: rgba(249,115,22,0.12); color: var(--accent);
+            border: 1px solid rgba(249,115,22,0.35);
+        }
+        .mission-rep-badge.neutral {
+            background: rgba(148,163,184,0.1); color: var(--text-muted);
+            border: 1px solid rgba(148,163,184,0.3);
+        }
+        .mission-rep-badge .rep-gain {
+            opacity: 0.75; font-weight: 500; margin-left: 4px;
+            padding-left: 4px; border-left: 1px solid currentColor;
+        }
+        /* force badge row to wrap under type/faction when rep badge is present */
+        .mission-list li.has-rep .mission-meta { flex-direction: column; align-items: flex-start; }
+        .mission-list li.has-rep .mission-meta-right { width: 100%; justify-content: flex-start; }
+
+        /* Planner rep input row */
+        .planner-rep-input-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .planner-rep-input {
+            width: 130px; padding: 8px 10px; background: var(--bg-base);
+            border: 1px solid var(--border); border-radius: 4px;
+            color: var(--text-main); font-size: 0.9rem; outline: none;
+        }
+        .planner-rep-input:focus { border-color: var(--theme); }
+        .planner-rep-current-rank { font-size: 0.8rem; color: var(--theme); font-weight: 600; }
+
+        /* Rank path tiers in results */
+        .planner-rank-tier {
+            background: var(--bg-base); border: 1px solid var(--border);
+            border-left: 3px solid var(--theme); border-radius: 4px;
+            padding: 10px 12px; margin-bottom: 6px;
+        }
+        .planner-rank-tier.tier-blocked { border-left-color: var(--warning); opacity: 0.7; }
+        .planner-rank-tier-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 6px; flex-wrap: wrap; gap: 6px;
+        }
+        .planner-rank-tier-name { font-size: 0.85rem; font-weight: 700; color: var(--theme); }
+        .planner-rank-tier-rep  { font-size: 0.75rem; color: var(--text-muted); }
+        .planner-rank-tier-mission { font-size: 0.8rem; color: var(--text-main); margin-bottom: 2px; }
+        .planner-rank-tier-reps  { font-size: 0.72rem; color: var(--accent); font-weight: 700; }
+        .planner-rank-tier-once  { font-size: 0.72rem; color: var(--success); }
+
+</style>
 </head>
 <body>
 
@@ -855,6 +1046,52 @@
                 <button class="system-filter-btn pyro active" onclick="toggleSystemFilter('pyro', this)">PYRO</button>
                 <button class="system-filter-btn nyx active" onclick="toggleSystemFilter('nyx', this)">NYX</button>
             </div>
+
+            <button class="grind-planner-btn" onclick="openPlanner()">&#x2605; PLAN GRIND ROUTE</button>
+        </div>
+    </div>
+
+    <!-- ═══ Grind Route Planner Modal ═══════════════════════════════════════ -->
+    <div id="plannerModal" class="planner-modal" onclick="closePlannerOverlay(event)">
+        <div class="planner-content" onclick="event.stopPropagation()">
+            <div class="planner-header">
+                <h2>&#x2605; <span class="accent">Grind Route Planner</span></h2>
+                <button class="planner-close" onclick="closePlanner()">&times;</button>
+            </div>
+            <div class="planner-body">
+
+                <div class="planner-step">
+                    <div class="planner-step-title"><span class="step-num">1</span>Choose a Faction</div>
+                    <div class="planner-step-desc">Pick the mission giver you want to grind rep with. Only blueprints awarded by that faction will be selectable.</div>
+                    <div id="plannerFactionGrid" class="planner-faction-grid"></div>
+                </div>
+
+                <div class="planner-step" id="plannerBpStep" style="display:none;">
+                    <div class="planner-step-title"><span class="step-num">2</span>Select Target Blueprints</div>
+                    <div class="planner-step-desc">Pick one or more blueprints to unlock. We'll find the fastest contracts that drop them.</div>
+                    <div class="planner-bp-section">
+                        <input type="text" id="plannerBpSearch" class="planner-bp-search" placeholder="Search blueprints..." oninput="renderPlannerBlueprints()">
+                        <div id="plannerBpList" class="planner-bp-list"></div>
+                    </div>
+                </div>
+
+                <div class="planner-step" id="plannerRepStep" style="display:none;">
+                    <div class="planner-step-title"><span class="step-num">3</span>Your Current Rep <span style="font-weight:400;color:var(--text-muted);font-size:0.7rem;text-transform:none;letter-spacing:0;">(optional)</span></div>
+                    <div class="planner-step-desc">Enter your current rep with this faction if you're above Neutral. Leave blank to start from 0.</div>
+                    <div class="planner-rep-input-row">
+                        <input type="number" id="plannerRepInput" class="planner-rep-input" placeholder="0 (Neutral)" min="0" oninput="onRepInputChange()">
+                        <span class="planner-rep-current-rank" id="plannerCurrentRank">Starting rank: Neutral (0 rep)</span>
+                    </div>
+                </div>
+
+                <div class="planner-step" id="plannerResultsStep" style="display:none;">
+                    <div class="planner-step-title"><span class="step-num">4</span>Recommended Grind Route</div>
+                    <div id="plannerResults" class="planner-results">
+                        <div class="planner-results-empty">Select at least one blueprint above.</div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -885,6 +1122,7 @@
             const data = await response.json();
             if (!data.items) throw new Error("Missing 'items' array. Run the Python compiler.");
 
+            loadScopes(data.scopes || {});
             processDatabase(data.items);
         } catch (err) {
             statusEl.style.color = 'var(--warning)';
@@ -980,6 +1218,7 @@
             }
         });
 
+        computeContractPools();
         render();
     }
 
@@ -1050,13 +1289,24 @@
         const systemClass = system === 'stanton' ? 'stanton' : system === 'pyro' ? 'pyro' : system === 'nyx' ? 'nyx' : '';
         const systemBadge = systemClass ? `<span class="mission-system-badge ${systemClass}">${m.system}</span>` : '';
 
-        return `<li class="${liClass}" data-system="${system}">` +
+        // Rep rank badge
+        let repBadge = '';
+        let hasRep = false;
+        if (m.repStanding) {
+            hasRep = true;
+            const isNeutral = !m.minRep || m.minRep === 0;
+            const repGain = (m.repReward > 0) ? `<span class="rep-gain">+${m.repReward}</span>` : '';
+            repBadge = `<span class="mission-rep-badge${isNeutral ? ' neutral' : ''}" title="Requires ${m.repStanding}${m.minRep ? ' (' + m.minRep.toLocaleString() + ' rep)' : ''}${m.repReward ? '. Earns ' + m.repReward + ' rep/run' : ''}">${m.repStanding}${repGain}</span>`;
+        }
+
+        return `<li class="${liClass}${hasRep ? ' has-rep' : ''}" data-system="${system}">` +
                    `<div class="mission-meta">` +
                        `<div class="mission-meta-left">` +
                            `<span class="mission-type-tag">${m.type}</span>` +
                            faction +
                        `</div>` +
                        `<div class="mission-meta-right">` +
+                           repBadge +
                            systemBadge +
                            `<span class="mission-badge ${badgeCls}">${badgeTxt}</span>` +
                        `</div>` +
@@ -1507,6 +1757,459 @@
             el.style.display = text.includes(query) ? '' : 'none';
         });
     }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       GRIND ROUTE PLANNER  (rep-aware)
+       ══════════════════════════════════════════════════════════════════════ */
+
+    let contractPools   = {};  // contractKey -> { items: Set<bpKey>, mission }
+    let scopesData      = {};  // guid -> { displayName, ranks[] }
+    let plannerSelectedFaction    = null;
+    let plannerSelectedBlueprints = new Set();
+
+    // Called once after processDatabase() builds all lists
+    function computeContractPools() {
+        contractPools = {};
+        const add = (bpKey, missions) => {
+            (missions || []).forEach(m => {
+                if (!m || typeof m !== 'object') return;
+                const k = plannerContractKey(m);
+                if (!contractPools[k]) contractPools[k] = { items: new Set(), mission: m };
+                contractPools[k].items.add(bpKey);
+            });
+        };
+        weaponsList.forEach(w        => add(`weapon::${w.name}`,    w.missions));
+        ammoList.forEach(a           => add(`ammo::${a.name}`,      a.missions));
+        shipComponentsList.forEach(c => add(`component::${c.name}`, c.missions));
+        Object.entries(armorSets).forEach(([, set]) =>
+            set.parts.forEach(p => add(`armor::${p}`, set.partsData[p]))
+        );
+    }
+
+    // Store scopes from JSON for rank ladder lookups
+    function loadScopes(scopesObj) {
+        scopesData = scopesObj || {};
+    }
+
+    function plannerContractKey(m) {
+        return `${m.faction||''}||${m.type||''}||${m.title||''}`;
+    }
+    function poolSizeFor(m) {
+        const p = contractPools[plannerContractKey(m)];
+        return p ? p.items.size : 1;
+    }
+
+    // Build catalog: { bpKey, displayName, category, faction, missions[] }
+    function buildPlannerCatalog() {
+        const catalog = [];
+        const addEntry = (bpKey, displayName, category, allMissions) => {
+            const byFaction = {};
+            (allMissions || []).forEach(m => {
+                const f = (m.faction || '').trim();
+                if (!f || f === '<= PLACEHOLDER =>') return;
+                if (!byFaction[f]) byFaction[f] = [];
+                byFaction[f].push(m);
+            });
+            Object.entries(byFaction).forEach(([faction, missions]) =>
+                catalog.push({ bpKey, displayName, category, faction, missions })
+            );
+        };
+        weaponsList.forEach(w => {
+            if (!w.missions?.length) return;
+            const isSW = /cannon|gatling|repeater|scattergun/i.test(w.name);
+            addEntry(`weapon::${w.name}`, w.name, isSW ? 'Ship Weapon' : 'Weapon', w.missions);
+        });
+        ammoList.forEach(a => {
+            if (a.missions?.length) addEntry(`ammo::${a.name}`, a.name, 'Ammo', a.missions);
+        });
+        shipComponentsList.forEach(c => {
+            if (c.missions?.length) addEntry(`component::${c.name}`, c.name, 'Ship Component', c.missions);
+        });
+        Object.entries(armorSets).forEach(([, set]) =>
+            set.parts.forEach(p => {
+                const pm = set.partsData[p] || [];
+                if (pm.length) addEntry(`armor::${p}`, p, 'Armor', pm);
+            })
+        );
+        return catalog;
+    }
+
+    function getBlueprintsForFaction(faction) {
+        const catalog = buildPlannerCatalog();
+        const byBp = {};
+        catalog.filter(e => e.faction === faction).forEach(e => {
+            if (!byBp[e.bpKey]) byBp[e.bpKey] = { key: e.bpKey, name: e.displayName, category: e.category, missions: [] };
+            byBp[e.bpKey].missions.push(...e.missions);
+        });
+        const catOrder = { Armor: 0, Weapon: 1, 'Ship Weapon': 2, Ammo: 3, 'Ship Component': 4 };
+        return Object.values(byBp).sort((a, b) => {
+            const co = (catOrder[a.category] ?? 9) - (catOrder[b.category] ?? 9);
+            return co !== 0 ? co : a.name.localeCompare(b.name);
+        });
+    }
+
+    // ── Rank ladder helpers ──────────────────────────────────────────────
+
+    // Derive the rank ladder for a faction from its missions' rep data
+    function getFactionRankLadder(faction) {
+        const catalog = buildPlannerCatalog();
+        const byRank = {};
+        catalog.filter(e => e.faction === faction).forEach(e =>
+            e.missions.forEach(m => {
+                if (m.repStanding && m.minRep != null) {
+                    if (!(m.repStanding in byRank) || m.minRep < byRank[m.repStanding].minRep) {
+                        byRank[m.repStanding] = { rank: m.repStanding, minRep: m.minRep, scopeGuid: m.scopeGuid };
+                    }
+                }
+            })
+        );
+        return Object.values(byRank).sort((a, b) => a.minRep - b.minRep);
+    }
+
+    function rankForRep(faction, currentRep) {
+        const ladder = getFactionRankLadder(faction);
+        if (!ladder.length) return null;
+        let cur = ladder[0];
+        for (const r of ladder) { if (currentRep >= r.minRep) cur = r; else break; }
+        return cur;
+    }
+
+    function getScopeForFaction(faction) {
+        const catalog = buildPlannerCatalog();
+        for (const e of catalog.filter(c => c.faction === faction)) {
+            for (const m of e.missions) {
+                if (m.scopeGuid && scopesData[m.scopeGuid]) return scopesData[m.scopeGuid];
+            }
+        }
+        return null;
+    }
+
+    // ── Planner UI ────────────────────────────────────────────────────────
+
+    function openPlanner() {
+        plannerSelectedFaction    = null;
+        plannerSelectedBlueprints = new Set();
+        ['plannerBpStep','plannerRepStep','plannerResultsStep'].forEach(id =>
+            document.getElementById(id).style.display = 'none'
+        );
+        document.getElementById('plannerBpSearch').value  = '';
+        document.getElementById('plannerRepInput').value  = '';
+        document.getElementById('plannerCurrentRank').textContent = '';
+        renderPlannerFactions();
+        document.getElementById('plannerModal').style.display = 'flex';
+    }
+    function closePlanner()          { document.getElementById('plannerModal').style.display = 'none'; }
+    function closePlannerOverlay(e)  { if (e.target.id === 'plannerModal') closePlanner(); }
+
+    function renderPlannerFactions() {
+        const catalog = buildPlannerCatalog();
+        const byFaction = {};
+        catalog.forEach(e => {
+            if (!byFaction[e.faction]) byFaction[e.faction] = new Set();
+            byFaction[e.faction].add(e.bpKey);
+        });
+        const factions = Object.entries(byFaction)
+            .map(([f, s]) => ({ faction: f, count: s.size }))
+            .sort((a, b) => b.count - a.count || a.faction.localeCompare(b.faction));
+
+        document.getElementById('plannerFactionGrid').innerHTML = factions.map(f => {
+            const active = plannerSelectedFaction === f.faction ? ' active' : '';
+            return `<button class="planner-faction-btn${active}" onclick="selectPlannerFaction('${f.faction.replace(/'/g,"\'")}')">` +
+                   `<span>${f.faction}</span><span class="bp-count">${f.count} BP${f.count!==1?'s':''}</span></button>`;
+        }).join('');
+    }
+
+    function selectPlannerFaction(faction) {
+        plannerSelectedFaction    = faction;
+        plannerSelectedBlueprints = new Set();
+        document.getElementById('plannerBpSearch').value = '';
+        document.getElementById('plannerRepInput').value = '';
+        renderPlannerFactions();
+        ['plannerBpStep','plannerRepStep','plannerResultsStep'].forEach(id =>
+            document.getElementById(id).style.display = 'block'
+        );
+        renderPlannerBlueprints();
+        updateRepRankLabel();
+        renderPlannerResults();
+    }
+
+    function renderPlannerBlueprints() {
+        if (!plannerSelectedFaction) return;
+        const bps     = getBlueprintsForFaction(plannerSelectedFaction);
+        const query   = document.getElementById('plannerBpSearch').value.toLowerCase();
+        const filtered = query ? bps.filter(b => b.name.toLowerCase().includes(query)) : bps;
+
+        if (!filtered.length) {
+            document.getElementById('plannerBpList').innerHTML =
+                `<div style="color:var(--text-muted);font-size:0.8rem;text-align:center;padding:20px;">No blueprints match.</div>`;
+            return;
+        }
+        const groups = {};
+        filtered.forEach(bp => { if (!groups[bp.category]) groups[bp.category] = []; groups[bp.category].push(bp); });
+        let html = '';
+        Object.entries(groups).forEach(([cat, items]) => {
+            html += `<div style="font-size:0.65rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.06em;padding:8px 4px 4px;">${cat}</div>`;
+            html += items.map(bp => {
+                const sel = plannerSelectedBlueprints.has(bp.key) ? ' selected' : '';
+                const safeKey = bp.key.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+                return `<div class="planner-bp-item${sel}" data-bpkey="${safeKey}">` +
+                       `<div class="planner-bp-checkbox"></div><div class="planner-bp-name">${bp.name}</div></div>`;
+            }).join('');
+        });
+        const bpListEl = document.getElementById('plannerBpList');
+        bpListEl.innerHTML = html;
+        bpListEl.querySelectorAll('.planner-bp-item').forEach(el => {
+            el.addEventListener('click', () => togglePlannerBlueprint(el.dataset.bpkey));
+        });
+    }
+
+    function togglePlannerBlueprint(bpKey) {
+        if (plannerSelectedBlueprints.has(bpKey)) plannerSelectedBlueprints.delete(bpKey);
+        else plannerSelectedBlueprints.add(bpKey);
+        renderPlannerBlueprints();
+        renderPlannerResults();
+    }
+
+    function onRepInputChange() {
+        updateRepRankLabel();
+        renderPlannerResults();
+    }
+
+    function updateRepRankLabel() {
+        const label = document.getElementById('plannerCurrentRank');
+        if (!plannerSelectedFaction) { label.textContent = ''; return; }
+        const val = parseInt(document.getElementById('plannerRepInput').value, 10);
+        const rep = isNaN(val) || val < 0 ? 0 : val;
+        const r   = rankForRep(plannerSelectedFaction, rep);
+        label.textContent = r
+            ? (rep === 0 ? `Starting rank: ${r.rank} (0 rep)` : `Current rank: ${r.rank} (${rep.toLocaleString()} rep)`)
+            : (rep === 0 ? 'Starting rank: Neutral (0 rep)' : `Current rep: ${rep.toLocaleString()}`);
+    }
+
+    // ── Main results renderer ─────────────────────────────────────────────
+
+    function renderPlannerResults() {
+        const box = document.getElementById('plannerResults');
+        if (!plannerSelectedFaction) {
+            box.innerHTML = `<div class="planner-results-empty">Select a faction first.</div>`; return;
+        }
+        if (!plannerSelectedBlueprints.size) {
+            box.innerHTML = `<div class="planner-results-empty">Select at least one blueprint above.</div>`; return;
+        }
+
+        const startRep  = Math.max(0, parseInt(document.getElementById('plannerRepInput').value,10) || 0);
+        const allBps    = getBlueprintsForFaction(plannerSelectedFaction);
+        const selBps    = allBps.filter(b => plannerSelectedBlueprints.has(b.key));
+        const bpNameMap = Object.fromEntries(selBps.map(b => [b.key, b.name]));
+
+        // ── Build primary contract map (contracts dropping selected BPs) ──
+        const primaryMap = {};
+        selBps.forEach(bp =>
+            (bp.missions || []).forEach(m => {
+                if ((m.faction||'') !== plannerSelectedFaction) return;
+                const k = plannerContractKey(m);
+                if (!primaryMap[k]) primaryMap[k] = { key: k, mission: m, poolSize: poolSizeFor(m), coversBps: new Set() };
+                primaryMap[k].coversBps.add(bp.key);
+            })
+        );
+        const primaryContracts = Object.values(primaryMap);
+
+        if (!primaryContracts.length) {
+            box.innerHTML = `<div class="planner-results-empty">No contracts found for selected blueprints.</div>`; return;
+        }
+
+        // ── Build all-faction contract map (for rep bridging) ─────────────
+        const allFactionMap = {};
+        const addFC = missions => (missions||[]).forEach(m => {
+            if ((m.faction||'') !== plannerSelectedFaction) return;
+            const k = plannerContractKey(m);
+            if (!allFactionMap[k]) allFactionMap[k] = { key: k, mission: m, poolSize: poolSizeFor(m), coversBps: new Set() };
+        });
+        weaponsList.forEach(w        => addFC(w.missions));
+        ammoList.forEach(a           => addFC(a.missions));
+        shipComponentsList.forEach(c => addFC(c.missions));
+        Object.values(armorSets).forEach(s => s.parts.forEach(p => addFC(s.partsData[p])));
+        // Merge primary coversBps into allFactionMap
+        primaryContracts.forEach(pc => { if (allFactionMap[pc.key]) allFactionMap[pc.key].coversBps = pc.coversBps; });
+        const allContracts = Object.values(allFactionMap);
+
+        // ── Rep-aware simulation ──────────────────────────────────────────
+        let rep = startRep;
+        const usage       = Object.fromEntries(allContracts.map(c => [c.key, 0]));
+        const guaranteed  = new Set();
+        const updateGuaranteed = () =>
+            primaryContracts.forEach(c => { if (usage[c.key] >= c.poolSize) c.coversBps.forEach(b => guaranteed.add(b)); });
+        const allDone     = () => selBps.every(b => guaranteed.has(b.key));
+        const uncovCount  = c  => [...c.coversBps].filter(b => !guaranteed.has(b)).length;
+
+        let stuck = false;
+        for (let iter = 0; iter < 100000; iter++) {
+            updateGuaranteed();
+            if (allDone()) break;
+
+            // Available: not fully saturated AND rep requirement met
+            const avail = allContracts.filter(c =>
+                usage[c.key] < c.poolSize &&
+                rep >= (c.mission.minRep ?? 0)
+            );
+            if (!avail.length) { stuck = true; break; }
+
+            // Priority: BP-covering contracts first, then by uncovered count, then rep reward
+            const bpCovering = avail.filter(c => c.coversBps.size > 0 && uncovCount(c) > 0);
+            let pick;
+            if (bpCovering.length) {
+                bpCovering.sort((a, b) => {
+                    // Neutral (no gate) first
+                    const an = (a.mission.minRep??0) === 0, bn = (b.mission.minRep??0) === 0;
+                    if (an !== bn) return an ? -1 : 1;
+                    const ud = uncovCount(b) - uncovCount(a);
+                    if (ud !== 0) return ud;
+                    return (b.mission.repReward??0) - (a.mission.repReward??0);
+                });
+                pick = bpCovering[0];
+            } else {
+                // All covered or locked — grind rep to unlock higher-tier contracts
+                avail.sort((a, b) => (b.mission.repReward??0) - (a.mission.repReward??0));
+                pick = avail[0];
+                if ((pick.mission.repReward ?? 0) === 0) { stuck = true; break; }
+            }
+            usage[pick.key]++;
+            rep += (pick.mission.repReward ?? 0);
+        }
+        updateGuaranteed();
+
+        // ── Build result rows ─────────────────────────────────────────────
+        const used = allContracts
+            .filter(c => usage[c.key] > 0)
+            .map(c => ({
+                mission:    c.mission,
+                runs:       usage[c.key],
+                poolSize:   c.poolSize,
+                saturated:  usage[c.key] >= c.poolSize,
+                coversBps:  [...c.coversBps],
+                isPrimary:  c.coversBps.size > 0,
+                repEarned:  usage[c.key] * (c.mission.repReward ?? 0),
+            }))
+            .sort((a, b) => {
+                const ad = a.mission.minRep ?? 0, bd = b.mission.minRep ?? 0;
+                if (ad !== bd) return ad - bd;
+                if (a.isPrimary !== b.isPrimary) return a.isPrimary ? -1 : 1;
+                return (b.mission.repReward ?? 0) - (a.mission.repReward ?? 0);
+            });
+
+        const totalRuns     = used.reduce((s, c) => s + c.runs, 0);
+        const totalRepGain  = rep - startRep;
+        const uncovBps      = selBps.filter(b => !guaranteed.has(b.key));
+        const startRankObj  = rankForRep(plannerSelectedFaction, startRep);
+        const endRankObj    = rankForRep(plannerSelectedFaction, rep);
+
+        // ── Render summary stats ──────────────────────────────────────────
+        let html = `<div class="planner-summary">`;
+        html += stat('BPs Selected',        selBps.length,              'theme');
+        html += stat('Unique Contracts',    used.filter(c=>c.isPrimary).length, '');
+        html += stat('Total Runs',          totalRuns,                  '');
+        html += stat('BPs Guaranteed',      guaranteed.size,            'success');
+        if (totalRepGain > 0) html += stat('Rep Gained', `+${totalRepGain.toLocaleString()}`, 'success');
+        if (endRankObj)        html += stat('End Rank', endRankObj.rank, 'theme');
+        html += `</div>`;
+
+        // Status banner
+        const startRankName = startRankObj ? startRankObj.rank : 'Neutral';
+        const endRankName   = endRankObj   ? endRankObj.rank   : '';
+        if (!stuck && !uncovBps.length) {
+            html += banner('success',
+                `&#x2713; <strong>Route complete.</strong> ` +
+                `All ${selBps.length} blueprint${selBps.length!==1?'s':''} guaranteed. ` +
+                (totalRepGain > 0 ? `Rep: ${startRankName} (${startRep.toLocaleString()}) → ${endRankName} (${rep.toLocaleString()}).` : '')
+            );
+        } else if (uncovBps.length) {
+            const names = uncovBps.slice(0,3).map(b => bpNameMap[b.key]||b.key).join(', ');
+            const more  = uncovBps.length > 3 ? ` (+${uncovBps.length-3} more)` : '';
+            html += banner('warning',
+                `&#x26A0; <strong>Partial route.</strong> ${uncovBps.length} blueprint${uncovBps.length!==1?'s':''} could not be fully guaranteed: ${names}${more}. ` +
+                `These may share a large pool or have rep gates that can't be reached through available contracts at current rep ${rep.toLocaleString()}.`
+            );
+        }
+
+        // Rank path summary (if rep data exists)
+        const ladder = getFactionRankLadder(plannerSelectedFaction);
+        if (ladder.length > 1 && totalRepGain > 0) {
+            const startIdx = ladder.findIndex(r => r.rank === (startRankObj?.rank));
+            const endIdx   = ladder.findIndex(r => r.rank === (endRankObj?.rank));
+            if (endIdx > startIdx && startIdx >= 0) {
+                html += `<div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin:14px 0 8px;">Rank Progression</div>`;
+                for (let i = startIdx; i < endIdx && i < ladder.length-1; i++) {
+                    const from = ladder[i], to = ladder[i+1];
+                    const needed = to.minRep - from.minRep;
+                    html += `<div class="planner-rank-tier">` +
+                        `<div class="planner-rank-tier-header">` +
+                            `<span class="planner-rank-tier-name">${from.rank} → ${to.rank}</span>` +
+                            `<span class="planner-rank-tier-rep">${needed.toLocaleString()} rep needed</span>` +
+                        `</div>` +
+                    `</div>`;
+                }
+            }
+        }
+
+        // Contract list
+        if (!used.length) {
+            html += `<div class="planner-results-empty">No contracts available at your current rep. Try lowering your starting rep or selecting different blueprints.</div>`;
+        } else {
+            html += `<div style="font-size:0.8rem;color:var(--text-muted);margin:14px 0 8px;font-style:italic;">Contracts in progression order (run these in sequence):</div>`;
+            html += `<div class="planner-contract-list">`;
+            used.forEach(c => {
+                const m       = c.mission;
+                const lawful  = m.lawful === true || m.lawful === 'true';
+                const lawBadge = lawful
+                    ? `<span style="font-size:0.6rem;background:rgba(16,185,129,0.15);color:var(--success);border:1px solid rgba(16,185,129,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">✓ LAWFUL</span>`
+                    : `<span style="font-size:0.6rem;background:rgba(239,68,68,0.15);color:var(--warning);border:1px solid rgba(239,68,68,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">⚠ UNLAWFUL</span>`;
+                const sysCls  = (m.system||'').toLowerCase();
+                const sysBadge = sysCls ? `<span class="mission-system-badge ${sysCls}" style="font-size:0.6rem;">${m.system}</span>` : '';
+                const rankBadge = m.repStanding
+                    ? `<span style="font-size:0.6rem;background:rgba(249,115,22,0.12);color:var(--accent);border:1px solid rgba(249,115,22,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">${m.repStanding}</span>`
+                    : '';
+                const repLine = m.repReward
+                    ? `<span style="color:var(--success);font-weight:600;">+${c.repEarned.toLocaleString()} rep total</span>`
+                    : '';
+                const poolLabel   = `<span style="color:var(--text-muted);">Pool: ${c.poolSize}</span>`;
+                const runsLabel   = `<span class="runs">Run ${c.runs}&times;</span>`;
+                const guaranteed  = c.saturated
+                    ? `<strong style="color:var(--success);">GUARANTEED</strong>`
+                    : `<span style="color:var(--text-muted);">(partial – RNG)</span>`;
+
+                let dropsLine = '';
+                if (c.isPrimary) {
+                    const names = c.coversBps.map(k => bpNameMap[k]).filter(Boolean).sort().join(', ');
+                    dropsLine = `<div class="planner-contract-items"><strong>Covers:</strong> ${names} — ${guaranteed}</div>`;
+                } else {
+                    dropsLine = `<div class="planner-contract-items" style="font-style:italic;color:var(--text-muted);">Rep bridge — unlocks higher-rank contracts</div>`;
+                }
+
+                const bridgeClass = c.isPrimary ? '' : ' bridge';
+                html += `<div class="planner-contract${bridgeClass}">` +
+                    `<div class="planner-contract-header">` +
+                        `<div class="planner-contract-title">[${m.type}] ${m.title}</div>${runsLabel}` +
+                    `</div>` +
+                    `<div class="planner-contract-meta">${rankBadge}${lawBadge}${sysBadge}${poolLabel}${repLine}</div>` +
+                    dropsLine +
+                    `</div>`;
+            });
+            html += `</div>`;
+        }
+
+        box.innerHTML = html;
+    }
+
+    function stat(label, value, cls) {
+        return `<div class="planner-stat"><div class="planner-stat-label">${label}</div>` +
+               `<div class="planner-stat-value${cls?' '+cls:''}">${value}</div></div>`;
+    }
+    function banner(type, msg) {
+        const col = type === 'success' ? 'var(--success)' : 'var(--warning)';
+        const bg  = type === 'success' ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)';
+        return `<div style="font-size:0.85rem;color:${col};margin-bottom:14px;line-height:1.5;padding:10px 12px;background:${bg};border-left:3px solid ${col};border-radius:4px;">${msg}</div>`;
+    }
+
 </script>
 </body>
 </html>
