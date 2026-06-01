@@ -913,6 +913,41 @@
         .planner-rank-tier-reps  { font-size: 0.72rem; color: var(--accent); font-weight: 700; }
         .planner-rank-tier-once  { font-size: 0.72rem; color: var(--success); }
 
+
+        /* Rank ladder table */
+        .planner-rank-ladder {
+            margin-top: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 0.78rem;
+        }
+        .planner-rank-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            transition: background 0.15s;
+            gap: 12px;
+        }
+        .planner-rank-row:last-child { border-bottom: none; }
+        .planner-rank-row.current-rank {
+            background: rgba(249,115,22,0.1);
+            color: var(--text-main);
+            font-weight: 700;
+            border-left: 3px solid var(--accent);
+        }
+        .planner-rank-row.locked-rank { opacity: 0.4; }
+        .planner-rank-row.unlocked-rank { color: var(--text-main); }
+        .planner-rank-name { flex: 1; }
+        .planner-rank-rep  { white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .planner-rank-you  {
+            font-size: 0.65rem; font-weight: 800; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
 </style>
 </head>
 <body>
@@ -1082,6 +1117,7 @@
                         <input type="number" id="plannerRepInput" class="planner-rep-input" placeholder="0 (Neutral)" min="0" oninput="onRepInputChange()">
                         <span class="planner-rep-current-rank" id="plannerCurrentRank">Starting rank: Neutral (0 rep)</span>
                     </div>
+                    <div id="plannerRankLadder"></div>
                 </div>
 
                 <div class="planner-step" id="plannerResultsStep" style="display:none;">
@@ -1976,14 +2012,44 @@
     }
 
     function updateRepRankLabel() {
-        const label = document.getElementById('plannerCurrentRank');
-        if (!plannerSelectedFaction) { label.textContent = ''; return; }
+        const label   = document.getElementById('plannerCurrentRank');
+        const ladderEl = document.getElementById('plannerRankLadder');
+        if (!plannerSelectedFaction) { label.textContent = ''; ladderEl.innerHTML = ''; return; }
+
         const val = parseInt(document.getElementById('plannerRepInput').value, 10);
         const rep = isNaN(val) || val < 0 ? 0 : val;
         const r   = rankForRep(plannerSelectedFaction, rep);
+
         label.textContent = r
             ? (rep === 0 ? `Starting rank: ${r.rank} (0 rep)` : `Current rank: ${r.rank} (${rep.toLocaleString()} rep)`)
             : (rep === 0 ? 'Starting rank: Neutral (0 rep)' : `Current rep: ${rep.toLocaleString()}`);
+
+        // ── Render rank ladder ──────────────────────────────────────────
+        const ladder = getFactionRankLadder(plannerSelectedFaction);
+        if (!ladder.length) { ladderEl.innerHTML = ''; return; }
+
+        let html = '<div class="planner-rank-ladder">';
+        ladder.forEach((row, i) => {
+            const isCurrent = r && row.rank === r.rank;
+            const isUnlocked = rep >= row.minRep;
+            const isLocked   = !isUnlocked;
+            const next        = ladder[i + 1];
+            const rangeLabel  = next
+                ? `${row.minRep.toLocaleString()} – ${(next.minRep - 1).toLocaleString()}`
+                : `${row.minRep.toLocaleString()}+`;
+            const cls = isCurrent ? 'current-rank' : isLocked ? 'locked-rank' : 'unlocked-rank';
+            const youTag = isCurrent ? '<span class="planner-rank-you">◀ YOU</span>' : '';
+            const repToNext = (next && isCurrent && rep < next.minRep)
+                ? `<span style="font-size:0.65rem;color:var(--theme);margin-left:6px;">${(next.minRep - rep).toLocaleString()} to next</span>`
+                : '';
+            html += `<div class="planner-rank-row ${cls}">` +
+                      `<span class="planner-rank-name">${row.rank}${repToNext}</span>` +
+                      `<span class="planner-rank-rep">${rangeLabel}</span>` +
+                      youTag +
+                    `</div>`;
+        });
+        html += '</div>';
+        ladderEl.innerHTML = html;
     }
 
     // ── Main results renderer ─────────────────────────────────────────────
