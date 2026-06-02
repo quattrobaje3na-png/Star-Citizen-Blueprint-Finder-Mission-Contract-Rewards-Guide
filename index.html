@@ -951,6 +951,7 @@
 
         /* Partial completion badge */
         .mission-partial-badge {
+            display: inline-block;
             font-size: 0.6rem;
             font-weight: 700;
             padding: 2px 6px;
@@ -958,11 +959,14 @@
             text-transform: uppercase;
             letter-spacing: 0.03em;
             white-space: nowrap;
-            flex-shrink: 0;
             background: rgba(234,179,8,0.12);
             color: #eab308;
             border: 1px solid rgba(234,179,8,0.4);
             cursor: default;
+            margin-top: 4px;
+        }
+        .mission-partial-line {
+            margin-top: 3px;
         }
 
         /* ── Autocomplete Search ─────────────────────────────────────────── */
@@ -1173,6 +1177,16 @@
                 <div class="legend-text">
                     <strong>System Badge</strong>
                     <span>Star system where the contract is available.</span>
+                </div>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-swatch">
+                    <span class="mission-partial-badge" style="margin-top:0;">PARTIAL 26%+</span>
+                </div>
+                <div class="legend-text">
+                    <strong>Partial Completion</strong>
+                    <span>This contract can be turned in incomplete. The % shown is the minimum you must deliver to still receive a reward.</span>
                 </div>
             </div>
         </div>
@@ -1465,12 +1479,12 @@
                        `</div>` +
                        `<div class="mission-meta-right">` +
                            repBadge +
-                           partialBadge +
                            systemBadge +
                            `<span class="mission-badge ${badgeCls}">${badgeTxt}</span>` +
                        `</div>` +
                    `</div>` +
                    `<div class="mission-title-text">${m.title}</div>` +
+                   (partialBadge ? `<div class="mission-partial-line">${partialBadge}</div>` : '') +
                `</li>`;
     }
 
