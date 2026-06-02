@@ -1980,6 +1980,9 @@
             seen.add(e.matchKey);
             return true;
         });
+
+        // Special keyword entry for partial completion filter
+        searchIndex.unshift({ label: 'Partial Completion', meta: 'Filter', type: 'filter', matchKey: 'partial completion' });
     }
 
     function highlightMatch(text, query) {
@@ -2004,11 +2007,12 @@
             .filter(Boolean)
             .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label));
 
-        // Group by type: factions first, then sets, then items
+        // Group by type: filters first, then factions, sets, items
+        const filters  = scored.filter(e => e.type === 'filter');
         const factions = scored.filter(e => e.type === 'faction').slice(0, 3);
         const sets     = scored.filter(e => e.type === 'set').slice(0, 4);
         const items    = scored.filter(e => e.type === 'item').slice(0, 10);
-        return [...factions, ...sets, ...items].slice(0, 14);
+        return [...filters, ...factions, ...sets, ...items].slice(0, 14);
     }
 
     function renderDropdown(query) {
@@ -2027,7 +2031,7 @@
         // Build grouped HTML
         let html = '';
         let lastType = null;
-        const sectionLabels = { faction: 'Factions', set: 'Armor Sets', item: 'Items' };
+        const sectionLabels = { filter: 'Filters', faction: 'Factions', set: 'Armor Sets', item: 'Items' };
 
         suggestions.forEach((s, i) => {
             if (s.type !== lastType) {
@@ -2060,7 +2064,15 @@
             return;
         }
 
+        // Special keyword: 'partial' — show only cards that have at least one partial completion mission
+        const isPartialSearch = q === 'partial' || q === 'partial completion' || q === 'partial complete';
+
         document.querySelectorAll('.search-target').forEach(el => {
+            if (isPartialSearch) {
+                const hasPartial = el.querySelector('.mission-partial-badge') !== null;
+                el.style.display = hasPartial ? '' : 'none';
+                return;
+            }
             // Match against item name (search-text), subtype tag, and faction from mission data
             const nameEl  = el.querySelector('.search-text');
             const tagEl   = el.querySelector('.tag');
