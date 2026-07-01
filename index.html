@@ -5,35 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>STAR CITIZEN BLUEPRINT FINDER: MISSION &amp; CONTRACTS REWARD GUIDE</title>
     <style>
+        /* ── Fonts ──────────────────────────────────────────────────────── */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
         /* ── Variables ─────────────────────────────────────────────────── */
         :root {
-            --bg-base:      #09090b;
-            --bg-card:      #141417;
-            --border:       #27272a;
-            --text-main:    #f8fafc;
-            --text-muted:   #94a3b8;
-            --accent:       #f97316;
-            --theme:        #00e5ff;
-            --success:      #10b981;
+            --bg-base:      #050709;
+            --bg-card:      #0c0f14;
+            --border:       #172030;
+            --text-main:    #e0eaf5;
+            --text-muted:   #5a7a94;
+            --accent:       #00e5a0;
+            --theme:        #60a0ff;
+            --gold:         #ff9500;
+            --success:      #00e5a0;
             --warning:      #ef4444;
-            --weapon-color: #3b82f6;
-            --armor-color:  #a855f7;
-            --ammo-color:   #eab308;
-            --component-color: #10b981;
-            --stanton-color: #3b82f6;
+            --weapon-color: #60a0ff;
+            --armor-color:  #a78bfa;
+            --ammo-color:   #ff9500;
+            --component-color: #00e5a0;
+            --stanton-color: #60a0ff;
             --pyro-color:    #ef4444;
-            --nyx-color:     #a855f7;
+            --nyx-color:     #a78bfa;
+
+            --mono:    'Share Tech Mono', monospace;
+            --heading: 'Orbitron', sans-serif;
+            --ui:      'Rajdhani', system-ui, sans-serif;
         }
 
         /* ── Reset & Base ───────────────────────────────────────────────── */
         *, *::before, *::after { box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: var(--ui), system-ui, -apple-system, sans-serif;
             background: var(--bg-base);
             color: var(--text-main);
             margin: 0;
             padding: 20px;
+        }
+
+        /* HUD grid overlay — low-opacity accent-green gridlines behind everything */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(rgba(0, 229, 160, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 160, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* CRT scanline texture on top of the grid */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.04) 2px, rgba(0,0,0,.04) 4px);
+            pointer-events: none;
+            z-index: 9999;
         }
 
         /* ── Scrollbar ──────────────────────────────────────────────────── */
@@ -49,6 +80,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            position: relative;
         }
 
         .item-group {
@@ -67,62 +99,65 @@
             padding: 20px;
         }
 
-        .explorer-header-top { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-bottom: 15px; 
-            gap: 20px; 
+        .explorer-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 20px;
         }
-        
+
         .explorer-header-titles {
             display: flex;
             flex-direction: column;
             gap: 6px;
-            flex: 1; 
-            min-width: 0; 
+            flex: 1;
+            min-width: 0;
         }
 
-        .explorer-title { 
-            font-size: 1.4rem; 
-            font-weight: 800; 
-            letter-spacing: 0.03em; 
-            margin: 0;
-        }
-        
-        #statusIndicator { 
-            font-size: 0.9rem; 
-            color: var(--theme); 
+        .explorer-title {
+            font-family: var(--heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
             margin: 0;
         }
 
-        .header-sub-cta { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            background: #1a1a1c; 
-            padding: 10px 15px; 
-            border-radius: 8px; 
-            border: 1px solid #333; 
-            border-left: 3px solid #d47631; 
-            flex-shrink: 0; 
+        #statusIndicator {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            color: var(--theme);
+            margin: 0;
+        }
+
+        .header-sub-cta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg-card);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            flex-shrink: 0;
         }
         .header-sub-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
-        .header-sub-title { color: #ffffff; font-size: 0.95rem; font-weight: 700; margin: 0; letter-spacing: 0.2px; }
-        .header-sub-desc { color: #8a8a8a; font-size: 0.75rem; margin: 0; }
-        
+        .header-sub-title { color: var(--text-main); font-size: 0.95rem; font-weight: 700; margin: 0; letter-spacing: 0.2px; }
+        .header-sub-desc { color: var(--text-muted); font-size: 0.75rem; margin: 0; }
+
         .sub-action-btn { display: inline-flex; align-items: center; background: linear-gradient(180deg, #ff0000 0%, #cc0000 100%); color: #ffffff; text-decoration: none; padding: 8px 18px; border-radius: 6px; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.5px; box-shadow: 0 4px 0 #990000, 0 5px 10px rgba(0, 0, 0, 0.3); transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease; white-space: nowrap; }
         .sub-action-btn:hover { background: linear-gradient(180deg, #ff1a1a 0%, #e60000 100%); }
         .sub-action-btn:active { transform: translateY(4px); box-shadow: 0 0 0 #990000, 0 2px 5px rgba(0, 0, 0, 0.3); }
         .sub-action-logo { width: 20px; height: 20px; border-radius: 50%; margin-right: 8px; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
 
-        .explorer-header-bottom { 
-            display: flex; 
+        .explorer-header-bottom {
+            display: flex;
             width: 100%;
         }
 
-        .search-container { 
-            width: 100%; 
+        .search-container {
+            width: 100%;
         }
 
         input[type="text"] {
@@ -132,11 +167,12 @@
             border-radius: 4px;
             color: var(--text-main);
             padding: 10px;
+            font-family: var(--ui);
             font-size: 0.9rem;
             outline: none;
             transition: border-color 0.2s;
         }
-        input[type="text"]:focus { border-color: var(--theme); }
+        input[type="text"]:focus { border-color: var(--accent); }
 
         @media (max-width: 950px) {
             .explorer-header-top { flex-direction: column; align-items: stretch; }
@@ -166,8 +202,8 @@
             width: 100%;
         }
 
-        .tab-container { 
-            display: flex; 
+        .tab-container {
+            display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
@@ -181,10 +217,11 @@
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 0.05em;
-            transition: background 0.2s, border-color 0.2s;
+            text-transform: uppercase;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
         }
-        .tab:hover  { background: rgba(255,255,255,0.05); }
-        .tab.active { border-bottom: 2px solid var(--accent); color: var(--accent); }
+        .tab:hover  { background: var(--border); color: var(--text-main); }
+        .tab.active { background: rgba(0, 229, 160, 0.1); border: 1px solid var(--accent); border-bottom: 2px solid var(--accent); color: var(--accent); }
 
         /* System Filter Buttons */
         .system-filters {
@@ -223,7 +260,7 @@
             color: var(--stanton-color);
         }
         .system-filter-btn.stanton.active {
-            background: rgba(59,130,246,0.15);
+            background: rgba(96,160,255,0.15);
             border-color: var(--stanton-color);
         }
 
@@ -239,7 +276,7 @@
             color: var(--nyx-color);
         }
         .system-filter-btn.nyx.active {
-            background: rgba(168,85,247,0.15);
+            background: rgba(167,139,250,0.15);
             border-color: var(--nyx-color);
         }
 
@@ -254,26 +291,27 @@
             flex-direction: column;
             gap: 4px;
         }
-        
+
         .blueprint-card {
             height: 420px;
         }
-        
+
         .armor-set-box {
             height: 440px;
         }
-        
+
         .blueprint-card.weapon { border-left: 4px solid var(--weapon-color); }
         .blueprint-card.ammo   { border-left: 4px solid var(--ammo-color); }
         .blueprint-card.shipcomponent { border-left: 4px solid var(--component-color); }
-        .armor-set-box { 
-            background: rgba(168,85,247,0.04); 
-            border-color: rgba(168,85,247,0.3);
+        .armor-set-box {
+            background: rgba(167,139,250,0.04);
+            border-color: rgba(167,139,250,0.3);
             border-left: 4px solid var(--armor-color);
         }
 
         /* ── Tag ────────────────────────────────────────────────────────── */
         .tag {
+            font-family: var(--mono);
             font-size: 0.68rem;
             padding: 3px 8px;
             border-radius: 4px;
@@ -298,7 +336,7 @@
             margin-bottom: 2px;
             min-height: 44px;
         }
-        .card-name { 
+        .card-name {
             font-weight: 700;
             font-size: 0.95rem;
             line-height: 1.3;
@@ -316,8 +354,8 @@
             margin-bottom: 0;
             gap: 10px;
         }
-        .armor-set-title-left { 
-            display: flex; 
+        .armor-set-title-left {
+            display: flex;
             align-items: center;
             gap: 8px;
             flex: 1;
@@ -357,17 +395,17 @@
             justify-content: center;
             word-break: break-word;
         }
-        .armor-tile.interactive { 
-            cursor: pointer; 
-            border-color: rgba(0,229,255,0.3);
+        .armor-tile.interactive {
+            cursor: pointer;
+            border-color: rgba(96,160,255,0.3);
         }
-        .armor-tile.interactive:hover { 
-            background: rgba(0,229,255,0.08); 
+        .armor-tile.interactive:hover {
+            background: rgba(96,160,255,0.08);
             border-color: var(--theme);
         }
         .armor-tile.active-piece {
             border-color: var(--accent) !important;
-            background: rgba(249,115,22,0.12) !important;
+            background: rgba(0,229,160,0.12) !important;
             color: var(--accent);
             font-weight: 600;
         }
@@ -385,10 +423,12 @@
         }
 
         .mission-header {
+            font-family: var(--heading);
             font-size: 0.8rem;
             font-weight: 700;
             color: var(--text-muted);
             text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin-bottom: 8px;
             padding-left: 2px;
         }
@@ -404,11 +444,11 @@
             padding: 8px 12px;
             border-left: 3px solid var(--success);
             border-radius: 0 4px 4px 0;
-            background: rgba(16,185,129,0.05);
+            background: rgba(0,229,160,0.05);
             transition: background 0.15s ease;
         }
         .mission-list li:hover {
-            background: rgba(16,185,129,0.08);
+            background: rgba(0,229,160,0.08);
         }
         .mission-list li.unlawful {
             border-left-color: var(--warning);
@@ -425,7 +465,7 @@
             align-items: flex-start;
             gap: 8px;
         }
-        
+
         .mission-meta-left {
             display: flex;
             align-items: center;
@@ -435,8 +475,9 @@
             min-width: 0;
             flex: 1 1 auto;
         }
-        
+
         .mission-type-tag {
+            font-family: var(--mono);
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--text-muted);
@@ -466,8 +507,9 @@
             gap: 6px;
             flex-shrink: 0;
         }
-        
+
         .mission-system-badge {
+            font-family: var(--mono);
             font-size: 0.6rem;
             font-weight: 700;
             padding: 2px 6px;
@@ -478,9 +520,9 @@
             flex-shrink: 0;
         }
         .mission-system-badge.stanton {
-            background: rgba(59,130,246,0.15);
+            background: rgba(96,160,255,0.15);
             color: var(--stanton-color);
-            border: 1px solid rgba(59,130,246,0.35);
+            border: 1px solid rgba(96,160,255,0.35);
         }
         .mission-system-badge.pyro {
             background: rgba(239,68,68,0.15);
@@ -488,12 +530,13 @@
             border: 1px solid rgba(239,68,68,0.35);
         }
         .mission-system-badge.nyx {
-            background: rgba(168,85,247,0.15);
+            background: rgba(167,139,250,0.15);
             color: var(--nyx-color);
-            border: 1px solid rgba(168,85,247,0.35);
+            border: 1px solid rgba(167,139,250,0.35);
         }
 
         .mission-badge {
+            font-family: var(--mono);
             font-size: 0.6rem;
             font-weight: 700;
             padding: 2px 6px;
@@ -503,7 +546,7 @@
             white-space: nowrap;
             flex-shrink: 0;
         }
-        .badge-verified   { background: rgba(16,185,129,0.15); color: var(--success); border: 1px solid rgba(16,185,129,0.35); }
+        .badge-verified   { background: rgba(0,229,160,0.15); color: var(--success); border: 1px solid rgba(0,229,160,0.35); }
         .badge-unverified { background: rgba(239,68,68,0.15);  color: var(--warning); border: 1px solid rgba(239,68,68,0.35); }
 
         .mission-title-text {
@@ -535,7 +578,7 @@
             inset: 0;
             background: rgba(0,0,0,0.85);
             backdrop-filter: blur(3px);
-            z-index: 1000;
+            z-index: 10000;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -578,11 +621,11 @@
         .modal-body .mission-list li { margin-bottom: 10px; padding: 9px 12px; }
         .modal-body .mission-title-text { font-size: 0.95rem; }
         .modal-body .mission-header { display: none; }
-        
+
         /* ── Advisory box ───────────────────────────────────────────────── */
         .advisory-box {
-            background: rgba(249,115,22,0.07);
-            border: 1px solid rgba(249,115,22,0.3);
+            background: rgba(0,229,160,0.07);
+            border: 1px solid rgba(0,229,160,0.3);
             border-left: 4px solid var(--accent);
             border-radius: 8px;
             padding: 14px 18px;
@@ -591,6 +634,7 @@
             line-height: 1.6;
         }
         .advisory-box span {
+            font-family: var(--heading);
             display: block;
             font-size: 0.75rem;
             font-weight: 700;
@@ -608,8 +652,9 @@
             padding: 16px 20px;
             color: var(--text-muted);
         }
-        
+
         .legend-title {
+            font-family: var(--heading);
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -617,46 +662,47 @@
             color: var(--text-muted);
             margin: 0 0 14px 0;
         }
-        
+
         .legend-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 16px 20px;
         }
-        
+
         .legend-item {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
-        .legend-swatch { 
-            display: flex; 
-            align-items: center; 
+
+        .legend-swatch {
+            display: flex;
+            align-items: center;
             gap: 10px;
-            flex-shrink: 0; 
+            flex-shrink: 0;
         }
-        
-        .legend-text { 
-            display: flex; 
+
+        .legend-text {
+            display: flex;
             flex-direction: column;
             gap: 2px;
         }
-        
-        .legend-text strong { 
-            font-size: 0.8rem; 
-            color: var(--text-main); 
-            line-height: 1.2; 
+
+        .legend-text strong {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            line-height: 1.2;
             font-weight: 600;
         }
-        
-        .legend-text span { 
-            font-size: 0.72rem; 
-            color: var(--text-muted); 
-            line-height: 1.4; 
+
+        .legend-text span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
-        
+
         .leg-badge {
+            font-family: var(--mono);
             font-size: 0.6rem;
             font-weight: 700;
             padding: 2px 7px;
@@ -666,29 +712,30 @@
             display: inline-block;
             white-space: nowrap;
         }
-        
+
         .leg-verified {
-            background: rgba(16,185,129,0.15);
+            background: rgba(0,229,160,0.15);
             color: var(--success);
-            border: 1px solid rgba(16,185,129,0.35);
+            border: 1px solid rgba(0,229,160,0.35);
         }
-        
+
         .leg-unverified {
             background: rgba(239,68,68,0.15);
             color: var(--warning);
             border: 1px solid rgba(239,68,68,0.35);
         }
-        
+
         .leg-bar {
             width: 4px;
             height: 28px;
             border-radius: 2px;
         }
-        
+
         .leg-bar-green { background: var(--success); }
         .leg-bar-red { background: var(--warning); }
-        
+
         .leg-type {
+            font-family: var(--mono);
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--text-muted);
@@ -698,17 +745,18 @@
             background: rgba(255,255,255,0.03);
             border-radius: 3px;
         }
-        
+
         .leg-faction {
             font-size: 0.65rem;
             font-weight: 600;
             color: var(--theme);
             padding: 3px 8px;
-            background: rgba(0,229,255,0.05);
+            background: rgba(96,160,255,0.05);
             border-radius: 3px;
         }
-        
+
         .leg-tag {
+            font-family: var(--mono);
             font-size: 0.7rem;
             padding: 2px 6px;
             border-radius: 4px;
@@ -722,11 +770,11 @@
                 grid-template-columns: 1fr;
             }
         }
-    
+
         /* ══ Grind Planner Button ══════════════════════════════════════════ */
         .grind-planner-btn {
             padding: 10px 18px;
-            background: linear-gradient(135deg, rgba(249,115,22,0.15) 0%, rgba(249,115,22,0.08) 100%);
+            background: linear-gradient(135deg, rgba(0,229,160,0.15) 0%, rgba(0,229,160,0.08) 100%);
             border: 2px solid var(--accent);
             border-radius: 4px;
             cursor: pointer;
@@ -739,8 +787,8 @@
             white-space: nowrap;
         }
         .grind-planner-btn:hover {
-            background: linear-gradient(135deg, rgba(249,115,22,0.25) 0%, rgba(249,115,22,0.15) 100%);
-            box-shadow: 0 0 12px rgba(249,115,22,0.3);
+            background: linear-gradient(135deg, rgba(0,229,160,0.25) 0%, rgba(0,229,160,0.15) 100%);
+            box-shadow: 0 0 12px rgba(0,229,160,0.3);
         }
 
         /* ══ Grind Planner Modal ═══════════════════════════════════════════ */
@@ -750,7 +798,7 @@
             inset: 0;
             background: rgba(0,0,0,0.88);
             backdrop-filter: blur(4px);
-            z-index: 1100;
+            z-index: 10001;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -776,7 +824,7 @@
             align-items: center;
             flex-shrink: 0;
         }
-        .planner-header h2 { margin: 0; font-size: 1.2rem; font-weight: 800; letter-spacing: 0.03em; }
+        .planner-header h2 { font-family: var(--heading); text-transform: uppercase; margin: 0; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.03em; }
         .planner-header h2 .accent { color: var(--accent); }
         .planner-close {
             font-size: 2rem; color: var(--text-muted); cursor: pointer;
@@ -786,6 +834,7 @@
         .planner-body { overflow-y: auto; padding: 20px; flex: 1; }
         .planner-step { margin-bottom: 24px; }
         .planner-step-title {
+            font-family: var(--heading);
             font-size: 0.8rem; font-weight: 700; color: var(--accent);
             text-transform: uppercase; letter-spacing: 0.06em;
             margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
@@ -794,6 +843,7 @@
             background: var(--accent); color: var(--bg-base); width: 22px; height: 22px;
             border-radius: 50%; display: inline-flex; align-items: center;
             justify-content: center; font-size: 0.75rem; font-weight: 800;
+            font-family: var(--mono);
         }
         .planner-step-desc { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
 
@@ -805,9 +855,9 @@
             color: var(--text-main); text-align: left; transition: all 0.15s;
             display: flex; justify-content: space-between; align-items: center; gap: 6px;
         }
-        .planner-faction-btn:hover { border-color: var(--theme); background: rgba(0,229,255,0.05); }
-        .planner-faction-btn.active { border-color: var(--accent); background: rgba(249,115,22,0.1); color: var(--accent); }
-        .planner-faction-btn .bp-count { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+        .planner-faction-btn:hover { border-color: var(--theme); background: rgba(96,160,255,0.05); }
+        .planner-faction-btn.active { border-color: var(--accent); background: rgba(0,229,160,0.1); color: var(--accent); }
+        .planner-faction-btn .bp-count { font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
         .planner-faction-btn.active .bp-count { color: var(--accent); opacity: 0.8; }
 
         /* Blueprint multi-select */
@@ -815,17 +865,18 @@
         .planner-bp-search {
             width: 100%; padding: 8px 10px; background: var(--bg-card);
             border: 1px solid var(--border); border-radius: 4px; color: var(--text-main);
+            font-family: var(--ui);
             font-size: 0.85rem; margin-bottom: 10px; outline: none;
         }
-        .planner-bp-search:focus { border-color: var(--theme); }
+        .planner-bp-search:focus { border-color: var(--accent); }
         .planner-bp-list { max-height: 280px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; padding-right: 4px; }
         .planner-bp-item {
             display: flex; align-items: center; gap: 10px; padding: 8px 10px;
             background: var(--bg-card); border: 1px solid var(--border);
             border-radius: 4px; cursor: pointer; transition: all 0.15s;
         }
-        .planner-bp-item:hover { border-color: var(--theme); background: rgba(0,229,255,0.05); }
-        .planner-bp-item.selected { border-color: var(--accent); background: rgba(249,115,22,0.08); }
+        .planner-bp-item:hover { border-color: var(--theme); background: rgba(96,160,255,0.05); }
+        .planner-bp-item.selected { border-color: var(--accent); background: rgba(0,229,160,0.08); }
         .planner-bp-checkbox {
             width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 3px;
             flex-shrink: 0; display: flex; align-items: center; justify-content: center;
@@ -835,13 +886,14 @@
         .planner-bp-item.selected .planner-bp-checkbox::after { content: '✓'; }
         .planner-bp-name { font-size: 0.85rem; font-weight: 500; flex: 1; }
         .planner-bp-type {
+            font-family: var(--mono);
             font-size: 0.65rem; font-weight: 700; color: var(--text-muted);
             text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 6px;
             background: rgba(255,255,255,0.05); border-radius: 3px; flex-shrink: 0;
         }
 
         /* Results */
-        .planner-results { background: rgba(249,115,22,0.05); border: 1px solid rgba(249,115,22,0.3); border-radius: 6px; padding: 16px; }
+        .planner-results { background: rgba(0,229,160,0.05); border: 1px solid rgba(0,229,160,0.3); border-radius: 6px; padding: 16px; }
         .planner-results-empty { color: var(--text-muted); font-size: 0.85rem; text-align: center; padding: 20px; font-style: italic; }
         .planner-summary {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -849,7 +901,7 @@
         }
         .planner-stat { background: var(--bg-base); padding: 10px; border-radius: 4px; border: 1px solid var(--border); }
         .planner-stat-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 4px; }
-        .planner-stat-value { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+        .planner-stat-value { font-family: var(--mono); font-size: 1.1rem; font-weight: 800; color: var(--accent); }
         .planner-stat-value.theme { color: var(--theme); }
         .planner-stat-value.success { color: var(--success); }
         .planner-contract-list { display: flex; flex-direction: column; gap: 8px; }
@@ -861,18 +913,19 @@
         .planner-contract-header { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
         .planner-contract-title { font-size: 0.9rem; font-weight: 600; color: var(--text-main); }
         .planner-contract-meta { display: flex; gap: 6px; align-items: center; font-size: 0.7rem; color: var(--text-muted); flex-wrap: wrap; }
-        .planner-contract-meta .runs { color: var(--accent); font-weight: 700; font-size: 0.75rem; }
+        .planner-contract-meta .runs { font-family: var(--mono); color: var(--accent); font-weight: 700; font-size: 0.75rem; }
         .planner-contract-meta .reward { color: var(--success); font-weight: 600; }
         .planner-contract-items { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
         .planner-contract-items strong { color: var(--armor-color); font-weight: 600; }
 
         /* Rep rank badge (in mission list items) */
         .mission-rep-badge {
+            font-family: var(--mono);
             font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 3px;
             text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap;
             flex-shrink: 0;
-            background: rgba(249,115,22,0.12); color: var(--accent);
-            border: 1px solid rgba(249,115,22,0.35);
+            background: rgba(0,229,160,0.12); color: var(--accent);
+            border: 1px solid rgba(0,229,160,0.35);
         }
         .mission-rep-badge.neutral {
             background: rgba(148,163,184,0.1); color: var(--text-muted);
@@ -891,9 +944,9 @@
         .planner-rep-input {
             width: 130px; padding: 8px 10px; background: var(--bg-base);
             border: 1px solid var(--border); border-radius: 4px;
-            color: var(--text-main); font-size: 0.9rem; outline: none;
+            color: var(--text-main); font-family: var(--mono); font-size: 0.9rem; outline: none;
         }
-        .planner-rep-input:focus { border-color: var(--theme); }
+        .planner-rep-input:focus { border-color: var(--accent); }
         .planner-rep-current-rank { font-size: 0.8rem; color: var(--theme); font-weight: 600; }
 
         /* Rank path tiers in results */
@@ -908,9 +961,9 @@
             margin-bottom: 6px; flex-wrap: wrap; gap: 6px;
         }
         .planner-rank-tier-name { font-size: 0.85rem; font-weight: 700; color: var(--theme); }
-        .planner-rank-tier-rep  { font-size: 0.75rem; color: var(--text-muted); }
+        .planner-rank-tier-rep  { font-family: var(--mono); font-size: 0.75rem; color: var(--text-muted); }
         .planner-rank-tier-mission { font-size: 0.8rem; color: var(--text-main); margin-bottom: 2px; }
-        .planner-rank-tier-reps  { font-size: 0.72rem; color: var(--accent); font-weight: 700; }
+        .planner-rank-tier-reps  { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); font-weight: 700; }
         .planner-rank-tier-once  { font-size: 0.72rem; color: var(--success); }
 
 
@@ -934,7 +987,7 @@
         }
         .planner-rank-row:last-child { border-bottom: none; }
         .planner-rank-row.current-rank {
-            background: rgba(249,115,22,0.1);
+            background: rgba(0,229,160,0.1);
             color: var(--text-main);
             font-weight: 700;
             border-left: 3px solid var(--accent);
@@ -942,7 +995,7 @@
         .planner-rank-row.locked-rank { opacity: 0.4; }
         .planner-rank-row.unlocked-rank { color: var(--text-main); }
         .planner-rank-name { flex: 1; }
-        .planner-rank-rep  { white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .planner-rank-rep  { font-family: var(--mono); white-space: nowrap; font-variant-numeric: tabular-nums; }
         .planner-rank-you  {
             font-size: 0.65rem; font-weight: 800; color: var(--accent);
             text-transform: uppercase; letter-spacing: 0.05em;
@@ -952,6 +1005,7 @@
         /* Partial completion badge */
         .mission-partial-badge {
             display: inline-block;
+            font-family: var(--mono);
             font-size: 0.6rem;
             font-weight: 700;
             padding: 2px 6px;
@@ -959,9 +1013,9 @@
             text-transform: uppercase;
             letter-spacing: 0.03em;
             white-space: nowrap;
-            background: rgba(234,179,8,0.12);
-            color: #eab308;
-            border: 1px solid rgba(234,179,8,0.4);
+            background: rgba(255,149,0,0.12);
+            color: var(--gold);
+            border: 1px solid rgba(255,149,0,0.4);
             cursor: default;
             margin-top: 4px;
         }
@@ -1000,7 +1054,7 @@
             right: 0;
             max-height: 320px;
             overflow-y: auto;
-            z-index: 2000;
+            z-index: 10002;
             background: var(--bg-card);
             border: 1px solid var(--theme);
             border-radius: 4px;
@@ -1030,7 +1084,7 @@
         .search-suggestion:last-child { border-bottom: none; }
         .search-suggestion:hover,
         .search-suggestion.active {
-            background: rgba(0,229,255,0.07);
+            background: rgba(96,160,255,0.07);
         }
         .search-suggestion-name {
             flex: 1;
@@ -1039,7 +1093,7 @@
             line-height: 1.3;
         }
         .search-suggestion-name mark {
-            background: rgba(249,115,22,0.3);
+            background: rgba(0,229,160,0.3);
             color: var(--accent);
             border-radius: 2px;
             font-style: normal;
@@ -1081,7 +1135,7 @@
                 <div class="explorer-title">Star Citizen Blueprint Finder: Mission Contract Rewards Guide</div>
                 <div id="statusIndicator">Fetching database...</div>
             </div>
-            
+
             <div class="header-sub-cta">
                 <div class="header-sub-text">
                     <div class="header-sub-title">Enjoying The Tool? Say Thanks!</div>
@@ -1338,14 +1392,14 @@
                 shipComponentsList.push(item);
             } else if (type === 'armor' || type === 'armour') {
                 let setName = item.armorSet;
-                
+
                 if (!setName || setName === 'Unknown' || setName === '') {
                     // Handle "Tailwind Flight Helmet Dominion Camo" and "Tailwind Flight Suit Dominion Camo"
                     // Both should become: "Tailwind Dominion Camo"
-                    
+
                     // Match: [Product] Flight [Helmet/Suit/etc] [Finish]
                     const flightMatch = name.match(/^(.+?)\s+Flight\s+(Helmet|Suit|Undersuit|Core|Arms|Legs|Backpack)\s*(.*)$/i);
-                    
+
                     if (flightMatch) {
                         // "Tailwind" + "Dominion Camo" = "Tailwind Dominion Camo"
                         const product = flightMatch[1];
@@ -1358,7 +1412,7 @@
                             .replace(/\s{2,}/g, ' ')
                             .trim();
                     }
-                    
+
                     if (!setName) setName = 'Unknown Set';
                 }
 
@@ -1429,10 +1483,10 @@
     }
 
     /* ── Helpers ─────────────────────────────────────────────────────────── */
-    function enc(str) { 
+    function enc(str) {
         return encodeURIComponent(String(str))
             .replace(/'/g, "%27")
-            .replace(/"/g, "%22"); 
+            .replace(/"/g, "%22");
     }
     function dec(str) { return decodeURIComponent(str); }
 
@@ -1449,7 +1503,7 @@
         const faction  = m.faction
             ? `<span class="mission-type-sep">·</span><span class="mission-faction-tag">${m.faction}</span>`
             : '';
-        
+
         // System badge
         const system = (m.system || '').toLowerCase();
         const systemClass = system === 'stanton' ? 'stanton' : system === 'pyro' ? 'pyro' : system === 'nyx' ? 'nyx' : '';
@@ -1545,7 +1599,7 @@
                 const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
                 return !isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
             });
-        
+
         document.getElementById('weaponsView').innerHTML = items.map(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
             const subtype = w.subtype || 'weapon';
@@ -1567,7 +1621,7 @@
             const filteredMissions = filterMissionsBySystem(a.missions);
             return filteredMissions.length > 0;
         });
-        
+
         document.getElementById('ammoView').innerHTML = items.map(a => {
             const filteredMissions = filterMissionsBySystem(a.missions);
             const subtype = a.subtype || 'ammo';
@@ -1589,7 +1643,7 @@
             const filteredMissions = filterMissionsBySystem(c.missions);
             return filteredMissions.length > 0;
         });
-        
+
         document.getElementById('componentsView').innerHTML = items.map(c => {
             const filteredMissions = filterMissionsBySystem(c.missions);
             const subtype = c.subtype || 'component';
@@ -1616,12 +1670,12 @@
                 const parts = armorSets[s].parts.map(p => p.toLowerCase());
                 const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
                 const hasMissions = armorSets[s].missions.length > 0;
-                
+
                 // Only include if: Tailwind OR Racing (exclude Xanthule, A23, Why Not) AND has missions
                 const isTailwind = nameLower.includes('tailwind');
                 const isRacing = nameLower.includes('racing');
                 const isExcluded = nameLower.includes('why not') || nameLower.includes('mirai');
-                
+
                 return hasFlightItem && (isTailwind || isRacing) && !isExcluded && hasMissions;
             })
             .sort((a, b) => a.localeCompare(b));
@@ -1630,7 +1684,7 @@
             const set      = armorSets[setName];
             const subtype  = set.subtype || 'armor';
             const partLow  = set.parts.map(p => p.toLowerCase());
-            
+
             const hasHelmet = partLow.some(p => p.includes('helmet'));
             const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
             // Complete if has flight suit OR is a helmet-only set
@@ -1705,7 +1759,7 @@
             const noteTag = allSame
                 ? ''
                 : `<div class="armor-note">* Pieces have different loot pools — click a tile to filter.</div>`;
-            
+
             const displayTitle = setName + ' SET';
 
             return `
@@ -1736,7 +1790,7 @@
                 return isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
             })
             .sort((a, b) => a.name.localeCompare(b.name));
-        
+
         document.getElementById('shipweaponsView').innerHTML = items.map(w => {
             const filteredMissions = filterMissionsBySystem(w.missions);
             const subtype = w.subtype || 'weapon';
@@ -1762,15 +1816,15 @@
             .sort((a, b) => {
                 const setA = armorSets[a];
                 const setB = armorSets[b];
-                
+
                 // Determine completion for each set
                 const partsA = setA.parts.map(p => p.toLowerCase());
                 const partsB = setB.parts.map(p => p.toLowerCase());
-                
+
                 const hasHelmetA = partsA.some(p => p.includes('helmet'));
                 const hasFlightSuitA = partsA.some(p => p.includes('flight suit'));
                 const hasUndersuitA = partsA.some(p => p.includes('undersuit'));
-                
+
                 let isCompleteA;
                 if (hasFlightSuitA) {
                     isCompleteA = hasHelmetA && hasFlightSuitA;
@@ -1779,11 +1833,11 @@
                 } else {
                     isCompleteA = REQUIRED.every(r => partsA.some(p => p.includes(r)));
                 }
-                
+
                 const hasHelmetB = partsB.some(p => p.includes('helmet'));
                 const hasFlightSuitB = partsB.some(p => p.includes('flight suit'));
                 const hasUndersuitB = partsB.some(p => p.includes('undersuit'));
-                
+
                 let isCompleteB;
                 if (hasFlightSuitB) {
                     isCompleteB = hasHelmetB && hasFlightSuitB;
@@ -1792,7 +1846,7 @@
                 } else {
                     isCompleteB = REQUIRED.every(r => partsB.some(p => p.includes(r)));
                 }
-                
+
                 if (isCompleteA !== isCompleteB) return isCompleteA ? -1 : 1;
                 return a.localeCompare(b);
             });
@@ -1801,13 +1855,13 @@
             const set      = armorSets[setName];
             const subtype  = set.subtype || 'armor';
             const partLow  = set.parts.map(p => p.toLowerCase());
-            
+
             // Flight suits and undersuits have different completion requirements
             // Flight suit sets: need helmet + flight suit (2 pieces)
             const hasHelmet = partLow.some(p => p.includes('helmet'));
             const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
             const hasUndersuit = partLow.some(p => p.includes('undersuit'));
-            
+
             let isComplete;
             if (hasFlightSuit) {
                 // Flight suit sets are complete with helmet + flight suit
@@ -1900,9 +1954,9 @@
             const noteTag = allSame
                 ? ''
                 : `<div class="armor-note">* Pieces have different loot pools — click a tile to filter.</div>`;
-            
+
             const displayTitle = setName + ' SET';
-            
+
             return `
                 <div class="armor-set-box search-target">
                     <div class="armor-set-title">
@@ -2602,12 +2656,12 @@
                 const m       = c.mission;
                 const lawful  = m.lawful === true || m.lawful === 'true';
                 const lawBadge = lawful
-                    ? `<span style="font-size:0.6rem;background:rgba(16,185,129,0.15);color:var(--success);border:1px solid rgba(16,185,129,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">✓ LAWFUL</span>`
+                    ? `<span style="font-size:0.6rem;background:rgba(0,229,160,0.15);color:var(--success);border:1px solid rgba(0,229,160,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">✓ LAWFUL</span>`
                     : `<span style="font-size:0.6rem;background:rgba(239,68,68,0.15);color:var(--warning);border:1px solid rgba(239,68,68,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">⚠ UNLAWFUL</span>`;
                 const sysCls  = (m.system||'').toLowerCase();
                 const sysBadge = sysCls ? `<span class="mission-system-badge ${sysCls}" style="font-size:0.6rem;">${m.system}</span>` : '';
                 const rankBadge = m.repStanding
-                    ? `<span style="font-size:0.6rem;background:rgba(249,115,22,0.12);color:var(--accent);border:1px solid rgba(249,115,22,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">${m.repStanding}</span>`
+                    ? `<span style="font-size:0.6rem;background:rgba(0,229,160,0.12);color:var(--accent);border:1px solid rgba(0,229,160,0.35);padding:2px 6px;border-radius:3px;font-weight:700;">${m.repStanding}</span>`
                     : '';
                 const repLine = m.repReward
                     ? `<span style="color:var(--success);font-weight:600;">+${c.repEarned.toLocaleString()} rep total</span>`
@@ -2647,7 +2701,7 @@
     }
     function banner(type, msg) {
         const col = type === 'success' ? 'var(--success)' : 'var(--warning)';
-        const bg  = type === 'success' ? 'rgba(16,185,129,0.08)' : 'rgba(239,68,68,0.08)';
+        const bg  = type === 'success' ? 'rgba(0,229,160,0.08)' : 'rgba(239,68,68,0.08)';
         return `<div style="font-size:0.85rem;color:${col};margin-bottom:14px;line-height:1.5;padding:10px 12px;background:${bg};border-left:3px solid ${col};border-radius:4px;">${msg}</div>`;
     }
 
