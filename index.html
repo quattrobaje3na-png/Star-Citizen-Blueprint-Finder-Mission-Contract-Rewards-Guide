@@ -1112,6 +1112,173 @@
             text-align: center;
             font-style: italic;
         }
+
+        /* ══ My Inventory Button ═══════════════════════════════════════════ */
+        .inventory-btn {
+            padding: 10px 18px;
+            background: linear-gradient(135deg, rgba(96,160,255,0.15) 0%, rgba(96,160,255,0.08) 100%);
+            border: 2px solid var(--theme);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--theme);
+            transition: all 0.2s;
+            text-transform: uppercase;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .inventory-btn:hover {
+            background: linear-gradient(135deg, rgba(96,160,255,0.25) 0%, rgba(96,160,255,0.15) 100%);
+            box-shadow: 0 0 12px rgba(96,160,255,0.3);
+        }
+        .inventory-btn .inv-count {
+            font-family: var(--mono);
+            background: rgba(96,160,255,0.2);
+            padding: 1px 7px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+        }
+
+        /* ══ My Inventory Modal ════════════════════════════════════════════ */
+        .inventory-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            backdrop-filter: blur(4px);
+            z-index: 10001;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .inventory-content {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--theme);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .inventory-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 12px;
+        }
+        .inventory-header h2 { font-family: var(--heading); text-transform: uppercase; margin: 0; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.03em; }
+        .inventory-header h2 .accent { color: var(--theme); }
+        .inventory-close {
+            font-size: 2rem; color: var(--text-muted); cursor: pointer;
+            transition: color 0.2s; line-height: 1; background: none; border: none; padding: 0;
+        }
+        .inventory-close:hover { color: var(--theme); }
+        .inventory-desc {
+            padding: 14px 20px 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+        .inventory-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+        .inventory-search {
+            flex: 1;
+            min-width: 160px;
+            padding: 8px 10px;
+            background: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: var(--ui);
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .inventory-search:focus { border-color: var(--theme); }
+        .inventory-toolbar-btn {
+            padding: 8px 12px;
+            background: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+        .inventory-toolbar-btn:hover { border-color: var(--theme); color: var(--theme); }
+        .inventory-count-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .inventory-count-label strong { color: var(--theme); }
+        .inventory-body { overflow-y: auto; padding: 0 20px 20px; flex: 1; }
+        .inventory-group-title {
+            font-family: var(--heading);
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 12px 4px 6px;
+        }
+        .inventory-list { display: flex; flex-direction: column; gap: 4px; }
+        .inventory-item {
+            display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+            background: var(--bg-base); border: 1px solid var(--border);
+            border-radius: 4px; cursor: pointer; transition: all 0.15s;
+        }
+        .inventory-item:hover { border-color: var(--theme); background: rgba(96,160,255,0.05); }
+        .inventory-item.owned { border-color: var(--theme); background: rgba(96,160,255,0.08); }
+        .inventory-checkbox {
+            width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 3px;
+            flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 800; color: var(--bg-base); background: transparent;
+        }
+        .inventory-item.owned .inventory-checkbox { background: var(--theme); border-color: var(--theme); }
+        .inventory-item.owned .inventory-checkbox::after { content: '✓'; }
+        .inventory-item-name { font-size: 0.85rem; font-weight: 500; flex: 1; }
+        .inventory-item.owned .inventory-item-name { color: var(--text-muted); text-decoration: line-through; }
+        .inventory-item-faction { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; }
+        .inventory-empty { color: var(--text-muted); font-size: 0.85rem; text-align: center; padding: 30px; font-style: italic; }
+
+        /* Owned tag shown inline on browse-view armor tiles when a piece is owned but siblings remain */
+        .owned-piece-tag {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            background: rgba(96,160,255,0.12);
+            color: var(--theme);
+            border: 1px solid rgba(96,160,255,0.4);
+            margin-left: 6px;
+        }
 </style>
 </head>
 <body>
@@ -1264,7 +1431,29 @@
                 <button class="system-filter-btn nyx active" onclick="toggleSystemFilter('nyx', this)">NYX</button>
             </div>
 
+            <button class="inventory-btn" onclick="openInventory()">&#x2713; MY INVENTORY <span class="inv-count" id="invBtnCount">0</span></button>
             <button class="grind-planner-btn" onclick="openPlanner()">&#x2605; PLAN GRIND ROUTE</button>
+        </div>
+    </div>
+
+    <!-- ═══ My Inventory Modal ═══════════════════════════════════════════════ -->
+    <div id="inventoryModal" class="inventory-modal" onclick="closeInventoryOverlay(event)">
+        <div class="inventory-content" onclick="event.stopPropagation()">
+            <div class="inventory-header">
+                <h2>&#x2713; <span class="accent">My Blueprint Inventory</span></h2>
+                <button class="inventory-close" onclick="closeInventory()">&times;</button>
+            </div>
+            <div class="inventory-desc">Check off blueprints you already own. Owned blueprints are removed from the browse lists above and from the Grind Route Planner's target list and results. Your selections are saved on this device — use Download to back them up or move them to another browser/device. Upload accepts a saved Download file, or a plain <code>blueprints.txt</code> list (one blueprint name per line, e.g. from a log-scanning script) — names are matched automatically and merged into your inventory.</div>
+            <div class="inventory-toolbar">
+                <input type="text" id="inventorySearch" class="inventory-search" placeholder="Search blueprints..." oninput="renderInventoryList()">
+                <span class="inventory-count-label"><strong id="invOwnedCount">0</strong> owned</span>
+                <button class="inventory-toolbar-btn" onclick="inventoryCheckAllVisible()">Check All Shown</button>
+                <button class="inventory-toolbar-btn" onclick="inventoryClearAll()">Clear All Owned</button>
+                <button class="inventory-toolbar-btn" onclick="exportInventory()">&#x2B07; Download</button>
+                <button class="inventory-toolbar-btn" onclick="triggerImportInventory()" title="Accepts a Download file (.json) or a blueprints.txt list (one name per line)">&#x2B06; Upload</button>
+                <input type="file" id="inventoryImportInput" accept="application/json,.json,.txt,text/plain" style="display:none;" onchange="handleImportFile(event)">
+            </div>
+            <div id="inventoryBody" class="inventory-body"></div>
         </div>
     </div>
 
@@ -1330,9 +1519,39 @@
     let shipComponentsList = [];
     let activeSystemFilters = new Set(['stanton', 'pyro', 'nyx']); // All active by default
 
+    /* ── My Inventory (owned blueprints) ──────────────────────────────────
+       Key scheme matches the planner's bpKey format so ownership filtering
+       lines up everywhere a blueprint is referenced:
+         weapon::<name>  ammo::<name>  component::<name>  armor::<piece name>
+    */
+    const OWNED_BP_STORAGE_KEY = 'scBlueprintFinder.ownedBlueprints.v1';
+    let ownedBlueprints = new Set();
+
+    function loadOwnedBlueprints() {
+        try {
+            const raw = localStorage.getItem(OWNED_BP_STORAGE_KEY);
+            const arr = raw ? JSON.parse(raw) : [];
+            ownedBlueprints = new Set(Array.isArray(arr) ? arr : []);
+        } catch (err) {
+            console.warn('Could not load saved inventory:', err);
+            ownedBlueprints = new Set();
+        }
+    }
+
+    function saveOwnedBlueprints() {
+        try {
+            localStorage.setItem(OWNED_BP_STORAGE_KEY, JSON.stringify([...ownedBlueprints]));
+        } catch (err) {
+            console.warn('Could not save inventory:', err);
+        }
+    }
+
+    function isOwnedBp(key) { return ownedBlueprints.has(key); }
+
     /* ── Boot ───────────────────────────────────────────────────────────── */
     window.onload = async function () {
         const statusEl = document.getElementById('statusIndicator');
+        loadOwnedBlueprints();
         try {
             const response = await fetch('blueprint_explorer_data.json');
             if (!response.ok) throw new Error(`HTTP ${response.status}: File not found.`);
@@ -1342,6 +1561,7 @@
 
             loadScopes(data.scopes || {});
             processDatabase(data.items);
+            updateInventoryCounts();
         } catch (err) {
             statusEl.style.color = 'var(--warning)';
             statusEl.textContent = `Error loading data: ${err.message}`;
@@ -1553,6 +1773,25 @@
         return `<div class="expand-btn" onclick="openModal('${titleEnc}','${tagEnc}','${listEnc}')">&#x2922; Click to expand full list</div>`;
     }
 
+    /* ── Owned-blueprint helpers for armor sets ───────────────────────────
+       Armor is displayed/grouped as sets, but each piece is its own
+       blueprint (matches the planner's armor::<piece> key). Filter owned
+       pieces out per-set so a set disappears once every piece is owned,
+       and partially-owned sets only show the pieces still needed. */
+    function unownedArmorParts(set) {
+        return set.parts.filter(p => !isOwnedBp('armor::' + p));
+    }
+    function aggregateArmorMissions(set, parts) {
+        const out = [];
+        parts.forEach(p => {
+            (set.partsData[p] || []).forEach(m => {
+                const dup = out.some(em => em.title === m.title && em.type === m.type && em.lawful === m.lawful && em.system === m.system);
+                if (!dup) out.push(m);
+            });
+        });
+        return out;
+    }
+
     /* ── Render ─────────────────────────────────────────────────────────── */
     function render() {
         renderWeapons();
@@ -1561,29 +1800,34 @@
         renderArmor();
         renderFlightSuits();
         renderShipWeapons();
+        updateInventoryCounts();
 
         const wCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
             const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
-            return !isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
+            return !isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
         }).length;
-        const aCount = ammoList.filter(a => filterMissionsBySystem(a.missions).length > 0).length;
-        const cCount = shipComponentsList.filter(c => filterMissionsBySystem(c.missions).length > 0).length;
-        const sCount = Object.keys(armorSets).filter(s => filterMissionsBySystem(armorSets[s].missions).length > 0).length;
+        const aCount = ammoList.filter(a => !isOwnedBp('ammo::' + a.name) && filterMissionsBySystem(a.missions).length > 0).length;
+        const cCount = shipComponentsList.filter(c => !isOwnedBp('component::' + c.name) && filterMissionsBySystem(c.missions).length > 0).length;
+        const sCount = Object.keys(armorSets).filter(s => {
+            const unowned = unownedArmorParts(armorSets[s]);
+            return unowned.length > 0 && filterMissionsBySystem(aggregateArmorMissions(armorSets[s], unowned)).length > 0;
+        }).length;
         const fsCount = Object.keys(armorSets).filter(s => {
             const nameLower = s.toLowerCase();
-            const parts = armorSets[s].parts.map(p => p.toLowerCase());
+            const unowned = unownedArmorParts(armorSets[s]);
+            const parts = unowned.map(p => p.toLowerCase());
             const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
-            const hasMissions = armorSets[s].missions.length > 0;
+            const hasMissions = filterMissionsBySystem(aggregateArmorMissions(armorSets[s], unowned)).length > 0;
             const isTailwind = nameLower.includes('tailwind');
             const isRacing = nameLower.includes('racing');
             const isExcluded = nameLower.includes('why not') || nameLower.includes('mirai');
-            return hasFlightItem && (isTailwind || isRacing) && !isExcluded && hasMissions;
+            return unowned.length > 0 && hasFlightItem && (isTailwind || isRacing) && !isExcluded && hasMissions;
         }).length;
         const swCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
             const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
-            return isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
+            return isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
         }).length;
 
         const status = document.getElementById('statusIndicator');
@@ -1597,7 +1841,7 @@
                 // FPS: EXCLUDE anything with Cannon, Gatling, Repeater, or Scattergun in name
                 const name = w.name.toLowerCase();
                 const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
-                return !isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
+                return !isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
             });
 
         document.getElementById('weaponsView').innerHTML = items.map(w => {
@@ -1618,6 +1862,7 @@
 
     function renderAmmo() {
         const items = ammoList.filter(a => {
+            if (isOwnedBp('ammo::' + a.name)) return false;
             const filteredMissions = filterMissionsBySystem(a.missions);
             return filteredMissions.length > 0;
         });
@@ -1640,6 +1885,7 @@
 
     function renderShipComponents() {
         const items = shipComponentsList.filter(c => {
+            if (isOwnedBp('component::' + c.name)) return false;
             const filteredMissions = filterMissionsBySystem(c.missions);
             return filteredMissions.length > 0;
         });
@@ -1664,12 +1910,15 @@
         const PART_ORDER = ['helmet', 'flight suit'];
 
         // Filter for Tailwind variants and Racing flight suits only - MUST HAVE MISSIONS
+        // Sets where every piece is already owned are dropped entirely.
         const available = Object.keys(armorSets)
             .filter(s => {
                 const nameLower = s.toLowerCase();
-                const parts = armorSets[s].parts.map(p => p.toLowerCase());
+                const unownedParts = unownedArmorParts(armorSets[s]);
+                if (unownedParts.length === 0) return false;
+                const parts = unownedParts.map(p => p.toLowerCase());
                 const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
-                const hasMissions = armorSets[s].missions.length > 0;
+                const hasMissions = filterMissionsBySystem(aggregateArmorMissions(armorSets[s], unownedParts)).length > 0;
 
                 // Only include if: Tailwind OR Racing (exclude Xanthule, A23, Why Not) AND has missions
                 const isTailwind = nameLower.includes('tailwind');
@@ -1683,24 +1932,27 @@
         document.getElementById('flightsuitsView').innerHTML = available.map(setName => {
             const set      = armorSets[setName];
             const subtype  = set.subtype || 'armor';
-            const partLow  = set.parts.map(p => p.toLowerCase());
+            const unownedParts = unownedArmorParts(set);
 
-            const hasHelmet = partLow.some(p => p.includes('helmet'));
-            const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
+            // Completeness reflects the underlying game data (all pieces catalogued),
+            // not ownership — so it's computed from the full original part list.
+            const partLowFull = set.parts.map(p => p.toLowerCase());
+            const hasHelmet = partLowFull.some(p => p.includes('helmet'));
+            const hasFlightSuit = partLowFull.some(p => p.includes('flight suit'));
             // Complete if has flight suit OR is a helmet-only set
             const isComplete = hasFlightSuit || (hasHelmet && !hasFlightSuit);
 
-            const filteredMissions = filterMissionsBySystem(set.missions);
+            const filteredMissions = filterMissionsBySystem(aggregateArmorMissions(set, unownedParts));
 
             let allSame = true;
-            if (set.parts.length > 1) {
-                const ref = serializeMissions(filterMissionsBySystem(set.partsData[set.parts[0]]));
-                allSame = set.parts.slice(1).every(
+            if (unownedParts.length > 1) {
+                const ref = serializeMissions(filterMissionsBySystem(set.partsData[unownedParts[0]]));
+                allSame = unownedParts.slice(1).every(
                     p => serializeMissions(filterMissionsBySystem(set.partsData[p])) === ref
                 );
             }
 
-            const sortedParts = [...set.parts].sort((a, b) => {
+            const sortedParts = [...unownedParts].sort((a, b) => {
                 const ia = PART_ORDER.findIndex(o => a.toLowerCase().includes(o));
                 const ib = PART_ORDER.findIndex(o => b.toLowerCase().includes(o));
                 return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
@@ -1787,7 +2039,7 @@
                 // SHIP WEAPONS: ONLY Cannon, Gatling, Repeater, or Scattergun in name
                 const name = w.name.toLowerCase();
                 const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
-                return isShipWeapon && filterMissionsBySystem(w.missions).length > 0;
+                return isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
             })
             .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -1812,7 +2064,11 @@
         const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
 
         const available = Object.keys(armorSets)
-            .filter(s => filterMissionsBySystem(armorSets[s].missions).length > 0)
+            .filter(s => {
+                const unowned = unownedArmorParts(armorSets[s]);
+                if (unowned.length === 0) return false; // every piece already owned
+                return filterMissionsBySystem(aggregateArmorMissions(armorSets[s], unowned)).length > 0;
+            })
             .sort((a, b) => {
                 const setA = armorSets[a];
                 const setB = armorSets[b];
@@ -1854,6 +2110,11 @@
         document.getElementById('armorView').innerHTML = available.map(setName => {
             const set      = armorSets[setName];
             const subtype  = set.subtype || 'armor';
+            const unownedParts = unownedArmorParts(set);
+
+            // Completeness reflects the underlying game data (all pieces catalogued),
+            // not ownership — computed from the full original part list so a set
+            // doesn't get mislabeled INCOMPLETE just because you already own a piece.
             const partLow  = set.parts.map(p => p.toLowerCase());
 
             // Flight suits and undersuits have different completion requirements
@@ -1874,18 +2135,18 @@
                 isComplete = REQUIRED.every(r => partLow.some(p => p.includes(r)));
             }
 
-            const filteredMissions = filterMissionsBySystem(set.missions);
+            const filteredMissions = filterMissionsBySystem(aggregateArmorMissions(set, unownedParts));
 
-            // Detect whether all pieces share the same mission pool
+            // Detect whether all remaining (unowned) pieces share the same mission pool
             let allSame = true;
-            if (set.parts.length > 1) {
-                const ref = serializeMissions(filterMissionsBySystem(set.partsData[set.parts[0]]));
-                allSame = set.parts.slice(1).every(
+            if (unownedParts.length > 1) {
+                const ref = serializeMissions(filterMissionsBySystem(set.partsData[unownedParts[0]]));
+                allSame = unownedParts.slice(1).every(
                     p => serializeMissions(filterMissionsBySystem(set.partsData[p])) === ref
                 );
             }
 
-            const sortedParts = [...set.parts].sort((a, b) => {
+            const sortedParts = [...unownedParts].sort((a, b) => {
                 const ia = PART_ORDER.findIndex(o => a.toLowerCase().includes(o));
                 const ib = PART_ORDER.findIndex(o => b.toLowerCase().includes(o));
                 return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
@@ -1974,6 +2235,282 @@
                     </div>
                 </div>`;
         }).join('');
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       MY INVENTORY  (owned-blueprint checklist)
+       ══════════════════════════════════════════════════════════════════════ */
+
+    // Flat, de-duplicated catalog of every individual blueprint currently in
+    // the database — one row per bpKey (armor pieces, not whole sets, since
+    // each piece is its own blueprint).
+    function buildInventoryCatalog() {
+        const map = {};
+        const add = (key, name, category) => { if (!map[key]) map[key] = { key, name, category }; };
+
+        weaponsList.forEach(w => {
+            const isSW = /cannon|gatling|repeater|scattergun/i.test(w.name);
+            add(`weapon::${w.name}`, w.name, isSW ? 'Ship Weapon' : 'Weapon');
+        });
+        ammoList.forEach(a => add(`ammo::${a.name}`, a.name, 'Ammo'));
+        shipComponentsList.forEach(c => add(`component::${c.name}`, c.name, 'Ship Component'));
+        Object.values(armorSets).forEach(set =>
+            set.parts.forEach(p => add(`armor::${p}`, p, 'Armor'))
+        );
+
+        return Object.values(map);
+    }
+
+    function openInventory() {
+        document.getElementById('inventorySearch').value = '';
+        renderInventoryList();
+        document.getElementById('inventoryModal').style.display = 'flex';
+    }
+    function closeInventory()         { document.getElementById('inventoryModal').style.display = 'none'; }
+    function closeInventoryOverlay(e) { if (e.target.id === 'inventoryModal') closeInventory(); }
+
+    function renderInventoryList() {
+        const catalog = buildInventoryCatalog();
+        const query   = document.getElementById('inventorySearch').value.toLowerCase();
+        const filtered = query ? catalog.filter(e => e.name.toLowerCase().includes(query)) : catalog;
+
+        const body = document.getElementById('inventoryBody');
+        if (!filtered.length) {
+            body.innerHTML = `<div class="inventory-empty">No blueprints match.</div>`;
+            updateInventoryCounts();
+            return;
+        }
+
+        const CAT_ORDER = ['Armor', 'Weapon', 'Ship Weapon', 'Ammo', 'Ship Component'];
+        const groups = {};
+        filtered.forEach(e => { (groups[e.category] = groups[e.category] || []).push(e); });
+        Object.values(groups).forEach(list => list.sort((a, b) => a.name.localeCompare(b.name)));
+
+        let html = '';
+        CAT_ORDER.filter(cat => groups[cat]).forEach(cat => {
+            html += `<div class="inventory-group-title">${cat} (${groups[cat].length})</div>`;
+            html += `<div class="inventory-list">`;
+            html += groups[cat].map(e => {
+                const owned = isOwnedBp(e.key) ? ' owned' : '';
+                const safeKey = e.key.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+                return `<div class="inventory-item${owned}" data-key="${safeKey}">` +
+                       `<div class="inventory-checkbox"></div><div class="inventory-item-name">${e.name}</div></div>`;
+            }).join('');
+            html += `</div>`;
+        });
+
+        body.innerHTML = html;
+        body.querySelectorAll('.inventory-item').forEach(el => {
+            el.addEventListener('click', () => toggleOwnedBp(el.dataset.key));
+        });
+        updateInventoryCounts();
+    }
+
+    function inventoryCheckAllVisible() {
+        const catalog = buildInventoryCatalog();
+        const query   = document.getElementById('inventorySearch').value.toLowerCase();
+        const filtered = query ? catalog.filter(e => e.name.toLowerCase().includes(query)) : catalog;
+        filtered.forEach(e => {
+            ownedBlueprints.add(e.key);
+            plannerSelectedBlueprints.delete(e.key);
+        });
+        saveOwnedBlueprints();
+        afterOwnershipChange();
+    }
+
+    function inventoryClearAll() {
+        if (!ownedBlueprints.size) return;
+        if (!confirm('Clear all owned blueprints? They will reappear in the tool and planner.')) return;
+        ownedBlueprints = new Set();
+        saveOwnedBlueprints();
+        afterOwnershipChange();
+    }
+
+    function toggleOwnedBp(key) {
+        if (ownedBlueprints.has(key)) {
+            ownedBlueprints.delete(key);
+        } else {
+            ownedBlueprints.add(key);
+            plannerSelectedBlueprints.delete(key);
+        }
+        saveOwnedBlueprints();
+        afterOwnershipChange();
+    }
+
+    // Refresh every view that depends on ownership after a checkbox change.
+    function afterOwnershipChange() {
+        renderInventoryList();
+        render();
+        if (document.getElementById('plannerModal').style.display === 'flex') {
+            renderPlannerFactions();
+            if (plannerSelectedFaction) {
+                renderPlannerBlueprints();
+                renderPlannerResults();
+            }
+        }
+    }
+
+    function updateInventoryCounts() {
+        const countEl = document.getElementById('invOwnedCount');
+        const btnEl   = document.getElementById('invBtnCount');
+        if (countEl) countEl.textContent = ownedBlueprints.size;
+        if (btnEl)   btnEl.textContent   = ownedBlueprints.size;
+    }
+
+    // ── Download / Upload inventory as a JSON file ─────────────────────────
+    function exportInventory() {
+        const payload = {
+            tool: 'sc-blueprint-finder-inventory',
+            version: 1,
+            exportedAt: new Date().toISOString(),
+            owned: [...ownedBlueprints].sort()
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const url  = URL.createObjectURL(blob);
+        const a    = document.createElement('a');
+        const stamp = payload.exportedAt.slice(0, 10);
+        a.href = url;
+        a.download = `sc-blueprint-inventory-${stamp}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    function triggerImportInventory() {
+        document.getElementById('inventoryImportInput').click();
+    }
+
+    // Case/whitespace-normalized name -> bpKey lookup, built from the live catalog,
+    // used to match raw blueprint names (e.g. from a log-scanner script) to bpKeys.
+    // Single shared normalization rule for blueprint names, used everywhere a
+    // name from the site's own database is compared against a name coming
+    // from elsewhere (an uploaded file, the log-scanner script's output).
+    // Keeping this in one place — and mirroring the same rules in
+    // extract_blueprints.py — is what keeps "the same blueprint" recognized
+    // as the same thing no matter which side produced the text:
+    //   1. fold curly/smart quotes to plain ASCII quotes
+    //   2. collapse any run of whitespace to a single space
+    //   3. trim leading/trailing whitespace
+    //   4. compare case-insensitively
+    function normalizeBpName(name) {
+        return String(name)
+            .replace(/[\u2018\u2019\u201A\u2032]/g, "'")
+            .replace(/[\u201C\u201D\u201E\u2033]/g, '"')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .toLowerCase();
+    }
+
+    // Name -> bpKey lookup, built from the live catalog, used to match raw
+    // blueprint names (e.g. from a log-scanner script) to bpKeys.
+    function buildInventoryNameLookup() {
+        const map = new Map();
+        buildInventoryCatalog().forEach(e => {
+            const norm = normalizeBpName(e.name);
+            if (!map.has(norm)) map.set(norm, e.key);
+        });
+        return map;
+    }
+
+    function applyOwnedKeys(keys, sourceLabel) {
+        keys = keys.filter(k => typeof k === 'string' && k);
+        if (!keys.length) {
+            alert('No blueprints found in that file.');
+            return;
+        }
+        const before = ownedBlueprints.size;
+        keys.forEach(k => {
+            ownedBlueprints.add(k);
+            plannerSelectedBlueprints.delete(k);
+        });
+        saveOwnedBlueprints();
+        afterOwnershipChange();
+        const added = ownedBlueprints.size - before;
+        alert(`Imported ${keys.length} blueprint${keys.length !== 1 ? 's' : ''} ${sourceLabel} (${added} new — merged with your existing inventory).`);
+    }
+
+    // Import a plain list of raw blueprint names — one per line — such as the
+    // blueprints.txt produced by a game-log scanning script. Names are matched
+    // against the live catalog (case/whitespace-insensitive); anything that
+    // doesn't match a known blueprint is reported back instead of silently dropped.
+    function importRawBlueprintNames(text) {
+        const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+        if (!lines.length) {
+            alert('That file has no blueprint names in it.');
+            return;
+        }
+
+        const lookup = buildInventoryNameLookup();
+        const matchedKeys = [];
+        const unmatched = [];
+        lines.forEach(line => {
+            const norm = normalizeBpName(line);
+            const key = lookup.get(norm);
+            if (key) matchedKeys.push(key);
+            else unmatched.push(line);
+        });
+
+        if (!matchedKeys.length) {
+            alert(`None of the ${lines.length} name(s) in that file matched a known blueprint. Double-check it's a blueprints.txt list of blueprint names.`);
+            return;
+        }
+
+        const before = ownedBlueprints.size;
+        matchedKeys.forEach(k => {
+            ownedBlueprints.add(k);
+            plannerSelectedBlueprints.delete(k);
+        });
+        saveOwnedBlueprints();
+        afterOwnershipChange();
+        const added = ownedBlueprints.size - before;
+
+        let msg = `Matched ${matchedKeys.length} of ${lines.length} name(s) to known blueprints (${added} new).`;
+        if (unmatched.length) {
+            const shown = unmatched.slice(0, 15).join('\n');
+            const more = unmatched.length > 15 ? `\n...and ${unmatched.length - 15} more` : '';
+            msg += `\n\n${unmatched.length} name(s) didn't match anything in the database:\n${shown}${more}`;
+        }
+        alert(msg);
+    }
+
+    function handleImportFile(event) {
+        const file = event.target.files && event.target.files[0];
+        event.target.value = ''; // allow re-selecting the same file later
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const raw = String(reader.result);
+            const trimmed = raw.trim();
+
+            // Our own Download export is JSON ({ owned: [...] } or a plain array).
+            // Anything else is treated as a plain list of blueprint names — one per
+            // line — like the blueprints.txt a log-scanning script would produce.
+            if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
+                let data;
+                try {
+                    data = JSON.parse(trimmed);
+                } catch (err) {
+                    alert('That file looked like JSON but failed to parse.');
+                    return;
+                }
+                let keys;
+                if (Array.isArray(data)) {
+                    keys = data;
+                } else if (data && Array.isArray(data.owned)) {
+                    keys = data.owned;
+                } else {
+                    alert('Unrecognized inventory file format.');
+                    return;
+                }
+                applyOwnedKeys(keys, 'from file');
+            } else {
+                importRawBlueprintNames(raw);
+            }
+        };
+        reader.onerror = () => alert('Could not read that file.');
+        reader.readAsText(file);
     }
 
     /* ── Search ─────────────────────────────────────────────────────────── */
@@ -2302,7 +2839,8 @@
     function getBlueprintsForFaction(faction) {
         const catalog = buildPlannerCatalog();
         const byBp = {};
-        catalog.filter(e => e.faction === faction).forEach(e => {
+        // Owned blueprints are excluded — no reason to grind for something you already have.
+        catalog.filter(e => e.faction === faction && !isOwnedBp(e.bpKey)).forEach(e => {
             if (!byBp[e.bpKey]) byBp[e.bpKey] = { key: e.bpKey, name: e.displayName, category: e.category, missions: [] };
             byBp[e.bpKey].missions.push(...e.missions);
         });
@@ -2370,10 +2908,12 @@
         const catalog = buildPlannerCatalog();
         const byFaction = {};
         catalog.forEach(e => {
+            if (isOwnedBp(e.bpKey)) return; // owned blueprints don't count as grind targets
             if (!byFaction[e.faction]) byFaction[e.faction] = new Set();
             byFaction[e.faction].add(e.bpKey);
         });
         const factions = Object.entries(byFaction)
+            .filter(([, s]) => s.size > 0)
             .map(([f, s]) => ({ faction: f, count: s.size }))
             .sort((a, b) => b.count - a.count || a.faction.localeCompare(b.faction));
 
