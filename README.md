@@ -12,8 +12,11 @@ Never lose track of what you've already unlocked. Check off blueprints as you ea
 
 🔗 INTEL LINKS
 Direct Tool: https://quattrobaje3na-png.github.io/Star-Citizen-Blueprint-Finder-Mission-Contract-Rewards-Guide/
+
 Website Hub: https://citizen-starter-guide.com/
+
 GitHub Repo: https://github.com/quattrobaje3na-png/Star-Citizen-Blueprint-Finder-Mission-Contract-Rewards-Guide
+
 YouTube: https://youtube.com/@CMDRQuattro
 
 ⚖️ DISCLAIMERS & LEGAL
