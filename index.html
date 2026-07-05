@@ -1833,6 +1833,15 @@
         const status = document.getElementById('statusIndicator');
         status.style.color = 'var(--success)';
         status.textContent = `Database Loaded! ${wCount} weapons, ${aCount} ammo, ${sCount} armor sets, ${fsCount} flight suits, ${swCount} ship weapons, ${cCount} components.`;
+
+        // DOM for all .search-target cards was just rebuilt (innerHTML) — refresh the
+        // cached search metadata so applySearchFilter never has to re-query/re-read it.
+        rebuildSearchTargetCache();
+
+        // Re-apply whatever search query is currently active so filtering state
+        // survives a re-render (e.g. after toggling an owned blueprint).
+        const activeQuery = document.getElementById('searchInput') ? document.getElementById('searchInput').value : '';
+        if (activeQuery) applySearchFilter(activeQuery);
     }
 
     function renderWeapons() {
@@ -2646,32 +2655,54 @@
         applySearchFilter(value);
     }
 
+    // Cache of search-target metadata, rebuilt once per render() instead of being
+    // re-read from the live DOM on every keystroke. Reading textContent + running
+    // querySelector/querySelectorAll across ~1500 cards on every 'input' event was
+    // the main cause of long (200ms+) input handling and poor INP.
+    let searchTargetCache = null;
+
+    function rebuildSearchTargetCache() {
+        searchTargetCache = Array.prototype.map.call(document.querySelectorAll('.search-target'), el => {
+            const nameEl = el.querySelector('.search-text');
+            const tagEl  = el.querySelector('.tag');
+            const factions = Array.prototype.map.call(
+                el.querySelectorAll('.mission-faction-tag'),
+                t => t.textContent.toLowerCase()
+            );
+            return {
+                el,
+                name: nameEl ? nameEl.textContent.toLowerCase() : '',
+                tag: tagEl ? tagEl.textContent.toLowerCase() : '',
+                factions,
+                hasPartial: el.querySelector('.mission-partial-badge') !== null
+            };
+        });
+    }
+
     function applySearchFilter(query) {
         const q = query.toLowerCase().trim();
 
+        if (!searchTargetCache) rebuildSearchTargetCache();
+
         // If no query — show all, respecting active tab
         if (!q) {
-            document.querySelectorAll('.search-target').forEach(el => el.style.display = '');
+            searchTargetCache.forEach(entry => entry.el.style.display = '');
             return;
         }
 
         // Special keyword: 'partial' — show only cards that have at least one partial completion mission
         const isPartialSearch = q === 'partial' || q === 'partial completion' || q === 'partial complete';
 
-        document.querySelectorAll('.search-target').forEach(el => {
+        // Single read-free pass (all data comes from the cache), then batched writes —
+        // avoids the read/write layout-thrashing pattern of querying+writing per element.
+        searchTargetCache.forEach(entry => {
+            let match;
             if (isPartialSearch) {
-                const hasPartial = el.querySelector('.mission-partial-badge') !== null;
-                el.style.display = hasPartial ? '' : 'none';
-                return;
+                match = entry.hasPartial;
+            } else {
+                match = entry.name.includes(q) || entry.tag.includes(q) || entry.factions.some(f => f.includes(q));
             }
-            // Match against item name (search-text), subtype tag, and faction from mission data
-            const nameEl  = el.querySelector('.search-text');
-            const tagEl   = el.querySelector('.tag');
-            const factions = [...el.querySelectorAll('.mission-faction-tag')].map(t => t.textContent.toLowerCase());
-            const name    = nameEl ? nameEl.textContent.toLowerCase() : '';
-            const tag     = tagEl  ? tagEl.textContent.toLowerCase()  : '';
-            const match   = name.includes(q) || tag.includes(q) || factions.some(f => f.includes(q));
-            el.style.display = match ? '' : 'none';
+            entry.el.style.display = match ? '' : 'none';
         });
     }
 
