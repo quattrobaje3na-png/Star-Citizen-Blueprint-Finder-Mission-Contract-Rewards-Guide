@@ -98717,518 +98717,586 @@
    ]
   },
   {
-   "name": "H4-PBF Ammo Carrier",
+   "name": "Strata Helmet Levski Edition",
    "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_superheavy_backpack_01_01_01",
-   "craftTime": 210,
-   "materials": [
+   "subtype": "miner",
+   "missions": [
     {
-     "resource": "Titanium",
-     "quantity": 0.04,
-     "minQuality": 0
+     "type": "career",
+     "title": "Ore Deposit Needs Scanning",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Full Area Scan for Ore",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Scan And Mining Needed",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Ore Needs Gathering",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Crew Hasn’t Checked In",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Mining Team",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Data Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
     }
-   ]
-  },
-  {
-   "name": "BUL-H4 Helmet",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
+   ],
    "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_superheavy_helmet_01_01_01",
-   "craftTime": 210,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.04,
-     "minQuality": 0
-    },
-    {
-     "resource": "Titanium",
-     "quantity": 0.04,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "BUL-H4 Armor",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_superheavy_suit_01_01_01",
-   "craftTime": 210,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.08,
-     "minQuality": 0
-    },
-    {
-     "resource": "Titanium",
-     "quantity": 0.08,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.04,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "ADP-mk4 Arms SecondWind",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_heavy_arms_01_02_02",
-   "craftTime": 240,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.06,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "ADP-mk4 Core SecondWind",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_heavy_core_01_02_02",
-   "craftTime": 240,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.07,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "ADP-mk4 Legs SecondWind",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_heavy_legs_01_02_02",
-   "craftTime": 240,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.06,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "FBL-8a Arms SecondWind",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_light_arms_02_02_01",
-   "craftTime": 120,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.03,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "FBL-8a Core SecondWind",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_light_core_02_02_01",
-   "craftTime": 120,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.03,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "FBL-8a Helmet SecondWind",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_light_helmet_02_02_01",
-   "craftTime": 120,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.01,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "FBL-8a Legs SecondWind",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_light_legs_02_02_01",
-   "craftTime": 120,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.03,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "CBH-3 Helmet Aqua",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_legacy_armor_light_helmet_01_01_17",
-   "craftTime": 130,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.01,
-     "minQuality": 0
-    },
-    {
-     "resource": "Agricium",
-     "quantity": 0.02,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "ORC-mkX Arms SecondWind",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_medium_arms_01_02_01",
-   "craftTime": 190,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.04,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Tungsten",
-     "quantity": 0.04,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "ORC-mkX Core SecondWind",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_medium_core_01_02_01",
-   "craftTime": 190,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.05,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Tungsten",
-     "quantity": 0.05,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "ORC-mkX Legs SecondWind",
-   "type": "armor",
-   "subtype": "combat",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_cds_combat_medium_legs_01_02_01",
-   "craftTime": 190,
-   "materials": [
-    {
-     "resource": "Ouratite",
-     "quantity": 0.04,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Tungsten",
-     "quantity": 0.04,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "Artimex Arms Chairman's Club",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_qrt_specialist_medium_arms_01_01_04",
+   "blueprint": "BP_CRAFT_fta_medium_helmet_01_15_16",
    "craftTime": 200,
    "materials": [
     {
-     "resource": "Taranite",
-     "quantity": 0.04,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Lindinium",
-     "quantity": 0.04,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "Artimex Core Chairman's Club",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_qrt_specialist_medium_core_01_01_04",
-   "craftTime": 200,
-   "materials": [
-    {
-     "resource": "Taranite",
-     "quantity": 0.05,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
-     "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Lindinium",
-     "quantity": 0.05,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "Artimex Helmet Chairman's Club",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_qrt_specialist_medium_helmet_01_01_04",
-   "craftTime": 200,
-   "materials": [
-    {
-     "resource": "Taranite",
+     "resource": "Corundum",
      "quantity": 0.03,
      "minQuality": 0
     },
     {
      "resource": "Aslarite",
-     "quantity": 0.01,
-     "minQuality": 0
-    },
-    {
-     "resource": "Lindinium",
-     "quantity": 0.03,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "Artimex Legs Chairman's Club",
-   "type": "armor",
-   "subtype": "stealth",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_qrt_specialist_medium_legs_01_01_04",
-   "craftTime": 200,
-   "materials": [
-    {
-     "resource": "Taranite",
-     "quantity": 0.04,
-     "minQuality": 0
-    },
-    {
-     "resource": "Aslarite",
      "quantity": 0.02,
      "minQuality": 0
     },
-    {
-     "resource": "Lindinium",
-     "quantity": 0.04,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "Vendetta HMG",
-   "type": "weapon",
-   "subtype": "ballistic",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_apar_hmg_ballistic_01",
-   "craftTime": 345,
-   "materials": [
     {
      "resource": "Riccite",
-     "quantity": 0.15,
-     "minQuality": 0
-    },
-    {
-     "resource": "Tungsten",
-     "quantity": 0.08,
+     "quantity": 0.03,
      "minQuality": 0
     }
    ]
   },
   {
-   "name": "Vendetta \"Snow Camo\" HMG",
-   "type": "weapon",
-   "subtype": "ballistic",
-   "missions": [],
+   "name": "Strata Arms Levski Edition",
+   "type": "armor",
+   "subtype": "salvager",
+   "missions": [
+    {
+     "type": "career",
+     "title": "Ore Deposit Needs Scanning",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Full Area Scan for Ore",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Scan And Mining Needed",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Ore Needs Gathering",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Crew Hasn’t Checked In",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Mining Team",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Data Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
    "craftable": true,
-   "blueprint": "BP_CRAFT_apar_hmg_ballistic_01_collector01",
-   "craftTime": 345,
+   "blueprint": "BP_CRAFT_grin_utility_medium_arms_03_05_16",
+   "craftTime": 200,
    "materials": [
     {
-     "resource": "Riccite",
-     "quantity": 0.15,
+     "resource": "Corundum",
+     "quantity": 0.04,
      "minQuality": 0
     },
     {
-     "resource": "Tungsten",
-     "quantity": 0.08,
+     "resource": "Aslarite",
+     "quantity": 0.02,
+     "minQuality": 0
+    },
+    {
+     "resource": "Riccite",
+     "quantity": 0.04,
      "minQuality": 0
     }
    ]
   },
   {
-   "name": "S-38 \"SecondWind\" Pistol",
-   "type": "ammo",
-   "subtype": "ballistic",
-   "missions": [],
+   "name": "Strata Backpack Levski Edition",
+   "type": "armor",
+   "subtype": "salvager",
+   "missions": [
+    {
+     "type": "career",
+     "title": "Ore Deposit Needs Scanning",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Full Area Scan for Ore",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Scan And Mining Needed",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Ore Needs Gathering",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Crew Hasn’t Checked In",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Mining Team",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Data Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
    "craftable": true,
-   "blueprint": "BP_CRAFT_behr_pistol_ballistic_01_mr01",
+   "blueprint": "BP_CRAFT_grin_utility_medium_backpack_03_05_16",
    "craftTime": 90,
    "materials": [
     {
-     "resource": "Aluminum",
+     "resource": "Corundum",
+     "quantity": 0.04,
+     "minQuality": 0
+    },
+    {
+     "resource": "Aslarite",
      "quantity": 0.02,
-     "minQuality": 0
-    },
-    {
-     "resource": "Hephaestanite",
-     "quantity": 0.01,
-     "minQuality": 0
-    },
-    {
-     "resource": "Iron",
-     "quantity": 0.01,
      "minQuality": 0
     }
    ]
   },
   {
-   "name": "P4-AR \"SecondWind\" Rifle",
-   "type": "ammo",
-   "subtype": "ballistic",
-   "missions": [],
+   "name": "Strata Core Levski Edition",
+   "type": "armor",
+   "subtype": "salvager",
+   "missions": [
+    {
+     "type": "career",
+     "title": "Ore Deposit Needs Scanning",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Full Area Scan for Ore",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Scan And Mining Needed",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Ore Needs Gathering",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Crew Hasn’t Checked In",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Mining Team",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Data Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
    "craftable": true,
-   "blueprint": "BP_CRAFT_behr_rifle_ballistic_01_mr01",
-   "craftTime": 150,
+   "blueprint": "BP_CRAFT_grin_utility_medium_core_03_05_16",
+   "craftTime": 200,
    "materials": [
     {
-     "resource": "Aluminum",
+     "resource": "Corundum",
+     "quantity": 0.05,
+     "minQuality": 0
+    },
+    {
+     "resource": "Aslarite",
+     "quantity": 0.02,
+     "minQuality": 0
+    },
+    {
+     "resource": "Riccite",
+     "quantity": 0.05,
+     "minQuality": 0
+    }
+   ]
+  },
+  {
+   "name": "Strata Legs Levski Edition",
+   "type": "armor",
+   "subtype": "salvager",
+   "missions": [
+    {
+     "type": "career",
+     "title": "Ore Deposit Needs Scanning",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Full Area Scan for Ore",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Scan And Mining Needed",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Ore Needs Gathering",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Crew Hasn’t Checked In",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Mining Team",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Data Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2400,
+     "repStanding": "Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
+   "craftable": true,
+   "blueprint": "BP_CRAFT_grin_utility_medium_legs_03_05_16",
+   "craftTime": 200,
+   "materials": [
+    {
+     "resource": "Corundum",
      "quantity": 0.04,
      "minQuality": 0
     },
     {
-     "resource": "Hephaestanite",
+     "resource": "Aslarite",
      "quantity": 0.02,
      "minQuality": 0
     },
     {
-     "resource": "Iron",
-     "quantity": 0.02,
+     "resource": "Riccite",
+     "quantity": 0.04,
      "minQuality": 0
     }
    ]
@@ -99237,7 +99305,21 @@
    "name": "CQ7 Rifle",
    "type": "weapon",
    "subtype": "rifle",
-   "missions": [],
+   "missions": [
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval Very Dangerous",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
    "craftable": true,
    "blueprint": "BP_CRAFT_behr_rifle_ballistic_03",
    "craftTime": 150,
@@ -99260,52 +99342,167 @@
    ]
   },
   {
-   "name": "Lumin V \"SecondWind\" SMG",
-   "type": "ammo",
-   "subtype": "laser",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_klwe_smg_energy_01_mr01",
-   "craftTime": 120,
-   "materials": [
-    {
-     "resource": "Riccite",
-     "quantity": 0.03,
-     "minQuality": 0
-    },
-    {
-     "resource": "Copper",
-     "quantity": 0.01,
-     "minQuality": 0
-    }
-   ]
-  },
-  {
-   "name": "Metamaterial Test #152",
-   "type": "unknown",
-   "subtype": "unknown",
-   "missions": [],
-   "craftable": true,
-   "blueprint": "BP_CRAFT_Carryable_2H_SQ_CollectorMaterial_002",
-   "craftTime": 10,
-   "materials": [
-    {
-     "resource": "Stileron",
-     "quantity": 0.5,
-     "minQuality": 700
-    },
-    {
-     "resource": "Ouratite",
-     "quantity": 0.3,
-     "minQuality": 800
-    }
-   ]
-  },
-  {
    "name": "CF-117 Bulldog \"Hazard-Zone\" Repeater",
    "type": "weapon",
    "subtype": "laser",
-   "missions": [],
+   "missions": [
+    {
+     "type": "career",
+     "title": "Large Deposit Of Ore To Confirm",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "High Priority Ore Scan",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Efficient Miners Wanted",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Mining and Data Collection",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Persons",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Movements",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Small",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Mid",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Large",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval w/Danger",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval Very Dangerous",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
    "craftable": true,
    "blueprint": "BP_CRAFT_KLWE_LaserRepeater_S1_mr01",
    "craftTime": 540,
@@ -99326,7 +99523,164 @@
    "name": "CF-227 Badger \"Hazard-Zone\" Repeater",
    "type": "weapon",
    "subtype": "laser",
-   "missions": [],
+   "missions": [
+    {
+     "type": "career",
+     "title": "Large Deposit Of Ore To Confirm",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "High Priority Ore Scan",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Efficient Miners Wanted",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Mining and Data Collection",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Persons",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Movements",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Small",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Mid",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Large",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval w/Danger",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval Very Dangerous",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
    "craftable": true,
    "blueprint": "BP_CRAFT_KLWE_LaserRepeater_S2_mr01",
    "craftTime": 960,
@@ -99347,7 +99701,164 @@
    "name": "CF-337 Panther \"Hazard-Zone\" Repeater",
    "type": "weapon",
    "subtype": "laser",
-   "missions": [],
+   "missions": [
+    {
+     "type": "career",
+     "title": "Large Deposit Of Ore To Confirm",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "High Priority Ore Scan",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Efficient Miners Wanted",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Mining and Data Collection",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Missing Persons",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Moraine Movements",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Small",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Mid",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Salvage Job: Large",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval w/Danger",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    },
+    {
+     "type": "career",
+     "title": "Blackbox Retrieval Very Dangerous",
+     "lawful": true,
+     "faction": "Recco Battaglia",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 6000,
+     "repStanding": "Trusted Associate",
+     "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07"
+    }
+   ],
    "craftable": true,
    "blueprint": "BP_CRAFT_KLWE_LaserRepeater_S3_mr01",
    "craftTime": 1680,
