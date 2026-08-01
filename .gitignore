@@ -1,2 +1,4 @@
 ﻿i18n/dist/
 i18n/dist-wp/
+__pycache__/
+*.pyc
