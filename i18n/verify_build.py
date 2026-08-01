@@ -137,9 +137,19 @@ def check_dictionary(out_dir: Path, lang: str, f: Failures) -> None:
     if noop:
         # Not fatal on its own for de/fr (many proper nouns legitimately match),
         # but for CJK targets an identical value means nothing was translated.
-        if lang in ("ja", "zh") and len(noop) > 0:
-            f.add(f"[{lang}] {len(noop)} entries map a string to itself, e.g. "
-                  f"{noop[0]!r} -- for a CJK target this is a silent no-op")
+        # What this is actually for: catching an engine that returned its input
+        # unchanged for everything, i.e. silently did nothing. Written first as
+        # "any self-mapping is fatal", which was wrong and failed a good build:
+        # model codes and proper nouns (V880, SNSR5, PIN, HEX) legitimately stay
+        # identical in Japanese and Chinese, and Google leaving them alone is
+        # correct behaviour. Only a high PROPORTION indicates a real no-op.
+        if lang in ("ja", "zh") and dictionary:
+            ratio = len(noop) / len(dictionary)
+            if len(noop) >= 50 and ratio > 0.40:
+                f.add(f"[{lang}] {len(noop)}/{len(dictionary)} entries "
+                      f"({ratio:.0%}) map a string to itself -- that is too many "
+                      f"to be proper nouns; the engine likely returned its input "
+                      f"unchanged. e.g. {noop[0]!r}")
 
     for i, p in enumerate(patterns):
         try:
