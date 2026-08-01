@@ -143,7 +143,7 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
 
     dictionary: dict[str, str] = {}
     stats = {"tm": 0, "ui": 0, "loc_map": 0, "glossary": 0, "review": 0,
-             "keep": 0, "engine": 0, "untranslated": 0}
+             "keep": 0, "pattern": 0, "engine": 0, "untranslated": 0}
 
     # --- UI chrome (always included; it is not part of `needed`) ------------
     for en, langs in ui.get("exact", {}).items():
@@ -180,6 +180,20 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
             stats["review"] += 1
         else:
             unresolved.append(s)
+
+    # Anything a runtime pattern already handles must NEVER reach the engine.
+    # Two reasons, both real:
+    #  1. Patterns are deterministic and preserve proper nouns. Google would
+    #     translate "Monde Core Daimyo" or "Strata Helmet Shire" as prose and
+    #     mangle set/variant names it has no way to recognise.
+    #  2. Engine output is written to the translation memory, which is consulted
+    #     FIRST on every later build, and the runtime prefers dictionary entries
+    #     over patterns. So a bad engine translation would permanently shadow
+    #     the correct pattern -- baked in, not just wrong once.
+    compiled = [re.compile(p["regex"]) for p in patterns]
+    covered = [s for s in unresolved if any(rx.match(s) for rx in compiled)]
+    unresolved = [s for s in unresolved if not any(rx.match(s) for rx in compiled)]
+    stats["pattern"] = len(covered)
 
     if unresolved and api_key:
         print(f"  translating {len(unresolved)} remaining strings via engine...")
@@ -254,7 +268,7 @@ def main() -> int:
         s = r["stats"]
         print(f"  dictionary: {r['dict_size']:,} entries, {r['patterns']} patterns")
         print(f"  sources: ui={s['ui']} tm={s['tm']} loc_map={s['loc_map']} "
-              f"glossary={s['glossary']} review={s['review']} "
+              f"glossary={s['glossary']} review={s['review']} pattern={s['pattern']} "
               f"keep(English)={s['keep']} engine={s['engine']}")
         if s["untranslated"]:
             print(f"  !! {s['untranslated']:,} strings left in English "

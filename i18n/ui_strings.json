@@ -530,6 +530,262 @@
    "fr": "PARTIEL $1",
    "ja": "部分達成 $1",
    "zh": "部分完成 $1"
+  },
+  {
+   "_comment": "'<name> Magazine (N cap)' -- N stays numeric.",
+   "regex": "^(.+?) Magazine \\((\\d+) [Cc]ap\\)$",
+   "de": "$1 Magazin ($2 Schuss)",
+   "fr": "$1 Chargeur ($2 cart.)",
+   "ja": "$1 マガジン ($2 発)",
+   "zh": "$1 弹匣 ($2 发)"
+  },
+  {
+   "_comment": "'<name> Battery (N cap)' -- N stays numeric.",
+   "regex": "^(.+?) Battery \\((\\d+) [Cc]ap\\)$",
+   "de": "$1 Batterie ($2 Schuss)",
+   "fr": "$1 Batterie ($2 cart.)",
+   "ja": "$1 バッテリー ($2 発)",
+   "zh": "$1 电池 ($2 发)"
+  },
+  {
+   "_comment": "'<proper name> Energy Assault Rifle' + optional variant. Name never translated.",
+   "regex": "^(.+?) Energy Assault Rifle(| .+)$",
+   "de": "$1 Energie-Sturmgewehr$2",
+   "fr": "$1 Fusil d'assaut à énergie$2",
+   "ja": "$1 エネルギーアサルトライフル$2",
+   "zh": "$1 能量突击步枪$2"
+  },
+  {
+   "_comment": "'<proper name> Laser Sniper Rifle' + optional variant. Name never translated.",
+   "regex": "^(.+?) Laser Sniper Rifle(| .+)$",
+   "de": "$1 Laser-Scharfschützengewehr$2",
+   "fr": "$1 Fusil de précision laser$2",
+   "ja": "$1 レーザースナイパーライフル$2",
+   "zh": "$1 激光狙击步枪$2"
+  },
+  {
+   "_comment": "'<proper name> Mass Driver Cannon' + optional variant. Name never translated.",
+   "regex": "^(.+?) Mass Driver Cannon(| .+)$",
+   "de": "$1 Massebeschleuniger-Kanone$2",
+   "fr": "$1 Canon à accélération de masse$2",
+   "ja": "$1 マスドライバーキャノン$2",
+   "zh": "$1 质量加速炮$2"
+  },
+  {
+   "_comment": "'<proper name> Scraper Module' + optional variant. Name never translated.",
+   "regex": "^(.+?) Scraper Module(| .+)$",
+   "de": "$1 Schabermodul$2",
+   "fr": "$1 Module de grattage$2",
+   "ja": "$1 スクレイパーモジュール$2",
+   "zh": "$1 刮削模块$2"
+  },
+  {
+   "_comment": "'<proper name> Assault Rifle' + optional variant. Name never translated.",
+   "regex": "^(.+?) Assault Rifle(| .+)$",
+   "de": "$1 Sturmgewehr$2",
+   "fr": "$1 Fusil d'assaut$2",
+   "ja": "$1 アサルトライフル$2",
+   "zh": "$1 突击步枪$2"
+  },
+  {
+   "_comment": "'<proper name> Laser Shotgun' + optional variant. Name never translated.",
+   "regex": "^(.+?) Laser Shotgun(| .+)$",
+   "de": "$1 Laser-Schrotflinte$2",
+   "fr": "$1 Fusil à pompe laser$2",
+   "ja": "$1 レーザーショットガン$2",
+   "zh": "$1 激光霰弹枪$2"
+  },
+  {
+   "_comment": "'<proper name> Sniper Rifle' + optional variant. Name never translated.",
+   "regex": "^(.+?) Sniper Rifle(| .+)$",
+   "de": "$1 Scharfschützengewehr$2",
+   "fr": "$1 Fusil de précision$2",
+   "ja": "$1 スナイパーライフル$2",
+   "zh": "$1 狙击步枪$2"
+  },
+  {
+   "_comment": "'<proper name> Twin Shotgun' + optional variant. Name never translated.",
+   "regex": "^(.+?) Twin Shotgun(| .+)$",
+   "de": "$1 Doppelschrotflinte$2",
+   "fr": "$1 Fusil à pompe double$2",
+   "ja": "$1 ツインショットガン$2",
+   "zh": "$1 双管霰弹枪$2"
+  },
+  {
+   "_comment": "'<proper name> Tractor Beam' + optional variant. Name never translated.",
+   "regex": "^(.+?) Tractor Beam(| .+)$",
+   "de": "$1 Traktorstrahl$2",
+   "fr": "$1 Rayon tracteur$2",
+   "ja": "$1 トラクタービーム$2",
+   "zh": "$1 牵引光束$2"
+  },
+  {
+   "_comment": "'<proper name> Mining Laser' + optional variant. Name never translated.",
+   "regex": "^(.+?) Mining Laser(| .+)$",
+   "de": "$1 Bergbaulaser$2",
+   "fr": "$1 Laser d'extraction$2",
+   "ja": "$1 採掘レーザー$2",
+   "zh": "$1 采矿激光$2"
+  },
+  {
+   "_comment": "'<proper name> Energy SMG' + optional variant. Name never translated.",
+   "regex": "^(.+?) Energy SMG(| .+)$",
+   "de": "$1 Energie-SMG$2",
+   "fr": "$1 SMG à énergie$2",
+   "ja": "$1 エネルギーSMG$2",
+   "zh": "$1 能量冲锋枪$2"
+  },
+  {
+   "_comment": "'<proper name> Energy LMG' + optional variant. Name never translated.",
+   "regex": "^(.+?) Energy LMG(| .+)$",
+   "de": "$1 Energie-LMG$2",
+   "fr": "$1 LMG à énergie$2",
+   "ja": "$1 エネルギー軽機関銃$2",
+   "zh": "$1 能量轻机枪$2"
+  },
+  {
+   "_comment": "'<proper name> Scattergun' + optional variant. Name never translated.",
+   "regex": "^(.+?) Scattergun(| .+)$",
+   "de": "$1 Streuwaffe$2",
+   "fr": "$1 Fusil à dispersion$2",
+   "ja": "$1 スキャッターガン$2",
+   "zh": "$1 散射枪$2"
+  },
+  {
+   "_comment": "'<proper name> Crossbow' + optional variant. Name never translated.",
+   "regex": "^(.+?) Crossbow(| .+)$",
+   "de": "$1 Armbrust$2",
+   "fr": "$1 Arbalète$2",
+   "ja": "$1 クロスボウ$2",
+   "zh": "$1 弩$2"
+  },
+  {
+   "_comment": "'<proper name> Repeater' + optional variant. Name never translated.",
+   "regex": "^(.+?) Repeater(| .+)$",
+   "de": "$1 Repetierer$2",
+   "fr": "$1 Répéteur$2",
+   "ja": "$1 リピーター$2",
+   "zh": "$1 连发炮$2"
+  },
+  {
+   "_comment": "'<proper name> Shotgun' + optional variant. Name never translated.",
+   "regex": "^(.+?) Shotgun(| .+)$",
+   "de": "$1 Schrotflinte$2",
+   "fr": "$1 Fusil à pompe$2",
+   "ja": "$1 ショットガン$2",
+   "zh": "$1 霰弹枪$2"
+  },
+  {
+   "_comment": "'<proper name> Gatling' + optional variant. Name never translated.",
+   "regex": "^(.+?) Gatling(| .+)$",
+   "de": "$1 Gatling$2",
+   "fr": "$1 Gatling$2",
+   "ja": "$1 ガトリング$2",
+   "zh": "$1 加特林$2"
+  },
+  {
+   "_comment": "'<proper name> Cannon' + optional variant. Name never translated.",
+   "regex": "^(.+?) Cannon(| .+)$",
+   "de": "$1 Kanone$2",
+   "fr": "$1 Canon$2",
+   "ja": "$1 キャノン$2",
+   "zh": "$1 加农炮$2"
+  },
+  {
+   "_comment": "'<proper name> Pistol' + optional variant. Name never translated.",
+   "regex": "^(.+?) Pistol(| .+)$",
+   "de": "$1 Pistole$2",
+   "fr": "$1 Pistolet$2",
+   "ja": "$1 ピストル$2",
+   "zh": "$1 手枪$2"
+  },
+  {
+   "_comment": "'<proper name> Rifle' + optional variant. Name never translated.",
+   "regex": "^(.+?) Rifle(| .+)$",
+   "de": "$1 Gewehr$2",
+   "fr": "$1 Fusil$2",
+   "ja": "$1 ライフル$2",
+   "zh": "$1 步枪$2"
+  },
+  {
+   "_comment": "'<proper name> SMG' + optional variant. Name never translated.",
+   "regex": "^(.+?) SMG(| .+)$",
+   "de": "$1 SMG$2",
+   "fr": "$1 SMG$2",
+   "ja": "$1 サブマシンガン$2",
+   "zh": "$1 冲锋枪$2"
+  },
+  {
+   "_comment": "'<proper name> LMG' + optional variant. Name never translated.",
+   "regex": "^(.+?) LMG(| .+)$",
+   "de": "$1 LMG$2",
+   "fr": "$1 LMG$2",
+   "ja": "$1 軽機関銃$2",
+   "zh": "$1 轻机枪$2"
+  },
+  {
+   "_comment": "'<set name> Flight Helmet [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Flight Helmet(| .+)$",
+   "de": "$1 Flughelm$2",
+   "fr": "$1 Casque de vol$2",
+   "ja": "$1 フライトヘルメット$2",
+   "zh": "$1 飞行头盔$2"
+  },
+  {
+   "_comment": "'<set name> Flight Suit [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Flight Suit(| .+)$",
+   "de": "$1 Fluganzug$2",
+   "fr": "$1 Combinaison de vol$2",
+   "ja": "$1 フライトスーツ$2",
+   "zh": "$1 飞行服$2"
+  },
+  {
+   "_comment": "'<set name> Undersuit [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Undersuit(| .+)$",
+   "de": "$1 Unteranzug$2",
+   "fr": "$1 Sous-combinaison$2",
+   "ja": "$1 アンダースーツ$2",
+   "zh": "$1 内衬服$2"
+  },
+  {
+   "_comment": "'<set name> Backpack [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Backpack(| .+)$",
+   "de": "$1 Rucksack$2",
+   "fr": "$1 Sac à dos$2",
+   "ja": "$1 バックパック$2",
+   "zh": "$1 背包$2"
+  },
+  {
+   "_comment": "'<set name> Helmet [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Helmet(| .+)$",
+   "de": "$1 Helm$2",
+   "fr": "$1 Casque$2",
+   "ja": "$1 ヘルメット$2",
+   "zh": "$1 头盔$2"
+  },
+  {
+   "_comment": "'<set name> Core [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Core(| .+)$",
+   "de": "$1 Torso$2",
+   "fr": "$1 Torse$2",
+   "ja": "$1 コア$2",
+   "zh": "$1 核心$2"
+  },
+  {
+   "_comment": "'<set name> Arms [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Arms(| .+)$",
+   "de": "$1 Arme$2",
+   "fr": "$1 Bras$2",
+   "ja": "$1 アーム$2",
+   "zh": "$1 臂甲$2"
+  },
+  {
+   "_comment": "'<set name> Legs [variant]'. Set and variant are proper nouns.",
+   "regex": "^(.+?) Legs(| .+)$",
+   "de": "$1 Beine$2",
+   "fr": "$1 Jambes$2",
+   "ja": "$1 レッグ$2",
+   "zh": "$1 腿甲$2"
   }
  ]
 }

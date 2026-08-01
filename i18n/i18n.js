@@ -34,15 +34,29 @@
 
   if (Object.keys(DICT).length === 0 && PATTERNS.length === 0) return;
 
-  function applyPatterns(core) {
+  function applyPatterns(core, depth) {
+    depth = depth || 0;
     for (var i = 0; i < PATTERNS.length; i++) {
       var m = PATTERNS[i].re.exec(core);
       if (!m) continue;
-      // Substitute $1..$9 from the captures. Captures are carried across
-      // verbatim, so numbers and data names are never altered.
       return PATTERNS[i].out.replace(/\$(\d)/g, function (_, d) {
         var v = m[Number(d)];
-        return v === undefined ? "" : v;
+        if (v === undefined) return "";
+        // Resolve the capture itself, so a nested phrase such as
+        // "Antium Helmet Jet Obtained From:" translates the item name too
+        // rather than leaving it stranded in English. Depth-limited: patterns
+        // can match their own output shape and would otherwise recurse.
+        if (depth < 2) {
+          var t = v.trim();
+          if (t) {
+            var lead = v.slice(0, v.indexOf(t));
+            var tail = v.slice(v.indexOf(t) + t.length);
+            var sub = DICT[t];
+            if (sub === undefined) sub = applyPatterns(t, depth + 1);
+            if (sub !== undefined && sub !== null) return lead + sub + tail;
+          }
+        }
+        return v;
       });
     }
     return null;
