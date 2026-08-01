@@ -1,181 +1,155 @@
 {
- "_README": [
-  "HAND-AUTHORED supplement for terms CIG's own localization files do NOT cover.",
-  "These are community/meta terms that appear constantly in guide writing but",
-  "never appear as an in-game string, so build_glossary.py cannot find them.",
-  "",
-  "STATUS: authored, NOT verified against native-speaker community usage.",
-  "Everything here should be reviewed by someone who reads the German/French/",
-  "Japanese/Chinese SC communities before it is trusted. It is applied AFTER",
-  "the CIG glossary, so it never overrides an official CIG translation.",
-  "",
-  "'keep' means: leave this term in English in that language. For DE and FR",
-  "especially, the community routinely uses the English term verbatim, and",
-  "translating it makes the text read like a machine wrote it.",
-  "Faction/organisation names and data sentinels are in never_translate because the engine rendered them as common nouns (Headhunters -> Kopfgeldjaeger / 猎头 = a recruiter; United Wayfarers Club -> 联合劝募俱乐部 = the United Way charity). CIG's own glossary still wins over this list where it has an official term."
- ],
- "terms": {
-  "Trading": {
-   "de": "Handel",
-   "fr": "Commerce",
-   "ja": "交易",
-   "zh": "贸易"
+  "_README": [
+    "HAND-AUTHORED supplement for terms CIG's own localization files do NOT cover.",
+    "These are community/meta terms that appear constantly in guide writing but",
+    "never appear as an in-game string, so build_glossary.py cannot find them.",
+    "",
+    "STATUS: authored, NOT verified against native-speaker community usage.",
+    "Everything here should be reviewed by someone who reads the German/French/",
+    "Japanese/Chinese SC communities before it is trusted. It is applied AFTER",
+    "the CIG glossary, so it never overrides an official CIG translation.",
+    "",
+    "'keep' means: leave this term in English in that language. For DE and FR",
+    "especially, the community routinely uses the English term verbatim, and",
+    "translating it makes the text read like a machine wrote it."
+  ],
+  "terms": {
+    "Trading": {
+      "de": "Handel",
+      "fr": "Commerce",
+      "ja": "交易",
+      "zh": "贸易"
+    },
+    "Hauling": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "輸送",
+      "zh": "运输"
+    },
+    "Cargo Hauling": {
+      "de": "Frachttransport",
+      "fr": "Transport de fret",
+      "ja": "貨物輸送",
+      "zh": "货物运输"
+    },
+    "Refining": {
+      "de": "Raffinieren",
+      "fr": "Raffinage",
+      "ja": "精錬",
+      "zh": "精炼"
+    },
+    "Crimestat": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "keep",
+      "zh": "犯罪等级"
+    },
+    "Armistice Zone": {
+      "de": "Waffenstillstandszone",
+      "fr": "Zone d'armistice",
+      "ja": "休戦地帯",
+      "zh": "停战区"
+    },
+    "Landing Zone": {
+      "de": "Landezone",
+      "fr": "Zone d'atterrissage",
+      "ja": "ランディングゾーン",
+      "zh": "着陆区"
+    },
+    "Rest Stop": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "レストストップ",
+      "zh": "休息站"
+    },
+    "Verse": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "keep",
+      "zh": "宇宙"
+    },
+    "Persistent Universe": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "パーシステント・ユニバース",
+      "zh": "持久宇宙"
+    },
+    "Starter Ship": {
+      "de": "Einsteigerschiff",
+      "fr": "Vaisseau de début",
+      "ja": "スターターシップ",
+      "zh": "新手飞船"
+    },
+    "Game Package": {
+      "de": "Spielpaket",
+      "fr": "Pack de jeu",
+      "ja": "ゲームパッケージ",
+      "zh": "游戏包"
+    },
+    "Referral Code": {
+      "de": "Empfehlungscode",
+      "fr": "Code de parrainage",
+      "ja": "紹介コード",
+      "zh": "推荐码"
+    },
+    "Free Fly": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "フリーフライ",
+      "zh": "免费试玩"
+    },
+    "Server Meshing": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "keep",
+      "zh": "服务器网格化"
+    },
+    "Wipe": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "ワイプ",
+      "zh": "数据清档"
+    },
+    "Soft Death": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "ソフトデス",
+      "zh": "软性摧毁"
+    },
+    "Bed Log": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "ベッドログ",
+      "zh": "床铺登出"
+    },
+    "Daily Driver": {
+      "de": "keep",
+      "fr": "keep",
+      "ja": "keep",
+      "zh": "日常用船"
+    },
+    "Bounty Hunting": {
+      "de": "Kopfgeldjagd",
+      "fr": "Chasse aux primes",
+      "ja": "賞金稼ぎ",
+      "zh": "赏金猎杀"
+    }
   },
-  "Hauling": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "輸送",
-   "zh": "运输"
-  },
-  "Cargo Hauling": {
-   "de": "Frachttransport",
-   "fr": "Transport de fret",
-   "ja": "貨物輸送",
-   "zh": "货物运输"
-  },
-  "Refining": {
-   "de": "Raffinieren",
-   "fr": "Raffinage",
-   "ja": "精錬",
-   "zh": "精炼"
-  },
-  "Crimestat": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "keep",
-   "zh": "犯罪等级"
-  },
-  "Armistice Zone": {
-   "de": "Waffenstillstandszone",
-   "fr": "Zone d'armistice",
-   "ja": "休戦地帯",
-   "zh": "停战区"
-  },
-  "Landing Zone": {
-   "de": "Landezone",
-   "fr": "Zone d'atterrissage",
-   "ja": "ランディングゾーン",
-   "zh": "着陆区"
-  },
-  "Rest Stop": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "レストストップ",
-   "zh": "休息站"
-  },
-  "Verse": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "keep",
-   "zh": "宇宙"
-  },
-  "Persistent Universe": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "パーシステント・ユニバース",
-   "zh": "持久宇宙"
-  },
-  "Starter Ship": {
-   "de": "Einsteigerschiff",
-   "fr": "Vaisseau de début",
-   "ja": "スターターシップ",
-   "zh": "新手飞船"
-  },
-  "Game Package": {
-   "de": "Spielpaket",
-   "fr": "Pack de jeu",
-   "ja": "ゲームパッケージ",
-   "zh": "游戏包"
-  },
-  "Referral Code": {
-   "de": "Empfehlungscode",
-   "fr": "Code de parrainage",
-   "ja": "紹介コード",
-   "zh": "推荐码"
-  },
-  "Free Fly": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "フリーフライ",
-   "zh": "免费试玩"
-  },
-  "Server Meshing": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "keep",
-   "zh": "服务器网格化"
-  },
-  "Wipe": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "ワイプ",
-   "zh": "数据清档"
-  },
-  "Soft Death": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "ソフトデス",
-   "zh": "软性摧毁"
-  },
-  "Bed Log": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "ベッドログ",
-   "zh": "床铺登出"
-  },
-  "Daily Driver": {
-   "de": "keep",
-   "fr": "keep",
-   "ja": "keep",
-   "zh": "日常用船"
-  },
-  "Bounty Hunting": {
-   "de": "Kopfgeldjagd",
-   "fr": "Chasse aux primes",
-   "ja": "賞金稼ぎ",
-   "zh": "赏金猎杀"
-  }
- },
- "never_translate": [
-  "<= PLACEHOLDER =>",
-  "Adagio Holdings",
-  "Bit Zeros",
-  "Bounty Hunters Guild",
-  "CIG",
-  "Citizen Starter Guide",
-  "Citizens For Prosperity",
-  "Cloud Imperium Games",
-  "Covalex",
-  "Dead Saints",
-  "EPTU",
-  "Eckhart Security",
-  "FTL Courier",
-  "Foxwell Enforcement",
-  "Headhunters",
-  "Hockrow Agency",
-  "InterSec Defense Solutions",
-  "LIVE",
-  "Ling Family Hauling",
-  "Nine Tails",
-  "Northrock Service Group",
-  "PTU",
-  "RSI",
-  "Rayari Incorporated",
-  "Recco Battaglia",
-  "Roberts Space Industries",
-  "Shattered Blade",
-  "Shubin Interstellar",
-  "Squadron 42",
-  "Star Citizen",
-  "UEC",
-  "UEE",
-  "United Wayfarers Club",
-  "Vanduul",
-  "Vaughn",
-  "Wikelo Emporium",
-  "XenoThreat",
-  "aUEC",
-  "citizen-starter-guide.com",
-  "mobiGlas"
- ]
+  "never_translate": [
+    "Star Citizen",
+    "Squadron 42",
+    "Cloud Imperium Games",
+    "Roberts Space Industries",
+    "RSI",
+    "aUEC",
+    "UEC",
+    "UEE",
+    "CIG",
+    "PTU",
+    "EPTU",
+    "LIVE",
+    "mobiGlas",
+    "Citizen Starter Guide",
+    "citizen-starter-guide.com"
+  ]
 }

@@ -242,6 +242,26 @@
   "guid": "7804b7ee-fee4-4f45-9e50-9935472e7913",
   "class_name": "fps_consumable_keycard_rockcrack_securestorage"
  },
+ "Solanki Inverter Code": {
+  "loc_key": "item_Name_KeyCard_SOO_IFFI_1",
+  "guid": "8e5a3d02-909a-4bd6-870f-edad5e6abe1f",
+  "class_name": "fps_consumable_keycard_soo_iffi_1"
+ },
+ "Hartmore Inverter Code": {
+  "loc_key": "item_Name_KeyCard_SOO_IFFI_2",
+  "guid": "92e123fa-4a69-4e6b-9f44-d7dcad72a52b",
+  "class_name": "fps_consumable_keycard_soo_iffi_2"
+ },
+ "Cargo Barge Inverter Code": {
+  "loc_key": "item_Name_KeyCard_SOO_IFFI_3",
+  "guid": "2b84b3d5-3de1-48a1-81f9-be2fd93763ad",
+  "class_name": "fps_consumable_keycard_soo_iffi_3"
+ },
+ "Storage Container Access Card": {
+  "loc_key": "item_Name_KeyCard_SOO_WeaponCache",
+  "guid": "ab8fcfd0-5571-42a5-8408-9fe7f3bc56fa",
+  "class_name": "fps_consumable_keycard_soo_weaponcache"
+ },
  "Specimen Cache Access: Lazarus Complex": {
   "loc_key": "items_mission_argos_credentials_res_name",
   "guid": "1bf1a665-fbe7-441c-ba44-a00fa0711e23",
@@ -1050,6 +1070,46 @@
   "fr": "Stalwart",
   "zh": "威猛"
  },
+ "Vendetta HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01",
+  "guid": "e302c7ae-b850-412d-983e-36dbf04f98fe",
+  "class_name": "apar_hmg_ballistic_01"
+ },
+ "Vendetta \"Snow Camo\" HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_collector01",
+  "guid": "2445465a-d906-4e06-9a02-7eaead122bf7",
+  "class_name": "apar_hmg_ballistic_01_collector01"
+ },
+ "Vendetta \"Siegebreaker\" HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_mr01",
+  "guid": "8d77c07f-2f9d-426a-ab24-5d8e0fb1d2ca",
+  "class_name": "apar_hmg_ballistic_01_mr01"
+ },
+ "Vendetta \"Stronghold\" HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_mr02",
+  "guid": "565b47b7-9043-4e5d-89dd-936a5b7c1251",
+  "class_name": "apar_hmg_ballistic_01_mr02"
+ },
+ "Vendetta \"SteelTek\" HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_store01",
+  "guid": "a94b7e9b-0f4b-44d9-b5fc-b22fe4ea95bc",
+  "class_name": "apar_hmg_ballistic_01_store01"
+ },
+ "Vendetta \"Trencher\" HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_tint01",
+  "guid": "bfa503cd-cf8d-407c-abf5-0d89ceeae639",
+  "class_name": "apar_hmg_ballistic_01_tint01"
+ },
+ "Vendetta \"Darkstalker\" HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_tint02",
+  "guid": "3f79efad-4990-43ed-9906-4f52afc8db67",
+  "class_name": "apar_hmg_ballistic_01_tint02"
+ },
+ "Vendetta \"Brightstar\" HMG": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_tint03",
+  "guid": "4a0d9247-7bbb-44b6-ab3a-0a24ddb0b9ac",
+  "class_name": "apar_hmg_ballistic_01_tint03"
+ },
  "Scourge Railgun": {
   "loc_key": "item_Nameapar_special_ballistic_01",
   "guid": "699db405-4ca1-4993-ba58-a9f90001ae6b",
@@ -1213,6 +1273,11 @@
   "guid": "5c3e378d-69b1-47dd-86ef-4a154a9c84c2",
   "class_name": "behr_pistol_ballistic_01_mag"
  },
+ "S-38 \"SecondWind\" Pistol": {
+  "loc_key": "item_Namebehr_pistol_ballistic_01_mr01",
+  "guid": "c8c2e14b-5263-44f4-add3-bf70055976a3",
+  "class_name": "behr_pistol_ballistic_01_mag"
+ },
  "P4-AR Rifle": {
   "loc_key": "item_Namebehr_rifle_ballistic_01",
   "guid": "02d4cd2e-fa98-4086-aee1-6b2dfce8ea27",
@@ -1234,6 +1299,16 @@
   "de": "P4-AR-Gewehr (Kriegshetzer)",
   "fr": "Fusil d’assaut P4-AR (Warhawk)",
   "zh": "P4-AR步枪-战鹰迷彩"
+ },
+ "P4-AR \"SecondWind\" Rifle": {
+  "loc_key": "item_Namebehr_rifle_ballistic_01_mr01",
+  "guid": "62669187-1bcc-446f-881b-dd9ecd5f9704",
+  "class_name": "behr_rifle_ballistic_01_mag"
+ },
+ "P4-AR \"Star Kitten\" Rifle": {
+  "loc_key": "item_Namebehr_rifle_ballistic_01_sf01",
+  "guid": "5bafbf55-7706-4daf-8782-31e2684048cc",
+  "class_name": "behr_rifle_ballistic_01_mag"
  },
  "P4-AR \"Fortuna\" Rifle": {
   "loc_key": "item_Namebehr_rifle_ballistic_01_store01",
@@ -1285,6 +1360,31 @@
   "loc_key": "item_Namebehr_rifle_ballistic_02_civilian_store01",
   "guid": "b90d31fd-cefd-4731-a03a-eba1994d57db",
   "class_name": "behr_rifle_ballistic_02_mag_civilian"
+ },
+ "CQ7 Rifle": {
+  "loc_key": "item_Namebehr_rifle_ballistic_03",
+  "guid": "adb5c353-7685-461c-9c3c-32ad182430b1",
+  "class_name": "behr_rifle_ballistic_03_mag"
+ },
+ "CQ7 \"Goldsmith\" Rifle": {
+  "loc_key": "item_Namebehr_rifle_ballistic_03_store01",
+  "guid": "20a1903b-6e92-4909-8cd4-c448f0c5b504",
+  "class_name": "behr_rifle_ballistic_03_mag"
+ },
+ "CQ7 \"Blacklist\" Rifle": {
+  "loc_key": "item_Namebehr_rifle_ballistic_03_tint01",
+  "guid": "4207dfc1-099d-4942-8869-f1b67b5aedda",
+  "class_name": "behr_rifle_ballistic_03_mag"
+ },
+ "CQ7 \"Snowfire\" Rifle": {
+  "loc_key": "item_Namebehr_rifle_ballistic_03_tint02",
+  "guid": "8363b277-253a-4e48-9963-b088f4f75e96",
+  "class_name": "behr_rifle_ballistic_03_mag"
+ },
+ "CQ7 \"Infantry\" Rifle": {
+  "loc_key": "item_Namebehr_rifle_ballistic_03_tint03",
+  "guid": "6190ce62-3d9f-4844-9834-55edeb0017e2",
+  "class_name": "behr_rifle_ballistic_03_mag"
  },
  "BR-2 Shotgun": {
   "loc_key": "item_Namebehr_shotgun_ballistic_01",
@@ -2112,6 +2212,11 @@
  "Lumin V \"Valor\" SMG": {
   "loc_key": "item_Nameklwe_smg_energy_01_blue_gold_01",
   "guid": "e9b16168-3969-4865-a17b-e4f49f34a538",
+  "class_name": "klwe_smg_energy_01_mag"
+ },
+ "Lumin V \"SecondWind\" SMG": {
+  "loc_key": "item_Nameklwe_smg_energy_01_mr01",
+  "guid": "da14a7b1-daa4-4109-8684-54be0d13bb61",
   "class_name": "klwe_smg_energy_01_mag"
  },
  "Arrowhead Sniper Rifle": {
@@ -3114,6 +3219,11 @@
   "guid": "8df5d8a3-8052-4504-91ff-4a4c9d33218d",
   "class_name": "volt_sniper_energy_01_mag"
  },
+ "Vendetta HMG Magazine (1000 Cap)": {
+  "loc_key": "item_Nameapar_hmg_ballistic_01_mag",
+  "guid": "b601c979-1a7e-41a9-b4f4-7e74d954d186",
+  "class_name": "apar_hmg_ballistic_01_mag"
+ },
  "Scourge Railgun Magazine (5 cap)": {
   "loc_key": "item_Nameapar_special_ballistic_01_mag",
   "guid": "92f958c7-71c5-4997-a575-d6ea3a6e304b",
@@ -3174,6 +3284,11 @@
   "loc_key": "item_Namebehr_rifle_ballistic_02_civilian_mag",
   "guid": "dd21edb8-a0ba-42ab-a02a-bec325e96c87",
   "class_name": "behr_rifle_ballistic_02_mag_civilian"
+ },
+ "CQ7 Rifle Magazine (40 Cap)": {
+  "loc_key": "item_Namebehr_rifle_ballistic_03_mag",
+  "guid": "dbd68e25-d363-46ad-a924-be7337fd8305",
+  "class_name": "behr_rifle_ballistic_03_mag"
  },
  "BR-2 Shotgun Magazine (12 cap)": {
   "loc_key": "item_Namebehr_shotgun_ballistic_01_mag",
@@ -4681,10 +4796,55 @@
   "fr": "Blindage de Scout",
   "zh": "侦察飞船装甲"
  },
+ "Aegis Eclipse 20xS3 Bomb Rack": {
+  "loc_key": "item_NameAEGS_Eclipse_BombRack_S03",
+  "guid": "99835689-e405-4e03-9e1d-d460c1c377c7",
+  "class_name": "bmbrck_s03_aegs_eclipse"
+ },
+ "Aegis Retaliator 64xS3 Front Bomb Rack": {
+  "loc_key": "item_NameAEGS_Retaliator_BombRack_S03_Front",
+  "guid": "3c4d48e6-49dd-4b1a-b9fe-b10c9ced8f65",
+  "class_name": "bmbrck_s03_aegs_retaliator_front"
+ },
+ "Aegis Retaliator 48xS3 Rear Bomb Rack": {
+  "loc_key": "item_NameAEGS_Retaliator_BombRack_S03_Rear",
+  "guid": "005126e9-6067-4f05-9933-ad6a0cc28fd0",
+  "class_name": "bmbrck_s03_aegs_retaliator_rear"
+ },
+ "Anvil Gladiator S3 Bomb Rack": {
+  "loc_key": "item_NameANVL_Gladiator_BombRack_S3",
+  "guid": "a59e4b9a-66d1-43f2-bbb1-4eb50c9bf489",
+  "class_name": "bmbrck_s03_anvl_gladiator"
+ },
  "CST-313 \"Castillo\"": {
   "loc_key": "item_NameBEHR_BombRack_S3",
   "guid": "c9686715-884f-456a-afbe-054107c8c54a",
   "class_name": "bmbrck_s03_behr_single_s03"
+ },
+ "Aegis Eclipse 4xS5 Bomb Rack": {
+  "loc_key": "item_NameAEGS_Eclipse_BombRack_S05",
+  "guid": "e14daa17-8663-4e8f-8a5b-983b2530b1c6",
+  "class_name": "bmbrck_s05_aegs_eclipse"
+ },
+ "Aegis Retaliator 8xS5 Front Bomb Rack": {
+  "loc_key": "item_NameAEGS_Retaliator_BombRack_S05_Front",
+  "guid": "f9538502-dd71-48f7-8ee7-fa7f4492c7bf",
+  "class_name": "bmbrck_s05_aegs_retaliator_front"
+ },
+ "Aegis Retaliator 8xS5 Rear Bomb Rack": {
+  "loc_key": "item_NameAEGS_Retaliator_BombRack_S05_Rear",
+  "guid": "627a12eb-3be1-4e2e-8008-cbe502d52b8c",
+  "class_name": "bmbrck_s05_aegs_retaliator_rear"
+ },
+ "Anvil Gladiator S5 Bomb Rack": {
+  "loc_key": "item_NameANVL_Gladiator_BombRack_S5",
+  "guid": "ed3435e9-8caf-44d6-a327-051e61c88d64",
+  "class_name": "bmbrck_s05_anvl_gladiator"
+ },
+ "Aegis Eclipse 1xS10 Bomb Rack": {
+  "loc_key": "item_NameAEGS_Eclipse_BombRack_S10",
+  "guid": "a1a64d9f-3d18-4dcb-b0a1-a5c424ff7475",
+  "class_name": "bmbrck_s10_aegs_eclipse"
  },
  "CSR-RP": {
   "loc_key": "item_Name_COMP_BEHR_S01_CSRRP",
@@ -6001,6 +6161,11 @@
   "fr": "Admission de carburant de MISC Starfarer",
   "zh": "MISC星航者燃料输入"
  },
+ "890 Jump Module": {
+  "loc_key": "item_NameJDRV_ORIG_S04_890J",
+  "guid": "5f54cdb1-8397-479f-9b14-8988fc53373e",
+  "class_name": "jdrv_orig_s04_890j_scitem"
+ },
  "Explorer": {
   "loc_key": "item_NameJUMP_TARS_S1_C",
   "guid": "c8797bce-6220-4d1e-bc6d-23da4a366a6d",
@@ -6514,7 +6679,7 @@
   "fr": "Fortuna (400i)",
   "zh": "600i幸运星涂装"
  },
- "600i Foundation Fest Livery": {
+ "600i Foundation Guide Livery": {
   "loc_key": "item_Name600i_Paint_Unity",
   "guid": "1782c749-a756-4244-96f9-26362c81abeb",
   "class_name": "paint_600i_touring_blue_turquoise",
@@ -6614,7 +6779,7 @@
   "guid": "54acd11a-d968-4a09-a367-22cbfd91e5ba",
   "class_name": "paint_arrow_lovestruck_pink_black"
  },
- "Arrow Foundation Fest Livery": {
+ "Arrow Foundation Guide Livery": {
   "loc_key": "item_NameArrow_Paint_Unity",
   "guid": "6d364eb6-97fc-42ba-8f2d-ed14943268da",
   "class_name": "paint_arrow_unity",
@@ -6751,6 +6916,11 @@
   "guid": "9ac499d9-d402-4fc1-b8ee-b239832fce42",
   "class_name": "paint_atls_silver_grey_lime"
  },
+ "ATLS Foundation Fest Livery": {
+  "loc_key": "item_NameAtls_Paint_silver_teal_white",
+  "guid": "8194bc48-51b2-4fdb-8f8d-acc117760679",
+  "class_name": "paint_atls_silver_teal_white"
+ },
  "ATLS Ironside Livery": {
   "loc_key": "item_NameATLS_Paint_Steel_Steel_Black",
   "guid": "6c3eede4-e767-4ed2-a818-0bcad1afa164",
@@ -6801,7 +6971,7 @@
   "guid": "ca54d48b-0f43-4662-8199-2bcd4b925e33",
   "class_name": "paint_aurora_black_yellow_red"
  },
- "Auorora Mk I Disco Livery": {
+ "Aurora Mk I Disco Livery": {
   "loc_key": "item_NameAurora_Paint_Blue_Black_Red",
   "guid": "bc3c5ded-5192-42aa-90b4-fa122aaf676f",
   "class_name": "paint_aurora_blue_black_red"
@@ -6899,6 +7069,16 @@
   "loc_key": "item_NameAurora_Mk2_Paint_Pink_Green_Purple",
   "guid": "f33ee44b-7309-4587-a4ce-31fa89156370",
   "class_name": "paint_aurora_mk2_pink_green_purple"
+ },
+ "Aurora Mk II Foundation Fest Livery": {
+  "loc_key": "item_NameAurora_mk2_Paint_silver_teal_white",
+  "guid": "429a8271-b46a-4d31-bc2c-955b6b1a6823",
+  "class_name": "paint_aurora_mk2_silver_teal_white"
+ },
+ "Aurora Mk II Foundation Guide Livery": {
+  "loc_key": "item_NameAurora_mk2_Paint_silver_teal_white_torch",
+  "guid": "418cfba5-06ca-4622-a274-c54735eda39d",
+  "class_name": "paint_aurora_mk2_silver_teal_white_torch"
  },
  "Aurora Mk II Cloudbuster Livery": {
   "loc_key": "item_NameAurora_Mk2_Paint_White_Blue_Yellow",
@@ -7000,6 +7180,26 @@
   "de": "Avenger: Solarwind",
   "fr": "Vents solaires (Avenger)",
   "zh": "复仇者太阳风涂装"
+ },
+ "Basher Razorburn Livery": {
+  "loc_key": "item_NameBasher_Paint_Black_Grey_Grey",
+  "guid": "e744089e-db14-4b75-be46-75ad37461b55",
+  "class_name": "paint_basher_black_grey_grey"
+ },
+ "Basher Corroded Livery": {
+  "loc_key": "item_NameBasher_Paint_Brown_Green_Grey",
+  "guid": "104ee9bf-95c5-4b0d-b9c6-fcec1d97fccd",
+  "class_name": "paint_basher_brown_green_grey"
+ },
+ "Basher Nightmare Livery": {
+  "loc_key": "item_NameBasher_Paint_Brown_White_Brown",
+  "guid": "b2607061-4fa0-4286-93b1-50e0c774422b",
+  "class_name": "paint_basher_brown_white_brown"
+ },
+ "Basher Blue Blossom Livery": {
+  "loc_key": "item_NameBasher_Paint_White_Blue_Black",
+  "guid": "5d5317c1-5156-4900-94fb-fdda4135ffcd",
+  "class_name": "paint_basher_white_blue_black"
  },
  "Buccaneer Nightbreak Livery": {
   "loc_key": "item_NameBuccaneer_Paint_Black_Black_Red_Camo",
@@ -7130,7 +7330,7 @@
   "guid": "84184aaa-026f-4dc5-9297-ed08fce2e086",
   "class_name": "paint_carrack_reward_faction_xeno_threat"
  },
- "Caterpillar Foundation Fest Livery": {
+ "Caterpillar Foundation Guide Livery": {
   "loc_key": "item_NameCaterpillar_Paint_Unity",
   "guid": "70eb9080-5020-4db4-9e5b-2e4992bc553d",
   "class_name": "paint_caterpillar_blue_turquoise",
@@ -7203,6 +7403,11 @@
   "de": "Caterpillar: Eisbrecher",
   "fr": "Brise-glaces (Caterpillar)",
   "zh": "毛毛虫破冰涂装"
+ },
+ "Caterpillar Pirate Livery": {
+  "loc_key": "item_NameCaterpillar_Paint_Pirate",
+  "guid": "b9002533-f5a6-4bc6-b136-ace9cb8cce61",
+  "class_name": "paint_caterpillar_pirate"
  },
  "Caterpillar 2949 Best In Show Livery": {
   "loc_key": "item_NameCaterpillar_Paint_BIS2949",
@@ -7425,7 +7630,7 @@
   "guid": "bad25221-01dd-41bb-81d9-655288a17859",
   "class_name": "paint_cutlass_blue_blue_gold_gothic"
  },
- "Cutlass Foundation Fest Livery": {
+ "Cutlass Foundation Guide Livery": {
   "loc_key": "item_NameCutlass_Paint_Unity",
   "guid": "dcb994c4-8372-4843-ba4c-5b91cac1f5d2",
   "class_name": "paint_cutlass_blue_turquoise",
@@ -7889,7 +8094,7 @@
   "guid": "ea626499-8dfa-4af0-a148-5286a2cfcac2",
   "class_name": "paint_freelancer_black_red"
  },
- "Freelancer Foundation Fest Livery": {
+ "Freelancer Foundation Guide Livery": {
   "loc_key": "item_NameFreelancer_Paint_Unity",
   "guid": "677696da-f227-42ae-8b46-be5c0009de18",
   "class_name": "paint_freelancer_blue_turquoise",
@@ -7986,6 +8191,11 @@
   "guid": "edf108d5-3c32-4774-afff-758b3b5d0cdd",
   "class_name": "paint_furylx_white_blue_grey"
  },
+ "Fury Goldsmith Livery": {
+  "loc_key": "item_NameFury_Paint_Black_Black_Gold",
+  "guid": "fcda6eb5-f936-4c91-93c4-e8955420329d",
+  "class_name": "paint_fury_black_black_gold"
+ },
  "Fury Waverider Livery": {
   "loc_key": "item_NameFury_Paint_Blue_Black_Black",
   "guid": "a8e62bfa-da71-46b5-911f-e95ca9b59201",
@@ -8036,7 +8246,7 @@
   "guid": "9693c801-fa2f-485b-a8ed-10663b40290a",
   "class_name": "paint_gladius_black_grey_grey_geometric"
  },
- "Gladius Foundation Fest Livery": {
+ "Gladius Foundation Guide Livery": {
   "loc_key": "item_NameGladius_Paint_Unity",
   "guid": "e9d4463d-69ec-4e55-a14b-e42386690617",
   "class_name": "paint_gladius_blue_turquoise",
@@ -8145,6 +8355,11 @@
   "loc_key": "item_NameGolem_Paint_Orange_White_Orange",
   "guid": "7e19ec04-acd7-466e-98e9-857fbc3ca000",
   "class_name": "paint_golem_orange_white_orange"
+ },
+ "Golem Foundation Fest Livery": {
+  "loc_key": "item_NameGolem_Paint_silver_teal_white",
+  "guid": "9c81d1a4-5108-4776-a904-ac93209b71ee",
+  "class_name": "paint_golem_silver_teal_white"
  },
  "Golem Keystone Livery": {
   "loc_key": "item_NameGolem_Paint_WorkersWeek_White_Blue_Blue",
@@ -9633,7 +9848,7 @@
   "fr": "Aphorite (Prospector)",
   "zh": "勘探者艾弗石涂装"
  },
- "Prospector Foundation Fest Livery": {
+ "Prospector Foundation Guide Livery": {
   "loc_key": "item_NameProspector_Paint_Unity",
   "guid": "5598c685-802c-4893-9646-3796d89eadc1",
   "class_name": "paint_prospector_blue_turquoise",
@@ -9929,6 +10144,36 @@
   "guid": "84c2b1ce-377e-4915-ab39-06864e0aa2bb",
   "class_name": "paint_raft_white_blue_blue"
  },
+ "Railen Hyaotan Livery": {
+  "loc_key": "item_NameRailen_Paint_Black_Black_Black_Stencil_1",
+  "guid": "3dfe9809-cef4-4105-9ed1-07cebc6a1b1b",
+  "class_name": "paint_railen_black_black_black_stencil_1"
+ },
+ "Railen Malachitus Livery": {
+  "loc_key": "item_NameRailen_Paint_Black_Black_Black_Stencil_2",
+  "guid": "f25d6c16-78f5-4e2e-89d5-5a2892e8f64e",
+  "class_name": "paint_railen_black_black_black_stencil_2"
+ },
+ "Railen Insularis Livery": {
+  "loc_key": "item_NameRailen_Paint_Bronze_Grey_Teal",
+  "guid": "7b02a630-7255-4788-9399-68491588a08a",
+  "class_name": "paint_railen_bronze_grey_teal"
+ },
+ "Railen Uamchuai Livery": {
+  "loc_key": "item_NameRailen_Paint_Gold_Grey_Grey_Stencil_1",
+  "guid": "0b233773-2179-4805-933b-865885cd574b",
+  "class_name": "paint_railen_gold_grey_grey_stencil_1"
+ },
+ "Railen Agapanthia Livery": {
+  "loc_key": "item_NameRailen_Paint_Grey_Grey_Gold",
+  "guid": "c03b9ab6-1e58-440e-a216-62834144eeda",
+  "class_name": "paint_railen_grey_grey_gold"
+ },
+ "Railen Ch.iiing Livery": {
+  "loc_key": "item_NameRailen_Paint_White_Grey_Gold",
+  "guid": "bbf2a8d1-d11f-4c03-997c-4d1c7016019f",
+  "class_name": "paint_railen_white_grey_gold"
+ },
  "Razor Stormbringer Livery": {
   "loc_key": "item_NameRazor_Paint_IAE2951_Blue_Black",
   "guid": "d6b7f64f-772f-497a-9a29-dddaccb90d2b",
@@ -9943,7 +10188,7 @@
   "fr": "Polaire (Razor)",
   "zh": "剃刀极地涂装"
  },
- "Razor Foundation Fest Livery": {
+ "Razor Foundation Guide Livery": {
   "loc_key": "item_NameRazor_Paint_Unity",
   "guid": "686147d2-64fe-49c6-a601-5b7e940b85b8",
   "class_name": "paint_razor_invictus_unity_metal_teal"
@@ -10310,6 +10555,11 @@
   "guid": "b5532228-ef37-47fd-9b83-2593c7a0d7af",
   "class_name": "paint_salvation_pink_grey_black_iridescent"
  },
+ "Salvation Foundation Fest Livery": {
+  "loc_key": "item_NameSalvation_Paint_silver_teal_white",
+  "guid": "9badada3-e935-4b8b-a270-1a2d06f096ee",
+  "class_name": "paint_salvation_silver_teal_white"
+ },
  "San'tok.yai Harmony Livery": {
   "loc_key": "item_NameSanTokYai_Paint_AlienWeek_Teal_Pink",
   "guid": "6d950c5f-66a6-442c-aa69-a0993e5f3b2e",
@@ -10650,7 +10900,7 @@
   "fr": "Gris clair (Starfarer)",
   "zh": "星航者浅灰色涂装"
  },
- "Starfarer Foundation Fest Livery": {
+ "Starfarer Foundation Guide Livery": {
   "loc_key": "item_NameStarfarer_Paint_Unity",
   "guid": "df3bc325-50e3-4d17-9257-81505cf47717",
   "class_name": "paint_starfarer_invictus_unity_metal_teal"
@@ -10953,7 +11203,7 @@
   "fr": "Brigand (Mercury Star Runner)",
   "zh": "墨丘利星驰舰黑卫士涂装"
  },
- "Mercury Star Runner Foundation Fest Livery": {
+ "Mercury Star Runner Foundation Guide Livery": {
   "loc_key": "item_NameStar_Runner_Paint_Unity",
   "guid": "70bcbdcb-6969-4bfc-932e-13d146a88f61",
   "class_name": "paint_star_runner_blue_turquoise",
@@ -11127,7 +11377,7 @@
   "guid": "c6708253-bef5-480b-ad18-90a25c8f5f08",
   "class_name": "paint_syulen_blue_gold"
  },
- "Syulen Kenglath Livery": {
+ "Syulen Xy'kara Livery": {
   "loc_key": "item_NameSyulen_Paint_bronze_grey_red",
   "guid": "383f323b-62ab-4322-9583-5f86c223daaf",
   "class_name": "paint_syulen_bronze_grey_red"
@@ -11253,6 +11503,31 @@
   "guid": "df14dca8-9592-46b7-b934-98145f8ce593",
   "class_name": "paint_tiburon_red_grey_grey"
  },
+ "Tyilui Tatomidae Livery": {
+  "loc_key": "item_NameTyilui_Paint_Black_Black_Black_Stencil_2",
+  "guid": "dd8aadee-2831-4bc3-9c1a-7c8a497f0204",
+  "class_name": "paint_tyilui_black_black_black_stencil_2"
+ },
+ "Tyilui Insularis Livery": {
+  "loc_key": "item_NameTyilui_Paint_Bronze_Grey_Teal",
+  "guid": "ecbad13b-d965-4852-8e4c-6c7a813f6241",
+  "class_name": "paint_tyilui_bronze_grey_teal"
+ },
+ "Tyilui Uamchuai Livery": {
+  "loc_key": "item_NameTyilui_Paint_Gold_Grey_Grey_Stencil_1",
+  "guid": "485c299b-8784-4f3f-9253-0eb66fcd9e68",
+  "class_name": "paint_tyilui_gold_grey_grey_stencil_1"
+ },
+ "Tyilui Agapanthia Livery": {
+  "loc_key": "item_NameTyilui_Paint_Grey_Grey_Gold",
+  "guid": "396f283b-d98e-4601-96b0-678d046a557a",
+  "class_name": "paint_tyilui_grey_grey_gold"
+ },
+ "Tyilui Ch.iing Livery": {
+  "loc_key": "item_NameTyilui_Paint_White_Grey_Gold",
+  "guid": "865d7e37-b778-405d-93a3-445f1b3227ab",
+  "class_name": "paint_tyilui_white_grey_gold"
+ },
  "Ursa Skullcrusher Livery": {
   "loc_key": "item_NameUrsa_Paint_Black_Grey_Red_Pirate_Skull",
   "guid": "87e6dac9-8efa-4f1f-8078-3dcf2754e0b8",
@@ -11331,7 +11606,7 @@
   "fr": "Best in Show 2950 (Valkyrie)",
   "zh": "女武神2950年度最佳设计涂装"
  },
- "Valkyrie Foundation Fest Livery": {
+ "Valkyrie Foundation Guide Livery": {
   "loc_key": "item_NameValkyrie_Paint_Unity",
   "guid": "4f90232a-2a34-45d4-bf47-1985139de61d",
   "class_name": "paint_valkyrie_blue_turquoise",
@@ -11470,7 +11745,7 @@
   "fr": "Vert macabre (Vulture)",
   "zh": "秃鹫鬼怪绿色涂装"
  },
- "Vulture Foundation Fest Livery": {
+ "Vulture Foundation Guide Livery": {
   "loc_key": "item_NameVulture_Paint_Unity",
   "guid": "350277c7-d1a4-485f-9046-a99cfcaa1611",
   "class_name": "paint_vulture_invictus_unity_metal_teal"
@@ -13682,7 +13957,7 @@
   "fr": "Trenta",
   "zh": "特伦塔"
  },
- "Grav Lev 1": {
+ "Grav-Lev 1": {
   "loc_key": "port_NameGravLev01",
   "guid": "96a57db1-1133-4192-846f-d48a7cd02aa5",
   "class_name": "cnou_hoverquad_thruster_aux"
@@ -14309,10 +14584,20 @@
   "fr": "Mitrailleuse Mantis GT‑220",
   "zh": "螳螂GT-220加特林"
  },
+ "Deathroll S2 Gatling": {
+  "loc_key": "item_NameGLSN_BallisticGatling_S2",
+  "guid": "bbd36fbd-6e56-49b1-aae6-9df8b36b4092",
+  "class_name": "glsn_ballisticgatling_s2"
+ },
  "Breakneck S4 Gatling": {
   "loc_key": "item_NameGLSN_BallisticGatling_S4",
   "guid": "353a4aae-1fb1-470c-a38c-2ca32e61bb12",
   "class_name": "glsn_ballisticgatling_s4"
+ },
+ "Snapper S2 Repeater": {
+  "loc_key": "item_NameGLSN_LaserRepeater_S2",
+  "guid": "06615bad-8050-4758-ab2d-c79ad80307ed",
+  "class_name": "glsn_laserrepeater_s2"
  },
  "Tormenter S3 Repeater": {
   "loc_key": "item_NameGLSN_LaserRepeater_S3",
@@ -14487,6 +14772,16 @@
   "fr": "Laser à répétition CF‑117 Bulldog",
   "zh": "CF-117恶犬连发炮"
  },
+ "CF-117 Bulldog \"Hazard-Zone\" Repeater": {
+  "loc_key": "item_NameKLWE_LaserRepeater_S1_mr01",
+  "guid": "b6560a92-d608-40d9-ba56-3207a71c0948",
+  "class_name": "klwe_laserrepeater_s1_mr01"
+ },
+ "CF-227 Badger \"Hazard-Zone\" Repeater": {
+  "loc_key": "item_NameKLWE_LaserRepeater_S2_mr01",
+  "guid": "43370d53-f207-4189-bc95-c5b98c8db0d0",
+  "class_name": "klwe_laserrepeater_s2_mr01"
+ },
  "CF-337 Panther Repeater": {
   "loc_key": "item_NameKLWE_LaserRepeater_S3",
   "guid": "bd13235d-1261-4b71-b32f-aed1a8beb526",
@@ -14494,6 +14789,11 @@
   "de": "CF-337-Panther-Repetierer",
   "fr": "Laser à répétition CF‑337 Panther",
   "zh": "CF-337美洲豹连发炮"
+ },
+ "CF-337 Panther \"Hazard-Zone\" Repeater": {
+  "loc_key": "item_NameKLWE_LaserRepeater_S3_mr01",
+  "guid": "e4870a3c-b2f8-462b-8be2-dd04520551cf",
+  "class_name": "klwe_laserrepeater_s3_mr01"
  },
  "CF-447 Rhino Repeater": {
   "loc_key": "item_NameKLWE_LaserRepeater_S4",
@@ -16377,6 +16677,11 @@
   "guid": "aa4d3b9c-8cf7-4c66-b3e3-0f73f04d5898",
   "class_name": "grey_shiv_cosmetic_rearright_c"
  },
+ "Basher Chopper Bodykit Top": {
+  "loc_key": "item_NameMODU_GREY_Basher_Cosmetic_Mohawk_Default",
+  "guid": "ddb7efe9-bbeb-4651-92b4-c9340834969c",
+  "class_name": "glsn_basher_addon_mohawk_default"
+ },
  "Aegis Sabre Firebird 12xS3 Missile Rack": {
   "loc_key": "item_NameMRCK_S03_AEGS_Sabre_Firebird",
   "guid": "7c1f3841-1c73-445f-bf4e-ba2c628ceac8",
@@ -16606,6 +16911,11 @@
   "guid": "25d8a725-42f4-4f2c-a197-b653c8383868",
   "class_name": "mrck_s02_misc_fury_dual"
  },
+ "Gatac Missile Rack 2xS2": {
+  "loc_key": "item_NameMRCK_S03_GAMA_Railen_Dual_S02",
+  "guid": "77f368ba-f290-454e-9540-d0e48d683163",
+  "class_name": "mrck_s03_gama_railen_dual_s02"
+ },
  "Mirai Fury MX 2xS2 Missile Rack": {
   "loc_key": "item_NameMISC_Fury_S03_Double_Rack",
   "guid": "901e4ecb-0649-4c78-8e46-0247d84fb084",
@@ -16624,6 +16934,16 @@
   "guid": "4dabd575-d029-c1dc-b7bf-f308bf5e8bb3",
   "class_name": "mrck_s02_mrai_guardian_mx_custom"
  },
+ "Origin 100i Missile Rack": {
+  "loc_key": "item_NameMRCK_S02_ORIG_100i_Dual_S02",
+  "guid": "74805174-0637-4ccf-b6a8-cd44290fd03c",
+  "class_name": "mrck_s02_orig_100i_dual_s02"
+ },
+ "Origin 125a Missile Rack": {
+  "loc_key": "item_NameMRCK_S02_ORIG_125a_Quad_S02",
+  "guid": "67996d31-5bf4-46df-a566-d845932b6953",
+  "class_name": "mrck_s02_orig_125a_quad_s02"
+ },
  "ST-171 Missile Rack": {
   "loc_key": "item_NameMRCK_S02_ORIG_400i_Octo_S01",
   "guid": "95973e2d-a15b-4d6d-8ea1-e83108396f57",
@@ -16631,6 +16951,11 @@
   "de": "ST-171-Raketengestell",
   "fr": "Porte‑missiles ST‑171",
   "zh": "ST-171导弹架"
+ },
+ "Gatac Missile Rack 8xS1": {
+  "loc_key": "item_NameMRCK_S04_GAMA_Railen_Octo_S01",
+  "guid": "92402b27-3e64-49b0-b1c4-f17e34c646a9",
+  "class_name": "mrck_s04_gama_railen_octo_s01"
  },
  "ST-205 Missile Rack": {
   "loc_key": "item_NameMRCK_S04_ORIG_400i_Octo_S02",
@@ -17808,6 +18133,16 @@
   "guid": "99840963-8d8b-4b87-90d6-4ac7dfc64a9d",
   "class_name": "cds_combat_heavy_helmet_03_06_01"
  },
+ "BUL-H4 Helmet": {
+  "loc_key": "item_Name_cds_combat_superheavy_helmet_01_01_01",
+  "guid": "4670540c-7d6a-47d4-bb92-c5709b67be05",
+  "class_name": "cds_combat_superheavy_helmet_01_01_01"
+ },
+ "BUL-H4 Helmet Stronghold": {
+  "loc_key": "item_Name_cds_combat_superheavy_helmet_01_01_02",
+  "guid": "6fbb5779-a9e2-446e-9f4f-c0f273785e21",
+  "class_name": "cds_combat_superheavy_helmet_01_01_02"
+ },
  "Balor HCH Helmet": {
   "loc_key": "item_Name_cds_legacy_heavy_armor_01_helmet",
   "guid": "35e498db-02e4-4963-9afa-ee08970c2036",
@@ -18872,6 +19207,11 @@
   "guid": "8b5b6efe-43bf-4830-aae8-cfe756c30c87",
   "class_name": "srvl_armor_heavy_helmet_01_01_gld"
  },
+ "Wrecker Helmet": {
+  "loc_key": "item_Name_srvl_combat_heavy_helmet_03_01_01",
+  "guid": "eb7bb071-b7c9-43da-afe8-45ee30e71a85",
+  "class_name": "srvl_combat_heavy_helmet_03_01_01"
+ },
  "Wrecker Helmet Payback": {
   "loc_key": "item_Name_srvl_combat_heavy_helmet_03_02_01",
   "guid": "a728485f-0fc2-41de-bf20-6feee8323c64",
@@ -18946,6 +19286,11 @@
   "fr": "Casque de combinaison de reconnaissance",
   "ja": "偵察スーツ・ヘルメット",
   "zh": "野外侦察服头盔"
+ },
+ "FBL-8a Helmet SecondWind": {
+  "loc_key": "item_Name_cds_combat_light_helmet_02_02_01",
+  "guid": "d9d6c217-aef4-449b-8259-2a05c8a56da8",
+  "class_name": "cds_combat_light_helmet_02_02_01"
  },
  "FBL-8a Helmet (Modified)": {
   "loc_key": "item_Name_cds_combat_light_helmet_03_01_01",
@@ -19490,6 +19835,11 @@
   "fr": "Casque Arden‑SL (Archange)",
   "ja": "アーデンSLヘルメット（アークエンジェル）",
   "zh": "阿顿-SL头盔-总领天使"
+ },
+ "PH": {
+  "loc_key": "item_Name_rrs_specialist_light_helmet_01_05_01",
+  "guid": "36e97394-8f21-4e62-a417-8c7912fdecc0",
+  "class_name": "rrs_specialist_light_helmet_01_05_01"
  },
  "Arden-SL Helmet (Modified)": {
   "loc_key": "item_Name_rrs_specialist_light_helmet_01_01_9tails01",
@@ -20330,6 +20680,11 @@
   "ja": "ORC-mkXヘルメット（アイスボーン）",
   "zh": "ORC-mkX 头盔-冰裔"
  },
+ "ORC-mkX Helmet SecondWind": {
+  "loc_key": "item_Name_cds_combat_medium_helmet_01_02_01",
+  "guid": "fb620c92-58b8-428b-be1f-fea4b15b1ff8",
+  "class_name": "cds_combat_medium_helmet_01_02_01"
+ },
  "ORC-mkX Helmet (XenoThreat)": {
   "loc_key": "item_Name_cds_combat_medium_helmet_03_01_01",
   "guid": "e14cec8b-8599-4b3a-90d7-3ccb0a15befc",
@@ -20689,6 +21044,11 @@
   "loc_key": "item_Name_fta_medium_helmet_01_14_01",
   "guid": "61a4e6ba-b201-4ffd-a1ee-6d9755d6604e",
   "class_name": "fta_medium_helmet_01_14_01"
+ },
+ "Strata Helmet Levski Edition": {
+  "loc_key": "item_Name_fta_medium_helmet_01_15_16",
+  "guid": "c3487f04-a3b7-4ff0-9bc0-a4fcfcdd2d62",
+  "class_name": "fta_medium_helmet_01_15_16"
  },
  "Strata Helmet Heatwave": {
   "loc_key": "item_Name_fta_medium_helmet_02_01_01",
@@ -21127,6 +21487,11 @@
   "guid": "b3aebd44-acf3-4b2b-a171-7770d1eade90",
   "class_name": "qrt_specialist_medium_helmet_01_03_01"
  },
+ "Artimex Helmet Ultimatum": {
+  "loc_key": "item_Name_qrt_specialist_medium_helmet_01_05_01",
+  "guid": "c4b6af14-cd65-49c0-afb3-487042f15e31",
+  "class_name": "qrt_specialist_medium_helmet_01_05_01"
+ },
  "Artimex Helmet Hurston Dynamics Executive Security": {
   "loc_key": "item_Name_qrt_specialist_medium_helmet_02_01_01",
   "guid": "1766a362-90a2-45a0-a9de-ee3825ed2adc",
@@ -21418,42 +21783,42 @@
   "guid": "269dc312-1113-4e06-8a82-ef310dcc472a",
   "class_name": "mannequin_displayhelmet"
  },
- "Mirai Racing Helmet": {
+ "Neutrino Racing Helmet Mirai": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_01_01",
   "guid": "52bb6c3d-003c-4c01-8517-79e910ebf7fb",
   "class_name": "mrai_flightsuit_helmet_01_01_01"
  },
- "Origin Racing Helmet": {
+ "Neutrino Racing Helmet Origin": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_03_01",
   "guid": "f7a46eee-bf5a-4ca8-8444-7a126093744a",
   "class_name": "mrai_flightsuit_helmet_01_03_01"
  },
- "Murray Cup Racing Helmet": {
+ "Neutrino Racing Helmet Murray Cup": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_04_01",
   "guid": "74303c6a-d9f3-4249-996a-775aa918f3ad",
   "class_name": "mrai_flightsuit_helmet_01_04_01"
  },
- "Star Kitten Racing Helmet": {
+ "Neutrino Racing Helmet Star Kitten": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_05_01",
   "guid": "14cf6134-2f3d-4902-9894-1c0dfd530b37",
   "class_name": "mrai_flightsuit_helmet_01_05_01"
  },
- "Fortuna Racing Helmet": {
+ "Neutrino Racing Helmet Fortuna": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_06_01",
   "guid": "6e7052d5-3cdc-4678-8d84-e604529b4708",
   "class_name": "mrai_flightsuit_helmet_01_06_01"
  },
- "WhiteHot Racing Helmet": {
+ "Neutrino Racing Helmet WhiteHot": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_07_02",
   "guid": "73bec6ec-6618-42f7-bbb5-805f5052b6e9",
   "class_name": "mrai_flightsuit_helmet_01_07_02"
  },
- "BlackFire Racing Helmet": {
+ "Neutrino Racing Helmet BlackFire": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_07_12",
   "guid": "d175c150-9207-42b2-9d0d-c340cc81dcdb",
   "class_name": "mrai_flightsuit_helmet_01_07_12"
  },
- "BlueFlame Racing Helmet": {
+ "Neutrino Racing Helmet BlueFlame": {
   "loc_key": "item_Name_mrai_flightsuit_helmet_01_07_18",
   "guid": "7850121e-2968-44c7-82b3-65c51e20d34e",
   "class_name": "mrai_flightsuit_helmet_01_07_18"
@@ -21788,7 +22153,7 @@
   "ja": "オデッセイ・ヘルメット（タン）",
   "zh": "奥德赛头盔-茶色"
  },
- "Stoneskin Helmet Desert": {
+ "Stoneskin Helmet Tactical": {
   "loc_key": "item_Name_slaver_undersuit_helmet_01",
   "guid": "d3889502-12dd-47a9-b4f4-72e9543e79b7",
   "class_name": "slaver_undersuit_helmet_01_01_01",
@@ -21797,7 +22162,7 @@
   "ja": "ストーンスキン・ヘルメット（デザート）",
   "zh": "岩肤头盔-沙漠色"
  },
- "Stoneskin Helmet Tactical": {
+ "Stoneskin Helmet Desert": {
   "loc_key": "item_Name_slaver_undersuit_helmet_02",
   "guid": "5973794c-82dc-445a-a7f8-c95c5c73d0f0",
   "class_name": "slaver_undersuit_helmet_01_01_15",
@@ -23355,6 +23720,36 @@
   "guid": "8991458b-f4d4-45be-85c9-4a673fb4bcb2",
   "class_name": "hdh_boots_02_01_17"
  },
+ "Spettro Shoes": {
+  "loc_key": "item_Name_m_hdtc_shoes_01_01_01",
+  "guid": "0b964d41-325e-4250-9dd2-85d1c0579aeb",
+  "class_name": "hdtc_shoes_01_01_01"
+ },
+ "Spettro Shoes Midas": {
+  "loc_key": "item_Name_m_hdtc_shoes_01_01_04",
+  "guid": "7ae24846-9daa-4656-80c3-bc2e4bfe0cb3",
+  "class_name": "hdtc_shoes_01_01_04"
+ },
+ "Spettro Shoes Anchor": {
+  "loc_key": "item_Name_m_hdtc_shoes_01_01_07",
+  "guid": "7b1cdd0a-4677-4959-a092-a8500cc14945",
+  "class_name": "hdtc_shoes_01_01_07"
+ },
+ "Spettro Shoes Continental": {
+  "loc_key": "item_Name_m_hdtc_shoes_01_02_01",
+  "guid": "49e483b8-53b5-4cee-89a4-2b88333a9f81",
+  "class_name": "hdtc_shoes_01_02_01"
+ },
+ "Spettro Shoes Tatton": {
+  "loc_key": "item_Name_m_hdtc_shoes_01_03_01",
+  "guid": "edf21c0a-46aa-4548-a14f-b6ce99d2f95b",
+  "class_name": "hdtc_shoes_01_03_01"
+ },
+ "Spettro Shoes Goldsmith": {
+  "loc_key": "item_Name_m_hdtc_shoes_01_06_01",
+  "guid": "0697177b-8b22-43e4-9bf4-e75594ac5b75",
+  "class_name": "hdtc_shoes_01_06_01"
+ },
  "Vivant Shoes": {
   "loc_key": "item_Name_hwk_executive_shoes_01_01_01",
   "guid": "c79300f5-c4e3-4c0c-b468-448c43e19e1d",
@@ -24689,7 +25084,7 @@
   "guid": "eb6f6b5d-9fc2-4db2-b61e-d53d829b6839",
   "class_name": "dmc_frontier_gloves_01_02_01"
  },
- "PLACEHOLDER": {
+ "PLACEHOLDER - dmc_frontier_gloves_01_02_11": {
   "loc_key": "item_Name_dmc_frontier_gloves_01_02_11",
   "guid": "964b3a81-4724-451f-ab9d-56da37ad03da",
   "class_name": "dmc_frontier_gloves_01_02_11"
@@ -25669,6 +26064,11 @@
   "guid": "5eb44c18-aef1-469d-9a43-ef822db9a182",
   "class_name": "alb_mask_03_01_01"
  },
+ "Volatus Balaclava Stealth Kitten": {
+  "loc_key": "item_Name_alb_mask_04_01_01",
+  "guid": "d8036474-f729-4bdf-95dd-6c592200d364",
+  "class_name": "alb_mask_04_01_01"
+ },
  "Grammercy Food Service Cover": {
   "loc_key": "item_Name_cba_chef_hat_01_01_01",
   "guid": "07c40bb5-38d3-4859-954c-73612179c8a1",
@@ -25862,6 +26262,11 @@
   "loc_key": "item_Name_cbd_hat_03_01_CFP",
   "guid": "727263cc-fe27-483b-bd3a-9c411e2e65dd",
   "class_name": "cbd_hat_03_01_cfp"
+ },
+ "PLACEHOLDER - cbd_hat_03_01_CFP_var2": {
+  "loc_key": "item_Name_cbd_hat_03_01_CFP_var2",
+  "guid": "ef5164ab-edcc-40bb-9cd5-38d162457c29",
+  "class_name": "cbd_hat_03_01_cfp_var2"
  },
  "Invictus Hat Blue": {
   "loc_key": "item_Name_cbd_hat_03_01_fleetweek2021",
@@ -26116,6 +26521,11 @@
   "fr": "Casquette Origin Jumpworks",
   "ja": "オリジン・ジャンプワークス・ハット",
   "zh": "奥源航工帽"
+ },
+ "People's Alliance Hat": {
+  "loc_key": "item_Name_cbd_hat_03_palevski_01",
+  "guid": "d559ddae-2784-4d72-8da8-a2bcf558c441",
+  "class_name": "cbd_hat_03_palevski_01"
  },
  "Red Wind Hat": {
   "loc_key": "item_Name_cbd_hat_03_redwind_01",
@@ -26486,6 +26896,36 @@
   "loc_key": "item_Name_hdh_hat_04_01_11",
   "guid": "ceb11885-abb1-4d2a-83bb-760a3e42370c",
   "class_name": "hdh_hat_04_01_11"
+ },
+ "Kiba Mask": {
+  "loc_key": "item_Name_qrt_mask_01_01_01",
+  "guid": "7ede913f-4bce-4934-9312-40e4e754452d",
+  "class_name": "qrt_mask_01_01_01"
+ },
+ "Kiba Mask Flush": {
+  "loc_key": "item_Name_qrt_mask_01_01_02",
+  "guid": "a041e702-f711-408b-b3b0-96ecb8649ab1",
+  "class_name": "qrt_mask_01_01_02"
+ },
+ "Kiba Mask Greed": {
+  "loc_key": "item_Name_qrt_mask_01_01_04",
+  "guid": "deba27c8-96da-4510-9112-2106d9827819",
+  "class_name": "qrt_mask_01_01_04"
+ },
+ "Kiba Mask Passion": {
+  "loc_key": "item_Name_qrt_mask_01_01_09",
+  "guid": "ff75dd6c-c1ab-4c2d-b70c-52f2552bb62e",
+  "class_name": "qrt_mask_01_01_09"
+ },
+ "Kiba Mask Raku": {
+  "loc_key": "item_Name_qrt_mask_01_01_11",
+  "guid": "f42e745f-6d5a-48d3-8f79-859aa7f1fc12",
+  "class_name": "qrt_mask_01_01_11"
+ },
+ "Kiba Mask Avarice": {
+  "loc_key": "item_Name_qrt_mask_01_01_12",
+  "guid": "e3a5bd46-9845-4cfc-9529-7f8328881359",
+  "class_name": "qrt_mask_01_01_12"
  },
  "Jacopo Tophat": {
   "loc_key": "Item_Name_sch_tophat_01",
@@ -27185,6 +27625,11 @@
   "loc_key": "item_Name_dmc_frontier_pants_01_02_01",
   "guid": "2b3adcf0-d968-4752-b87a-bf083e97fa7e",
   "class_name": "dmc_frontier_pants_01_02_01"
+ },
+ "PLACEHOLDER - dmc_frontier_pants_01_02_11": {
+  "loc_key": "item_Name_dmc_frontier_pants_01_02_11",
+  "guid": "32975c11-4247-4c9c-8817-8c05a3aaf466",
+  "class_name": "dmc_frontier_pants_01_02_11"
  },
  "Foundation Pants Grey": {
   "loc_key": "item_Name_DMC_Pants_01_01_01",
@@ -28344,6 +28789,36 @@
   "guid": "b874ec01-5f07-4e53-93f2-aa0b095c7c32",
   "class_name": "hdh_pants_06_01_19",
   "ja": "カヴィール・パンツ（スプルース）"
+ },
+ "Bellator Trousers": {
+  "loc_key": "item_Name_m_hdtc_pants_01_01_01",
+  "guid": "981c7396-2bc2-46e3-b9d2-02355640134c",
+  "class_name": "hdtc_pants_01_01_01"
+ },
+ "Bellator Trousers Anchor": {
+  "loc_key": "item_Name_m_hdtc_pants_01_01_07",
+  "guid": "aa3a71ff-164c-4e5d-b119-03d43b2471d0",
+  "class_name": "hdtc_pants_01_01_07"
+ },
+ "Bellator Trousers Continental": {
+  "loc_key": "item_Name_m_hdtc_pants_01_02_01",
+  "guid": "97639e85-1364-4567-b1de-91d985c95e50",
+  "class_name": "hdtc_pants_01_02_01"
+ },
+ "Bellator Trousers Tatton": {
+  "loc_key": "item_Name_m_hdtc_pants_01_03_01",
+  "guid": "3bcd798e-dea9-4d14-a0c7-b70c5ff095da",
+  "class_name": "hdtc_pants_01_03_01"
+ },
+ "Bellator Trousers Midas": {
+  "loc_key": "item_Name_m_hdtc_pants_01_04_01",
+  "guid": "72a273fe-780a-4080-9b8f-4f117c230dac",
+  "class_name": "hdtc_pants_01_04_01"
+ },
+ "Bellator Trousers Goldsmith": {
+  "loc_key": "item_Name_m_hdtc_pants_01_06_01",
+  "guid": "ce914d17-75ad-47f7-8885-85458b3f5bf7",
+  "class_name": "hdtc_pants_01_06_01"
  },
  "Second Tevarin War Service Trousers": {
   "loc_key": "item_Name_NVS_Pants_01_01_01",
@@ -30995,6 +31470,61 @@
   "guid": "b8e7f555-36f7-4b4f-bec3-83c0fbc48de8",
   "class_name": "hdh_shirt_04_05_01"
  },
+ "Bellator Shirt": {
+  "loc_key": "item_Name_m_hdtc_shirt_01_01_01",
+  "guid": "41013e5d-c1ac-49f1-91ad-027a8362436c",
+  "class_name": "hdtc_shirt_01_01_01"
+ },
+ "Bellator Shirt Continental": {
+  "loc_key": "item_Name_m_hdtc_shirt_01_02_01",
+  "guid": "7bdeaa2c-dfc5-4e6d-a160-6bcad095eafd",
+  "class_name": "hdtc_shirt_01_02_01"
+ },
+ "Bellator Shirt Tatton": {
+  "loc_key": "item_Name_m_hdtc_shirt_01_03_01",
+  "guid": "45463e0e-c799-46b5-b002-911e345b34ec",
+  "class_name": "hdtc_shirt_01_03_01"
+ },
+ "Bellator Shirt Midas": {
+  "loc_key": "item_Name_m_hdtc_shirt_01_04_01",
+  "guid": "ecb5466a-f8cd-4871-ae4c-83ea786ca7fe",
+  "class_name": "hdtc_shirt_01_04_01"
+ },
+ "Bellator Shirt Anchor": {
+  "loc_key": "item_Name_m_hdtc_shirt_01_05_01",
+  "guid": "b0d97d66-c33d-4ab1-8555-888641937102",
+  "class_name": "hdtc_shirt_01_05_01"
+ },
+ "Bellator Shirt and Waistcoat": {
+  "loc_key": "item_Name_m_hdtc_shirt_02_01_01",
+  "guid": "44e6ae4d-0333-41eb-befa-be716473bb2f",
+  "class_name": "hdtc_shirt_02_01_01"
+ },
+ "Bellator Shirt and Waistcoat Continental": {
+  "loc_key": "item_Name_m_hdtc_shirt_02_02_01",
+  "guid": "aa0a1a9c-ee30-470d-abc8-2d3fe50c4e10",
+  "class_name": "hdtc_shirt_02_02_01"
+ },
+ "Bellator Shirt and Waistcoat Tatton": {
+  "loc_key": "item_Name_m_hdtc_shirt_02_03_01",
+  "guid": "269410b4-0f8f-43d5-ab86-88746789330f",
+  "class_name": "hdtc_shirt_02_03_01"
+ },
+ "Bellator Shirt and Waistcoat Midas": {
+  "loc_key": "item_Name_m_hdtc_shirt_02_04_01",
+  "guid": "cd415663-5c95-487d-af77-3a64866f73f9",
+  "class_name": "hdtc_shirt_02_04_01"
+ },
+ "Bellator Shirt and Waistcoat Anchor": {
+  "loc_key": "item_Name_m_hdtc_shirt_02_05_01",
+  "guid": "fd4bacb5-475a-4c3b-9673-c5b1e781f6a9",
+  "class_name": "hdtc_shirt_02_05_01"
+ },
+ "Bellator Shirt and Waistcoat Goldsmith": {
+  "loc_key": "item_Name_m_hdtc_shirt_02_06_01",
+  "guid": "9369f8e2-d75b-474d-a6da-a3ccea845a79",
+  "class_name": "hdtc_shirt_02_06_01"
+ },
  "Davlos Shirt Charcoal": {
   "loc_key": "item_Name_MYM_shirt_01_01_01",
   "guid": "b7f4770a-4774-4ce5-ad20-00a0bb5d6bdb",
@@ -32049,6 +32579,11 @@
   "loc_key": "item_Name_dmc_frontier_jacket_01_02_01",
   "guid": "5d57c2bd-3b1a-4eb1-b4fc-cb284d7ccae5",
   "class_name": "dmc_frontier_jacket_01_02_01"
+ },
+ "PLACEHOLDER - dmc_frontier_jacket_01_02_11": {
+  "loc_key": "item_Name_dmc_frontier_jacket_01_02_11",
+  "guid": "f7e93671-9285-42e4-ae1d-79895b6ef306",
+  "class_name": "dmc_frontier_jacket_01_02_11"
  },
  "Silverton Jacket AA Collections": {
   "loc_key": "item_Name_dmc_frontier_jacket_01_03_01",
@@ -33254,6 +33789,36 @@
   "class_name": "hdh_jacket_11_01_19",
   "ja": "シャルド巻きストール＆アームバンド（スプルース）"
  },
+ "Bellator Jacket": {
+  "loc_key": "item_Name_m_hdtc_jacket_01_01_01",
+  "guid": "fe91efc9-3642-4fe6-a2fb-9de727958618",
+  "class_name": "hdtc_jacket_01_01_01"
+ },
+ "Bellator Jacket Continental": {
+  "loc_key": "item_Name_m_hdtc_jacket_01_02_01",
+  "guid": "56ed1d49-7087-4c54-97b6-241360c2010e",
+  "class_name": "hdtc_jacket_01_02_01"
+ },
+ "Bellator Jacket Tatton": {
+  "loc_key": "item_Name_m_hdtc_jacket_01_03_01",
+  "guid": "5edeeac6-b193-465b-bf7a-bbd689cab3d5",
+  "class_name": "hdtc_jacket_01_03_01"
+ },
+ "Bellator Jacket Midas": {
+  "loc_key": "item_Name_m_hdtc_jacket_01_04_01",
+  "guid": "cb92995d-37c7-4680-89fb-067ae19d2ed7",
+  "class_name": "hdtc_jacket_01_04_01"
+ },
+ "Bellator Jacket Anchor": {
+  "loc_key": "item_Name_m_hdtc_jacket_01_05_01",
+  "guid": "40aa311e-b1bd-48a2-a863-6eafb64e4ab1",
+  "class_name": "hdtc_jacket_01_05_01"
+ },
+ "Bellator Jacket Goldsmith": {
+  "loc_key": "item_Name_m_hdtc_jacket_02_01_01",
+  "guid": "61a67562-ef37-4439-bbf9-3b1205ba8115",
+  "class_name": "hdtc_jacket_02_01_01"
+ },
  "Ambrus Suit": {
   "loc_key": "item_Name_mym_fashion_suit_01_01_01",
   "guid": "533c9f98-0bed-4310-9ffc-ec708e6ccd0c",
@@ -33406,6 +33971,11 @@
   "loc_key": "item_Name_nvs_jumpsuit_01_16_16",
   "guid": "baaf7f61-0c81-4328-acce-fc54143e2114",
   "class_name": "nvs_jumpsuit_01_16_16"
+ },
+ "Falston Jumpsuit \"People's Alliance Edition\"": {
+  "loc_key": "item_Name_nvs_jumpsuit_01_17_16",
+  "guid": "f8ffcbb6-f6ae-46af-a608-65a0102e78bc",
+  "class_name": "nvs_jumpsuit_01_17_16"
  },
  "Tolo Jacket Crusader Edition": {
   "loc_key": "item_Name_oct_jacket_01_01_01",
@@ -34817,7 +35387,7 @@
   "ja": "レネゲード・レーシングベスト（改良）",
   "zh": "叛变竞速背心（改良款）"
  },
- "Creese Jacket": {
+ "Creese Jacket Nine Tails": {
   "loc_key": "item_Name_vpw_bouncer_jacket_01_01_01",
   "guid": "23b0a448-5c10-4f51-9b0c-5e10c4068d63",
   "class_name": "vpw_bouncer_jacket_01_01_01",
@@ -35522,42 +36092,42 @@
   "ja": "ビーコン・アンダースーツ",
   "zh": "信标基底服"
  },
- "Mirai Racing Flight Suit\\n": {
+ "Neutrino Racing Flight Suit Mirai\\n": {
   "loc_key": "item_Name_mrai_flightsuit_01_01_01",
   "guid": "a8493a6e-25b6-4b4a-aa72-c2a8d7195d3b",
   "class_name": "mrai_flightsuit_01_01_01"
  },
- "Origin Racing Flight Suit": {
+ "Neutrino Racing Flight Suit Origin": {
   "loc_key": "item_Name_mrai_flightsuit_01_03_01",
   "guid": "5bb52c29-a872-4d12-8564-72482ca88f7c",
   "class_name": "mrai_flightsuit_01_03_01"
  },
- "Murray Cup Racing Flight Suit": {
+ "Neutrino Racing Flight Suit Murray Cup": {
   "loc_key": "item_Name_mrai_flightsuit_01_04_01",
   "guid": "6ca53003-56c2-41a7-8531-a20ebf31b167",
   "class_name": "mrai_flightsuit_01_04_01"
  },
- "Star Kitten Racing Flight Suit": {
+ "Neutrino Racing Flight Suit Star Kitten": {
   "loc_key": "item_Name_mrai_flightsuit_01_05_01",
   "guid": "95b17843-9a67-470d-b6c2-4bfab8c70ba2",
   "class_name": "mrai_flightsuit_01_05_01"
  },
- "WhiteHot Racing Flight Suit": {
+ "Neutrino Racing Flight Suit WhiteHot": {
   "loc_key": "item_Name_mrai_flightsuit_01_07_02",
   "guid": "3cdddf2e-f467-4ef9-9860-bf573a2c5e58",
   "class_name": "mrai_flightsuit_01_07_02"
  },
- "BlackFire Racing Flight Suit": {
+ "Neutrino Racing Flight Suit BlackFire": {
   "loc_key": "item_Name_mrai_flightsuit_01_07_12",
   "guid": "da759ccf-9532-421a-b728-cb89d2050688",
   "class_name": "mrai_flightsuit_01_07_12"
  },
- "BlueFlame Racing Flight Suit": {
+ "Neutrino Racing Flight Suit BlueFlame": {
   "loc_key": "item_Name_mrai_flightsuit_01_07_18",
   "guid": "5ed3e5f5-2fe5-480b-8018-03e3cb2f3605",
   "class_name": "mrai_flightsuit_01_07_18"
  },
- "Fortuna Racing Flight Suit": {
+ "Neutrino Racing Flight Suit Fortuna": {
   "loc_key": "item_Name_mrai_flightsuit_02_01_01",
   "guid": "e6511d9a-03ab-41c6-8d1f-5f8d2b4b879d",
   "class_name": "mrai_flightsuit_02_01_01"
@@ -36631,6 +37201,11 @@
   "guid": "ebd3cf9f-b0a2-4208-baa1-cd9e6097c25e",
   "class_name": "cds_armor_medium_arms_02_02_01"
  },
+ "ORC-mkX Arms SecondWind": {
+  "loc_key": "item_Name_cds_combat_medium_arms_01_02_01",
+  "guid": "0666e952-e434-4f17-8b06-199f411b533f",
+  "class_name": "cds_combat_medium_arms_01_02_01"
+ },
  "ORC-mkX Arms (XenoThreat)": {
   "loc_key": "item_Name_cds_combat_medium_arms_03_01_01",
   "guid": "62e2fc15-8391-4607-bbd0-37b133e4f601",
@@ -37029,6 +37604,11 @@
   "guid": "9159d31d-b3ad-418d-9503-0093c440ac1f",
   "class_name": "grin_utility_medium_arms_03_04_01"
  },
+ "Strata Arms Levski Edition": {
+  "loc_key": "item_Name_GRIN_utility_medium_arms_03_05_16",
+  "guid": "07d38f69-f58b-4d5e-bd23-bfb09c7f0299",
+  "class_name": "grin_utility_medium_arms_03_05_16"
+ },
  "Inquisitor Arms Base": {
   "loc_key": "item_Name_outlaw_legacy_armor_medium_arms_01_01_01",
   "guid": "3b977c63-9a6b-45b8-ad94-98568f7aff79",
@@ -37398,6 +37978,11 @@
   "guid": "c84c935d-a85f-476a-9ea7-d72b0cf8d604",
   "class_name": "slaver_armor_medium_arms_01_03_01"
  },
+ "DustUp Arms Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_medium_arms_01_02_01",
+  "guid": "1ee1ef2d-7b51-4f21-a067-6acc6a5cba8d",
+  "class_name": "slaver_combat_medium_arms_01_02_01"
+ },
  "Carrion Arms": {
   "loc_key": "item_Name_srvl_combat_medium_arms_01_01_01",
   "guid": "87f789bf-f902-4a2a-b2ce-97652f06939d",
@@ -37579,6 +38164,11 @@
   "guid": "7524df82-4578-464b-a917-d3b6c31462f6",
   "class_name": "grin_utility_medium_backpack_03_04_01"
  },
+ "Strata Backpack Levski Edition": {
+  "loc_key": "item_Name_GRIN_utility_medium_backpack_03_05_16",
+  "guid": "5cb09c3c-f4e8-46b7-ac89-3c70e6d393f2",
+  "class_name": "grin_utility_medium_backpack_03_05_16"
+ },
  "Testudo Backpack": {
   "loc_key": "item_Name_qrt_combat_medium_backpack_01_01_01",
   "guid": "7176bf25-ae7d-45d7-b99b-7974d3e8b599",
@@ -37732,6 +38322,11 @@
   "fr": "Plastron ORC‑MkX ((Névé))",
   "ja": "ORC-mkXコア（アイスボーン）",
   "zh": "ORC-mkX 胸甲-冰裔"
+ },
+ "ORC-mkX Core SecondWind": {
+  "loc_key": "item_Name_cds_combat_medium_core_01_02_01",
+  "guid": "9b769a2d-2737-4d70-93c9-719eedc5aa57",
+  "class_name": "cds_combat_medium_core_01_02_01"
  },
  "ORC-mkX Core (XenoThreat)": {
   "loc_key": "item_Name_cds_combat_medium_core_03_01_01",
@@ -38140,6 +38735,11 @@
   "guid": "4d2ecda6-83dc-4236-9e54-bdd0afd2056a",
   "class_name": "grin_utility_medium_core_03_04_01"
  },
+ "Strata Core Levski Edition": {
+  "loc_key": "item_Name_GRIN_utility_medium_core_03_05_16",
+  "guid": "c8edb55c-53cc-4b1b-af17-ad3c00ca3c06",
+  "class_name": "grin_utility_medium_core_03_05_16"
+ },
  "Inquisitor Core": {
   "loc_key": "item_Name_outlaw_legacy_armor_medium_core_01_01_01",
   "guid": "986906da-1cd1-4a0b-b237-6d246a4b1687",
@@ -38516,6 +39116,11 @@
   "guid": "b8701dff-1f61-4cf3-954b-524bb66b4089",
   "class_name": "slaver_armor_medium_core_01_03_01"
  },
+ "DustUp Core Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_medium_core_01_02_01",
+  "guid": "4abd7e8d-b04e-4a0c-89cb-f832e53e287d",
+  "class_name": "slaver_combat_medium_core_01_02_01"
+ },
  "Carrion Core": {
   "loc_key": "item_Name_srvl_combat_medium_core_01_01_01",
   "guid": "734262e2-f20a-4ca6-a34d-6e0f41962379",
@@ -38658,6 +39263,11 @@
   "fr": "Jambières ORC‑MkX (modifiées)",
   "ja": "ORC-mkXレッグ（改良）",
   "zh": "ORC-mkX腿甲（改良款）"
+ },
+ "ORC-mkX Legs SecondWind": {
+  "loc_key": "item_Name_cds_combat_medium_legs_01_02_01",
+  "guid": "afcaac97-79a6-4e67-93f4-013a9c9679ef",
+  "class_name": "cds_combat_medium_legs_01_02_01"
  },
  "ORC-mkX Legs (XenoThreat)": {
   "loc_key": "item_Name_cds_combat_medium_legs_03_01_01",
@@ -39070,6 +39680,11 @@
   "guid": "feb84493-af0e-49e3-b638-462bfef25856",
   "class_name": "grin_utility_medium_legs_03_04_01"
  },
+ "Strata Legs Levski Edition": {
+  "loc_key": "item_Name_GRIN_utility_medium_legs_03_05_16",
+  "guid": "a2ca66ea-c82f-4fb1-a27e-7739acaaa24a",
+  "class_name": "grin_utility_medium_legs_03_05_16"
+ },
  "Testudo Legs Nightveil": {
   "loc_key": "item_Name_qrt_combat_medium_legs_01_01_10",
   "guid": "40cada46-9444-4324-b51a-36974b6f6d19",
@@ -39450,6 +40065,11 @@
   "guid": "aa61c64c-d016-4830-9b19-5e5e834bf543",
   "class_name": "slaver_armor_medium_legs_01_01_13"
  },
+ "DustUp Legs Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_medium_legs_01_02_01",
+  "guid": "573dcb17-7948-4a0b-9efc-0a073ed25e27",
+  "class_name": "slaver_combat_medium_legs_01_02_01"
+ },
  "Carrion Legs": {
   "loc_key": "item_Name_srvl_combat_medium_legs_01_01_01",
   "guid": "17b4faa2-b1a1-4730-9104-944dcb9ce4bc",
@@ -39520,6 +40140,11 @@
   "fr": "Brassards FBL‑8a (Sable numérique)",
   "ja": "FBL-8aアーム（デザートデジタル）",
   "zh": "FBL-8a臂甲-沙漠数码"
+ },
+ "FBL-8a Arms SecondWind": {
+  "loc_key": "item_Name_cds_combat_light_arms_02_02_01",
+  "guid": "08f861c1-5b11-4b6c-bebe-8ca9224b33f4",
+  "class_name": "cds_combat_light_arms_02_02_01"
  },
  "FBL-8a Arms (Modified)": {
   "loc_key": "item_Name_cds_combat_light_arms_03_01_01",
@@ -39798,6 +40423,11 @@
   "loc_key": "item_Name_kap_combat_light_arms_03_01_01",
   "guid": "4dc6c72f-5649-47d7-b686-8519d9207ac8",
   "class_name": "kap_combat_light_arms_03_01_01"
+ },
+ "Geist Armor Arms Stronghold": {
+  "loc_key": "item_Name_kap_combat_light_arms_04_01_01",
+  "guid": "48786358-af47-424e-8906-8344354dcc43",
+  "class_name": "kap_combat_light_arms_04_01_01"
  },
  "Microid Battle Suit Arms": {
   "loc_key": "item_Name_ksar_light_armor_arms_01",
@@ -40479,6 +41109,11 @@
   "guid": "962f0e10-5d39-43c9-8afe-ee7429699b27",
   "class_name": "slaver_armor_light_arms_01_01_15"
  },
+ "Calico Arms Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_light_arms_01_02_01",
+  "guid": "e0d518c6-5255-42c1-a91d-d69944db522e",
+  "class_name": "slaver_combat_light_arms_01_02_01"
+ },
  "Piecemeal Armor Arms": {
   "loc_key": "item_Name_SRVL_combat_light_arms_01_01_01",
   "guid": "21e26536-0dfd-4d43-8247-679ce76ce06a",
@@ -41027,6 +41662,11 @@
   "ja": "FBL-8aコア（デザートデジタル）",
   "zh": "FBL-8a胸甲-沙漠数码"
  },
+ "FBL-8a Core SecondWind": {
+  "loc_key": "item_Name_cds_combat_light_core_02_02_01",
+  "guid": "c9d5caba-98e9-4402-8232-4689d51b281f",
+  "class_name": "cds_combat_light_core_02_02_01"
+ },
  "FBL-8a Core (Modified)": {
   "loc_key": "item_Name_cds_combat_light_core_03_01_01",
   "guid": "2234981b-41bf-4b20-bceb-225fe99730f6",
@@ -41332,6 +41972,11 @@
   "loc_key": "item_Name_kap_combat_light_core_03_01_01",
   "guid": "18d46736-fdf6-4337-a057-5dfe2800895d",
   "class_name": "kap_combat_light_core_03_01_01"
+ },
+ "Geist Armor Core Stronghold": {
+  "loc_key": "item_Name_kap_combat_light_core_04_01_01",
+  "guid": "788e0a4a-4f30-4c77-9c39-7c5a5d54b1a2",
+  "class_name": "kap_combat_light_core_04_01_01"
  },
  "Microid Battle Suit Core": {
   "loc_key": "item_Name_ksar_light_armor_core_01",
@@ -42064,6 +42709,11 @@
   "guid": "4efeb516-34fd-4df1-abda-f7af806ea9bf",
   "class_name": "slaver_armor_light_core_01_01_15"
  },
+ "Calico Core Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_light_core_01_02_01",
+  "guid": "34fbf2ac-1e44-448f-9209-5ce11939491d",
+  "class_name": "slaver_combat_light_core_01_02_01"
+ },
  "Piecemeal Armor Core": {
   "loc_key": "item_Name_SRVL_combat_light_core_01_01_01",
   "guid": "9b2d97da-d08f-4df8-99bb-7af97983bd5c",
@@ -42395,6 +43045,11 @@
   "fr": "Jambières FBL‑8a (Sable numérique)",
   "ja": "FBL-8aレッグ（デザートデジタル）",
   "zh": "FBL-8a腿甲-沙漠数码"
+ },
+ "FBL-8a Legs SecondWind": {
+  "loc_key": "item_Name_cds_combat_light_legs_02_02_01",
+  "guid": "7a3ab62a-479d-4579-a9bf-cb0ab1bd3ee6",
+  "class_name": "cds_combat_light_legs_02_02_01"
  },
  "FBL-8a Legs (Modified)": {
   "loc_key": "item_Name_cds_combat_light_legs_03_01_01",
@@ -43421,6 +44076,11 @@
   "ja": "カリコ・レッグ（改良）",
   "zh": "卡利科腿甲（改良款）"
  },
+ "Calico Legs Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_light_legs_01_02_01",
+  "guid": "72a23cf4-f7a2-461d-90f6-ffbb9c0024f4",
+  "class_name": "slaver_combat_light_legs_01_02_01"
+ },
  "Piecemeal Armor Legs": {
   "loc_key": "item_Name_SRVL_combat_light_legs_01_01_01",
   "guid": "36200c80-ecf8-472f-9cbe-4994e11ecbab",
@@ -43750,6 +44410,11 @@
   "loc_key": "item_Name_cds_armor_heavy_arms_02_04_xenothreat",
   "guid": "e0d55691-c8cf-4865-9003-b6f69c81278c",
   "class_name": "cds_armor_heavy_arms_02_04_xenothreat"
+ },
+ "ADP-mk4 Arms SecondWind": {
+  "loc_key": "item_Name_cds_combat_heavy_arms_01_02_02",
+  "guid": "c81d20d8-291c-4fba-af05-d36582c674cf",
+  "class_name": "cds_combat_heavy_arms_01_02_02"
  },
  "DCP Armor Arms Hunter Camo": {
   "loc_key": "item_Name_cds_armor_heavy_arms_03_01_01",
@@ -44376,6 +45041,11 @@
   "guid": "c5942037-fd22-4886-bf38-1b411477c0e8",
   "class_name": "rrs_specialist_heavy_arms_05_01_01"
  },
+ "PH - rrs_specialist_heavy_arms_06_01_01": {
+  "loc_key": "item_Name_rrs_specialist_heavy_arms_06_01_01",
+  "guid": "1d5e5bef-65a1-4817-b783-21facc2c24b6",
+  "class_name": "rrs_specialist_heavy_arms_06_01_01"
+ },
  "Defiance Arms Tactical": {
   "loc_key": "item_Name_slaver_armor_heavy_arms_01_01_01",
   "guid": "c5accc85-3784-40dc-b819-8949e1394f66",
@@ -44438,6 +45108,11 @@
   "fr": "Brassards Insurrection (modifiés)",
   "ja": "ディファイアンス・アーム（改良）",
   "zh": "抵御臂甲（改良款）"
+ },
+ "Defiance Arms Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_heavy_arms_01_02_01",
+  "guid": "c6342c9c-d288-41ae-8091-a1ed6b69b2f3",
+  "class_name": "slaver_combat_heavy_arms_01_02_01"
  },
  "Overlord Arms Supernova": {
   "loc_key": "item_Name_srvl_heavy_arms_01",
@@ -44538,6 +45213,11 @@
   "guid": "1aa44faa-2a58-4b64-a1ba-5d63c1495a92",
   "class_name": "srvl_armor_heavy_arms_02_02_01"
  },
+ "Wrecker Arms": {
+  "loc_key": "item_Name_srvl_combat_heavy_arms_03_01_01",
+  "guid": "428d72a7-1786-4e5f-86cb-6afd248f1352",
+  "class_name": "srvl_combat_heavy_arms_03_01_01"
+ },
  "Wrecker Arms Payback": {
   "loc_key": "item_Name_srvl_combat_heavy_arms_03_02_01",
   "guid": "7af65cb5-ac70-496d-9995-3af1ebaddae1",
@@ -44565,6 +45245,16 @@
   "fr": "Sac à dos CSP‑68G (Alerte rouge)",
   "ja": "CSP-68Hバックパック（レッドアラート）",
   "zh": "CSP-68H背包-红色警报"
+ },
+ "H4-PBF Ammo Carrier": {
+  "loc_key": "item_Name_cds_combat_superheavy_backpack_01_01_01",
+  "guid": "6cd07586-9492-4731-8869-7166f995e11c",
+  "class_name": "cds_combat_superheavy_backpack_01_01_01"
+ },
+ "BUL-H4 Ammo Carrier Stronghold": {
+  "loc_key": "item_Name_cds_combat_superheavy_backpack_01_05_01",
+  "guid": "9e167a65-fa52-44c4-8cd7-ed01542edf6e",
+  "class_name": "cds_combat_superheavy_backpack_01_05_01"
  },
  "Novikov Backpack": {
   "loc_key": "item_Name_clda_env_armor_backpack_01",
@@ -44868,6 +45558,11 @@
   "guid": "21c17eec-d684-4dbd-a6d5-694a136ff1f3",
   "class_name": "cds_armor_heavy_core_02_03_xenothreat"
  },
+ "ADP-mk4 Core SecondWind": {
+  "loc_key": "item_Name_cds_combat_heavy_core_01_02_02",
+  "guid": "2648af10-4d30-4f86-95ad-b0e1295ad662",
+  "class_name": "cds_combat_heavy_core_01_02_02"
+ },
  "DCP Armor Core Hunter Camo": {
   "loc_key": "item_Name_cds_armor_heavy_core_03_01_01",
   "guid": "f66babbd-4b85-451b-80ad-1688b895f04c",
@@ -44897,6 +45592,16 @@
   "loc_key": "item_Name_cds_armor_heavy_core_03_06_01",
   "guid": "f60af5b8-f119-4925-9bd7-272c115c1e2e",
   "class_name": "cds_combat_heavy_core_03_06_01"
+ },
+ "BUL-H4 Armor": {
+  "loc_key": "item_Name_cds_combat_superheavy_suit_01_01_01",
+  "guid": "13149b27-1ab5-499b-aaab-9692a932f3f0",
+  "class_name": "cds_combat_superheavy_suit_01_01_01"
+ },
+ "BUL-H4 Armor Stronghold": {
+  "loc_key": "item_Name_cds_combat_superheavy_suit_02_01_01",
+  "guid": "96ce2bcb-ab1c-4125-8be4-91885ef1085e",
+  "class_name": "cds_combat_superheavy_suit_02_01_01"
  },
  "ADP Core": {
   "loc_key": "item_Name_cds_legacy_heavy_armor_01_core",
@@ -45497,6 +46202,11 @@
   "guid": "26da57e4-666a-4314-98e6-65d8b5a95e84",
   "class_name": "rrs_specialist_heavy_core_05_01_01"
  },
+ "PH - rrs_specialist_heavy_core_06_01_01": {
+  "loc_key": "item_Name_rrs_specialist_heavy_core_06_01_01",
+  "guid": "dc161698-ac0b-42d2-a74b-89620df72f04",
+  "class_name": "rrs_specialist_heavy_core_06_01_01"
+ },
  "Defiance Core Tactical": {
   "loc_key": "item_Name_slaver_armor_heavy_core_01_01_01",
   "guid": "f7552eb5-407f-4390-ac65-62ae63549ec8",
@@ -45564,6 +46274,11 @@
   "fr": "Plastron Insurrection (modifié)",
   "ja": "ディファイアンス・コア（改良）",
   "zh": "抵御胸甲（改良款）"
+ },
+ "Defiance Core Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_heavy_core_01_02_01",
+  "guid": "8fcd5005-f373-4bd5-a9db-c39797667a53",
+  "class_name": "slaver_combat_heavy_core_01_02_01"
  },
  "Overlord Core Supernova": {
   "loc_key": "item_Name_srvl_heavy_core_01",
@@ -45664,6 +46379,11 @@
   "guid": "ef9d3fe6-e567-4679-88bb-10d3e1fc660f",
   "class_name": "srvl_armor_heavy_core_02_02_01"
  },
+ "Wrecker Core": {
+  "loc_key": "item_Name_srvl_combat_heavy_core_03_01_01",
+  "guid": "d491d293-a7d9-4cb6-af21-e42dcbdabe06",
+  "class_name": "srvl_combat_heavy_core_03_01_01"
+ },
  "Wrecker Core Payback": {
   "loc_key": "item_Name_srvl_combat_heavy_core_03_02_01",
   "guid": "a99040ab-1325-4844-83c2-4672a15e9ef7",
@@ -45722,6 +46442,11 @@
   "loc_key": "item_Name_cds_armor_heavy_legs_02_03_xenothreat",
   "guid": "599dd9a6-f2d5-4702-8349-c57d9126434b",
   "class_name": "cds_armor_heavy_legs_02_03_xenothreat"
+ },
+ "ADP-mk4 Legs SecondWind": {
+  "loc_key": "item_Name_cds_combat_heavy_legs_01_02_02",
+  "guid": "cb482c13-b4f6-4738-a487-4424e1dee09e",
+  "class_name": "cds_combat_heavy_legs_01_02_02"
  },
  "DCP Armor Legs Hunter Camo": {
   "loc_key": "item_Name_cds_armor_heavy_legs_03_01_01",
@@ -46338,6 +47063,11 @@
   "guid": "e98473de-9bf9-4092-b47f-21b19acd40c0",
   "class_name": "rrs_specialist_heavy_legs_05_01_01"
  },
+ "PH - rrs_specialist_heavy_legs_06_01_01": {
+  "loc_key": "item_Name_rrs_specialist_heavy_legs_06_01_01",
+  "guid": "7c59ce29-ddf7-4c5e-8560-f9f8c802537e",
+  "class_name": "rrs_specialist_heavy_legs_06_01_01"
+ },
  "Defiance Legs Tactical": {
   "loc_key": "item_Name_slaver_armor_heavy_legs_01_01_01",
   "guid": "9010ca86-09f5-43de-9016-5aafc4cbb481",
@@ -46400,6 +47130,11 @@
   "fr": "Jambières Insurrection (modifiées)",
   "ja": "ディファイアンス・レッグ（改良）",
   "zh": "抵御腿甲（改良款）"
+ },
+ "Defiance Legs Ultimatum": {
+  "loc_key": "item_Name_slaver_combat_heavy_legs_01_02_01",
+  "guid": "a293f344-4c1d-4e30-bb3e-e020bcdaee8d",
+  "class_name": "slaver_combat_heavy_legs_01_02_01"
  },
  "Overlord Legs Supernova": {
   "loc_key": "item_Name_srvl_heavy_legs_01",
@@ -46499,6 +47234,11 @@
   "loc_key": "item_Name_srvl_armor_heavy_legs_02_02_01",
   "guid": "24606af7-106f-4892-a522-081ac7d771f8",
   "class_name": "srvl_armor_heavy_legs_02_02_01"
+ },
+ "Wrecker Legs": {
+  "loc_key": "item_Name_srvl_combat_heavy_legs_03_01_01",
+  "guid": "7975b72c-9988-4609-aa40-492e8953dd6e",
+  "class_name": "srvl_combat_heavy_legs_03_01_01"
  },
  "Wrecker Legs Payback": {
   "loc_key": "item_Name_srvl_combat_heavy_legs_03_02_01",
@@ -47550,6 +48290,11 @@
   "class_name": "carryable_1h_sq_flair_coin_1_c",
   "ja": "シップショーダウン'52コイン（C8Xピケス）"
  },
+ "Chairman's Club Coin": {
+  "loc_key": "item_Name_Carryable_1H_SQ_Flair_Coin_1_chairmansclub_a",
+  "guid": "4e89c612-59ef-45d5-a61d-a095eadd9cbe",
+  "class_name": "carryable_1h_sq_flair_coin_1_chairmansclub_a"
+ },
  "Ship Showdown '52 Carrack Coin": {
   "loc_key": "item_NameSQ_Flair_Coin_1_d_1H",
   "guid": "d0269187-b78f-4489-9609-47027d36419b",
@@ -47621,6 +48366,11 @@
   "loc_key": "item_NameFlair_Coin_1_t",
   "guid": "5075adb4-7170-4751-a30a-38a4e87a5e30",
   "class_name": "carryable_1h_sq_flair_coin_1_t"
+ },
+ "Crossed Swords '56 Coin": {
+  "loc_key": "item_NameCarryable_1H_SQ_Flair_Coin_PirateWeek_2026",
+  "guid": "88771114-df9f-4161-b5e1-c6e01e0da554",
+  "class_name": "carryable_1h_sq_flair_coin_pirateweek_2026"
  },
  "Invictus Launch Week Coin": {
   "loc_key": "item_Name_Flair_Coin_SQ42_FW25",
@@ -50113,6 +50863,11 @@
   "guid": "da798ecd-5685-45c8-b0f8-e2a9a1a498e9",
   "class_name": "carryable_2h_fl_container_anim_coin_case_1_a"
  },
+ "Chairman's Club Coin Display Case": {
+  "loc_key": "item_NameCarryable_2H_FL_Container_Anim_coin_case_1_concierge_a",
+  "guid": "a61721c0-bb0f-478a-8627-e73a930f9ed3",
+  "class_name": "carryable_2h_fl_container_anim_coin_case_1_concierge_a"
+ },
  "Field Medic Kit": {
   "loc_key": "item_NameCarryable_2H_FL_Container_Anim_medgun_1_a",
   "guid": "519d15e5-105d-4e3d-aaaf-f1db9b8f47f6",
@@ -50292,6 +51047,11 @@
   "guid": "dcec542b-8973-4ad1-99ad-a138f4d61ca5",
   "class_name": "carryable_2h_fl_missionitem_microsatellite_a"
  },
+ "TH-01 Propulsor": {
+  "loc_key": "item_NameCarryable_2H_FL_MissionItem_prototype_ship_component_1_a",
+  "guid": "84eda7f0-91a9-4d2b-8b1c-55c431f8518b",
+  "class_name": "carryable_2h_fl_missionitem_prototype_ship_component_1_a"
+ },
  "RSI Constellation Painting": {
   "loc_key": "item_NameCarryable_2H_FL_Painting_Constellation_a",
   "guid": "2c7b59c8-2c40-4dfe-97cf-9b99f1dd9f19",
@@ -50311,6 +51071,11 @@
   "loc_key": "items_commodities_valakkaregg_irradiated",
   "guid": "cb21d6fd-4599-4a65-bdba-da31d1470be6",
   "class_name": "Food_Grub_Seanut_1_Live"
+ },
+ "Safe": {
+  "loc_key": "item_NameCarryable_2H_FL_Safe_Locked",
+  "guid": "9b3035fc-a852-44dd-9d6a-67b104ac83ca",
+  "class_name": "carryable_2h_fl_safe_locked"
  },
  "Covalex Cargo Plushie": {
   "loc_key": "item_NameCarryable_2H_FL_toy_plushy_covalex_cargo_1_a",
@@ -50367,6 +51132,11 @@
   "guid": "e738c105-8ef7-4238-8170-5db0c4f9c15d",
   "class_name": "carryable_2h_fl_vlk_pearl_irradiated_super_01"
  },
+ "Aurora Mk II Model": {
+  "loc_key": "item_NameCarryable_2H_SQ_aurora_mk2_model_1_stand_a",
+  "guid": "972655bc-18a5-45c7-8d8c-4d531026f791",
+  "class_name": "carryable_2h_sq_aurora_mk2_model_1_stand_a"
+ },
  "Metamaterial Test #152": {
   "loc_key": "item_Name_Carryable_2H_SQ_CollectorMaterial_002",
   "guid": "8fbead8a-4e5b-4d63-bb80-442151e29094",
@@ -50376,6 +51146,11 @@
   "loc_key": "item_NameCarryable_2H_SQ_gladius_model_1_stand_a",
   "guid": "818e49c0-70d5-402d-9c6d-dde6ecfad9ed",
   "class_name": "Carryable_1H_CY_gladius_model_1_toy_b"
+ },
+ "Valakkar Fang (Apex)": {
+  "loc_key": "items_commodities_valakkarfang_apex",
+  "guid": "68ccd2a1-6c7f-4373-af4f-501e7a7db99e",
+  "class_name": "carryable_tbo_creature_trophy_vlkapexfang"
  },
  "Irradiated Valakkar Fang (Apex)": {
   "loc_key": "items_commodities_valakkarfang_apex_irradiated",

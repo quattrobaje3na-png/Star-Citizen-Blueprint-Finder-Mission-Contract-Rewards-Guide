@@ -67,6 +67,37 @@ def load_json(p: Path, default=None):
     return json.loads(p.read_text(encoding="utf-8"))
 
 
+def collect_by_field(data: dict) -> dict[str, set[str]]:
+    """Same strings as collect_data_strings, but tagged with the field they came
+    from. Needed because the community localization is only trustworthy for some
+    fields -- see COMMUNITY_FIELDS."""
+    out: dict[str, set[str]] = {}
+    for it in data.get("items", []):
+        for f in ("name", "type", "subtype"):
+            v = it.get(f)
+            if isinstance(v, str) and v.strip():
+                out.setdefault(v.strip(), set()).add(f)
+        for m in it.get("missions") or []:
+            for f in ("title", "faction", "repStanding", "system"):
+                v = m.get(f)
+                if isinstance(v, str) and v.strip():
+                    out.setdefault(v.strip(), set()).add(f)
+    return out
+
+
+# Fields the community project may translate. Deliberately EXCLUDES "name":
+# community item names lag CIG's own English. Real example --
+#   key item_Name_qrt_specialist_heavy_arms_01_01_13
+#   CIG 4.9 English:  "Antium Helmet Jet"
+#   community German: "Antium-Ruestung Arme Maroon"   (wrong slot AND variant)
+# and "FS-9 Magazine (75 cap)" came back as "(120 Kapazitaet)" because CIG
+# changed the capacity and the community file still had the old number. Showing
+# a player the wrong item or the wrong ammo count is worse than English.
+# Mission titles are prose CIG never localized at all, and the community
+# rendering there is good -- it even preserves faction names as proper nouns.
+COMMUNITY_FIELDS = {"title"}
+
+
 def collect_data_strings(data: dict) -> set[str]:
     """Every user-visible string in the tool's data file.
 
@@ -129,12 +160,18 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
                 "Refusing to build a dictionary without it -- the result would "
                 "look fine and silently lose most translations."
             )
+    # Community localization project (MIT, github.com/Dymerz/StarCitizen-Localization).
+    # Optional: only DE/FR/IT/ES exist. Sits BELOW CIG official and ABOVE the
+    # engine -- human, SC-aware translators beat generic MT, but never override
+    # a string CIG actually shipped.
+    community = load_json(GLOSSARIES / f"community_{lang}.json").get("translate", {})
     glossary = load_json(GLOSSARIES / f"glossary_{lang}.json")
     loc_map = load_json(GLOSSARIES / "loc_key_map.json")
     supplement = load_json(GLOSSARIES / "supplement.json")
 
     data = load_json(src / "blueprint_explorer_data.json")
-    needed = collect_data_strings(data)
+    by_field = collect_by_field(data)
+    needed = set(by_field)
 
     never = set(supplement.get("never_translate", []))
     keep = set(glossary.get("keep", []))
@@ -143,7 +180,8 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
 
     dictionary: dict[str, str] = {}
     stats = {"tm": 0, "ui": 0, "loc_map": 0, "glossary": 0, "review": 0,
-             "keep": 0, "pattern": 0, "engine": 0, "untranslated": 0}
+             "keep": 0, "community": 0, "pattern": 0, "engine": 0,
+             "untranslated": 0}
 
     # --- UI chrome (always included; it is not part of `needed`) ------------
     for en, langs in ui.get("exact", {}).items():
@@ -180,6 +218,9 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
         elif s in g_rev:                             # CIG, single-key support
             dictionary[s] = g_rev[s]
             stats["review"] += 1
+        elif s in community and (by_field.get(s, set()) & COMMUNITY_FIELDS):
+            dictionary[s] = community[s]            # community project, human
+            stats["community"] += 1
         elif s in tm:                                # cached engine output
             dictionary[s] = tm[s]
             stats["tm"] += 1
@@ -273,7 +314,8 @@ def main() -> int:
         s = r["stats"]
         print(f"  dictionary: {r['dict_size']:,} entries, {r['patterns']} patterns")
         print(f"  sources: ui={s['ui']} tm={s['tm']} loc_map={s['loc_map']} "
-              f"glossary={s['glossary']} review={s['review']} pattern={s['pattern']} "
+              f"glossary={s['glossary']} review={s['review']} "
+              f"community={s['community']} pattern={s['pattern']} "
               f"keep(English)={s['keep']} engine={s['engine']}")
         if s["untranslated"]:
             print(f"  !! {s['untranslated']:,} strings left in English "
