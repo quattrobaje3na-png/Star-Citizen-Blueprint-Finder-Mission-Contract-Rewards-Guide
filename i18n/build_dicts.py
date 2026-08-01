@@ -159,25 +159,30 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
             patterns.append({"regex": p["regex"], "out": v})
 
     # --- data strings ------------------------------------------------------
+    # Precedence, most authoritative first. The translation memory used to sit
+    # at the TOP, which meant cached ENGINE output outranked CIG's own official
+    # translations -- exactly backwards. It only escaped notice because the
+    # first run sent the engine solely strings CIG did not cover. TM is a cache
+    # of engine results, so it belongs at engine priority, not above the game's
+    # own data.
     unresolved: list[str] = []
     for s in sorted(needed):
         if s in dictionary:
             continue
-        if s in never or s in keep:
-            stats["keep"] += 1
-            continue  # deliberately left in English
-        if s in tm:
-            dictionary[s] = tm[s]
-            stats["tm"] += 1
-        elif s in loc_map and lang in loc_map[s]:
+        if s in loc_map and lang in loc_map[s]:      # CIG official, GUID-joined
             dictionary[s] = loc_map[s][lang]
             stats["loc_map"] += 1
-        elif s in g_tr:
+        elif s in g_tr:                              # CIG official, name-matched
             dictionary[s] = g_tr[s]
             stats["glossary"] += 1
-        elif s in g_rev:
+        elif s in keep or s in never:                # deliberately English
+            stats["keep"] += 1
+        elif s in g_rev:                             # CIG, single-key support
             dictionary[s] = g_rev[s]
             stats["review"] += 1
+        elif s in tm:                                # cached engine output
+            dictionary[s] = tm[s]
+            stats["tm"] += 1
         else:
             unresolved.append(s)
 

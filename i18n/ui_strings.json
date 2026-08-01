@@ -474,6 +474,24 @@
    "fr": "Combat",
    "ja": "戦闘",
    "zh": "战斗"
+  },
+  "Associate": {
+   "de": "Partner",
+   "fr": "Associé",
+   "ja": "アソシエイト",
+   "zh": "合作伙伴"
+  },
+  "Trusted Associate": {
+   "de": "Vertrauter Partner",
+   "fr": "Associé de confiance",
+   "ja": "信頼されたアソシエイト",
+   "zh": "受信任的合作伙伴"
+  },
+  "Probationary Guild Member": {
+   "de": "Gildenmitglied auf Probe",
+   "fr": "Membre stagiaire de la guilde",
+   "ja": "仮ギルドメンバー",
+   "zh": "试用期公会成员"
   }
  },
  "patterns": [
