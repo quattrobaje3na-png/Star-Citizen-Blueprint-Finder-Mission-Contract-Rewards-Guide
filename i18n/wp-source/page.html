@@ -1,0 +1,301 @@
+<style>
+    /* 1. Global Flush Architecture */
+    .entry-content, .site-main, .post-inner, .wp-block-post-content, .wp-block-custom-html, .content-area {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    /* 2. Optimized App Container (unchanged from original — the promo bar simply sits above it) */
+    #blueprint-finder-wrap {
+        display: block !important;
+        width: 100% !important;
+        height: calc(100vh - 80px) !important;
+        min-height: 750px !important;
+        background: #000;
+        border-bottom: 3px solid #FFB300;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+    }
+    /* 1b. Above-the-fold promo bar: sits between the site header and the tool */
+    .top-promo-bar {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        box-sizing: border-box;
+        background: #000;
+        border-bottom: 1px solid rgba(255,140,0,0.3);
+        padding: 0 16px;
+        text-align: center;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        color: #8fa7b3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .top-promo-bar a {
+        color: #FF8C00;
+        font-weight: 700;
+        text-decoration: none;
+    }
+    .top-promo-bar a:hover {
+        text-decoration: underline;
+    }
+    .top-promo-bar .divider {
+        color: rgba(255,140,0,0.4);
+        margin: 0 10px;
+    }
+    .top-promo-bar .highlight-link {
+        animation: promo-glow 2.2s ease-in-out infinite;
+    }
+    @keyframes promo-glow {
+        0%, 100% { text-shadow: 0 0 0 rgba(255,140,0,0); }
+        50% { text-shadow: 0 0 6px rgba(255,140,0,0.9); }
+    }
+    .sc-force-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        display: block !important;
+    }
+    /* 3. Visible SEO Footer Formatting */
+    .seo-footer-content {
+        background: #000;
+        color: #8fa7b3;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        padding: 60px 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,140,0,0.2);
+    }
+    .seo-footer-content h1 {
+        color: #FF8C00;
+        font-size: 26px;
+        margin-bottom: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+    .seo-footer-content h2 {
+        color: #e2b144;
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    .seo-footer-content p {
+        max-width: 800px;
+        margin: 0 auto 30px auto;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    .seo-footer-content ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .seo-footer-content li {
+        background: rgba(255, 140, 0, 0.05);
+        border: 1px solid rgba(255, 140, 0, 0.3);
+        padding: 10px 18px;
+        font-size: 12px;
+        color: #FF8C00;
+        border-radius: 4px;
+        letter-spacing: 1px;
+    }
+
+    /* 4. CROSS-PROMO: Community Tools grid (sits between tool and SEO footer) */
+    .cross-promo-tools {
+        background: #0d0d0d;
+        border-top: 2px solid #FFB300;
+        border-bottom: 1px solid rgba(255,140,0,0.2);
+        padding: 40px 20px;
+        text-align: center;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        box-sizing: border-box;
+    }
+    .cross-promo-tools .promo-tag {
+        display: inline-block;
+        background: rgba(255,140,0,0.1);
+        border: 1px solid rgba(255,140,0,0.4);
+        color: #FF8C00;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 4px;
+        margin-bottom: 14px;
+    }
+    .cross-promo-tools h3 {
+        color: #e2b144;
+        font-size: 22px;
+        margin: 0 0 24px 0;
+        font-weight: 800;
+    }
+    .tool-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .tool-card {
+        background: rgba(255,140,0,0.04);
+        border: 1px solid rgba(255,140,0,0.25);
+        border-radius: 6px;
+        padding: 22px 20px;
+        width: 280px;
+        text-align: left;
+        box-sizing: border-box;
+    }
+    .tool-card h4 {
+        color: #e2b144;
+        font-size: 16px;
+        margin: 0 0 8px 0;
+        font-weight: 800;
+    }
+    .tool-card p {
+        color: #8fa7b3;
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 0 0 14px 0;
+    }
+    .promo-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+    .promo-buttons a, .tool-card a {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        letter-spacing: 0.5px;
+    }
+    .btn-primary-orange {
+        background: #FF8C00;
+        color: #000;
+    }
+    .btn-outline-orange {
+        background: transparent;
+        color: #FF8C00;
+        border: 1px solid #FF8C00;
+    }
+
+    /* 5. CROSS-PROMO: Referral Code Randomizer CTA (sits inside SEO footer) */
+    .cross-promo-referral {
+        max-width: 700px;
+        margin: 40px auto 0 auto;
+        background: rgba(255,140,0,0.06);
+        border: 1px solid rgba(255,140,0,0.35);
+        border-radius: 6px;
+        padding: 25px 30px;
+        box-sizing: border-box;
+    }
+    .cross-promo-referral h3 {
+        color: #FF8C00;
+        font-size: 17px;
+        margin: 0 0 8px 0;
+        font-weight: 800;
+    }
+    .cross-promo-referral p {
+        color: #8fa7b3;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0 0 16px 0;
+    }
+
+    @media (max-width: 768px) {
+        #blueprint-finder-wrap { height: 95vh !important; }
+        .promo-buttons { flex-direction: column; align-items: center; }
+        .top-promo-bar {
+            height: auto;
+            line-height: 1.5;
+            white-space: normal;
+            padding: 8px 12px;
+        }
+        .top-promo-bar .divider { display: block; height: 4px; }
+    }
+</style>
+
+<!-- ABOVE-THE-FOLD PROMO BAR (sits between header and tool, guarantees visibility) -->
+<div class="top-promo-bar">
+    <a href="#community-tools" class="highlight-link">3 Free Tools You Don't Want to Miss ↓</a>
+    <span class="divider">|</span>
+    Veterans: use the <a href="/star-citizen-referral-code-randomizer/">Referral Code Randomizer</a>
+</div>
+
+<!-- INTERACTIVE APP CONTAINER -->
+<div id="blueprint-finder-wrap">
+    <iframe
+        src="https://quattrobaje3na-png.github.io/Star-Citizen-Blueprint-Finder-Mission-Contract-Rewards-Guide/"
+        class="sc-force-iframe"
+        loading="eager"
+        allow="cross-origin-isolated"
+        title="Star Citizen Crafting Blueprint Finder Tool"
+        sandbox="allow-scripts allow-forms allow-same-origin allow-popups">
+    </iframe>
+</div>
+
+<!-- CROSS-PROMO: Community Tools grid -->
+<div class="cross-promo-tools" id="community-tools">
+    <span class="promo-tag">Community Resource</span>
+    <h3>More Free Star Citizen Tools</h3>
+    <div class="tool-grid">
+        <div class="tool-card">
+            <h4>SC Mining Material Finder</h4>
+            <p>Track the best ore, gem, and refinery routes across Stanton, Pyro, and Nyx before you commit resources to a craft.</p>
+            <a href="/star-citizen-mining-material-finder/" class="btn-primary-orange">Launch Tool</a>
+        </div>
+        <div class="tool-card">
+            <h4>Contested Zone Group Inventory Organizer</h4>
+            <p>Coordinate loot splits and shared inventory with your squad during Contested Zone runs — no more sorting it out over comms.</p>
+            <a href="https://citizen-starter-guide.com/sc-contested-zone-group-inventory-organizer/" class="btn-primary-orange">Launch Tool</a>
+        </div>
+        <div class="tool-card">
+            <h4>Beacon Net Crew &amp; Org Finder</h4>
+            <p>Find crew and Orgs actively broadcasting Beacons, or post your own, to team up with pilots looking for backup right now.</p>
+            <a href="https://citizen-starter-guide.com/sc-beacon-net-crew-org-finder/" class="btn-primary-orange">Launch Tool</a>
+        </div>
+    </div>
+</div>
+
+<!-- VISIBLE SEO CONTEXT (Moved below the fold) -->
+<section class="seo-footer-content">
+    <h1>Star Citizen Crafting Blueprint Finder For 4.9</h1>
+    <h2>Maximize Your DPS &amp; Gear Upgrades</h2>
+    <p>The ultimate SC utility to find the best locations to farm crafting blueprints via contracts in Stanton, Pyro, and Nyx. Track required materials to craft specialized ammo, heavy armor, and high-performance weapons with better fire rates, increased DPS, and reduced recoil. Optimized for the Star Citizen Alpha 4.9 patch cycle.</p>
+
+    <ul>
+        <li>Star Citizen Blueprint Finder</li>
+        <li>SC Weapon &amp; Armor Schematics</li>
+        <li>Crafting High DPS Weapons</li>
+        <li>Contract Blueprint Locations</li>
+        <li>Craft Better Guns &amp; Ammo</li>
+    </ul>
+
+    <!-- CROSS-PROMO: Referral Code Randomizer -->
+    <div class="cross-promo-referral">
+        <h3>Veterans: Give a New Recruit a Head Start</h3>
+        <p>
+            Got a referral code collecting dust? Drop it into the
+            <strong>Referral Code Randomizer</strong> and let a new pilot pull a random veteran
+            code for bonus starting credits and gear. Recruiting for your Org? Use it to hand out
+            codes fairly across your roster instead of playing favorites.
+        </p>
+        <a href="/star-citizen-referral-code-randomizer/" class="btn-primary-orange">Try the Referral Code Randomizer</a>
+    </div>
+</section>

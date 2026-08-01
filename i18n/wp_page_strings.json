@@ -1,0 +1,170 @@
+{
+  "_README": [
+    "Translations for the WordPress page front that wraps the Blueprint Finder",
+    "iframe. Consumed by build_wp_page.py.",
+    "",
+    "Only visible copy is listed. CSS, class names, IDs, anchors and URLs are",
+    "never translated -- build_wp_page.py replaces exact text spans, so markup",
+    "and styling are carried through untouched.",
+    "",
+    "Ship names, 'Star Citizen', 'Stanton', 'Pyro', 'Nyx', 'DPS', 'aUEC' and",
+    "tool proper-names are deliberately left in English in DE/FR, matching how",
+    "those communities write, and transliterated in JA/ZH.",
+    "",
+    "German reviewed most carefully. FR/JA/ZH authored but UNVERIFIED by a",
+    "native speaker -- review before publishing."
+  ],
+
+  "strings": {
+    "3 Free Tools You Don't Want to Miss ↓": {
+      "de": "3 kostenlose Tools, die du nicht verpassen solltest ↓",
+      "fr": "3 outils gratuits à ne pas manquer ↓",
+      "ja": "見逃せない 3 つの無料ツール ↓",
+      "zh": "3 款不容错过的免费工具 ↓"
+    },
+    "Veterans: use the": {
+      "de": "Veteranen: nutzt den",
+      "fr": "Vétérans : utilisez le",
+      "ja": "ベテランの方へ：ご利用ください",
+      "zh": "老玩家：请使用"
+    },
+    "Referral Code Randomizer": {
+      "de": "Referral-Code-Randomizer",
+      "fr": "Referral Code Randomizer",
+      "ja": "紹介コード・ランダマイザー",
+      "zh": "推荐码随机器"
+    },
+    "Star Citizen Crafting Blueprint Finder Tool": {
+      "de": "Star Citizen Crafting-Blaupausen-Finder",
+      "fr": "Outil de recherche de plans de fabrication Star Citizen",
+      "ja": "Star Citizen クラフト・ブループリント検索ツール",
+      "zh": "星际公民制造蓝图查找工具"
+    },
+    "Community Resource": {
+      "de": "Community-Ressource",
+      "fr": "Ressource communautaire",
+      "ja": "コミュニティリソース",
+      "zh": "社区资源"
+    },
+    "More Free Star Citizen Tools": {
+      "de": "Weitere kostenlose Star-Citizen-Tools",
+      "fr": "Plus d'outils Star Citizen gratuits",
+      "ja": "その他の無料 Star Citizen ツール",
+      "zh": "更多免费星际公民工具"
+    },
+    "SC Mining Material Finder": {
+      "de": "SC Mining Material Finder",
+      "fr": "SC Mining Material Finder",
+      "ja": "SC 採掘マテリアル検索",
+      "zh": "SC 采矿材料查找器"
+    },
+    "Track the best ore, gem, and refinery routes across Stanton, Pyro, and Nyx before you commit resources to a craft.": {
+      "de": "Finde die besten Erz-, Edelstein- und Raffinerie-Routen in Stanton, Pyro und Nyx, bevor du Ressourcen in eine Fertigung steckst.",
+      "fr": "Repérez les meilleures routes de minerai, de gemmes et de raffinerie dans Stanton, Pyro et Nyx avant d'engager des ressources dans une fabrication.",
+      "ja": "クラフトにリソースを投じる前に、Stanton・Pyro・Nyx を通る最適な鉱石・宝石・精製ルートを把握できます。",
+      "zh": "在投入资源制造之前，先掌握斯坦顿、派罗与尼克斯的最佳矿石、宝石与精炼路线。"
+    },
+    "Contested Zone Group Inventory Organizer": {
+      "de": "Contested Zone Group Inventory Organizer",
+      "fr": "Contested Zone Group Inventory Organizer",
+      "ja": "コンテステッドゾーン グループ在庫管理",
+      "zh": "争夺区团队库存管理器"
+    },
+    "Coordinate loot splits and shared inventory with your squad during Contested Zone runs — no more sorting it out over comms.": {
+      "de": "Koordiniert Beuteverteilung und gemeinsames Inventar mit eurem Squad bei Contested-Zone-Runs – kein Abstimmen mehr über Comms.",
+      "fr": "Coordonnez le partage du butin et l'inventaire commun avec votre équipe pendant les runs en Contested Zone — fini les négociations en comms.",
+      "ja": "コンテステッドゾーンの攻略中、分隊での戦利品配分と共有インベントリを整理できます。もう通信で調整する必要はありません。",
+      "zh": "在争夺区行动中与小队协调战利品分配和共享库存——不必再靠语音沟通来分账。"
+    },
+    "Beacon Net Crew & Org Finder": {
+      "de": "Beacon Net Crew & Org Finder",
+      "fr": "Beacon Net Crew & Org Finder",
+      "ja": "Beacon Net クルー & Org 検索",
+      "zh": "Beacon Net 船员与组织查找器"
+    },
+    "Find crew and Orgs actively broadcasting Beacons, or post your own, to team up with pilots looking for backup right now.": {
+      "de": "Finde Crews und Orgs, die gerade Beacons senden – oder setze dein eigenes ab – und schließ dich Piloten an, die jetzt Unterstützung suchen.",
+      "fr": "Trouvez des équipages et des Orgs qui diffusent des Beacons, ou publiez le vôtre, pour faire équipe avec des pilotes cherchant du renfort maintenant.",
+      "ja": "ビーコンを発信中のクルーや Org を探す、あるいは自分で発信して、今まさに支援を求めているパイロットと組めます。",
+      "zh": "查找正在发送信标的船员与组织，或发布你自己的信标，与此刻正在寻求支援的飞行员组队。"
+    },
+    "Launch Tool": {
+      "de": "Tool öffnen",
+      "fr": "Lancer l'outil",
+      "ja": "ツールを開く",
+      "zh": "启动工具"
+    },
+    "Star Citizen Crafting Blueprint Finder For 4.9": {
+      "de": "Star Citizen Crafting-Blaupausen-Finder für 4.9",
+      "fr": "Recherche de plans de fabrication Star Citizen pour la 4.9",
+      "ja": "Star Citizen クラフト・ブループリント検索（4.9 対応）",
+      "zh": "星际公民 4.9 制造蓝图查找器"
+    },
+    "Maximize Your DPS & Gear Upgrades": {
+      "de": "Hol das Maximum aus DPS und Ausrüstungs-Upgrades",
+      "fr": "Maximisez vos DPS et vos améliorations d'équipement",
+      "ja": "DPS と装備アップグレードを最大化",
+      "zh": "最大化你的 DPS 与装备升级"
+    },
+    "The ultimate SC utility to find the best locations to farm crafting blueprints via contracts in Stanton, Pyro, and Nyx. Track required materials to craft specialized ammo, heavy armor, and high-performance weapons with better fire rates, increased DPS, and reduced recoil. Optimized for the Star Citizen Alpha 4.9 patch cycle.": {
+      "de": "Das ultimative SC-Werkzeug, um die besten Orte zum Farmen von Crafting-Blaupausen über Verträge in Stanton, Pyro und Nyx zu finden. Verfolge die benötigten Materialien für spezialisierte Munition, schwere Rüstungen und Hochleistungswaffen mit besserer Feuerrate, mehr DPS und weniger Rückstoß. Optimiert für den Patch-Zyklus von Star Citizen Alpha 4.9.",
+      "fr": "L'outil SC ultime pour repérer les meilleurs endroits où farmer des plans de fabrication via les contrats dans Stanton, Pyro et Nyx. Suivez les matériaux nécessaires pour fabriquer des munitions spécialisées, des armures lourdes et des armes hautes performances offrant une meilleure cadence de tir, plus de DPS et moins de recul. Optimisé pour le cycle de patch Star Citizen Alpha 4.9.",
+      "ja": "Stanton・Pyro・Nyx の契約からクラフト用ブループリントを効率よく集められる最適な場所を見つけるための、決定版 SC ユーティリティ。連射速度・DPS の向上とリコイル低減を備えた特殊弾薬、重装甲、高性能武器のクラフトに必要な素材を管理できます。Star Citizen Alpha 4.9 のパッチサイクルに最適化。",
+      "zh": "查找在斯坦顿、派罗与尼克斯通过合同刷取制造蓝图的最佳地点的终极 SC 工具。追踪制造特种弹药、重型护甲以及具备更高射速、更高 DPS 和更低后坐力的高性能武器所需的材料。针对星际公民 Alpha 4.9 补丁周期优化。"
+    },
+    "Star Citizen Blueprint Finder": {
+      "de": "Star Citizen Blaupausen-Finder",
+      "fr": "Recherche de plans Star Citizen",
+      "ja": "Star Citizen ブループリント検索",
+      "zh": "星际公民蓝图查找器"
+    },
+    "SC Weapon & Armor Schematics": {
+      "de": "SC Waffen- & Rüstungs-Schaltpläne",
+      "fr": "Schémas d'armes et d'armures SC",
+      "ja": "SC 武器・アーマー設計図",
+      "zh": "SC 武器与护甲图纸"
+    },
+    "Crafting High DPS Weapons": {
+      "de": "Waffen mit hohem DPS herstellen",
+      "fr": "Fabriquer des armes à DPS élevé",
+      "ja": "高 DPS 武器のクラフト",
+      "zh": "制造高 DPS 武器"
+    },
+    "Contract Blueprint Locations": {
+      "de": "Fundorte für Vertrags-Blaupausen",
+      "fr": "Emplacements des plans de contrat",
+      "ja": "契約ブループリントの入手場所",
+      "zh": "合同蓝图获取地点"
+    },
+    "Craft Better Guns & Ammo": {
+      "de": "Bessere Waffen & Munition herstellen",
+      "fr": "Fabriquez de meilleures armes et munitions",
+      "ja": "より優れた銃と弾薬をクラフト",
+      "zh": "制造更好的枪械与弹药"
+    },
+    "Veterans: Give a New Recruit a Head Start": {
+      "de": "Veteranen: Verschafft Neulingen einen Vorsprung",
+      "fr": "Vétérans : donnez une longueur d'avance à une recrue",
+      "ja": "ベテランの方へ：新人にスタートダッシュを",
+      "zh": "老玩家：为新兵助跑一程"
+    },
+    "Got a referral code collecting dust? Drop it into the": {
+      "de": "Liegt dein Referral-Code ungenutzt herum? Trag ihn in den",
+      "fr": "Un code de parrainage qui prend la poussière ? Déposez-le dans le",
+      "ja": "使われていない紹介コードはありませんか？ こちらに登録してください：",
+      "zh": "有闲置的推荐码吗？ 把它放进"
+    },
+    "and let a new pilot pull a random veteran code for bonus starting credits and gear. Recruiting for your Org? Use it to hand out codes fairly across your roster instead of playing favorites.": {
+      "de": "ein und lass neue Piloten zufällig einen Veteranen-Code ziehen – für Bonus-Startguthaben und Ausrüstung. Rekrutierst du für deine Org? So verteilst du Codes fair über den ganzen Kader, statt einzelne zu bevorzugen.",
+      "fr": "et laissez un nouveau pilote tirer au hasard un code de vétéran pour obtenir des crédits et de l'équipement de départ en bonus. Vous recrutez pour votre Org ? Utilisez-le pour distribuer les codes équitablement plutôt que de favoriser certains membres.",
+      "ja": "新規パイロットがランダムにベテランのコードを引き、開始時のボーナスクレジットと装備を受け取れます。Org の勧誘中ですか？ 特定の人に偏らせず、メンバー全体に公平にコードを配れます。",
+      "zh": "让新飞行员随机抽取一位老玩家的推荐码，获得额外的初始点数与装备。正在为你的组织招人？ 用它在全体成员中公平分发推荐码，而不是偏袒某些人。"
+    },
+    "Try the Referral Code Randomizer": {
+      "de": "Referral-Code-Randomizer ausprobieren",
+      "fr": "Essayer le Referral Code Randomizer",
+      "ja": "紹介コード・ランダマイザーを試す",
+      "zh": "试试推荐码随机器"
+    }
+  }
+}

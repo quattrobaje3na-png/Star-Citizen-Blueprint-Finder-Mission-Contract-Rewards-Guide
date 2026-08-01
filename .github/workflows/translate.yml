@@ -1,0 +1,112 @@
+# Auto-translation + publish for the Star Citizen Blueprint Finder.
+#
+# SINGLE-REPO layout. Install as .github/workflows/translate.yml in the TOOL
+# repo itself. See SETUP.md.
+#
+# Publishes one Pages site containing:
+#     /            English (your files, copied verbatim)
+#     /de/ /fr/ /ja/ /zh/   translated builds
+#
+# Your existing English URL is therefore unchanged, which matters because it is
+# already embedded in the WordPress iframe and indexed.
+#
+# On every push you make:
+#   1. rebuild the per-language dictionaries (translation memory first, so
+#      unchanged strings are never re-sent to the engine and cost nothing)
+#   2. run the integrity gate -- structural, not editorial. If the tool's own
+#      JavaScript or data file was altered, or a dictionary is contaminated,
+#      the run FAILS and nothing publishes.
+#   3. commit newly translated strings back into the translation memory
+#   4. publish everything to Pages
+#
+# If this workflow fails, Pages keeps serving the last successful deploy --
+# English goes stale, it does not break.
+
+name: translate-and-publish
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      # The bot's own translation-memory commit must not retrigger the run.
+      # [skip ci] in the commit message is the primary guard; this is a second.
+      - "i18n/tm/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: translate-publish
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build dictionaries
+        env:
+          # Without this secret the build still succeeds and simply leaves
+          # engine-needed strings in English. A missing key degrades, it does
+          # not break the site.
+          GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
+        run: |
+          python i18n/build_dicts.py --src . --out i18n/dist
+
+      - name: Integrity gate
+        run: |
+          python i18n/verify_build.py --src . --out i18n/dist
+
+      - name: Assemble publish directory
+        run: |
+          mkdir -p _site
+          # English at the root, copied verbatim -- the translation pipeline
+          # never edits these, so the existing live site cannot be corrupted.
+          cp index.html _site/
+          cp blueprint_explorer_data.json _site/
+          [ -f README.md ] && cp README.md _site/ || true
+          # Translated builds alongside it.
+          for L in de fr ja zh; do
+            if [ -d "i18n/dist/$L" ]; then
+              mkdir -p "_site/$L"
+              cp -r "i18n/dist/$L/." "_site/$L/"
+            fi
+          done
+          ls -la _site
+
+      - name: Commit updated translation memory
+        run: |
+          git config user.name "translate-bot"
+          git config user.email "translate-bot@users.noreply.github.com"
+          if [ -n "$(git status --porcelain i18n/tm)" ]; then
+            git add i18n/tm
+            # [skip ci] is what stops this commit from retriggering the
+            # workflow. Without it you get an infinite Actions loop.
+            git commit -m "chore(i18n): update translation memory [skip ci]"
+            git push
+          else
+            echo "translation memory unchanged"
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
