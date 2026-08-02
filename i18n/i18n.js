@@ -189,8 +189,33 @@
     });
   }
 
+  // Visible attribution for the community localization project. MIT requires
+  // the notice to travel with the work; the file header carries the legal text,
+  // and this puts a human-readable, linked credit where a reader can see it.
+  // Only rendered when the build actually used community translations, so JA/ZH
+  // never claim a source they did not use.
+  function renderCredit() {
+    if (!window.SC_I18N_CREDIT) return;
+    if (document.getElementById("sc-i18n-credit")) return;
+    var p = document.createElement("p");
+    p.id = "sc-i18n-credit";
+    p.style.cssText = "margin:0;padding:10px 14px;text-align:center;" +
+      "font:11px/1.5 system-ui,sans-serif;color:#7a8b93;background:#000;" +
+      "border-top:1px solid rgba(255,255,255,.08);";
+    p.appendChild(document.createTextNode(window.SC_I18N_CREDIT + " — "));
+    var a = document.createElement("a");
+    a.href = "https://github.com/Dymerz/StarCitizen-Localization";
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = "github.com/Dymerz/StarCitizen-Localization";
+    a.style.color = "#9ab";
+    p.appendChild(a);
+    (document.body || document.documentElement).appendChild(p);
+  }
+
   function start() {
     apply(document.body || document.documentElement);
+    renderCredit();
     observe();
   }
 
