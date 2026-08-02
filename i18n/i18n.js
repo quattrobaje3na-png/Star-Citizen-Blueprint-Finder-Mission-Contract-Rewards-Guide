@@ -64,6 +64,12 @@
 
   // Collected untranslated strings, so the build can report real gaps rather
   // than us guessing what the UI says. Read via window.SC_I18N_MISSING.
+  // Strings the build deliberately left in English. Not gaps -- reporting them
+  // as missing buries the real ones.
+  var KEEP = Object.create(null);
+  var keepList = window.SC_I18N_KEEP || [];
+  for (var ki = 0; ki < keepList.length; ki++) KEEP[keepList[ki]] = true;
+
   var missing = Object.create(null);
   window.SC_I18N_MISSING = missing;
 
@@ -87,11 +93,17 @@
     if (hit === undefined || hit === null) {
       // Only report as missing if it is not something we already produced,
       // and it still looks like untranslated Latin-script source text.
-      if (/[A-Za-z]{2}/.test(core) && OUTPUTS[core] === undefined) {
+      if (/[A-Za-z]{2}/.test(core) && OUTPUTS[core] === undefined
+          && KEEP[core] === undefined) {
         missing[core] = (missing[core] || 0) + 1;
       }
       return null;
     }
+    // Remember what we emit, including PATTERN output. The static OUTPUTS map
+    // is built from dictionary values only, so pattern-produced strings were
+    // re-read on a later pass and logged as missing -- ~50 phantom entries on
+    // the mining tool, drowning the real gaps.
+    OUTPUTS[hit] = true;
     return lead + hit + trail;
   }
 

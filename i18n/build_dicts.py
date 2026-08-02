@@ -187,7 +187,11 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
     by_field = collect_by_field(data)
     needed = set(by_field)
 
-    never = set(supplement.get("never_translate", []))
+    # Both never-translate lists: the shared glossary supplement and this tool's
+    # own ui_strings.json. The per-tool list was silently ignored before.
+    never = set(supplement.get("never_translate", [])) | set(
+        ui.get("never_translate", [])
+    )
     keep = set(glossary.get("keep", []))
     g_tr = glossary.get("translate", {})
     g_rev = glossary.get("review", {})
@@ -218,6 +222,12 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
     # of engine results, so it belongs at engine priority, not above the game's
     # own data.
     unresolved: list[str] = []
+    # Strings we deliberately leave in English (CIG's own do-not-translate list,
+    # plus our never_translate policy). Shipped to the runtime so they are not
+    # reported as "missing" -- on the mining tool 60 of 124 reported gaps were
+    # actually correct keeps like "Aberdeen" and "Daymar" in German, which
+    # buried the real ones.
+    kept_english: list[str] = []
     for s in sorted(needed):
         if s in dictionary:
             continue
@@ -229,6 +239,7 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
             stats["glossary"] += 1
         elif s in keep or s in never:                # deliberately English
             stats["keep"] += 1
+            kept_english.append(s)
         elif s in g_rev:                             # CIG, single-key support
             dictionary[s] = g_rev[s]
             stats["review"] += 1
@@ -311,6 +322,7 @@ def build_language(lang: str, src: Path, out_root: Path, api_key: str | None) ->
         + f"window.SC_I18N_LANG={json.dumps(lang)};\n"
         + f"window.SC_I18N_DICT={json.dumps(dictionary, ensure_ascii=False)};\n"
         + f"window.SC_I18N_PATTERNS={json.dumps(patterns, ensure_ascii=False)};\n"
+        + f"window.SC_I18N_KEEP={json.dumps(sorted(kept_english), ensure_ascii=False)};\n"
         + (
             f"window.SC_I18N_CREDIT={json.dumps(CREDIT_TEXT[lang], ensure_ascii=False)};\n"
             if stats["community"] and lang in CREDIT_TEXT
