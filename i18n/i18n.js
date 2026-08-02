@@ -156,14 +156,20 @@
   var scheduled = false;
   function flush() {
     scheduled = false;
+    // Drain anything queued but not yet delivered, so a burst of renders that
+    // lands mid-flush is not lost.
+    var extra = observer.takeRecords();
+    for (var e = 0; e < extra.length; e++) {
+      var r = extra[e];
+      if (r.type === "characterData") pending.push(r.target);
+      else for (var k = 0; k < r.addedNodes.length; k++) pending.push(r.addedNodes[k]);
+    }
     var batch = pending;
     pending = [];
-    observer.disconnect();
-    try {
-      for (var i = 0; i < batch.length; i++) apply(batch[i]);
-    } finally {
-      observe();
-    }
+    // Deliberately NOT disconnecting: disconnect() DISCARDS queued records.
+    // Staying connected is safe -- re-visiting a node we already translated
+    // resolves to one of our own outputs and is a no-op.
+    for (var i = 0; i < batch.length; i++) apply(batch[i]);
   }
 
   var observer = new MutationObserver(function (records) {
@@ -177,7 +183,14 @@
     }
     if (pending.length && !scheduled) {
       scheduled = true;
-      requestAnimationFrame(flush);
+      // setTimeout, NOT requestAnimationFrame. rAF is suspended whenever the
+      // page is not actively rendering -- a background tab, an offscreen or
+      // hidden iframe, a throttled window. The callback still queued work but
+      // flush() never ran, so every dynamically rendered string stayed English
+      // and never even reached the missing-strings report. Caught on the mining
+      // tool; this tool has the same exposure for anyone opening it in a
+      // background tab.
+      setTimeout(flush, 0);
     }
   });
 
