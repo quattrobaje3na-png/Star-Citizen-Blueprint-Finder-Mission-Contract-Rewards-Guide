@@ -23,3 +23,26 @@ YouTube: https://youtube.com/@CMDRQuattro
 This is a fan-made community tool. Star Citizen®, Roberts Space Industries®, and Cloud Imperium® are registered trademarks of Cloud Imperium Rights LLC. All other content on this site is property of its respective owners. This tool is not endorsed by or affiliated with Cloud Imperium or Roberts Space Industries. All game data is subject to change as development progresses.  
 
 Designed and maintained by CMDR Quattro. Fly safe.
+
+---
+
+🌐 TRANSLATIONS
+
+This tool is available in German, French, Japanese and Simplified Chinese:
+
+    /de/   /fr/   /ja/   /zh/
+
+Item, ship and component names come from Star Citizen's own shipped
+localization files, so the tool matches the wording players see in-game.
+
+German and French mission titles additionally use the community
+Star Citizen Localization project by Corentin Urbain "Dymerz", used under the
+MIT licence:
+
+    https://github.com/Dymerz/StarCitizen-Localization
+
+Full licence text and details of exactly what is used: see THIRD-PARTY-NOTICES.md
+
+Star Citizen®, Roberts Space Industries® and Cloud Imperium® are registered
+trademarks of Cloud Imperium Rights LLC. Unofficial fan project, not affiliated
+with or endorsed by Cloud Imperium Games.
