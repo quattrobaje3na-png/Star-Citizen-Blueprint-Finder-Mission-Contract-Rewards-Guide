@@ -223,6 +223,91 @@
         .tab:hover  { background: var(--border); color: var(--text-main); }
         .tab.active { background: rgba(0, 229, 160, 0.1); border: 1px solid var(--accent); border-bottom: 2px solid var(--accent); color: var(--accent); }
 
+        /* ── Search overrides tabs ──────────────────────────────────────────
+           While a query is active every category is shown at once, so the tab
+           strip stops acting as a filter and becomes a per-category result
+           counter / jump link instead. */
+        .tab-count {
+            display: none;
+            margin-left: 8px;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: var(--accent);
+            color: #04140f;
+        }
+        .tab-container.searching .tab-count { display: inline-block; }
+        .tab-container.searching .tab {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+        .tab-container.searching .tab.has-matches { color: var(--text-main); }
+        .tab-container.searching .tab.no-matches  { opacity: 0.4; }
+        .tab-container.searching .tab.no-matches .tab-count {
+            background: var(--border);
+            color: var(--text-muted);
+        }
+
+        .search-scope-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 0 0 18px;
+            padding: 10px 16px;
+            border: 1px solid var(--accent);
+            border-left-width: 4px;
+            border-radius: 4px;
+            background: rgba(0, 229, 160, 0.07);
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+        .search-scope-banner strong { color: var(--accent); }
+        .search-scope-clear {
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 5px 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .search-scope-clear:hover { color: var(--accent); border-color: var(--accent); }
+
+        .search-scope-empty {
+            margin: 0 0 18px;
+            padding: 18px;
+            border: 1px dashed var(--border);
+            border-radius: 4px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .view-heading {
+            margin: 4px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+        .view-heading-count {
+            margin-left: 8px;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
         /* System Filter Buttons */
         .system-filters {
             display: flex;
@@ -1415,13 +1500,13 @@
 
     <div class="controls-container">
         <div class="tab-and-filter-row">
-            <div class="tab-container">
-                <div class="tab active" onclick="switchTab('weapons', this)">WEAPONS</div>
-                <div class="tab"        onclick="switchTab('armor',   this)">ARMOR SETS</div>
-                <div class="tab"        onclick="switchTab('ammo',    this)">AMMO</div>
-                <div class="tab"        onclick="switchTab('components', this)">SHIP COMPONENTS</div>
-                <div class="tab"        onclick="switchTab('flightsuits', this)">FLIGHT SUITS</div>
-                <div class="tab"        onclick="switchTab('shipweapons', this)">SHIP WEAPONS</div>
+            <div class="tab-container" id="tabContainer">
+                <div class="tab active" data-view="weapons"     onclick="switchTab('weapons', this)">WEAPONS<span class="tab-count"></span></div>
+                <div class="tab"        data-view="armor"       onclick="switchTab('armor',   this)">ARMOR SETS<span class="tab-count"></span></div>
+                <div class="tab"        data-view="ammo"        onclick="switchTab('ammo',    this)">AMMO<span class="tab-count"></span></div>
+                <div class="tab"        data-view="components"  onclick="switchTab('components', this)">SHIP COMPONENTS<span class="tab-count"></span></div>
+                <div class="tab"        data-view="flightsuits" onclick="switchTab('flightsuits', this)">FLIGHT SUITS<span class="tab-count"></span></div>
+                <div class="tab"        data-view="shipweapons" onclick="switchTab('shipweapons', this)">SHIP WEAPONS<span class="tab-count"></span></div>
             </div>
 
             <div class="system-filters">
@@ -1502,11 +1587,31 @@
         </div>
     </div>
 
+    <!-- Shown only while a search is active: search results span every category,
+         regardless of which tab is selected. -->
+    <div id="searchScopeBanner" class="search-scope-banner" style="display:none;">
+        <span class="search-scope-text">
+            Showing <strong id="searchScopeCount">0</strong> match<span id="searchScopePlural">es</span>
+            for &ldquo;<span id="searchScopeQuery"></span>&rdquo; across <strong>all categories</strong> &mdash; tab filters are ignored while searching.
+        </span>
+        <button class="search-scope-clear" onclick="clearSearch()">&times; Clear search</button>
+    </div>
+    <div id="searchNoResults" class="search-scope-empty" style="display:none;">
+        No blueprints match &ldquo;<span id="searchEmptyQuery"></span>&rdquo; in any category.
+        Try a shorter term, or check your system filters &amp; inventory.
+    </div>
+
+    <div class="view-heading" data-for="weapons" style="display:none;">Weapons<span class="view-heading-count"></span></div>
     <div id="weaponsView" class="item-group"></div>
+    <div class="view-heading" data-for="armor" style="display:none;">Armor Sets<span class="view-heading-count"></span></div>
     <div id="armorView"   class="item-group" style="display:none;"></div>
+    <div class="view-heading" data-for="ammo" style="display:none;">Ammo<span class="view-heading-count"></span></div>
     <div id="ammoView"    class="item-group" style="display:none;"></div>
+    <div class="view-heading" data-for="components" style="display:none;">Ship Components<span class="view-heading-count"></span></div>
     <div id="componentsView" class="item-group" style="display:none;"></div>
+    <div class="view-heading" data-for="flightsuits" style="display:none;">Flight Suits<span class="view-heading-count"></span></div>
     <div id="flightsuitsView" class="item-group" style="display:none;"></div>
+    <div class="view-heading" data-for="shipweapons" style="display:none;">Ship Weapons<span class="view-heading-count"></span></div>
     <div id="shipweaponsView" class="item-group" style="display:none;"></div>
 
 </div>
@@ -1663,15 +1768,97 @@
     }
 
     /* ── Tab switching ──────────────────────────────────────────────────── */
+    // Every browsable category, in display order. VIEWS is the single source of
+    // truth for both tab switching and the search-overrides-tabs behaviour.
+    const VIEWS = [
+        { view: 'weapons',     id: 'weaponsView'     },
+        { view: 'armor',       id: 'armorView'       },
+        { view: 'ammo',        id: 'ammoView'        },
+        { view: 'components',  id: 'componentsView'  },
+        { view: 'flightsuits', id: 'flightsuitsView' },
+        { view: 'shipweapons', id: 'shipweaponsView' }
+    ];
+
+    let currentTab = 'weapons';   // the tab the user last picked (restored when search clears)
+
     function switchTab(view, el) {
+        currentTab = view;
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         el.classList.add('active');
-        document.getElementById('weaponsView').style.display = (view === 'weapons') ? 'grid' : 'none';
-        document.getElementById('armorView').style.display   = (view === 'armor')   ? 'grid' : 'none';
-        document.getElementById('ammoView').style.display    = (view === 'ammo')    ? 'grid' : 'none';
-        document.getElementById('componentsView').style.display = (view === 'components') ? 'grid' : 'none';
-        document.getElementById('flightsuitsView').style.display = (view === 'flightsuits') ? 'grid' : 'none';
-        document.getElementById('shipweaponsView').style.display = (view === 'shipweapons') ? 'grid' : 'none';
+
+        // While a search is active the tabs no longer filter — every category with
+        // a match stays on screen. Clicking a tab just jumps to that section.
+        if (isSearchActive()) {
+            applyViewVisibility();
+            const heading = document.querySelector(`.view-heading[data-for="${view}"]`);
+            const target  = (heading && heading.style.display !== 'none')
+                ? heading
+                : document.getElementById(viewIdFor(view));
+            if (target && target.style.display !== 'none') {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            return;
+        }
+
+        applyViewVisibility();
+    }
+
+    function viewIdFor(view) {
+        const entry = VIEWS.find(v => v.view === view);
+        return entry ? entry.id : null;
+    }
+
+    function isSearchActive() {
+        const input = document.getElementById('searchInput');
+        return !!(input && input.value.trim());
+    }
+
+    /* Decide which category views are on screen.
+       - No search: classic single-tab behaviour.
+       - Search active: the query wins over the tab — show every category that has
+         at least one matching card, each under its own heading. */
+    let lastMatchCounts = null;   // per-view match tally from the current query
+
+    function applyViewVisibility(matchCounts) {
+        const searching = isSearchActive();
+        const tabBar    = document.getElementById('tabContainer');
+        if (tabBar) tabBar.classList.toggle('searching', searching);
+
+        // Callers that only change the tab (not the query) reuse the last tally
+        // so switching tabs mid-search doesn't blank the results.
+        if (matchCounts) lastMatchCounts = matchCounts;
+        else if (searching) matchCounts = lastMatchCounts;
+
+        VIEWS.forEach(v => {
+            const el      = document.getElementById(v.id);
+            const heading = document.querySelector(`.view-heading[data-for="${v.view}"]`);
+            const tab     = document.querySelector(`.tab[data-view="${v.view}"]`);
+            const count   = matchCounts ? (matchCounts[v.view] || 0) : 0;
+
+            if (searching) {
+                const show = count > 0;
+                if (el) el.style.display = show ? 'grid' : 'none';
+                if (heading) {
+                    heading.style.display = show ? 'block' : 'none';
+                    const c = heading.querySelector('.view-heading-count');
+                    if (c) c.textContent = `${count} result${count === 1 ? '' : 's'}`;
+                }
+                if (tab) {
+                    tab.classList.toggle('has-matches', show);
+                    tab.classList.toggle('no-matches', !show);
+                    const badge = tab.querySelector('.tab-count');
+                    if (badge) badge.textContent = count;
+                }
+            } else {
+                if (el) el.style.display = (v.view === currentTab) ? 'grid' : 'none';
+                if (heading) heading.style.display = 'none';
+                if (tab) {
+                    tab.classList.remove('has-matches', 'no-matches');
+                    const badge = tab.querySelector('.tab-count');
+                    if (badge) badge.textContent = '';
+                }
+            }
+        });
     }
 
     /* ── Modal ──────────────────────────────────────────────────────────── */
@@ -2662,6 +2849,16 @@
     let searchTargetCache = null;
 
     function rebuildSearchTargetCache() {
+        // Map each card back to the category view that owns it, so a search can
+        // report per-category match counts and un-hide the views that need it.
+        const viewOfEl = new Map();
+        VIEWS.forEach(v => {
+            const container = document.getElementById(v.id);
+            if (!container) return;
+            Array.prototype.forEach.call(container.querySelectorAll('.search-target'),
+                el => viewOfEl.set(el, v.view));
+        });
+
         searchTargetCache = Array.prototype.map.call(document.querySelectorAll('.search-target'), el => {
             const nameEl = el.querySelector('.search-text');
             const tagEl  = el.querySelector('.tag');
@@ -2671,6 +2868,7 @@
             );
             return {
                 el,
+                view: viewOfEl.get(el) || null,
                 name: nameEl ? nameEl.textContent.toLowerCase() : '',
                 tag: tagEl ? tagEl.textContent.toLowerCase() : '',
                 factions,
@@ -2684,9 +2882,16 @@
 
         if (!searchTargetCache) rebuildSearchTargetCache();
 
-        // If no query — show all, respecting active tab
+        const banner    = document.getElementById('searchScopeBanner');
+        const emptyMsg  = document.getElementById('searchNoResults');
+
+        // If no query — show all cards and hand control back to the active tab
         if (!q) {
             searchTargetCache.forEach(entry => entry.el.style.display = '');
+            if (banner)   banner.style.display = 'none';
+            if (emptyMsg) emptyMsg.style.display = 'none';
+            lastMatchCounts = null;
+            applyViewVisibility();
             return;
         }
 
@@ -2695,6 +2900,8 @@
 
         // Single read-free pass (all data comes from the cache), then batched writes —
         // avoids the read/write layout-thrashing pattern of querying+writing per element.
+        const matchCounts = {};
+        let total = 0;
         searchTargetCache.forEach(entry => {
             let match;
             if (isPartialSearch) {
@@ -2703,34 +2910,43 @@
                 match = entry.name.includes(q) || entry.tag.includes(q) || entry.factions.some(f => f.includes(q));
             }
             entry.el.style.display = match ? '' : 'none';
+            if (match) {
+                total++;
+                if (entry.view) matchCounts[entry.view] = (matchCounts[entry.view] || 0) + 1;
+            }
         });
+
+        // The query outranks the tab selection: reveal every category that matched.
+        applyViewVisibility(matchCounts);
+
+        if (banner) {
+            banner.style.display = total ? 'flex' : 'none';
+            const countEl  = document.getElementById('searchScopeCount');
+            const pluralEl = document.getElementById('searchScopePlural');
+            const queryEl  = document.getElementById('searchScopeQuery');
+            if (countEl)  countEl.textContent  = total;
+            if (pluralEl) pluralEl.textContent = total === 1 ? '' : 'es';
+            if (queryEl)  queryEl.textContent  = query.trim();
+        }
+        if (emptyMsg) {
+            emptyMsg.style.display = total ? 'none' : 'block';
+            const eq = document.getElementById('searchEmptyQuery');
+            if (eq) eq.textContent = query.trim();
+        }
     }
 
     function selectSuggestion(el) {
         const label = el.dataset.label;
-        const type  = el.dataset.type;
         const input = document.getElementById('searchInput');
         input.value = label;
         document.getElementById('searchClearBtn').style.display = 'block';
         closeSearchDropdown();
 
-        // If faction selected, search by faction name (matches mission-faction-tag)
-        // If item/set selected, search by name
+        // Faction suggestions match the mission-faction-tag, item/set ones the name.
+        // No tab inference needed for any suggestion type: applySearchFilter reveals
+        // every category that matched, so a weapon picked while the Ammo tab is
+        // selected still shows up (and factions spanning several tabs show in full).
         applySearchFilter(label);
-        // Also switch to the right tab if we can infer it
-        if (type === 'faction') {
-            // Don't switch tab — faction may span multiple tabs — just filter across all
-            // Show all tabs so results aren't hidden
-            showAllTabsForFactionSearch();
-        }
-    }
-
-    function showAllTabsForFactionSearch() {
-        // When searching by faction, un-hide all views so results across all tabs are visible
-        // User can re-tab to narrow; this prevents them seeing "no results" on wrong tab
-        // Actually: keep current tab active; the filter works across all rendered cards
-        // Cards in hidden views are display:none via switchTab, not search — that's fine.
-        // So nothing extra needed; applySearchFilter handles it.
     }
 
     function onSearchKeydown(e) {
