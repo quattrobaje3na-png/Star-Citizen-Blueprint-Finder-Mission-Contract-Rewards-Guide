@@ -1,809 +1,938 @@
 {
- "_README": [
-  "Hand-translated UI chrome for the Blueprint Finder.",
-  "",
-  "Scope: ONLY the tool's own interface copy. Item names, mission titles,",
-  "factions and ranks are DATA -- they come from blueprint_explorer_data.json",
-  "and are translated by the build using CIG's official glossary, never here.",
-  "",
-  "Source of this list: harvested from the LIVE rendered DOM of the running",
-  "tool (1,117 text nodes + 61 attributes), not from a regex over the source.",
-  "Regex over the inline JS was tried and proven unsafe -- it produced",
-  "fragments like \"|| q === \" that would corrupt the tool if translated.",
-  "",
-  "STATUS: German reviewed most carefully as the test case. FR/JA/ZH are",
-  "authored but UNVERIFIED against native SC community usage -- have a native",
-  "speaker check them before treating them as final.",
-  "",
-  "'patterns' handle strings composed with numbers at runtime (rep tooltips).",
-  "$1/$2/... are capture groups from the regex. Numbers are never translated."
- ],
- "exact": {
-  "Star Citizen Blueprint Finder: Mission Contract Rewards Guide": {
-   "de": "Star Citizen Blaupausen-Finder: Belohnungen für Missionsverträge",
-   "fr": "Star Citizen Blueprint Finder : guide des récompenses de contrats",
-   "ja": "Star Citizen ブループリントファインダー：ミッション契約報酬ガイド",
-   "zh": "星际公民蓝图查找器：任务合同奖励指南"
-  },
-  "Fetching database...": {
-   "de": "Datenbank wird geladen …",
-   "fr": "Chargement de la base de données…",
-   "ja": "データベースを読み込み中…",
-   "zh": "正在加载数据库…"
-  },
-  "Enjoying The Tool? Say Thanks!": {
-   "de": "Gefällt dir das Tool? Sag Danke!",
-   "fr": "Cet outil vous plaît ? Dites merci !",
-   "ja": "ツールが気に入りましたか？ 応援をお願いします！",
-   "zh": "喜欢这个工具吗？ 支持一下！"
-  },
-  "+ Get Star Citizen Guides & Updates": {
-   "de": "+ Star-Citizen-Guides & Updates erhalten",
-   "fr": "+ Recevoir les guides et actualités Star Citizen",
-   "ja": "＋ Star Citizen のガイドと更新情報を受け取る",
-   "zh": "＋ 获取星际公民指南与更新"
-  },
-  "SUBSCRIBE": {
-   "de": "ABONNIEREN",
-   "fr": "S'ABONNER",
-   "ja": "登録する",
-   "zh": "订阅"
-  },
-  "⚠️ Contract Reward Advisory": {
-   "de": "⚠️ Hinweis zu Vertragsbelohnungen",
-   "fr": "⚠️ Avertissement sur les récompenses de contrat",
-   "ja": "⚠️ 契約報酬に関する注意",
-   "zh": "⚠️ 合同奖励说明"
-  },
-  "Completing a contract grants you a": {
-   "de": "Ein abgeschlossener Vertrag gewährt dir eine",
-   "fr": "Terminer un contrat vous octroie un",
-   "ja": "契約を完了すると付与されるのは",
-   "zh": "完成合同后你将获得"
-  },
-  "random blueprint": {
-   "de": "zufällige Blaupause",
-   "fr": "plan aléatoire",
-   "ja": "ランダムなブループリント",
-   "zh": "随机蓝图"
-  },
-  "How to read a contract entry": {
-   "de": "So liest du einen Vertragseintrag",
-   "fr": "Comment lire une fiche de contrat",
-   "ja": "契約エントリーの見方",
-   "zh": "如何阅读合同条目"
-  },
-  "✓ Verified": {
-   "de": "✓ Verifiziert",
-   "fr": "✓ Vérifié",
-   "ja": "✓ 認証済み",
-   "zh": "✓ 已验证"
-  },
-  "⚠ Unverified": {
-   "de": "⚠ Nicht verifiziert",
-   "fr": "⚠ Non vérifié",
-   "ja": "⚠ 未認証",
-   "zh": "⚠ 未验证"
-  },
-  "Lawful (Verified Tab)": {
-   "de": "Legal (Tab „Verifiziert“)",
-   "fr": "Légal (onglet Vérifié)",
-   "ja": "合法（認証済みタブ）",
-   "zh": "合法（已验证标签）"
-  },
-  "Unlawful (Unverified Tab)": {
-   "de": "Illegal (Tab „Nicht verifiziert“)",
-   "fr": "Illégal (onglet Non vérifié)",
-   "ja": "非合法（未認証タブ）",
-   "zh": "非法（未验证标签）"
-  },
-  "Legal contracts that won't raise your CrimeStat.": {
-   "de": "Legale Verträge, die deinen CrimeStat nicht erhöhen.",
-   "fr": "Contrats légaux qui n'augmentent pas votre CrimeStat.",
-   "ja": "CrimeStat が上がらない合法契約。",
-   "zh": "不会提升你犯罪等级的合法合同。"
-  },
-  "Criminal contracts that typically raise CrimeStat.": {
-   "de": "Kriminelle Verträge, die in der Regel den CrimeStat erhöhen.",
-   "fr": "Contrats criminels qui augmentent généralement le CrimeStat.",
-   "ja": "通常 CrimeStat が上がる犯罪契約。",
-   "zh": "通常会提升犯罪等级的犯罪合同。"
-  },
-  "Contract Category": {
-   "de": "Vertragskategorie",
-   "fr": "Catégorie de contrat",
-   "ja": "契約カテゴリー",
-   "zh": "合同类别"
-  },
-  "The MobiGlass tab where this mission appears.": {
-   "de": "Der mobiGlas-Tab, in dem diese Mission erscheint.",
-   "fr": "L'onglet mobiGlas où apparaît cette mission.",
-   "ja": "このミッションが表示される mobiGlas のタブ。",
-   "zh": "该任务出现在 mobiGlas 的标签页。"
-  },
-  "Faction / Mission Giver": {
-   "de": "Fraktion / Auftraggeber",
-   "fr": "Faction / Donneur de mission",
-   "ja": "派閥 / ミッション発注者",
-   "zh": "派系 / 任务发布者"
-  },
-  "Organisation offering the contract and blueprint.": {
-   "de": "Organisation, die den Vertrag und die Blaupause anbietet.",
-   "fr": "Organisation qui propose le contrat et le plan.",
-   "ja": "契約とブループリントを提供する組織。",
-   "zh": "提供该合同与蓝图的组织。"
-  },
-  "Subtype Tag": {
-   "de": "Subtyp-Kennzeichnung",
-   "fr": "Étiquette de sous-type",
-   "ja": "サブタイプタグ",
-   "zh": "子类型标签"
-  },
-  "Item category shown in the card corner.": {
-   "de": "Gegenstandskategorie in der Kartenecke.",
-   "fr": "Catégorie d'objet affichée dans le coin de la carte.",
-   "ja": "カード隅に表示されるアイテムカテゴリー。",
-   "zh": "显示在卡片角落的物品类别。"
-  },
-  "System Badge": {
-   "de": "System-Abzeichen",
-   "fr": "Badge de système",
-   "ja": "星系バッジ",
-   "zh": "星系徽章"
-  },
-  "Star system where the contract is available.": {
-   "de": "Sternensystem, in dem der Vertrag verfügbar ist.",
-   "fr": "Système stellaire où le contrat est disponible.",
-   "ja": "契約が受注できる星系。",
-   "zh": "可接取该合同的星系。"
-  },
-  "Partial Completion": {
-   "de": "Teilabschluss",
-   "fr": "Achèvement partiel",
-   "ja": "部分達成",
-   "zh": "部分完成"
-  },
-  "This contract can be turned in incomplete. The % shown is the minimum you must deliver to still receive a reward.": {
-   "de": "Dieser Vertrag kann unvollständig abgegeben werden. Der angezeigte Prozentwert ist das Minimum, das du liefern musst, um dennoch eine Belohnung zu erhalten.",
-   "fr": "Ce contrat peut être rendu incomplet. Le pourcentage affiché correspond au minimum à livrer pour recevoir malgré tout une récompense.",
-   "ja": "この契約は未完了でも納品できます。表示された％は、報酬を受け取るために最低限納品する必要がある量です。",
-   "zh": "该合同可在未完成时提交。所示百分比是仍能获得奖励所需交付的最低量。"
-  },
-  "WEAPONS": {
-   "de": "WAFFEN",
-   "fr": "ARMES",
-   "ja": "武器",
-   "zh": "武器"
-  },
-  "ARMOR SETS": {
-   "de": "RÜSTUNGSSETS",
-   "fr": "SETS D'ARMURE",
-   "ja": "アーマーセット",
-   "zh": "护甲套装"
-  },
-  "AMMO": {
-   "de": "MUNITION",
-   "fr": "MUNITIONS",
-   "ja": "弾薬",
-   "zh": "弹药"
-  },
-  "SHIP COMPONENTS": {
-   "de": "SCHIFFSKOMPONENTEN",
-   "fr": "COMPOSANTS DE VAISSEAU",
-   "ja": "シップコンポーネント",
-   "zh": "飞船部件"
-  },
-  "FLIGHT SUITS": {
-   "de": "FLUGANZÜGE",
-   "fr": "COMBINAISONS DE VOL",
-   "ja": "フライトスーツ",
-   "zh": "飞行服"
-  },
-  "SHIP WEAPONS": {
-   "de": "SCHIFFSWAFFEN",
-   "fr": "ARMES DE VAISSEAU",
-   "ja": "シップウェポン",
-   "zh": "飞船武器"
-  },
-  "FILTER BY SYSTEM:": {
-   "de": "NACH SYSTEM FILTERN:",
-   "fr": "FILTRER PAR SYSTÈME :",
-   "ja": "星系で絞り込み：",
-   "zh": "按星系筛选："
-  },
-  "✓ MY INVENTORY": {
-   "de": "✓ MEIN INVENTAR",
-   "fr": "✓ MON INVENTAIRE",
-   "ja": "✓ マイインベントリ",
-   "zh": "✓ 我的库存"
-  },
-  "★ PLAN GRIND ROUTE": {
-   "de": "★ GRIND-ROUTE PLANEN",
-   "fr": "★ PLANIFIER L'ITINÉRAIRE",
-   "ja": "★ 周回ルートを計画",
-   "zh": "★ 规划刷取路线"
-  },
-  "My Blueprint Inventory": {
-   "de": "Mein Blaupausen-Inventar",
-   "fr": "Mon inventaire de plans",
-   "ja": "マイ・ブループリント一覧",
-   "zh": "我的蓝图库存"
-  },
-  "Check All Shown": {
-   "de": "Alle angezeigten auswählen",
-   "fr": "Cocher tout ce qui est affiché",
-   "ja": "表示中をすべて選択",
-   "zh": "勾选所有显示项"
-  },
-  "Clear All Owned": {
-   "de": "Alle im Besitz zurücksetzen",
-   "fr": "Effacer tout ce qui est possédé",
-   "ja": "所持済みをすべて解除",
-   "zh": "清除所有已拥有"
-  },
-  "⬇ Download": {
-   "de": "⬇ Herunterladen",
-   "fr": "⬇ Télécharger",
-   "ja": "⬇ ダウンロード",
-   "zh": "⬇ 下载"
-  },
-  "⬆ Upload": {
-   "de": "⬆ Hochladen",
-   "fr": "⬆ Envoyer",
-   "ja": "⬆ アップロード",
-   "zh": "⬆ 上传"
-  },
-  "owned": {
-   "de": "im Besitz",
-   "fr": "possédé",
-   "ja": "所持済み",
-   "zh": "已拥有"
-  },
-  "Grind Route Planner": {
-   "de": "Grind-Routenplaner",
-   "fr": "Planificateur d'itinéraire",
-   "ja": "周回ルートプランナー",
-   "zh": "刷取路线规划器"
-  },
-  "Choose a Faction": {
-   "de": "Fraktion wählen",
-   "fr": "Choisir une faction",
-   "ja": "派閥を選択",
-   "zh": "选择派系"
-  },
-  "Pick the mission giver you want to grind rep with. Only blueprints awarded by that faction will be selectable.": {
-   "de": "Wähle den Auftraggeber, bei dem du Ruf farmen willst. Nur Blaupausen dieser Fraktion sind auswählbar.",
-   "fr": "Choisissez le donneur de mission auprès duquel farmer la réputation. Seuls les plans de cette faction seront sélectionnables.",
-   "ja": "評判を稼ぎたいミッション発注者を選んでください。その派閥が付与するブループリントのみ選択できます。",
-   "zh": "选择你想刷声望的任务发布者。只有该派系发放的蓝图可供选择。"
-  },
-  "Select Target Blueprints": {
-   "de": "Ziel-Blaupausen auswählen",
-   "fr": "Sélectionner les plans visés",
-   "ja": "目標のブループリントを選択",
-   "zh": "选择目标蓝图"
-  },
-  "Pick one or more blueprints to unlock. We'll find the fastest contracts that drop them.": {
-   "de": "Wähle eine oder mehrere Blaupausen aus. Wir finden die schnellsten Verträge, die sie liefern.",
-   "fr": "Choisissez un ou plusieurs plans à débloquer. Nous trouverons les contrats les plus rapides qui les octroient.",
-   "ja": "解放したいブループリントを 1 つ以上選んでください。それらが手に入る最速の契約を検索します。",
-   "zh": "选择一个或多个想解锁的蓝图。我们会找出掉落它们的最快合同。"
-  },
-  "Your Current Rep": {
-   "de": "Dein aktueller Ruf",
-   "fr": "Votre réputation actuelle",
-   "ja": "現在の評判",
-   "zh": "你当前的声望"
-  },
-  "(optional)": {
-   "de": "(optional)",
-   "fr": "(facultatif)",
-   "ja": "（任意）",
-   "zh": "（可选）"
-  },
-  "Enter your current rep with this faction if you're above Neutral. Leave blank to start from 0.": {
-   "de": "Gib deinen aktuellen Ruf bei dieser Fraktion an, wenn du über Neutral liegst. Leer lassen, um bei 0 zu beginnen.",
-   "fr": "Saisissez votre réputation actuelle auprès de cette faction si elle dépasse Neutre. Laissez vide pour partir de 0.",
-   "ja": "この派閥での評判が Neutral を超えている場合は入力してください。空欄なら 0 から開始します。",
-   "zh": "如果你在该派系的声望高于中立，请填写当前声望。留空则从 0 开始。"
-  },
-  "Recommended Grind Route": {
-   "de": "Empfohlene Grind-Route",
-   "fr": "Itinéraire recommandé",
-   "ja": "推奨周回ルート",
-   "zh": "推荐刷取路线"
-  },
-  "Select at least one blueprint above.": {
-   "de": "Wähle oben mindestens eine Blaupause aus.",
-   "fr": "Sélectionnez au moins un plan ci-dessus.",
-   "ja": "上でブループリントを 1 つ以上選択してください。",
-   "zh": "请在上方至少选择一个蓝图。"
-  },
-  "Obtained From:": {
-   "de": "Erhalten aus:",
-   "fr": "Obtenu via :",
-   "ja": "入手先：",
-   "zh": "获取途径："
-  },
-  "Set Obtained From:": {
-   "de": "Set erhalten aus:",
-   "fr": "Set obtenu via :",
-   "ja": "セット入手先：",
-   "zh": "套装获取途径："
-  },
-  "⤢ Click to expand full list": {
-   "de": "⤢ Klicken, um die vollständige Liste zu öffnen",
-   "fr": "⤢ Cliquez pour afficher la liste complète",
-   "ja": "⤢ クリックで全リストを表示",
-   "zh": "⤢ 点击展开完整列表"
-  },
-  "Loot Pool Unknown or Filtered Out": {
-   "de": "Beutepool unbekannt oder herausgefiltert",
-   "fr": "Butin inconnu ou filtré",
-   "ja": "戦利品プールが不明、または絞り込みで除外",
-   "zh": "战利品池未知或已被筛除"
-  },
-  "* Pieces have different loot pools — click a tile to filter.": {
-   "de": "* Teile haben unterschiedliche Beutepools – klicke eine Kachel zum Filtern.",
-   "fr": "* Les pièces ont des butins différents — cliquez sur une tuile pour filtrer.",
-   "ja": "※ 部位ごとに戦利品プールが異なります。タイルをクリックで絞り込み。",
-   "zh": "* 各部件的战利品池不同——点击方块进行筛选。"
-  },
-  "INCOMPLETE": {
-   "de": "UNVOLLSTÄNDIG",
-   "fr": "INCOMPLET",
-   "ja": "未完成",
-   "zh": "不完整"
-  },
-  "Helmet": {
-   "de": "Helm",
-   "fr": "Casque",
-   "ja": "ヘルメット",
-   "zh": "头盔"
-  },
-  "Core": {
-   "de": "Torso",
-   "fr": "Torse",
-   "ja": "コア",
-   "zh": "核心"
-  },
-  "Arms": {
-   "de": "Arme",
-   "fr": "Bras",
-   "ja": "アーム",
-   "zh": "臂甲"
-  },
-  "Legs": {
-   "de": "Beine",
-   "fr": "Jambes",
-   "ja": "レッグ",
-   "zh": "腿甲"
-  },
-  "Backpack": {
-   "de": "Rucksack",
-   "fr": "Sac à dos",
-   "ja": "バックパック",
-   "zh": "背包"
-  },
-  "Flight Suit": {
-   "de": "Fluganzug",
-   "fr": "Combinaison de vol",
-   "ja": "フライトスーツ",
-   "zh": "飞行服"
-  },
-  "Clear all owned blueprints? They will reappear in the tool and planner.": {
-   "de": "Alle als im Besitz markierten Blaupausen zurücksetzen? Sie erscheinen wieder im Tool und im Planer.",
-   "fr": "Effacer tous les plans possédés ? Ils réapparaîtront dans l'outil et le planificateur.",
-   "ja": "所持済みのブループリントをすべて解除しますか？ ツールとプランナーに再表示されます。",
-   "zh": "清除所有已拥有的蓝图？ 它们将重新出现在工具和规划器中。"
-  },
-  "No blueprints found in that file.": {
-   "de": "In dieser Datei wurden keine Blaupausen gefunden.",
-   "fr": "Aucun plan trouvé dans ce fichier.",
-   "ja": "そのファイルにブループリントは見つかりませんでした。",
-   "zh": "该文件中未找到蓝图。"
-  },
-  "Could not read that file.": {
-   "de": "Diese Datei konnte nicht gelesen werden.",
-   "fr": "Impossible de lire ce fichier.",
-   "ja": "そのファイルを読み込めませんでした。",
-   "zh": "无法读取该文件。"
-  },
-  "Search by item name, type, or faction…": {
-   "de": "Nach Gegenstand, Typ oder Fraktion suchen …",
-   "fr": "Rechercher par objet, type ou faction…",
-   "ja": "アイテム名・種別・派閥で検索…",
-   "zh": "按物品名称、类型或派系搜索…"
-  },
-  "Search blueprints...": {
-   "de": "Blaupausen suchen …",
-   "fr": "Rechercher des plans…",
-   "ja": "ブループリントを検索…",
-   "zh": "搜索蓝图…"
-  },
-  "Accepts a Download file (.json) or a blueprints.txt list (one name per line)": {
-   "de": "Akzeptiert eine heruntergeladene Datei (.json) oder eine blueprints.txt-Liste (ein Name pro Zeile)",
-   "fr": "Accepte un fichier téléchargé (.json) ou une liste blueprints.txt (un nom par ligne)",
-   "ja": "ダウンロードしたファイル（.json）または blueprints.txt のリスト（1 行 1 名）に対応",
-   "zh": "支持下载的文件（.json）或 blueprints.txt 列表（每行一个名称）"
-  },
-  "from the reward pool tied to that specific mission. If you do not receive the specific blueprint you are looking for, you will need to repeat the contract until it drops. The good news is, most of the pools consist of full armor sets and a handful of weapons. If you do not see the exact contract you need repeat existing contracts for that faction until it appears.": {
-   "de": "aus dem Belohnungspool dieser bestimmten Mission. Erhältst du nicht die gesuchte Blaupause, musst du den Vertrag wiederholen, bis sie fällt. Die gute Nachricht: Die meisten Pools bestehen aus vollständigen Rüstungssets und einer Handvoll Waffen. Findest du den benötigten Vertrag nicht, wiederhole vorhandene Verträge dieser Fraktion, bis er erscheint.",
-   "fr": "issu du pool de récompenses lié à cette mission précise. Si vous n'obtenez pas le plan recherché, vous devrez répéter le contrat jusqu'à ce qu'il tombe. Bonne nouvelle : la plupart des pools se composent de sets d'armure complets et de quelques armes. Si vous ne voyez pas le contrat voulu, répétez les contrats existants de cette faction jusqu'à ce qu'il apparaisse.",
-   "ja": "そのミッション固有の報酬プールから選ばれます。目当てのブループリントが出ない場合は、出るまで契約を繰り返す必要があります。幸い、ほとんどのプールはアーマーセット一式と少数の武器で構成されています。必要な契約が見つからない場合は、その派閥の既存契約を繰り返すと出現します。",
-   "zh": "来自该特定任务所绑定的奖励池。如果没有获得你想要的蓝图，就需要重复该合同直到掉落。好消息是，大多数奖励池由整套护甲和少量武器组成。如果找不到所需的合同，请重复该派系的现有合同直到它出现。"
-  },
-  "Check off blueprints you already own. Owned blueprints are removed from the browse lists above and from the Grind Route Planner's target list and results. Your selections are saved on this device — use Download to back them up or move them to another browser/device. Upload accepts a saved Download file, or a plain": {
-   "de": "Hake Blaupausen ab, die du bereits besitzt. Diese werden aus den Listen oben sowie aus Zielliste und Ergebnissen des Grind-Routenplaners entfernt. Deine Auswahl wird auf diesem Gerät gespeichert – nutze „Herunterladen“, um sie zu sichern oder auf ein anderes Gerät zu übertragen. „Hochladen“ akzeptiert eine gespeicherte Datei oder eine einfache",
-   "fr": "Cochez les plans que vous possédez déjà. Ils sont retirés des listes ci-dessus ainsi que de la liste de cibles et des résultats du planificateur. Vos choix sont enregistrés sur cet appareil — utilisez « Télécharger » pour les sauvegarder ou les transférer. « Envoyer » accepte un fichier enregistré, ou une simple",
-   "ja": "すでに所持しているブループリントにチェックを入れてください。所持済みのものは上の一覧と、周回ルートプランナーの目標リストおよび結果から除外されます。選択内容はこの端末に保存されます。バックアップや別端末への移行には「ダウンロード」を使ってください。「アップロード」は保存済みファイル、または単純な",
-   "zh": "勾选你已拥有的蓝图。已拥有的蓝图会从上方浏览列表以及刷取路线规划器的目标列表和结果中移除。你的选择保存在本设备上——使用“下载”进行备份或迁移到其他浏览器/设备。“上传”支持已保存的文件，或一个普通的"
-  },
-  "list (one blueprint name per line, e.g. from a log-scanning script) — names are matched automatically and merged into your inventory.": {
-   "de": "Liste (ein Blaupausenname pro Zeile, z. B. aus einem Log-Scan-Skript) – Namen werden automatisch zugeordnet und in dein Inventar übernommen.",
-   "fr": "liste (un nom de plan par ligne, p. ex. issu d'un script d'analyse de logs) — les noms sont associés automatiquement et fusionnés dans votre inventaire.",
-   "ja": "リスト（1 行 1 ブループリント名、例：ログ解析スクリプトの出力）— 名前は自動で照合され、インベントリに統合されます。",
-   "zh": "列表（每行一个蓝图名称，例如来自日志扫描脚本）——名称会自动匹配并合并到你的库存中。"
-  },
-  "STANTON": {
-   "de": "STANTON",
-   "fr": "STANTON",
-   "ja": "スタントン",
-   "zh": "斯坦顿"
-  },
-  "PYRO": {
-   "de": "PYRO",
-   "fr": "PYRO",
-   "ja": "パイロ",
-   "zh": "派罗"
-  },
-  "NYX": {
-   "de": "NYX",
-   "fr": "NYX",
-   "ja": "ニックス",
-   "zh": "尼克斯"
-  },
-  "Mercenary": {
-   "de": "Söldner",
-   "fr": "Mercenaire",
-   "ja": "傭兵",
-   "zh": "雇佣兵"
-  },
-  "Combat": {
-   "de": "Kampf",
-   "fr": "Combat",
-   "ja": "戦闘",
-   "zh": "战斗"
-  },
-  "Associate": {
-   "de": "Partner",
-   "fr": "Associé",
-   "ja": "アソシエイト",
-   "zh": "合作伙伴"
-  },
-  "Trusted Associate": {
-   "de": "Vertrauter Partner",
-   "fr": "Associé de confiance",
-   "ja": "信頼されたアソシエイト",
-   "zh": "受信任的合作伙伴"
-  },
-  "Probationary Guild Member": {
-   "de": "Gildenmitglied auf Probe",
-   "fr": "Membre stagiaire de la guilde",
-   "ja": "仮ギルドメンバー",
-   "zh": "试用期公会成员"
-  }
- },
- "patterns": [
-  {
-   "_comment": "Rep requirement tooltips, composed at runtime with numbers. 61 distinct combinations were present in one render; a pattern covers all of them plus future ones. $1 rank / $2 rep amount / $3 rep per run.",
-   "regex": "^Requires (.+?) \\(([\\d,]+) rep\\)\\. Earns ([\\d,]+) rep/run$",
-   "de": "Erfordert $1 ($2 Ruf). Bringt $3 Ruf pro Durchlauf",
-   "fr": "Nécessite $1 ($2 rép.). Rapporte $3 rép./run",
-   "ja": "必要：$1（評判 $2）。1 回あたり評判 $3 獲得",
-   "zh": "需要 $1（$2 声望）。每次运行获得 $3 声望"
-  },
-  {
-   "regex": "^Requires (.+?)\\. Earns ([\\d,]+) rep/run$",
-   "de": "Erfordert $1. Bringt $2 Ruf pro Durchlauf",
-   "fr": "Nécessite $1. Rapporte $2 rép./run",
-   "ja": "必要：$1。1 回あたり評判 $2 獲得",
-   "zh": "需要 $1。每次运行获得 $2 声望"
-  },
-  {
-   "regex": "^Requires (.+?) \\(([\\d,]+) rep\\)$",
-   "de": "Erfordert $1 ($2 Ruf)",
-   "fr": "Nécessite $1 ($2 rép.)",
-   "ja": "必要：$1（評判 $2）",
-   "zh": "需要 $1（$2 声望）"
-  },
-  {
-   "_comment": "Per-piece 'X Obtained From:' headings, e.g. 'Antium Helmet Jet Obtained From:'. $1 is a data name, left for the data dictionary to handle.",
-   "regex": "^(.+) Obtained From:$",
-   "de": "$1 – erhalten aus:",
-   "fr": "$1 — obtenu via :",
-   "ja": "$1 の入手先：",
-   "zh": "$1 的获取途径："
-  },
-  {
-   "_comment": "Database-loaded status line, all-numeric captures.",
-   "regex": "^Database Loaded! (\\d+) weapons, (\\d+) ammo, (\\d+) armor sets, (\\d+) flight suits, (\\d+) ship weapons, (\\d+) components\\.$",
-   "de": "Datenbank geladen! $1 Waffen, $2 Munitionstypen, $3 Rüstungssets, $4 Fluganzüge, $5 Schiffswaffen, $6 Komponenten.",
-   "fr": "Base de données chargée ! $1 armes, $2 munitions, $3 sets d'armure, $4 combinaisons de vol, $5 armes de vaisseau, $6 composants.",
-   "ja": "データベース読み込み完了！ 武器 $1、弾薬 $2、アーマーセット $3、フライトスーツ $4、シップウェポン $5、コンポーネント $6。",
-   "zh": "数据库已加载！ 武器 $1 件、弹药 $2 种、护甲套装 $3 套、飞行服 $4 套、飞船武器 $5 件、部件 $6 个。"
-  },
-  {
-   "_comment": "Starting rank line in the planner, composed with rank + rep number.",
-   "regex": "^Starting rank: (.+?) \\((\\d[\\d,]*) rep\\)$",
-   "de": "Startrang: $1 ($2 Ruf)",
-   "fr": "Rang de départ : $1 ($2 rép.)",
-   "ja": "開始ランク：$1（評判 $2）",
-   "zh": "起始等级：$1（$2 声望）"
-  },
-  {
-   "_comment": "Partial-completion badge, e.g. 'PARTIAL 26%+'.",
-   "regex": "^PARTIAL (\\d+%\\+)$",
-   "de": "TEILWEISE $1",
-   "fr": "PARTIEL $1",
-   "ja": "部分達成 $1",
-   "zh": "部分完成 $1"
-  },
-  {
-   "_comment": "'<name> Magazine (N cap)' -- N stays numeric.",
-   "regex": "^(.+?) Magazine \\((\\d+) [Cc]ap\\)$",
-   "de": "$1 Magazin ($2 Schuss)",
-   "fr": "$1 Chargeur ($2 cart.)",
-   "ja": "$1 マガジン ($2 発)",
-   "zh": "$1 弹匣 ($2 发)"
-  },
-  {
-   "_comment": "'<name> Battery (N cap)' -- N stays numeric.",
-   "regex": "^(.+?) Battery \\((\\d+) [Cc]ap\\)$",
-   "de": "$1 Batterie ($2 Schuss)",
-   "fr": "$1 Batterie ($2 cart.)",
-   "ja": "$1 バッテリー ($2 発)",
-   "zh": "$1 电池 ($2 发)"
-  },
-  {
-   "_comment": "'<proper name> Energy Assault Rifle' + optional variant. Name never translated.",
-   "regex": "^(.+?) Energy Assault Rifle(| .+)$",
-   "de": "$1 Energie-Sturmgewehr$2",
-   "fr": "$1 Fusil d'assaut à énergie$2",
-   "ja": "$1 エネルギーアサルトライフル$2",
-   "zh": "$1 能量突击步枪$2"
-  },
-  {
-   "_comment": "'<proper name> Laser Sniper Rifle' + optional variant. Name never translated.",
-   "regex": "^(.+?) Laser Sniper Rifle(| .+)$",
-   "de": "$1 Laser-Scharfschützengewehr$2",
-   "fr": "$1 Fusil de précision laser$2",
-   "ja": "$1 レーザースナイパーライフル$2",
-   "zh": "$1 激光狙击步枪$2"
-  },
-  {
-   "_comment": "'<proper name> Mass Driver Cannon' + optional variant. Name never translated.",
-   "regex": "^(.+?) Mass Driver Cannon(| .+)$",
-   "de": "$1 Massebeschleuniger-Kanone$2",
-   "fr": "$1 Canon à accélération de masse$2",
-   "ja": "$1 マスドライバーキャノン$2",
-   "zh": "$1 质量加速炮$2"
-  },
-  {
-   "_comment": "'<proper name> Scraper Module' + optional variant. Name never translated.",
-   "regex": "^(.+?) Scraper Module(| .+)$",
-   "de": "$1 Schabermodul$2",
-   "fr": "$1 Module de grattage$2",
-   "ja": "$1 スクレイパーモジュール$2",
-   "zh": "$1 刮削模块$2"
-  },
-  {
-   "_comment": "'<proper name> Assault Rifle' + optional variant. Name never translated.",
-   "regex": "^(.+?) Assault Rifle(| .+)$",
-   "de": "$1 Sturmgewehr$2",
-   "fr": "$1 Fusil d'assaut$2",
-   "ja": "$1 アサルトライフル$2",
-   "zh": "$1 突击步枪$2"
-  },
-  {
-   "_comment": "'<proper name> Laser Shotgun' + optional variant. Name never translated.",
-   "regex": "^(.+?) Laser Shotgun(| .+)$",
-   "de": "$1 Laser-Schrotflinte$2",
-   "fr": "$1 Fusil à pompe laser$2",
-   "ja": "$1 レーザーショットガン$2",
-   "zh": "$1 激光霰弹枪$2"
-  },
-  {
-   "_comment": "'<proper name> Sniper Rifle' + optional variant. Name never translated.",
-   "regex": "^(.+?) Sniper Rifle(| .+)$",
-   "de": "$1 Scharfschützengewehr$2",
-   "fr": "$1 Fusil de précision$2",
-   "ja": "$1 スナイパーライフル$2",
-   "zh": "$1 狙击步枪$2"
-  },
-  {
-   "_comment": "'<proper name> Twin Shotgun' + optional variant. Name never translated.",
-   "regex": "^(.+?) Twin Shotgun(| .+)$",
-   "de": "$1 Doppelschrotflinte$2",
-   "fr": "$1 Fusil à pompe double$2",
-   "ja": "$1 ツインショットガン$2",
-   "zh": "$1 双管霰弹枪$2"
-  },
-  {
-   "_comment": "'<proper name> Tractor Beam' + optional variant. Name never translated.",
-   "regex": "^(.+?) Tractor Beam(| .+)$",
-   "de": "$1 Traktorstrahl$2",
-   "fr": "$1 Rayon tracteur$2",
-   "ja": "$1 トラクタービーム$2",
-   "zh": "$1 牵引光束$2"
-  },
-  {
-   "_comment": "'<proper name> Mining Laser' + optional variant. Name never translated.",
-   "regex": "^(.+?) Mining Laser(| .+)$",
-   "de": "$1 Bergbaulaser$2",
-   "fr": "$1 Laser d'extraction$2",
-   "ja": "$1 採掘レーザー$2",
-   "zh": "$1 采矿激光$2"
-  },
-  {
-   "_comment": "'<proper name> Energy SMG' + optional variant. Name never translated.",
-   "regex": "^(.+?) Energy SMG(| .+)$",
-   "de": "$1 Energie-SMG$2",
-   "fr": "$1 SMG à énergie$2",
-   "ja": "$1 エネルギーSMG$2",
-   "zh": "$1 能量冲锋枪$2"
-  },
-  {
-   "_comment": "'<proper name> Energy LMG' + optional variant. Name never translated.",
-   "regex": "^(.+?) Energy LMG(| .+)$",
-   "de": "$1 Energie-LMG$2",
-   "fr": "$1 LMG à énergie$2",
-   "ja": "$1 エネルギー軽機関銃$2",
-   "zh": "$1 能量轻机枪$2"
-  },
-  {
-   "_comment": "'<proper name> Scattergun' + optional variant. Name never translated.",
-   "regex": "^(.+?) Scattergun(| .+)$",
-   "de": "$1 Streuwaffe$2",
-   "fr": "$1 Fusil à dispersion$2",
-   "ja": "$1 スキャッターガン$2",
-   "zh": "$1 散射枪$2"
-  },
-  {
-   "_comment": "'<proper name> Crossbow' + optional variant. Name never translated.",
-   "regex": "^(.+?) Crossbow(| .+)$",
-   "de": "$1 Armbrust$2",
-   "fr": "$1 Arbalète$2",
-   "ja": "$1 クロスボウ$2",
-   "zh": "$1 弩$2"
-  },
-  {
-   "_comment": "'<proper name> Repeater' + optional variant. Name never translated.",
-   "regex": "^(.+?) Repeater(| .+)$",
-   "de": "$1 Repetierer$2",
-   "fr": "$1 Répéteur$2",
-   "ja": "$1 リピーター$2",
-   "zh": "$1 连发炮$2"
-  },
-  {
-   "_comment": "'<proper name> Shotgun' + optional variant. Name never translated.",
-   "regex": "^(.+?) Shotgun(| .+)$",
-   "de": "$1 Schrotflinte$2",
-   "fr": "$1 Fusil à pompe$2",
-   "ja": "$1 ショットガン$2",
-   "zh": "$1 霰弹枪$2"
-  },
-  {
-   "_comment": "'<proper name> Gatling' + optional variant. Name never translated.",
-   "regex": "^(.+?) Gatling(| .+)$",
-   "de": "$1 Gatling$2",
-   "fr": "$1 Gatling$2",
-   "ja": "$1 ガトリング$2",
-   "zh": "$1 加特林$2"
-  },
-  {
-   "_comment": "'<proper name> Cannon' + optional variant. Name never translated.",
-   "regex": "^(.+?) Cannon(| .+)$",
-   "de": "$1 Kanone$2",
-   "fr": "$1 Canon$2",
-   "ja": "$1 キャノン$2",
-   "zh": "$1 加农炮$2"
-  },
-  {
-   "_comment": "'<proper name> Pistol' + optional variant. Name never translated.",
-   "regex": "^(.+?) Pistol(| .+)$",
-   "de": "$1 Pistole$2",
-   "fr": "$1 Pistolet$2",
-   "ja": "$1 ピストル$2",
-   "zh": "$1 手枪$2"
-  },
-  {
-   "_comment": "'<proper name> Rifle' + optional variant. Name never translated.",
-   "regex": "^(.+?) Rifle(| .+)$",
-   "de": "$1 Gewehr$2",
-   "fr": "$1 Fusil$2",
-   "ja": "$1 ライフル$2",
-   "zh": "$1 步枪$2"
-  },
-  {
-   "_comment": "'<proper name> SMG' + optional variant. Name never translated.",
-   "regex": "^(.+?) SMG(| .+)$",
-   "de": "$1 SMG$2",
-   "fr": "$1 SMG$2",
-   "ja": "$1 サブマシンガン$2",
-   "zh": "$1 冲锋枪$2"
-  },
-  {
-   "_comment": "'<proper name> LMG' + optional variant. Name never translated.",
-   "regex": "^(.+?) LMG(| .+)$",
-   "de": "$1 LMG$2",
-   "fr": "$1 LMG$2",
-   "ja": "$1 軽機関銃$2",
-   "zh": "$1 轻机枪$2"
-  },
-  {
-   "_comment": "'<set name> Flight Helmet [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Flight Helmet(| .+)$",
-   "de": "$1 Flughelm$2",
-   "fr": "$1 Casque de vol$2",
-   "ja": "$1 フライトヘルメット$2",
-   "zh": "$1 飞行头盔$2"
-  },
-  {
-   "_comment": "'<set name> Flight Suit [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Flight Suit(| .+)$",
-   "de": "$1 Fluganzug$2",
-   "fr": "$1 Combinaison de vol$2",
-   "ja": "$1 フライトスーツ$2",
-   "zh": "$1 飞行服$2"
-  },
-  {
-   "_comment": "'<set name> Undersuit [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Undersuit(| .+)$",
-   "de": "$1 Unteranzug$2",
-   "fr": "$1 Sous-combinaison$2",
-   "ja": "$1 アンダースーツ$2",
-   "zh": "$1 内衬服$2"
-  },
-  {
-   "_comment": "'<set name> Backpack [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Backpack(| .+)$",
-   "de": "$1 Rucksack$2",
-   "fr": "$1 Sac à dos$2",
-   "ja": "$1 バックパック$2",
-   "zh": "$1 背包$2"
-  },
-  {
-   "_comment": "'<set name> Helmet [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Helmet(| .+)$",
-   "de": "$1 Helm$2",
-   "fr": "$1 Casque$2",
-   "ja": "$1 ヘルメット$2",
-   "zh": "$1 头盔$2"
-  },
-  {
-   "_comment": "'<set name> Core [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Core(| .+)$",
-   "de": "$1 Torso$2",
-   "fr": "$1 Torse$2",
-   "ja": "$1 コア$2",
-   "zh": "$1 核心$2"
-  },
-  {
-   "_comment": "'<set name> Arms [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Arms(| .+)$",
-   "de": "$1 Arme$2",
-   "fr": "$1 Bras$2",
-   "ja": "$1 アーム$2",
-   "zh": "$1 臂甲$2"
-  },
-  {
-   "_comment": "'<set name> Legs [variant]'. Set and variant are proper nouns.",
-   "regex": "^(.+?) Legs(| .+)$",
-   "de": "$1 Beine$2",
-   "fr": "$1 Jambes$2",
-   "ja": "$1 レッグ$2",
-   "zh": "$1 腿甲$2"
-  }
- ]
+  "_README": [
+    "Hand-translated UI chrome for the Blueprint Finder.",
+    "",
+    "Scope: ONLY the tool's own interface copy. Item names, mission titles,",
+    "factions and ranks are DATA -- they come from blueprint_explorer_data.json",
+    "and are translated by the build using CIG's official glossary, never here.",
+    "",
+    "Source of this list: harvested from the LIVE rendered DOM of the running",
+    "tool (1,117 text nodes + 61 attributes), not from a regex over the source.",
+    "Regex over the inline JS was tried and proven unsafe -- it produced",
+    "fragments like \"|| q === \" that would corrupt the tool if translated.",
+    "",
+    "STATUS: German reviewed most carefully as the test case. FR/JA/ZH are",
+    "authored but UNVERIFIED against native SC community usage -- have a native",
+    "speaker check them before treating them as final.",
+    "",
+    "'patterns' handle strings composed with numbers at runtime (rep tooltips).",
+    "$1/$2/... are capture groups from the regex. Numbers are never translated."
+  ],
+  "exact": {
+    "Star Citizen Blueprint Finder: Mission Contract Rewards Guide": {
+      "de": "Star Citizen Blaupausen-Finder: Belohnungen für Missionsverträge",
+      "fr": "Star Citizen Blueprint Finder : guide des récompenses de contrats",
+      "ja": "Star Citizen ブループリントファインダー：ミッション契約報酬ガイド",
+      "zh": "星际公民蓝图查找器：任务合同奖励指南"
+    },
+    "Fetching database...": {
+      "de": "Datenbank wird geladen …",
+      "fr": "Chargement de la base de données…",
+      "ja": "データベースを読み込み中…",
+      "zh": "正在加载数据库…"
+    },
+    "Enjoying The Tool? Say Thanks!": {
+      "de": "Gefällt dir das Tool? Sag Danke!",
+      "fr": "Cet outil vous plaît ? Dites merci !",
+      "ja": "ツールが気に入りましたか？ 応援をお願いします！",
+      "zh": "喜欢这个工具吗？ 支持一下！"
+    },
+    "+ Get Star Citizen Guides & Updates": {
+      "de": "+ Star-Citizen-Guides & Updates erhalten",
+      "fr": "+ Recevoir les guides et actualités Star Citizen",
+      "ja": "＋ Star Citizen のガイドと更新情報を受け取る",
+      "zh": "＋ 获取星际公民指南与更新"
+    },
+    "SUBSCRIBE": {
+      "de": "ABONNIEREN",
+      "fr": "S'ABONNER",
+      "ja": "登録する",
+      "zh": "订阅"
+    },
+    "⚠️ Contract Reward Advisory": {
+      "de": "⚠️ Hinweis zu Vertragsbelohnungen",
+      "fr": "⚠️ Avertissement sur les récompenses de contrat",
+      "ja": "⚠️ 契約報酬に関する注意",
+      "zh": "⚠️ 合同奖励说明"
+    },
+    "Completing a contract grants you a": {
+      "de": "Ein abgeschlossener Vertrag gewährt dir eine",
+      "fr": "Terminer un contrat vous octroie un",
+      "ja": "契約を完了すると付与されるのは",
+      "zh": "完成合同后你将获得"
+    },
+    "random blueprint": {
+      "de": "zufällige Blaupause",
+      "fr": "plan aléatoire",
+      "ja": "ランダムなブループリント",
+      "zh": "随机蓝图"
+    },
+    "How to read a contract entry": {
+      "de": "So liest du einen Vertragseintrag",
+      "fr": "Comment lire une fiche de contrat",
+      "ja": "契約エントリーの見方",
+      "zh": "如何阅读合同条目"
+    },
+    "✓ Verified": {
+      "de": "✓ Verifiziert",
+      "fr": "✓ Vérifié",
+      "ja": "✓ 認証済み",
+      "zh": "✓ 已验证"
+    },
+    "⚠ Unverified": {
+      "de": "⚠ Nicht verifiziert",
+      "fr": "⚠ Non vérifié",
+      "ja": "⚠ 未認証",
+      "zh": "⚠ 未验证"
+    },
+    "Lawful (Verified Tab)": {
+      "de": "Legal (Tab „Verifiziert“)",
+      "fr": "Légal (onglet Vérifié)",
+      "ja": "合法（認証済みタブ）",
+      "zh": "合法（已验证标签）"
+    },
+    "Unlawful (Unverified Tab)": {
+      "de": "Illegal (Tab „Nicht verifiziert“)",
+      "fr": "Illégal (onglet Non vérifié)",
+      "ja": "非合法（未認証タブ）",
+      "zh": "非法（未验证标签）"
+    },
+    "Legal contracts that won't raise your CrimeStat.": {
+      "de": "Legale Verträge, die deinen CrimeStat nicht erhöhen.",
+      "fr": "Contrats légaux qui n'augmentent pas votre CrimeStat.",
+      "ja": "CrimeStat が上がらない合法契約。",
+      "zh": "不会提升你犯罪等级的合法合同。"
+    },
+    "Criminal contracts that typically raise CrimeStat.": {
+      "de": "Kriminelle Verträge, die in der Regel den CrimeStat erhöhen.",
+      "fr": "Contrats criminels qui augmentent généralement le CrimeStat.",
+      "ja": "通常 CrimeStat が上がる犯罪契約。",
+      "zh": "通常会提升犯罪等级的犯罪合同。"
+    },
+    "Contract Category": {
+      "de": "Vertragskategorie",
+      "fr": "Catégorie de contrat",
+      "ja": "契約カテゴリー",
+      "zh": "合同类别"
+    },
+    "The MobiGlass tab where this mission appears.": {
+      "de": "Der mobiGlas-Tab, in dem diese Mission erscheint.",
+      "fr": "L'onglet mobiGlas où apparaît cette mission.",
+      "ja": "このミッションが表示される mobiGlas のタブ。",
+      "zh": "该任务出现在 mobiGlas 的标签页。"
+    },
+    "Faction / Mission Giver": {
+      "de": "Fraktion / Auftraggeber",
+      "fr": "Faction / Donneur de mission",
+      "ja": "派閥 / ミッション発注者",
+      "zh": "派系 / 任务发布者"
+    },
+    "Organisation offering the contract and blueprint.": {
+      "de": "Organisation, die den Vertrag und die Blaupause anbietet.",
+      "fr": "Organisation qui propose le contrat et le plan.",
+      "ja": "契約とブループリントを提供する組織。",
+      "zh": "提供该合同与蓝图的组织。"
+    },
+    "Subtype Tag": {
+      "de": "Subtyp-Kennzeichnung",
+      "fr": "Étiquette de sous-type",
+      "ja": "サブタイプタグ",
+      "zh": "子类型标签"
+    },
+    "Item category shown in the card corner.": {
+      "de": "Gegenstandskategorie in der Kartenecke.",
+      "fr": "Catégorie d'objet affichée dans le coin de la carte.",
+      "ja": "カード隅に表示されるアイテムカテゴリー。",
+      "zh": "显示在卡片角落的物品类别。"
+    },
+    "System Badge": {
+      "de": "System-Abzeichen",
+      "fr": "Badge de système",
+      "ja": "星系バッジ",
+      "zh": "星系徽章"
+    },
+    "Star system where the contract is available.": {
+      "de": "Sternensystem, in dem der Vertrag verfügbar ist.",
+      "fr": "Système stellaire où le contrat est disponible.",
+      "ja": "契約が受注できる星系。",
+      "zh": "可接取该合同的星系。"
+    },
+    "Partial Completion": {
+      "de": "Teilabschluss",
+      "fr": "Achèvement partiel",
+      "ja": "部分達成",
+      "zh": "部分完成"
+    },
+    "This contract can be turned in incomplete. The % shown is the minimum you must deliver to still receive a reward.": {
+      "de": "Dieser Vertrag kann unvollständig abgegeben werden. Der angezeigte Prozentwert ist das Minimum, das du liefern musst, um dennoch eine Belohnung zu erhalten.",
+      "fr": "Ce contrat peut être rendu incomplet. Le pourcentage affiché correspond au minimum à livrer pour recevoir malgré tout une récompense.",
+      "ja": "この契約は未完了でも納品できます。表示された％は、報酬を受け取るために最低限納品する必要がある量です。",
+      "zh": "该合同可在未完成时提交。所示百分比是仍能获得奖励所需交付的最低量。"
+    },
+    "WEAPONS": {
+      "de": "WAFFEN",
+      "fr": "ARMES",
+      "ja": "武器",
+      "zh": "武器"
+    },
+    "ARMOR SETS": {
+      "de": "RÜSTUNGSSETS",
+      "fr": "SETS D'ARMURE",
+      "ja": "アーマーセット",
+      "zh": "护甲套装"
+    },
+    "AMMO": {
+      "de": "MUNITION",
+      "fr": "MUNITIONS",
+      "ja": "弾薬",
+      "zh": "弹药"
+    },
+    "SHIP COMPONENTS": {
+      "de": "SCHIFFSKOMPONENTEN",
+      "fr": "COMPOSANTS DE VAISSEAU",
+      "ja": "シップコンポーネント",
+      "zh": "飞船部件"
+    },
+    "FLIGHT SUITS": {
+      "de": "FLUGANZÜGE",
+      "fr": "COMBINAISONS DE VOL",
+      "ja": "フライトスーツ",
+      "zh": "飞行服"
+    },
+    "SHIP WEAPONS": {
+      "de": "SCHIFFSWAFFEN",
+      "fr": "ARMES DE VAISSEAU",
+      "ja": "シップウェポン",
+      "zh": "飞船武器"
+    },
+    "FILTER BY SYSTEM:": {
+      "de": "NACH SYSTEM FILTERN:",
+      "fr": "FILTRER PAR SYSTÈME :",
+      "ja": "星系で絞り込み：",
+      "zh": "按星系筛选："
+    },
+    "✓ MY INVENTORY": {
+      "de": "✓ MEIN INVENTAR",
+      "fr": "✓ MON INVENTAIRE",
+      "ja": "✓ マイインベントリ",
+      "zh": "✓ 我的库存"
+    },
+    "★ PLAN GRIND ROUTE": {
+      "de": "★ GRIND-ROUTE PLANEN",
+      "fr": "★ PLANIFIER L'ITINÉRAIRE",
+      "ja": "★ 周回ルートを計画",
+      "zh": "★ 规划刷取路线"
+    },
+    "My Blueprint Inventory": {
+      "de": "Mein Blaupausen-Inventar",
+      "fr": "Mon inventaire de plans",
+      "ja": "マイ・ブループリント一覧",
+      "zh": "我的蓝图库存"
+    },
+    "Check All Shown": {
+      "de": "Alle angezeigten auswählen",
+      "fr": "Cocher tout ce qui est affiché",
+      "ja": "表示中をすべて選択",
+      "zh": "勾选所有显示项"
+    },
+    "Clear All Owned": {
+      "de": "Alle im Besitz zurücksetzen",
+      "fr": "Effacer tout ce qui est possédé",
+      "ja": "所持済みをすべて解除",
+      "zh": "清除所有已拥有"
+    },
+    "⬇ Download": {
+      "de": "⬇ Herunterladen",
+      "fr": "⬇ Télécharger",
+      "ja": "⬇ ダウンロード",
+      "zh": "⬇ 下载"
+    },
+    "⬆ Upload": {
+      "de": "⬆ Hochladen",
+      "fr": "⬆ Envoyer",
+      "ja": "⬆ アップロード",
+      "zh": "⬆ 上传"
+    },
+    "owned": {
+      "de": "im Besitz",
+      "fr": "possédé",
+      "ja": "所持済み",
+      "zh": "已拥有"
+    },
+    "Grind Route Planner": {
+      "de": "Grind-Routenplaner",
+      "fr": "Planificateur d'itinéraire",
+      "ja": "周回ルートプランナー",
+      "zh": "刷取路线规划器"
+    },
+    "Choose a Faction": {
+      "de": "Fraktion wählen",
+      "fr": "Choisir une faction",
+      "ja": "派閥を選択",
+      "zh": "选择派系"
+    },
+    "Pick the mission giver you want to grind rep with. Only blueprints awarded by that faction will be selectable.": {
+      "de": "Wähle den Auftraggeber, bei dem du Ruf farmen willst. Nur Blaupausen dieser Fraktion sind auswählbar.",
+      "fr": "Choisissez le donneur de mission auprès duquel farmer la réputation. Seuls les plans de cette faction seront sélectionnables.",
+      "ja": "評判を稼ぎたいミッション発注者を選んでください。その派閥が付与するブループリントのみ選択できます。",
+      "zh": "选择你想刷声望的任务发布者。只有该派系发放的蓝图可供选择。"
+    },
+    "Select Target Blueprints": {
+      "de": "Ziel-Blaupausen auswählen",
+      "fr": "Sélectionner les plans visés",
+      "ja": "目標のブループリントを選択",
+      "zh": "选择目标蓝图"
+    },
+    "Pick one or more blueprints to unlock. We'll find the fastest contracts that drop them.": {
+      "de": "Wähle eine oder mehrere Blaupausen aus. Wir finden die schnellsten Verträge, die sie liefern.",
+      "fr": "Choisissez un ou plusieurs plans à débloquer. Nous trouverons les contrats les plus rapides qui les octroient.",
+      "ja": "解放したいブループリントを 1 つ以上選んでください。それらが手に入る最速の契約を検索します。",
+      "zh": "选择一个或多个想解锁的蓝图。我们会找出掉落它们的最快合同。"
+    },
+    "Your Current Rep": {
+      "de": "Dein aktueller Ruf",
+      "fr": "Votre réputation actuelle",
+      "ja": "現在の評判",
+      "zh": "你当前的声望"
+    },
+    "(optional)": {
+      "de": "(optional)",
+      "fr": "(facultatif)",
+      "ja": "（任意）",
+      "zh": "（可选）"
+    },
+    "Enter your current rep with this faction if you're above Neutral. Leave blank to start from 0.": {
+      "de": "Gib deinen aktuellen Ruf bei dieser Fraktion an, wenn du über Neutral liegst. Leer lassen, um bei 0 zu beginnen.",
+      "fr": "Saisissez votre réputation actuelle auprès de cette faction si elle dépasse Neutre. Laissez vide pour partir de 0.",
+      "ja": "この派閥での評判が Neutral を超えている場合は入力してください。空欄なら 0 から開始します。",
+      "zh": "如果你在该派系的声望高于中立，请填写当前声望。留空则从 0 开始。"
+    },
+    "Recommended Grind Route": {
+      "de": "Empfohlene Grind-Route",
+      "fr": "Itinéraire recommandé",
+      "ja": "推奨周回ルート",
+      "zh": "推荐刷取路线"
+    },
+    "Select at least one blueprint above.": {
+      "de": "Wähle oben mindestens eine Blaupause aus.",
+      "fr": "Sélectionnez au moins un plan ci-dessus.",
+      "ja": "上でブループリントを 1 つ以上選択してください。",
+      "zh": "请在上方至少选择一个蓝图。"
+    },
+    "Obtained From:": {
+      "de": "Erhalten aus:",
+      "fr": "Obtenu via :",
+      "ja": "入手先：",
+      "zh": "获取途径："
+    },
+    "Set Obtained From:": {
+      "de": "Set erhalten aus:",
+      "fr": "Set obtenu via :",
+      "ja": "セット入手先：",
+      "zh": "套装获取途径："
+    },
+    "⤢ Click to expand full list": {
+      "de": "⤢ Klicken, um die vollständige Liste zu öffnen",
+      "fr": "⤢ Cliquez pour afficher la liste complète",
+      "ja": "⤢ クリックで全リストを表示",
+      "zh": "⤢ 点击展开完整列表"
+    },
+    "Loot Pool Unknown or Filtered Out": {
+      "de": "Beutepool unbekannt oder herausgefiltert",
+      "fr": "Butin inconnu ou filtré",
+      "ja": "戦利品プールが不明、または絞り込みで除外",
+      "zh": "战利品池未知或已被筛除"
+    },
+    "* Pieces have different loot pools — click a tile to filter.": {
+      "de": "* Teile haben unterschiedliche Beutepools – klicke eine Kachel zum Filtern.",
+      "fr": "* Les pièces ont des butins différents — cliquez sur une tuile pour filtrer.",
+      "ja": "※ 部位ごとに戦利品プールが異なります。タイルをクリックで絞り込み。",
+      "zh": "* 各部件的战利品池不同——点击方块进行筛选。"
+    },
+    "INCOMPLETE": {
+      "de": "UNVOLLSTÄNDIG",
+      "fr": "INCOMPLET",
+      "ja": "未完成",
+      "zh": "不完整"
+    },
+    "Helmet": {
+      "de": "Helm",
+      "fr": "Casque",
+      "ja": "ヘルメット",
+      "zh": "头盔"
+    },
+    "Core": {
+      "de": "Torso",
+      "fr": "Torse",
+      "ja": "コア",
+      "zh": "核心"
+    },
+    "Arms": {
+      "de": "Arme",
+      "fr": "Bras",
+      "ja": "アーム",
+      "zh": "臂甲"
+    },
+    "Legs": {
+      "de": "Beine",
+      "fr": "Jambes",
+      "ja": "レッグ",
+      "zh": "腿甲"
+    },
+    "Backpack": {
+      "de": "Rucksack",
+      "fr": "Sac à dos",
+      "ja": "バックパック",
+      "zh": "背包"
+    },
+    "Flight Suit": {
+      "de": "Fluganzug",
+      "fr": "Combinaison de vol",
+      "ja": "フライトスーツ",
+      "zh": "飞行服"
+    },
+    "Clear all owned blueprints? They will reappear in the tool and planner.": {
+      "de": "Alle als im Besitz markierten Blaupausen zurücksetzen? Sie erscheinen wieder im Tool und im Planer.",
+      "fr": "Effacer tous les plans possédés ? Ils réapparaîtront dans l'outil et le planificateur.",
+      "ja": "所持済みのブループリントをすべて解除しますか？ ツールとプランナーに再表示されます。",
+      "zh": "清除所有已拥有的蓝图？ 它们将重新出现在工具和规划器中。"
+    },
+    "No blueprints found in that file.": {
+      "de": "In dieser Datei wurden keine Blaupausen gefunden.",
+      "fr": "Aucun plan trouvé dans ce fichier.",
+      "ja": "そのファイルにブループリントは見つかりませんでした。",
+      "zh": "该文件中未找到蓝图。"
+    },
+    "Could not read that file.": {
+      "de": "Diese Datei konnte nicht gelesen werden.",
+      "fr": "Impossible de lire ce fichier.",
+      "ja": "そのファイルを読み込めませんでした。",
+      "zh": "无法读取该文件。"
+    },
+    "Search by item name, type, or faction…": {
+      "de": "Nach Gegenstand, Typ oder Fraktion suchen …",
+      "fr": "Rechercher par objet, type ou faction…",
+      "ja": "アイテム名・種別・派閥で検索…",
+      "zh": "按物品名称、类型或派系搜索…"
+    },
+    "Search blueprints...": {
+      "de": "Blaupausen suchen …",
+      "fr": "Rechercher des plans…",
+      "ja": "ブループリントを検索…",
+      "zh": "搜索蓝图…"
+    },
+    "× Clear search": {
+      "de": "× Suche zurücksetzen",
+      "fr": "× Effacer la recherche",
+      "ja": "× 検索をクリア",
+      "zh": "× 清除搜索"
+    },
+    "Accepts a Download file (.json) or a blueprints.txt list (one name per line)": {
+      "de": "Akzeptiert eine heruntergeladene Datei (.json) oder eine blueprints.txt-Liste (ein Name pro Zeile)",
+      "fr": "Accepte un fichier téléchargé (.json) ou une liste blueprints.txt (un nom par ligne)",
+      "ja": "ダウンロードしたファイル（.json）または blueprints.txt のリスト（1 行 1 名）に対応",
+      "zh": "支持下载的文件（.json）或 blueprints.txt 列表（每行一个名称）"
+    },
+    "from the reward pool tied to that specific mission. If you do not receive the specific blueprint you are looking for, you will need to repeat the contract until it drops. The good news is, most of the pools consist of full armor sets and a handful of weapons. If you do not see the exact contract you need repeat existing contracts for that faction until it appears.": {
+      "de": "aus dem Belohnungspool dieser bestimmten Mission. Erhältst du nicht die gesuchte Blaupause, musst du den Vertrag wiederholen, bis sie fällt. Die gute Nachricht: Die meisten Pools bestehen aus vollständigen Rüstungssets und einer Handvoll Waffen. Findest du den benötigten Vertrag nicht, wiederhole vorhandene Verträge dieser Fraktion, bis er erscheint.",
+      "fr": "issu du pool de récompenses lié à cette mission précise. Si vous n'obtenez pas le plan recherché, vous devrez répéter le contrat jusqu'à ce qu'il tombe. Bonne nouvelle : la plupart des pools se composent de sets d'armure complets et de quelques armes. Si vous ne voyez pas le contrat voulu, répétez les contrats existants de cette faction jusqu'à ce qu'il apparaisse.",
+      "ja": "そのミッション固有の報酬プールから選ばれます。目当てのブループリントが出ない場合は、出るまで契約を繰り返す必要があります。幸い、ほとんどのプールはアーマーセット一式と少数の武器で構成されています。必要な契約が見つからない場合は、その派閥の既存契約を繰り返すと出現します。",
+      "zh": "来自该特定任务所绑定的奖励池。如果没有获得你想要的蓝图，就需要重复该合同直到掉落。好消息是，大多数奖励池由整套护甲和少量武器组成。如果找不到所需的合同，请重复该派系的现有合同直到它出现。"
+    },
+    "Check off blueprints you already own. Owned blueprints are removed from the browse lists above and from the Grind Route Planner's target list and results. Your selections are saved on this device — use Download to back them up or move them to another browser/device. Upload accepts a saved Download file, or a plain": {
+      "de": "Hake Blaupausen ab, die du bereits besitzt. Diese werden aus den Listen oben sowie aus Zielliste und Ergebnissen des Grind-Routenplaners entfernt. Deine Auswahl wird auf diesem Gerät gespeichert – nutze „Herunterladen“, um sie zu sichern oder auf ein anderes Gerät zu übertragen. „Hochladen“ akzeptiert eine gespeicherte Datei oder eine einfache",
+      "fr": "Cochez les plans que vous possédez déjà. Ils sont retirés des listes ci-dessus ainsi que de la liste de cibles et des résultats du planificateur. Vos choix sont enregistrés sur cet appareil — utilisez « Télécharger » pour les sauvegarder ou les transférer. « Envoyer » accepte un fichier enregistré, ou une simple",
+      "ja": "すでに所持しているブループリントにチェックを入れてください。所持済みのものは上の一覧と、周回ルートプランナーの目標リストおよび結果から除外されます。選択内容はこの端末に保存されます。バックアップや別端末への移行には「ダウンロード」を使ってください。「アップロード」は保存済みファイル、または単純な",
+      "zh": "勾选你已拥有的蓝图。已拥有的蓝图会从上方浏览列表以及刷取路线规划器的目标列表和结果中移除。你的选择保存在本设备上——使用“下载”进行备份或迁移到其他浏览器/设备。“上传”支持已保存的文件，或一个普通的"
+    },
+    "list (one blueprint name per line, e.g. from a log-scanning script) — names are matched automatically and merged into your inventory.": {
+      "de": "Liste (ein Blaupausenname pro Zeile, z. B. aus einem Log-Scan-Skript) – Namen werden automatisch zugeordnet und in dein Inventar übernommen.",
+      "fr": "liste (un nom de plan par ligne, p. ex. issu d'un script d'analyse de logs) — les noms sont associés automatiquement et fusionnés dans votre inventaire.",
+      "ja": "リスト（1 行 1 ブループリント名、例：ログ解析スクリプトの出力）— 名前は自動で照合され、インベントリに統合されます。",
+      "zh": "列表（每行一个蓝图名称，例如来自日志扫描脚本）——名称会自动匹配并合并到你的库存中。"
+    },
+    "STANTON": {
+      "de": "STANTON",
+      "fr": "STANTON",
+      "ja": "スタントン",
+      "zh": "斯坦顿"
+    },
+    "PYRO": {
+      "de": "PYRO",
+      "fr": "PYRO",
+      "ja": "パイロ",
+      "zh": "派罗"
+    },
+    "NYX": {
+      "de": "NYX",
+      "fr": "NYX",
+      "ja": "ニックス",
+      "zh": "尼克斯"
+    },
+    "Mercenary": {
+      "de": "Söldner",
+      "fr": "Mercenaire",
+      "ja": "傭兵",
+      "zh": "雇佣兵"
+    },
+    "Combat": {
+      "de": "Kampf",
+      "fr": "Combat",
+      "ja": "戦闘",
+      "zh": "战斗"
+    },
+    "Associate": {
+      "de": "Partner",
+      "fr": "Associé",
+      "ja": "アソシエイト",
+      "zh": "合作伙伴"
+    },
+    "Trusted Associate": {
+      "de": "Vertrauter Partner",
+      "fr": "Associé de confiance",
+      "ja": "信頼されたアソシエイト",
+      "zh": "受信任的合作伙伴"
+    },
+    "Probationary Guild Member": {
+      "de": "Gildenmitglied auf Probe",
+      "fr": "Membre stagiaire de la guilde",
+      "ja": "仮ギルドメンバー",
+      "zh": "试用期公会成员"
+    },
+    "Weapons": {
+      "de": "Waffen",
+      "fr": "Armes",
+      "ja": "武器",
+      "zh": "武器"
+    },
+    "Armor Sets": {
+      "de": "Rüstungssets",
+      "fr": "Sets d’armure",
+      "ja": "アーマーセット",
+      "zh": "护甲套装"
+    },
+    "Ammo": {
+      "de": "Munition",
+      "fr": "Munitions",
+      "ja": "弾薬",
+      "zh": "弹药"
+    },
+    "Ship Components": {
+      "de": "Schiffskomponenten",
+      "fr": "Composants de vaisseau",
+      "ja": "シップコンポーネント",
+      "zh": "飞船组件"
+    },
+    "Flight Suits": {
+      "de": "Fluganzüge",
+      "fr": "Combinaisons de vol",
+      "ja": "フライトスーツ",
+      "zh": "飞行服"
+    },
+    "Ship Weapons": {
+      "de": "Schiffswaffen",
+      "fr": "Armes de vaisseau",
+      "ja": "シップウェポン",
+      "zh": "飞船武器"
+    }
+  },
+  "patterns": [
+    {
+      "_comment": "Search-overrides-tabs banner. Written by applySearchFilter as one text node. $1 is the match count, $2 the user's query (never translated in practice -- it is whatever they typed). Covers both 'match' and 'matches'.",
+      "regex": "^Showing ([\\d,]+) match(?:es)? for “(.+)” across all categories — tab filters are ignored while searching\\.$",
+      "de": "$1 Treffer für „$2“ in allen Kategorien – die Tab-Filter werden während der Suche ignoriert.",
+      "fr": "$1 résultat(s) pour « $2 » dans toutes les catégories — les filtres d’onglet sont ignorés pendant la recherche.",
+      "ja": "「$2」の検索結果 $1 件をすべてのカテゴリーから表示中 — 検索中はタブのフィルターは無視されます。",
+      "zh": "在所有类别中显示“$2”的 $1 条结果 — 搜索时将忽略标签页筛选。"
+    },
+    {
+      "_comment": "Empty state for a search that matched nothing in any category. $1 is the user's query.",
+      "regex": "^No blueprints match “(.+)” in any category\\. Try a shorter term, or check your system filters and inventory\\.$",
+      "de": "Keine Blaupausen für „$1“ in irgendeiner Kategorie gefunden. Versuche einen kürzeren Suchbegriff oder prüfe deine Systemfilter und dein Inventar.",
+      "fr": "Aucun plan ne correspond à « $1 » dans aucune catégorie. Essayez un terme plus court, ou vérifiez vos filtres de système et votre inventaire.",
+      "ja": "「$1」に一致するブループリントはどのカテゴリーにもありません。より短いキーワードを試すか、システムフィルターとインベントリーを確認してください。",
+      "zh": "在任何类别中都没有与“$1”匹配的蓝图。请尝试更短的关键词，或检查系统筛选与库存。"
+    },
+    {
+      "_comment": "Per-category result count next to each search-results heading, e.g. '6 results'. Singular and plural in one pattern.",
+      "regex": "^(\\d[\\d,]*) results?$",
+      "de": "$1 Treffer",
+      "fr": "$1 résultat(s)",
+      "ja": "$1 件",
+      "zh": "$1 条结果"
+    },
+    {
+      "_comment": "Rep requirement tooltips, composed at runtime with numbers. 61 distinct combinations were present in one render; a pattern covers all of them plus future ones. $1 rank / $2 rep amount / $3 rep per run.",
+      "regex": "^Requires (.+?) \\(([\\d,]+) rep\\)\\. Earns ([\\d,]+) rep/run$",
+      "de": "Erfordert $1 ($2 Ruf). Bringt $3 Ruf pro Durchlauf",
+      "fr": "Nécessite $1 ($2 rép.). Rapporte $3 rép./run",
+      "ja": "必要：$1（評判 $2）。1 回あたり評判 $3 獲得",
+      "zh": "需要 $1（$2 声望）。每次运行获得 $3 声望"
+    },
+    {
+      "regex": "^Requires (.+?)\\. Earns ([\\d,]+) rep/run$",
+      "de": "Erfordert $1. Bringt $2 Ruf pro Durchlauf",
+      "fr": "Nécessite $1. Rapporte $2 rép./run",
+      "ja": "必要：$1。1 回あたり評判 $2 獲得",
+      "zh": "需要 $1。每次运行获得 $2 声望"
+    },
+    {
+      "regex": "^Requires (.+?) \\(([\\d,]+) rep\\)$",
+      "de": "Erfordert $1 ($2 Ruf)",
+      "fr": "Nécessite $1 ($2 rép.)",
+      "ja": "必要：$1（評判 $2）",
+      "zh": "需要 $1（$2 声望）"
+    },
+    {
+      "_comment": "Per-piece 'X Obtained From:' headings, e.g. 'Antium Helmet Jet Obtained From:'. $1 is a data name, left for the data dictionary to handle.",
+      "regex": "^(.+) Obtained From:$",
+      "de": "$1 – erhalten aus:",
+      "fr": "$1 — obtenu via :",
+      "ja": "$1 の入手先：",
+      "zh": "$1 的获取途径："
+    },
+    {
+      "_comment": "Database-loaded status line, all-numeric captures.",
+      "regex": "^Database Loaded! (\\d+) weapons, (\\d+) ammo, (\\d+) armor sets, (\\d+) flight suits, (\\d+) ship weapons, (\\d+) components\\.$",
+      "de": "Datenbank geladen! $1 Waffen, $2 Munitionstypen, $3 Rüstungssets, $4 Fluganzüge, $5 Schiffswaffen, $6 Komponenten.",
+      "fr": "Base de données chargée ! $1 armes, $2 munitions, $3 sets d'armure, $4 combinaisons de vol, $5 armes de vaisseau, $6 composants.",
+      "ja": "データベース読み込み完了！ 武器 $1、弾薬 $2、アーマーセット $3、フライトスーツ $4、シップウェポン $5、コンポーネント $6。",
+      "zh": "数据库已加载！ 武器 $1 件、弹药 $2 种、护甲套装 $3 套、飞行服 $4 套、飞船武器 $5 件、部件 $6 个。"
+    },
+    {
+      "_comment": "Starting rank line in the planner, composed with rank + rep number.",
+      "regex": "^Starting rank: (.+?) \\((\\d[\\d,]*) rep\\)$",
+      "de": "Startrang: $1 ($2 Ruf)",
+      "fr": "Rang de départ : $1 ($2 rép.)",
+      "ja": "開始ランク：$1（評判 $2）",
+      "zh": "起始等级：$1（$2 声望）"
+    },
+    {
+      "_comment": "Partial-completion badge, e.g. 'PARTIAL 26%+'.",
+      "regex": "^PARTIAL (\\d+%\\+)$",
+      "de": "TEILWEISE $1",
+      "fr": "PARTIEL $1",
+      "ja": "部分達成 $1",
+      "zh": "部分完成 $1"
+    },
+    {
+      "_comment": "'<name> Magazine (N cap)' -- N stays numeric.",
+      "regex": "^(.+?) Magazine \\((\\d+) [Cc]ap\\)$",
+      "de": "$1 Magazin ($2 Schuss)",
+      "fr": "$1 Chargeur ($2 cart.)",
+      "ja": "$1 マガジン ($2 発)",
+      "zh": "$1 弹匣 ($2 发)"
+    },
+    {
+      "_comment": "'<name> Battery (N cap)' -- N stays numeric.",
+      "regex": "^(.+?) Battery \\((\\d+) [Cc]ap\\)$",
+      "de": "$1 Batterie ($2 Schuss)",
+      "fr": "$1 Batterie ($2 cart.)",
+      "ja": "$1 バッテリー ($2 発)",
+      "zh": "$1 电池 ($2 发)"
+    },
+    {
+      "_comment": "'<proper name> Energy Assault Rifle' + optional variant. Name never translated.",
+      "regex": "^(.+?) Energy Assault Rifle(| .+)$",
+      "de": "$1 Energie-Sturmgewehr$2",
+      "fr": "$1 Fusil d'assaut à énergie$2",
+      "ja": "$1 エネルギーアサルトライフル$2",
+      "zh": "$1 能量突击步枪$2"
+    },
+    {
+      "_comment": "'<proper name> Laser Sniper Rifle' + optional variant. Name never translated.",
+      "regex": "^(.+?) Laser Sniper Rifle(| .+)$",
+      "de": "$1 Laser-Scharfschützengewehr$2",
+      "fr": "$1 Fusil de précision laser$2",
+      "ja": "$1 レーザースナイパーライフル$2",
+      "zh": "$1 激光狙击步枪$2"
+    },
+    {
+      "_comment": "'<proper name> Mass Driver Cannon' + optional variant. Name never translated.",
+      "regex": "^(.+?) Mass Driver Cannon(| .+)$",
+      "de": "$1 Massebeschleuniger-Kanone$2",
+      "fr": "$1 Canon à accélération de masse$2",
+      "ja": "$1 マスドライバーキャノン$2",
+      "zh": "$1 质量加速炮$2"
+    },
+    {
+      "_comment": "'<proper name> Scraper Module' + optional variant. Name never translated.",
+      "regex": "^(.+?) Scraper Module(| .+)$",
+      "de": "$1 Schabermodul$2",
+      "fr": "$1 Module de grattage$2",
+      "ja": "$1 スクレイパーモジュール$2",
+      "zh": "$1 刮削模块$2"
+    },
+    {
+      "_comment": "'<proper name> Assault Rifle' + optional variant. Name never translated.",
+      "regex": "^(.+?) Assault Rifle(| .+)$",
+      "de": "$1 Sturmgewehr$2",
+      "fr": "$1 Fusil d'assaut$2",
+      "ja": "$1 アサルトライフル$2",
+      "zh": "$1 突击步枪$2"
+    },
+    {
+      "_comment": "'<proper name> Laser Shotgun' + optional variant. Name never translated.",
+      "regex": "^(.+?) Laser Shotgun(| .+)$",
+      "de": "$1 Laser-Schrotflinte$2",
+      "fr": "$1 Fusil à pompe laser$2",
+      "ja": "$1 レーザーショットガン$2",
+      "zh": "$1 激光霰弹枪$2"
+    },
+    {
+      "_comment": "'<proper name> Sniper Rifle' + optional variant. Name never translated.",
+      "regex": "^(.+?) Sniper Rifle(| .+)$",
+      "de": "$1 Scharfschützengewehr$2",
+      "fr": "$1 Fusil de précision$2",
+      "ja": "$1 スナイパーライフル$2",
+      "zh": "$1 狙击步枪$2"
+    },
+    {
+      "_comment": "'<proper name> Twin Shotgun' + optional variant. Name never translated.",
+      "regex": "^(.+?) Twin Shotgun(| .+)$",
+      "de": "$1 Doppelschrotflinte$2",
+      "fr": "$1 Fusil à pompe double$2",
+      "ja": "$1 ツインショットガン$2",
+      "zh": "$1 双管霰弹枪$2"
+    },
+    {
+      "_comment": "'<proper name> Tractor Beam' + optional variant. Name never translated.",
+      "regex": "^(.+?) Tractor Beam(| .+)$",
+      "de": "$1 Traktorstrahl$2",
+      "fr": "$1 Rayon tracteur$2",
+      "ja": "$1 トラクタービーム$2",
+      "zh": "$1 牵引光束$2"
+    },
+    {
+      "_comment": "'<proper name> Mining Laser' + optional variant. Name never translated.",
+      "regex": "^(.+?) Mining Laser(| .+)$",
+      "de": "$1 Bergbaulaser$2",
+      "fr": "$1 Laser d'extraction$2",
+      "ja": "$1 採掘レーザー$2",
+      "zh": "$1 采矿激光$2"
+    },
+    {
+      "_comment": "'<proper name> Energy SMG' + optional variant. Name never translated.",
+      "regex": "^(.+?) Energy SMG(| .+)$",
+      "de": "$1 Energie-SMG$2",
+      "fr": "$1 SMG à énergie$2",
+      "ja": "$1 エネルギーSMG$2",
+      "zh": "$1 能量冲锋枪$2"
+    },
+    {
+      "_comment": "'<proper name> Energy LMG' + optional variant. Name never translated.",
+      "regex": "^(.+?) Energy LMG(| .+)$",
+      "de": "$1 Energie-LMG$2",
+      "fr": "$1 LMG à énergie$2",
+      "ja": "$1 エネルギー軽機関銃$2",
+      "zh": "$1 能量轻机枪$2"
+    },
+    {
+      "_comment": "'<proper name> Scattergun' + optional variant. Name never translated.",
+      "regex": "^(.+?) Scattergun(| .+)$",
+      "de": "$1 Streuwaffe$2",
+      "fr": "$1 Fusil à dispersion$2",
+      "ja": "$1 スキャッターガン$2",
+      "zh": "$1 散射枪$2"
+    },
+    {
+      "_comment": "'<proper name> Crossbow' + optional variant. Name never translated.",
+      "regex": "^(.+?) Crossbow(| .+)$",
+      "de": "$1 Armbrust$2",
+      "fr": "$1 Arbalète$2",
+      "ja": "$1 クロスボウ$2",
+      "zh": "$1 弩$2"
+    },
+    {
+      "_comment": "'<proper name> Repeater' + optional variant. Name never translated.",
+      "regex": "^(.+?) Repeater(| .+)$",
+      "de": "$1 Repetierer$2",
+      "fr": "$1 Répéteur$2",
+      "ja": "$1 リピーター$2",
+      "zh": "$1 连发炮$2"
+    },
+    {
+      "_comment": "'<proper name> Shotgun' + optional variant. Name never translated.",
+      "regex": "^(.+?) Shotgun(| .+)$",
+      "de": "$1 Schrotflinte$2",
+      "fr": "$1 Fusil à pompe$2",
+      "ja": "$1 ショットガン$2",
+      "zh": "$1 霰弹枪$2"
+    },
+    {
+      "_comment": "'<proper name> Gatling' + optional variant. Name never translated.",
+      "regex": "^(.+?) Gatling(| .+)$",
+      "de": "$1 Gatling$2",
+      "fr": "$1 Gatling$2",
+      "ja": "$1 ガトリング$2",
+      "zh": "$1 加特林$2"
+    },
+    {
+      "_comment": "'<proper name> Cannon' + optional variant. Name never translated.",
+      "regex": "^(.+?) Cannon(| .+)$",
+      "de": "$1 Kanone$2",
+      "fr": "$1 Canon$2",
+      "ja": "$1 キャノン$2",
+      "zh": "$1 加农炮$2"
+    },
+    {
+      "_comment": "'<proper name> Pistol' + optional variant. Name never translated.",
+      "regex": "^(.+?) Pistol(| .+)$",
+      "de": "$1 Pistole$2",
+      "fr": "$1 Pistolet$2",
+      "ja": "$1 ピストル$2",
+      "zh": "$1 手枪$2"
+    },
+    {
+      "_comment": "'<proper name> Rifle' + optional variant. Name never translated.",
+      "regex": "^(.+?) Rifle(| .+)$",
+      "de": "$1 Gewehr$2",
+      "fr": "$1 Fusil$2",
+      "ja": "$1 ライフル$2",
+      "zh": "$1 步枪$2"
+    },
+    {
+      "_comment": "'<proper name> SMG' + optional variant. Name never translated.",
+      "regex": "^(.+?) SMG(| .+)$",
+      "de": "$1 SMG$2",
+      "fr": "$1 SMG$2",
+      "ja": "$1 サブマシンガン$2",
+      "zh": "$1 冲锋枪$2"
+    },
+    {
+      "_comment": "'<proper name> LMG' + optional variant. Name never translated.",
+      "regex": "^(.+?) LMG(| .+)$",
+      "de": "$1 LMG$2",
+      "fr": "$1 LMG$2",
+      "ja": "$1 軽機関銃$2",
+      "zh": "$1 轻机枪$2"
+    },
+    {
+      "_comment": "'<set name> Flight Helmet [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Flight Helmet(| .+)$",
+      "de": "$1 Flughelm$2",
+      "fr": "$1 Casque de vol$2",
+      "ja": "$1 フライトヘルメット$2",
+      "zh": "$1 飞行头盔$2"
+    },
+    {
+      "_comment": "'<set name> Flight Suit [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Flight Suit(| .+)$",
+      "de": "$1 Fluganzug$2",
+      "fr": "$1 Combinaison de vol$2",
+      "ja": "$1 フライトスーツ$2",
+      "zh": "$1 飞行服$2"
+    },
+    {
+      "_comment": "'<set name> Undersuit [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Undersuit(| .+)$",
+      "de": "$1 Unteranzug$2",
+      "fr": "$1 Sous-combinaison$2",
+      "ja": "$1 アンダースーツ$2",
+      "zh": "$1 内衬服$2"
+    },
+    {
+      "_comment": "'<set name> Backpack [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Backpack(| .+)$",
+      "de": "$1 Rucksack$2",
+      "fr": "$1 Sac à dos$2",
+      "ja": "$1 バックパック$2",
+      "zh": "$1 背包$2"
+    },
+    {
+      "_comment": "'<set name> Helmet [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Helmet(| .+)$",
+      "de": "$1 Helm$2",
+      "fr": "$1 Casque$2",
+      "ja": "$1 ヘルメット$2",
+      "zh": "$1 头盔$2"
+    },
+    {
+      "_comment": "'<set name> Core [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Core(| .+)$",
+      "de": "$1 Torso$2",
+      "fr": "$1 Torse$2",
+      "ja": "$1 コア$2",
+      "zh": "$1 核心$2"
+    },
+    {
+      "_comment": "'<set name> Arms [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Arms(| .+)$",
+      "de": "$1 Arme$2",
+      "fr": "$1 Bras$2",
+      "ja": "$1 アーム$2",
+      "zh": "$1 臂甲$2"
+    },
+    {
+      "_comment": "'<set name> Legs [variant]'. Set and variant are proper nouns.",
+      "regex": "^(.+?) Legs(| .+)$",
+      "de": "$1 Beine$2",
+      "fr": "$1 Jambes$2",
+      "ja": "$1 レッグ$2",
+      "zh": "$1 腿甲$2"
+    },
+    {
+      "_comment": "Grouped armour view renders the piece with the set name stripped: 'Flight Helmet <variant>'.",
+      "regex": "^Flight Helmet(| .+)$",
+      "de": "Flughelm$1",
+      "fr": "Casque de vol$1",
+      "ja": "フライトヘルメット$1",
+      "zh": "飞行头盔$1"
+    },
+    {
+      "_comment": "Grouped armour view renders the piece with the set name stripped: 'Helmet <variant>'.",
+      "regex": "^Helmet(| .+)$",
+      "de": "Helm$1",
+      "fr": "Casque$1",
+      "ja": "ヘルメット$1",
+      "zh": "头盔$1"
+    },
+    {
+      "_comment": "Grouped armour view renders the piece with the set name stripped: 'Core <variant>'.",
+      "regex": "^Core(| .+)$",
+      "de": "Torso$1",
+      "fr": "Torse$1",
+      "ja": "コア$1",
+      "zh": "核心$1"
+    },
+    {
+      "_comment": "Grouped armour view renders the piece with the set name stripped: 'Arms <variant>'.",
+      "regex": "^Arms(| .+)$",
+      "de": "Arme$1",
+      "fr": "Bras$1",
+      "ja": "アーム$1",
+      "zh": "臂部$1"
+    },
+    {
+      "_comment": "Grouped armour view renders the piece with the set name stripped: 'Legs <variant>'.",
+      "regex": "^Legs(| .+)$",
+      "de": "Beine$1",
+      "fr": "Jambes$1",
+      "ja": "レッグ$1",
+      "zh": "腿部$1"
+    },
+    {
+      "_comment": "Grouped armour heading, composed in JS as `setName + ' SET'`. $1 is a proper noun.",
+      "regex": "^(.+) SET$",
+      "de": "$1 SET",
+      "fr": "SET $1",
+      "ja": "$1 セット",
+      "zh": "$1 套装"
+    },
+    {
+      "_comment": "Grouped armour view, backpack slot rendered with the set name stripped.",
+      "regex": "^Backpack(| .+)$",
+      "de": "Rucksack$1",
+      "fr": "Sac à dos$1",
+      "ja": "バックパック$1",
+      "zh": "背包$1"
+    }
+  ],
+  "never_translate": [
+    "Northrock",
+    "blueprints.txt",
+    "career",
+    "github.com/Dymerz/StarCitizen-Localization",
+    "story"
+  ]
 }
