@@ -1589,29 +1589,29 @@
 
     <!-- Shown only while a search is active: search results span every category,
          regardless of which tab is selected. -->
+    <!-- Both lines are filled in from JS as ONE text node each. The i18n runtime
+         matches whole text nodes, so a sentence split across <strong>/<span>
+         children would be untranslatable; the counts and the query come back as
+         capture groups of a ui_strings pattern instead.
+         The category headings deliberately reuse the tab labels verbatim
+         (WEAPONS, ARMOR SETS, …) so they hit the existing dictionary entries. -->
     <div id="searchScopeBanner" class="search-scope-banner" style="display:none;">
-        <span class="search-scope-text">
-            Showing <strong id="searchScopeCount">0</strong> match<span id="searchScopePlural">es</span>
-            for &ldquo;<span id="searchScopeQuery"></span>&rdquo; across <strong>all categories</strong> &mdash; tab filters are ignored while searching.
-        </span>
+        <span class="search-scope-text" id="searchScopeText"></span>
         <button class="search-scope-clear" onclick="clearSearch()">&times; Clear search</button>
     </div>
-    <div id="searchNoResults" class="search-scope-empty" style="display:none;">
-        No blueprints match &ldquo;<span id="searchEmptyQuery"></span>&rdquo; in any category.
-        Try a shorter term, or check your system filters &amp; inventory.
-    </div>
+    <div id="searchNoResults" class="search-scope-empty" style="display:none;"></div>
 
-    <div class="view-heading" data-for="weapons" style="display:none;">Weapons<span class="view-heading-count"></span></div>
+    <div class="view-heading" data-for="weapons" style="display:none;">WEAPONS<span class="view-heading-count"></span></div>
     <div id="weaponsView" class="item-group"></div>
-    <div class="view-heading" data-for="armor" style="display:none;">Armor Sets<span class="view-heading-count"></span></div>
+    <div class="view-heading" data-for="armor" style="display:none;">ARMOR SETS<span class="view-heading-count"></span></div>
     <div id="armorView"   class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="ammo" style="display:none;">Ammo<span class="view-heading-count"></span></div>
+    <div class="view-heading" data-for="ammo" style="display:none;">AMMO<span class="view-heading-count"></span></div>
     <div id="ammoView"    class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="components" style="display:none;">Ship Components<span class="view-heading-count"></span></div>
+    <div class="view-heading" data-for="components" style="display:none;">SHIP COMPONENTS<span class="view-heading-count"></span></div>
     <div id="componentsView" class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="flightsuits" style="display:none;">Flight Suits<span class="view-heading-count"></span></div>
+    <div class="view-heading" data-for="flightsuits" style="display:none;">FLIGHT SUITS<span class="view-heading-count"></span></div>
     <div id="flightsuitsView" class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="shipweapons" style="display:none;">Ship Weapons<span class="view-heading-count"></span></div>
+    <div class="view-heading" data-for="shipweapons" style="display:none;">SHIP WEAPONS<span class="view-heading-count"></span></div>
     <div id="shipweaponsView" class="item-group" style="display:none;"></div>
 
 </div>
@@ -2919,19 +2919,22 @@
         // The query outranks the tab selection: reveal every category that matched.
         applyViewVisibility(matchCounts);
 
+        // Written as one whole text node each so the i18n runtime can match them
+        // (see the ui_strings.json patterns keyed on these two sentences).
+        const shown = query.trim();
         if (banner) {
             banner.style.display = total ? 'flex' : 'none';
-            const countEl  = document.getElementById('searchScopeCount');
-            const pluralEl = document.getElementById('searchScopePlural');
-            const queryEl  = document.getElementById('searchScopeQuery');
-            if (countEl)  countEl.textContent  = total;
-            if (pluralEl) pluralEl.textContent = total === 1 ? '' : 'es';
-            if (queryEl)  queryEl.textContent  = query.trim();
+            const textEl = document.getElementById('searchScopeText');
+            if (textEl) {
+                textEl.textContent = `Showing ${total} ${total === 1 ? 'match' : 'matches'} `
+                    + `for “${shown}” across all categories — `
+                    + `tab filters are ignored while searching.`;
+            }
         }
         if (emptyMsg) {
             emptyMsg.style.display = total ? 'none' : 'block';
-            const eq = document.getElementById('searchEmptyQuery');
-            if (eq) eq.textContent = query.trim();
+            emptyMsg.textContent = `No blueprints match “${shown}” in any category. `
+                + `Try a shorter term, or check your system filters and inventory.`;
         }
     }
 
