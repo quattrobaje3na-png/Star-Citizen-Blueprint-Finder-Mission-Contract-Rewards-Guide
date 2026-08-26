@@ -2279,6 +2279,40 @@
 
     function renderArmor() {
         const REQUIRED   = ['helmet', 'core', 'arms', 'legs'];
+
+        // A set is COMPLETE when every piece the game actually ships for it is
+        // catalogued -- which is not always helmet+core+arms+legs.
+        //
+        // ONE-PIECE SUITS were the gap. CDS superheavy names its torso piece
+        // "BUL-H4 Armor" and that single garment covers core, arms and legs;
+        // there are no separate blueprints for them and there never will be.
+        // REQUIRED.every() therefore could never be satisfied, so the set was
+        // badged INCOMPLETE permanently. Same shape as the flight-suit and
+        // undersuit exceptions already here.
+        //
+        // Detection is on the WORD, not a substring: \b(armor|armour|suit)\b
+        // deliberately does not fire on "undersuit" (no word break before
+        // "suit") and a genuine 4-piece set naming a piece "<X> Armor Core"
+        // still reports separates and falls through to REQUIRED.
+        //
+        // Defined ONCE and called from all three call sites -- the two sort
+        // comparators and the render -- because when this logic was inlined
+        // three times, patching one and missing another made the sort order
+        // and the badge disagree.
+        function isArmorSetComplete(partsLow) {
+            const has = (t) => partsLow.some(p => p.includes(t));
+            const hasHelmet = has('helmet');
+
+            if (has('flight suit')) return hasHelmet;
+            if (has('undersuit') && partsLow.length === 1) return true;
+
+            const hasOnePieceSuit = partsLow.some(p => /\b(armor|armour|suit)\b/.test(p));
+            const hasSeparates    = ['core', 'arms', 'legs'].some(r => has(r));
+            if (hasOnePieceSuit && !hasSeparates) return hasHelmet;
+
+            return REQUIRED.every(r => has(r));
+        }
+
         const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
 
         const available = Object.keys(armorSets)
@@ -2295,31 +2329,9 @@
                 const partsA = setA.parts.map(p => p.toLowerCase());
                 const partsB = setB.parts.map(p => p.toLowerCase());
 
-                const hasHelmetA = partsA.some(p => p.includes('helmet'));
-                const hasFlightSuitA = partsA.some(p => p.includes('flight suit'));
-                const hasUndersuitA = partsA.some(p => p.includes('undersuit'));
+                const isCompleteA = isArmorSetComplete(partsA);
 
-                let isCompleteA;
-                if (hasFlightSuitA) {
-                    isCompleteA = hasHelmetA && hasFlightSuitA;
-                } else if (hasUndersuitA && partsA.length === 1) {
-                    isCompleteA = true;
-                } else {
-                    isCompleteA = REQUIRED.every(r => partsA.some(p => p.includes(r)));
-                }
-
-                const hasHelmetB = partsB.some(p => p.includes('helmet'));
-                const hasFlightSuitB = partsB.some(p => p.includes('flight suit'));
-                const hasUndersuitB = partsB.some(p => p.includes('undersuit'));
-
-                let isCompleteB;
-                if (hasFlightSuitB) {
-                    isCompleteB = hasHelmetB && hasFlightSuitB;
-                } else if (hasUndersuitB && partsB.length === 1) {
-                    isCompleteB = true;
-                } else {
-                    isCompleteB = REQUIRED.every(r => partsB.some(p => p.includes(r)));
-                }
+                const isCompleteB = isArmorSetComplete(partsB);
 
                 if (isCompleteA !== isCompleteB) return isCompleteA ? -1 : 1;
                 return a.localeCompare(b);
@@ -2335,23 +2347,7 @@
             // doesn't get mislabeled INCOMPLETE just because you already own a piece.
             const partLow  = set.parts.map(p => p.toLowerCase());
 
-            // Flight suits and undersuits have different completion requirements
-            // Flight suit sets: need helmet + flight suit (2 pieces)
-            const hasHelmet = partLow.some(p => p.includes('helmet'));
-            const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
-            const hasUndersuit = partLow.some(p => p.includes('undersuit'));
-
-            let isComplete;
-            if (hasFlightSuit) {
-                // Flight suit sets are complete with helmet + flight suit
-                isComplete = hasHelmet && hasFlightSuit;
-            } else if (hasUndersuit && partLow.length === 1) {
-                // Standalone undersuit is complete
-                isComplete = true;
-            } else {
-                // Regular armor sets need 4 pieces: helmet, core, arms, legs
-                isComplete = REQUIRED.every(r => partLow.some(p => p.includes(r)));
-            }
+            const isComplete = isArmorSetComplete(partLow);
 
             const filteredMissions = filterMissionsBySystem(aggregateArmorMissions(set, unownedParts));
 
