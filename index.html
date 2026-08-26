@@ -124,6 +124,19 @@
             margin: 0;
         }
 
+        /* HUD sync — optional, hidden unless the SDK actually loaded */
+        #hudSync {
+            display: flex; align-items: center; gap: 8px;
+            margin-top: 6px; font-size: 12px; flex-wrap: wrap;
+        }
+        #hudSyncBtn {
+            background: rgba(0,229,160,.12); color: #00e5a0;
+            border: 1px solid rgba(0,229,160,.45); border-radius: 4px;
+            padding: 3px 10px; cursor: pointer; font: inherit;
+        }
+        #hudSyncBtn:hover { background: rgba(0,229,160,.22); }
+        #hudSyncState { color: #8aa4bc; }
+        #hudSyncState.err { color: #d08a3a; }
         #statusIndicator {
             font-family: var(--mono);
             font-size: 0.9rem;
@@ -1386,6 +1399,10 @@
             <div class="explorer-header-titles">
                 <div class="explorer-title">Star Citizen Blueprint Finder: Mission Contract Rewards Guide</div>
                 <div id="statusIndicator">Fetching database...</div>
+                <div id="hudSync" hidden>
+                    <button id="hudSyncBtn" type="button">Connect HUD</button>
+                    <span id="hudSyncState"></span>
+                </div>
             </div>
 
             <div class="header-sub-cta">
@@ -1616,6 +1633,11 @@
 
 </div>
 
+<!-- Firebase, for OPTIONAL HUD sync. The tool is fully usable if these
+     fail to load: `firebase` is simply undefined and the sync stays off. -->
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
 <script>
     /* ── State ──────────────────────────────────────────────────────────── */
     let weaponsList = [];
@@ -3494,6 +3516,202 @@
         const bg  = type === 'success' ? 'rgba(0,229,160,0.08)' : 'rgba(239,68,68,0.08)';
         return `<div style="font-size:0.85rem;color:${col};margin-bottom:14px;line-height:1.5;padding:10px 12px;background:${bg};border-left:3px solid ${col};border-radius:4px;">${msg}</div>`;
     }
+
+
+    /* ── HUD SYNC — ENTIRELY OPTIONAL ────────────────────────────────────
+       Nothing above this point knows or cares that it exists. With no
+       account, or with the SDK blocked, the inventory lives in
+       localStorage exactly as it always has and every feature works.
+
+       Signing in adds a SECOND copy in the shared backend so the overlay,
+       the Org Bank Fabricator and this tool all read one record.
+
+       WIRE FORMAT IS PLAIN NAMES. This tool keys its set by type --
+       `weapon::Foo` -- but the backend record predates it and stores bare
+       names, which is what the Fabricator reads. Publishing prefixed keys
+       would be invisible to every other consumer, so names are stripped on
+       the way out and the prefix is rebuilt from the catalogue on the way
+       back in.
+
+       MERGE, NEVER REPLACE. Local and remote are unioned. A blueprint you
+       ticked on your phone and one the HUD saw in a mission both survive;
+       nothing is deleted by syncing.
+    */
+    const HUDSync = (function () {
+        const CFG = {
+            apiKey:            "AIzaSyBGFyBVTX6kDWpbY1bSkmo9fzdmkFBeQws",
+            authDomain:        "sc-crew-resource-finder.firebaseapp.com",
+            databaseURL:       "https://sc-crew-resource-finder-default-rtdb.firebaseio.com",
+            projectId:         "sc-crew-resource-finder",
+            storageBucket:     "sc-crew-resource-finder.firebasestorage.app",
+            messagingSenderId: "583590414773",
+            appId:             "1:583590414773:web:1013f80e39ca36f06671fc"
+        };
+        const ORG_KEY = 'scBlueprintFinder.orgKey.v1';
+        let db = null, user = null, on = false, pending = null;
+
+        function el(id) { return document.getElementById(id); }
+        function say(msg, isErr) {
+            const e = el('hudSyncState');
+            if (!e) return;
+            e.textContent = msg || '';
+            e.className = isErr ? 'err' : '';
+        }
+
+        /* Where this account's record lives. An org is shared by a whole
+           org; with no org code the player gets their own solo room, which
+           is what the overlay calls u_<uid>. */
+        function nodePath() {
+            if (!user) return null;
+            let org = '';
+            try { org = (localStorage.getItem(ORG_KEY) || '').trim(); } catch (e) {}
+            // NOT re-deriving the org check character here. It is computed
+            // in Python (crew_link.normalise_org_code) and a second
+            // implementation that drifted would write to a node nobody
+            // reads. Paste the code the HUD shows, or get the solo room.
+            if (/^o_[0-9A-Za-z]{4,}$/.test(org)) {
+                return 'orgs/' + org + '/blueprints/' + user.uid;
+            }
+            return 'rooms/u_' + user.uid + '/blueprints/' + user.uid;
+        }
+
+        function bareName(key) {
+            const i = key.indexOf('::');
+            return i < 0 ? key : key.slice(i + 2);
+        }
+
+        /* Rebuild this tool's prefixed key from a bare name, by asking the
+           catalogue what kind of thing it is. A name that matches nothing
+           is kept as-is rather than dropped -- the HUD may legitimately
+           know about a blueprint this build's data file does not. */
+        function keysForName(name) {
+            const out = [];
+            try {
+                if (weaponsList.some(w => w.name === name)) out.push('weapon::' + name);
+                if (ammoList.some(a => a.name === name)) out.push('ammo::' + name);
+                if (shipComponentsList.some(c => c.name === name)) out.push('component::' + name);
+                for (const k in armorSets) {
+                    const parts = (armorSets[k] && armorSets[k].parts) || [];
+                    if (parts.indexOf(name) !== -1) { out.push('armor::' + name); break; }
+                }
+            } catch (e) { /* catalogue not loaded yet */ }
+            return out.length ? out : [name];
+        }
+
+        function available() {
+            return typeof firebase !== 'undefined' && firebase && firebase.initializeApp;
+        }
+
+        function init() {
+            if (!available()) return;          // blocked/offline: stay local
+            try {
+                if (!firebase.apps.length) firebase.initializeApp(CFG);
+                db = firebase.database();
+                const box = el('hudSync');
+                if (box) box.hidden = false;
+                el('hudSyncBtn').addEventListener('click', toggle);
+                firebase.auth().onAuthStateChanged(function (u) {
+                    user = u || null;
+                    el('hudSyncBtn').textContent = user ? 'Disconnect' : 'Connect HUD';
+                    if (user) { say('connected — syncing'); pull(); }
+                    else { say(''); }
+                });
+            } catch (err) {
+                console.warn('HUD sync unavailable:', err);
+            }
+        }
+
+        function toggle() {
+            if (!available()) return;
+            if (user) { firebase.auth().signOut(); return; }
+            firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+                .catch(function (err) {
+                    // The overwhelmingly common cause is the site's domain
+                    // not being listed under Firebase Auth -> Authorized
+                    // domains. No code change fixes that.
+                    const m = (err && err.code) === 'auth/unauthorized-domain'
+                        ? 'this domain is not authorised in Firebase'
+                        : ((err && err.message) || 'sign-in failed');
+                    say(m, true);
+                });
+        }
+
+        /* Remote -> local, unioned. */
+        function pull() {
+            const path = nodePath();
+            if (!db || !path) return;
+            on = true;
+            db.ref(path).once('value').then(function (snap) {
+                const v = snap.val() || {};
+                let owned = v.owned || [];
+                // RTDB hands back a sparse array as an object.
+                if (!Array.isArray(owned)) owned = Object.keys(owned)
+                    .sort().map(function (k) { return owned[k]; });
+                let added = 0;
+                owned.forEach(function (n) {
+                    if (typeof n !== 'string') return;
+                    keysForName(n).forEach(function (k) {
+                        if (!ownedBlueprints.has(k)) { ownedBlueprints.add(k); added++; }
+                    });
+                });
+                if (added) {
+                    saveOwnedBlueprints();
+                    try { updateInventoryCounts(); } catch (e) {}
+                    try { applyViewVisibility(); } catch (e) {}
+                }
+                say('connected — ' + ownedBlueprints.size + ' owned'
+                    + (added ? ' (+' + added + ' from HUD)' : ''));
+                push();
+            }).catch(function (err) {
+                say('could not read: ' + ((err && err.message) || err), true);
+            });
+        }
+
+        /* Local -> remote. Debounced: ticking ten boxes is one write. */
+        function push() {
+            const path = nodePath();
+            if (!db || !path || !user) return;
+            clearTimeout(pending);
+            pending = setTimeout(function () {
+                const names = Array.from(new Set(
+                    Array.from(ownedBlueprints).map(bareName)))
+                    .filter(function (n) { return n && n.length <= 80; });
+                // ONLY these four fields. The rules carry
+                // `$other: false`, so one stray key rejects the whole write.
+                db.ref(path).set({
+                    name:  (user.displayName || 'Blueprint Finder').slice(0, 40),
+                    count: names.length,
+                    owned: names,
+                    ts:    firebase.database.ServerValue.TIMESTAMP
+                }).then(function () {
+                    say('synced — ' + names.length + ' owned');
+                }).catch(function (err) {
+                    say('could not save: ' + ((err && err.message) || err), true);
+                });
+            }, 800);
+        }
+
+        function onLocalChange() { if (on && user) push(); }
+
+        return { init: init, onLocalChange: onLocalChange };
+    })();
+
+    /* Publish on every local change, without touching the original
+       function: it is wrapped, not edited, so the offline path is exactly
+       the code that has always run. */
+    (function () {
+        const _save = saveOwnedBlueprints;
+        saveOwnedBlueprints = function () {
+            _save.apply(this, arguments);
+            try { HUDSync.onLocalChange(); } catch (e) {}
+        };
+    })();
+
+    /* Start it after the page has booted, so the catalogue is loaded and
+       `keysForName` can do its job. Failure here must never stop the tool. */
+    window.addEventListener('load', function () {
+        setTimeout(function () { try { HUDSync.init(); } catch (e) {} }, 0);
+    });
 
 </script>
 </body>
