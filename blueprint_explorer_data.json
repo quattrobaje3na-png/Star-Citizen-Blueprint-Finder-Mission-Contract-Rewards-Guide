@@ -2016,12 +2016,12 @@
    "missions": [
     {
      "type": "career",
-     "title": "Yellow Level Contract: Routine Patrol",
+     "title": "Yellow Level Contract: Clear Shipjacking Group",
      "lawful": true,
      "faction": "Foxwell Enforcement",
-     "system": "Pyro",
+     "system": "Stanton",
      "systems": [
-      "Pyro"
+      "Stanton"
      ],
      "minRep": 0,
      "repReward": 100,
@@ -2031,12 +2031,12 @@
     },
     {
      "type": "career",
-     "title": "Yellow Level Contract: Security Sweep",
+     "title": "Yellow Level Contract: Neutralize Shipjacking Gang",
      "lawful": true,
      "faction": "Foxwell Enforcement",
-     "system": "Pyro",
+     "system": "Stanton",
      "systems": [
-      "Pyro"
+      "Stanton"
      ],
      "minRep": 800,
      "repReward": 100,
@@ -2046,12 +2046,12 @@
     },
     {
      "type": "career",
-     "title": "Orange Level Contract: Security Patrol",
+     "title": "Orange Level Contract: Destroy Outlaw Threat",
      "lawful": true,
      "faction": "Foxwell Enforcement",
-     "system": "Pyro",
+     "system": "Stanton",
      "systems": [
-      "Pyro"
+      "Stanton"
      ],
      "minRep": 2200,
      "repReward": 150,
@@ -2061,46 +2061,16 @@
     },
     {
      "type": "career",
-     "title": "Orange Level Contract: Potential Security Threat",
+     "title": "Orange Level Contract: Take Out Criminal Fleet",
      "lawful": true,
      "faction": "Foxwell Enforcement",
-     "system": "Pyro",
+     "system": "Stanton",
      "systems": [
-      "Pyro"
+      "Stanton"
      ],
      "minRep": 5800,
      "repReward": 200,
      "repStanding": "Sr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Red Level Contract: High-Risk Security Patrol",
-     "lawful": true,
-     "faction": "Foxwell Enforcement",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 15000,
-     "repReward": 250,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Red Level Contract: Secure Threatened Space",
-     "lawful": true,
-     "faction": "Foxwell Enforcement",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 38000,
-     "repReward": 300,
-     "repStanding": "Head Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
@@ -2160,66 +2130,6 @@
      ],
      "minRep": 5800,
      "repReward": 16000,
-     "repStanding": "Sr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Yellow Level Contract: Clear Shipjacking Group",
-     "lawful": true,
-     "faction": "Foxwell Enforcement",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Yellow Level Contract: Neutralize Shipjacking Gang",
-     "lawful": true,
-     "faction": "Foxwell Enforcement",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Orange Level Contract: Destroy Outlaw Threat",
-     "lawful": true,
-     "faction": "Foxwell Enforcement",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Orange Level Contract: Take Out Criminal Fleet",
-     "lawful": true,
-     "faction": "Foxwell Enforcement",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 5800,
-     "repReward": 200,
      "repStanding": "Sr. Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
@@ -2302,6 +2212,96 @@
     {
      "type": "career",
      "title": "Red Level Contract: Surprise Attack",
+     "lawful": true,
+     "faction": "Foxwell Enforcement",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 38000,
+     "repReward": 300,
+     "repStanding": "Head Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Yellow Level Contract: Routine Patrol",
+     "lawful": true,
+     "faction": "Foxwell Enforcement",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Yellow Level Contract: Security Sweep",
+     "lawful": true,
+     "faction": "Foxwell Enforcement",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Orange Level Contract: Security Patrol",
+     "lawful": true,
+     "faction": "Foxwell Enforcement",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Orange Level Contract: Potential Security Threat",
+     "lawful": true,
+     "faction": "Foxwell Enforcement",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 5800,
+     "repReward": 200,
+     "repStanding": "Sr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Red Level Contract: High-Risk Security Patrol",
+     "lawful": true,
+     "faction": "Foxwell Enforcement",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 15000,
+     "repReward": 250,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Red Level Contract: Secure Threatened Space",
      "lawful": true,
      "faction": "Foxwell Enforcement",
      "system": "Pyro",
@@ -2533,6 +2533,66 @@
    "missions": [
     {
      "type": "career",
+     "title": "Small Purchase Order: Hand Mined Materials",
+     "lawful": true,
+     "faction": "Shubin Interstellar",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Med. Purchase Order: Hand Mined Materials",
+     "lawful": true,
+     "faction": "Shubin Interstellar",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Lrg. Purchase Order: Hand Mined Materials",
+     "lawful": true,
+     "faction": "Shubin Interstellar",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "XL Purchase Order: Hand Mined Materials",
+     "lawful": true,
+     "faction": "Shubin Interstellar",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 5800,
+     "repReward": 200,
+     "repStanding": "Sr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
      "title": "XS Purchase Order: Ship Mined Ore",
      "lawful": true,
      "faction": "Shubin Interstellar",
@@ -2633,66 +2693,6 @@
      "minRep": 38000,
      "repReward": 250,
      "repStanding": "Head Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Small Purchase Order: Hand Mined Materials",
-     "lawful": true,
-     "faction": "Shubin Interstellar",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Med. Purchase Order: Hand Mined Materials",
-     "lawful": true,
-     "faction": "Shubin Interstellar",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Lrg. Purchase Order: Hand Mined Materials",
-     "lawful": true,
-     "faction": "Shubin Interstellar",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "XL Purchase Order: Hand Mined Materials",
-     "lawful": true,
-     "faction": "Shubin Interstellar",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 5800,
-     "repReward": 200,
-     "repStanding": "Sr. Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     }
@@ -2933,6 +2933,48 @@
     }
    ],
    "missions": [
+    {
+     "type": "career",
+     "title": "Bleeding Edge Tech",
+     "lawful": false,
+     "faction": "BitZeros",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null
+    },
+    {
+     "type": "career",
+     "title": "Turning the Tables",
+     "lawful": false,
+     "faction": "BitZeros",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null
+    },
+    {
+     "type": "career",
+     "title": "Upgrade Grab",
+     "lawful": false,
+     "faction": "BitZeros",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null
+    },
     {
      "type": "career",
      "title": "Bit Zeros",
@@ -3188,48 +3230,6 @@
     {
      "type": "career",
      "title": "Bad at Goodbyes",
-     "lawful": false,
-     "faction": "BitZeros",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null
-    },
-    {
-     "type": "career",
-     "title": "Bleeding Edge Tech",
-     "lawful": false,
-     "faction": "BitZeros",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null
-    },
-    {
-     "type": "career",
-     "title": "Turning the Tables",
-     "lawful": false,
-     "faction": "BitZeros",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null
-    },
-    {
-     "type": "career",
-     "title": "Upgrade Grab",
      "lawful": false,
      "faction": "BitZeros",
      "system": "Unknown",
@@ -3659,21 +3659,6 @@
    "missions": [
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Security Data",
-     "lawful": true,
-     "faction": "Hockrow Agency",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "story",
      "title": "Jorrit Dossier: Updated Power Usage Data",
      "lawful": true,
      "faction": "Hockrow Agency",
@@ -3690,6 +3675,21 @@
     {
      "type": "story",
      "title": "Jorrit Dossier: Updated Energy Anomaly Data",
+     "lawful": true,
+     "faction": "Hockrow Agency",
+     "system": "Stanton",
+     "systems": [
+      "Stanton"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "story",
+     "title": "Jorrit Dossier: Updated Security Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -3724,66 +3724,6 @@
     }
    ],
    "missions": [
-    {
-     "type": "career",
-     "title": "Need Resource for Research\\n",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Vital Resources Needed For Research",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "story",
-     "title": "Recover Vanduul Corpses",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "story",
-     "title": "Recover Vanduul Tech",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
     {
      "type": "career",
      "title": "Defend InterSec Operative",
@@ -3860,6 +3800,36 @@
      "event": null
     },
     {
+     "type": "story",
+     "title": "Recover Vanduul Corpses",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "story",
+     "title": "Recover Vanduul Tech",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
      "type": "career",
      "title": "Retrieve Additional Smuggler Intel",
      "lawful": true,
@@ -3867,6 +3837,36 @@
      "system": "Nyx",
      "systems": [
       "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Need Resource for Research\\n",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Vital Resources Needed For Research",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Stanton",
+     "systems": [
+      "Stanton"
      ],
      "minRep": 800,
      "repReward": 100,
@@ -3910,51 +3910,6 @@
     }
    ],
    "missions": [
-    {
-     "type": "career",
-     "title": "Need Resource for Research\\n",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Vital Resources Needed For Research",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Retrieve Additional Smuggler Intel",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
     {
      "type": "career",
      "title": "Patrol Dangerous Sector",
@@ -4002,6 +3957,51 @@
     },
     {
      "type": "career",
+     "title": "Retrieve Additional Smuggler Intel",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Need Resource for Research\\n",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Vital Resources Needed For Research",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Stanton",
+     "systems": [
+      "Stanton"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
      "title": "Need Resource for Research",
      "lawful": true,
      "faction": "Rayari Incorporated",
@@ -4036,21 +4036,6 @@
     }
    ],
    "missions": [
-    {
-     "type": "career",
-     "title": "Reclaim Headhunter Outpost",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 800,
-     "repReward": 150,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
     {
      "type": "career",
      "title": "Taking back from the Headhunters",
@@ -4093,6 +4078,66 @@
      "minRep": 38000,
      "repReward": 450,
      "repStanding": "Head Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Need multiple CFP outposts retaken",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 15000,
+     "repReward": 350,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Reclaiming Clusters from Headhunters",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 15000,
+     "repReward": 350,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Campaign to reclaim XenoThreat outposts ",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 38000,
+     "repReward": 450,
+     "repStanding": "Head Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Reclaim Headhunter Outpost",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Pyro",
+     "systems": [
+      "Pyro"
+     ],
+     "minRep": 800,
+     "repReward": 150,
+     "repStanding": "Jr. Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
@@ -4153,51 +4198,6 @@
      "minRep": 0,
      "repReward": 75,
      "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Need multiple CFP outposts retaken",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 15000,
-     "repReward": 350,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Reclaiming Clusters from Headhunters",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Pyro",
-     "systems": [
-      "Pyro"
-     ],
-     "minRep": 15000,
-     "repReward": 350,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Campaign to reclaim XenoThreat outposts ",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 38000,
-     "repReward": 450,
-     "repStanding": "Head Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
@@ -4770,441 +4770,6 @@
    ],
    "missions": [
     {
-     "type": "career",
-     "title": "End of a Salamander",
-     "lawful": false,
-     "faction": "Vaughn",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 15000,
-     "repReward": 250,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Reduce Valakkar Breaker Station Population",
-     "lawful": true,
-     "faction": "Highpoint Wilderness Specialists",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Pilot in Distress",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Support Ship Under Attack",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Pilot Seeking Combat Support",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Provide Combat Support",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Ship Needs Emergency Assistance",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Stop Attack on Ship",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Convoy Caught in Brutal Attack",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 5800,
-     "repReward": 200,
-     "repStanding": "Sr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Help Ambushed Convoy",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Respond to Distress Beacon",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 15000,
-     "repReward": 250,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Convoy Under Attack",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Come to Aid of Convoy",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 38000,
-     "repReward": 300,
-     "repStanding": "Head Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Stop Savage Shattered Blade Attack",
-     "lawful": true,
-     "faction": "Citizens For Prosperity",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Save Ship",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Stop Shattered Blade Attack",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Support Client Under Attack",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Request for Ship Support",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Stop Attack on High-Profile Client",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Repel Shattered Blade Ships",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "High-Risk Ship Encounter",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 5800,
-     "repReward": 200,
-     "repStanding": "Sr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Serious Shattered Blade Attack",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Stop Deadly Ship Attack",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 15000,
-     "repReward": 250,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Client Needs Combat Support",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Extremely Dangerous Defense",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 38000,
-     "repReward": 300,
-     "repStanding": "Head Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Shattered Blade Strike",
-     "lawful": true,
-     "faction": "Eckhart Security",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null,
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Neutralize Vanduul Target",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 5800,
-     "repReward": 250,
-     "repStanding": "Sr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Eliminate Vanduul Ship",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 15000,
-     "repReward": 300,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "A Well Deserved Break",
-     "lawful": false,
-     "faction": "Vaughn",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 150,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
      "type": "story",
      "title": "QV Breaker Station Mining Rights (Exclusive)",
      "lawful": true,
@@ -5671,6 +5236,441 @@
     },
     {
      "type": "career",
+     "title": "End of a Salamander",
+     "lawful": false,
+     "faction": "Vaughn",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 15000,
+     "repReward": 250,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Reduce Valakkar Breaker Station Population",
+     "lawful": true,
+     "faction": "Highpoint Wilderness Specialists",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Pilot in Distress",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Support Ship Under Attack",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Pilot Seeking Combat Support",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Provide Combat Support",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Ship Needs Emergency Assistance",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Stop Attack on Ship",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Convoy Caught in Brutal Attack",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 5800,
+     "repReward": 200,
+     "repStanding": "Sr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Help Ambushed Convoy",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Respond to Distress Beacon",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 15000,
+     "repReward": 250,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Convoy Under Attack",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Come to Aid of Convoy",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 38000,
+     "repReward": 300,
+     "repStanding": "Head Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Stop Savage Shattered Blade Attack",
+     "lawful": true,
+     "faction": "Citizens For Prosperity",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Save Ship",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Stop Shattered Blade Attack",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Support Client Under Attack",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Request for Ship Support",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Stop Attack on High-Profile Client",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Repel Shattered Blade Ships",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "High-Risk Ship Encounter",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 5800,
+     "repReward": 200,
+     "repStanding": "Sr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Serious Shattered Blade Attack",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Stop Deadly Ship Attack",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 15000,
+     "repReward": 250,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Client Needs Combat Support",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Extremely Dangerous Defense",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 38000,
+     "repReward": 300,
+     "repStanding": "Head Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Shattered Blade Strike",
+     "lawful": true,
+     "faction": "Eckhart Security",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Neutralize Vanduul Target",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 5800,
+     "repReward": 250,
+     "repStanding": "Sr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Eliminate Vanduul Ship",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 15000,
+     "repReward": 300,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "A Well Deserved Break",
+     "lawful": false,
+     "faction": "Vaughn",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 150,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
      "title": "Bleeding Edge Tech",
      "lawful": false,
      "faction": "Bit Zeros",
@@ -6125,7 +6125,7 @@
      "event": "Siege of Orison"
     }
    ],
-   "armorSet": "H4-PBF"
+   "armorSet": "BUL-H4"
   },
   {
    "name": "H4-PBF Ammo Carrier Snow Camo",
@@ -6158,7 +6158,7 @@
      "event": null
     }
    ],
-   "armorSet": "H4-PBF Snow Camo"
+   "armorSet": "BUL-H4 Snow Camo"
   },
   {
    "name": "BUL-H4 Helmet",
@@ -6200,7 +6200,8 @@
      "scopeGuid": null,
      "event": "Siege of Orison"
     }
-   ]
+   ],
+   "armorSet": "BUL-H4"
   },
   {
    "name": "BUL-H4 Helmet Snow Camo",
@@ -6242,7 +6243,8 @@
      "scopeGuid": null,
      "event": null
     }
-   ]
+   ],
+   "armorSet": "BUL-H4 Snow Camo"
   },
   {
    "name": "BUL-H4 Armor",
@@ -23811,8 +23813,7 @@
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     }
-   ],
-   "armorSet": "Carnifex"
+   ]
   },
   {
    "name": "Carnifex Armor Legs",
@@ -23864,8 +23865,7 @@
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     }
-   ],
-   "armorSet": "Carnifex"
+   ]
   },
   {
    "name": "Calico Arms Tactical",
@@ -52977,7 +52977,7 @@
    "missions": [
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Power Usage Data",
+     "title": "Jorrit Dossier: Updated Seismic Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -52992,7 +52992,7 @@
     },
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Seismic Data",
+     "title": "Jorrit Dossier: Updated Power Usage Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -53273,7 +53273,7 @@
    "missions": [
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Power Usage Data",
+     "title": "Jorrit Dossier: Updated Seismic Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -53288,7 +53288,7 @@
     },
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Seismic Data",
+     "title": "Jorrit Dossier: Updated Power Usage Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -53569,7 +53569,7 @@
    "missions": [
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Power Usage Data",
+     "title": "Jorrit Dossier: Updated Seismic Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -53584,7 +53584,7 @@
     },
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Seismic Data",
+     "title": "Jorrit Dossier: Updated Power Usage Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -53865,7 +53865,7 @@
    "missions": [
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Power Usage Data",
+     "title": "Jorrit Dossier: Updated Seismic Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -53880,7 +53880,7 @@
     },
     {
      "type": "story",
-     "title": "Jorrit Dossier: Updated Seismic Data",
+     "title": "Jorrit Dossier: Updated Power Usage Data",
      "lawful": true,
      "faction": "Hockrow Agency",
      "system": "Stanton",
@@ -60532,36 +60532,6 @@
    ],
    "missions": [
     {
-     "type": "career",
-     "title": "Need Resource for Research\\n",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Vital Resources Needed For Research",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
      "type": "story",
      "title": "Recover Vanduul Corpses",
      "lawful": true,
@@ -60589,6 +60559,36 @@
      "repReward": null,
      "repStanding": null,
      "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Need Resource for Research\\n",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Vital Resources Needed For Research",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Stanton",
+     "systems": [
+      "Stanton"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
     {
@@ -60634,6 +60634,21 @@
    "missions": [
     {
      "type": "career",
+     "title": "Retrieve Additional Smuggler Intel",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
      "title": "Need Resource for Research\\n",
      "lawful": true,
      "faction": "Rayari Incorporated",
@@ -60655,21 +60670,6 @@
      "system": "Stanton",
      "systems": [
       "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Retrieve Additional Smuggler Intel",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
      ],
      "minRep": 800,
      "repReward": 100,
@@ -60718,36 +60718,6 @@
     }
    ],
    "missions": [
-    {
-     "type": "career",
-     "title": "Need Resource for Research\\n",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Vital Resources Needed For Research",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
     {
      "type": "career",
      "title": "Defend InterSec Operative",
@@ -60820,6 +60790,36 @@
      "minRep": 15000,
      "repReward": 300,
      "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Need Resource for Research\\n",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Vital Resources Needed For Research",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Stanton",
+     "systems": [
+      "Stanton"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
@@ -66247,6 +66247,48 @@
    "missions": [
     {
      "type": "career",
+     "title": "Bleeding Edge Tech",
+     "lawful": false,
+     "faction": "BitZeros",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null
+    },
+    {
+     "type": "career",
+     "title": "Turning the Tables",
+     "lawful": false,
+     "faction": "BitZeros",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null
+    },
+    {
+     "type": "career",
+     "title": "Upgrade Grab",
+     "lawful": false,
+     "faction": "BitZeros",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": null,
+     "repReward": null,
+     "repStanding": null,
+     "scopeGuid": null
+    },
+    {
+     "type": "career",
      "title": "Bit Zeros",
      "lawful": false,
      "faction": "BitZeros",
@@ -66500,48 +66542,6 @@
     {
      "type": "career",
      "title": "Bad at Goodbyes",
-     "lawful": false,
-     "faction": "BitZeros",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null
-    },
-    {
-     "type": "career",
-     "title": "Bleeding Edge Tech",
-     "lawful": false,
-     "faction": "BitZeros",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null
-    },
-    {
-     "type": "career",
-     "title": "Turning the Tables",
-     "lawful": false,
-     "faction": "BitZeros",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": null,
-     "repReward": null,
-     "repStanding": null,
-     "scopeGuid": null
-    },
-    {
-     "type": "career",
-     "title": "Upgrade Grab",
      "lawful": false,
      "faction": "BitZeros",
      "system": "Unknown",
@@ -67078,6 +67078,21 @@
    "missions": [
     {
      "type": "career",
+     "title": "Retrieve Additional Smuggler Intel",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
      "title": "Need Resource for Research\\n",
      "lawful": true,
      "faction": "Rayari Incorporated",
@@ -67099,21 +67114,6 @@
      "system": "Stanton",
      "systems": [
       "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Retrieve Additional Smuggler Intel",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
      ],
      "minRep": 800,
      "repReward": 100,
@@ -67164,36 +67164,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "Need Resource for Research\\n",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Vital Resources Needed For Research",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Patrol Dangerous Sector",
      "lawful": true,
      "faction": "InterSec Defense Solutions",
@@ -67234,6 +67204,36 @@
      "minRep": 2200,
      "repReward": 300,
      "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Need Resource for Research\\n",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Vital Resources Needed For Research",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Stanton",
+     "systems": [
+      "Stanton"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
@@ -67280,6 +67280,21 @@
    "missions": [
     {
      "type": "career",
+     "title": "Retrieve Additional Smuggler Intel",
+     "lawful": true,
+     "faction": "InterSec Defense Solutions",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
      "title": "Need Resource for Research\\n",
      "lawful": true,
      "faction": "Rayari Incorporated",
@@ -67301,21 +67316,6 @@
      "system": "Stanton",
      "systems": [
       "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Retrieve Additional Smuggler Intel",
-     "lawful": true,
-     "faction": "InterSec Defense Solutions",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
      ],
      "minRep": 800,
      "repReward": 100,
@@ -67366,36 +67366,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "Need Resource for Research\\n",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Vital Resources Needed For Research",
-     "lawful": true,
-     "faction": "Rayari Incorporated",
-     "system": "Stanton",
-     "systems": [
-      "Stanton"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Patrol Dangerous Sector",
      "lawful": true,
      "faction": "InterSec Defense Solutions",
@@ -67436,6 +67406,36 @@
      "minRep": 2200,
      "repReward": 300,
      "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Need Resource for Research\\n",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Vital Resources Needed For Research",
+     "lawful": true,
+     "faction": "Rayari Incorporated",
+     "system": "Stanton",
+     "systems": [
+      "Stanton"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
      "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
@@ -88775,51 +88775,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "URGENT CONVOY REFUEL",
-     "lawful": true,
-     "faction": "United Wayfarers Club",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "CRITICAL FLEET REFUEL",
-     "lawful": true,
-     "faction": "United Wayfarers Club",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 15000,
-     "repReward": 200,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "URGENT CAPITAL FLEET REFUEL",
-     "lawful": true,
-     "faction": "United Wayfarers Club",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 95250,
-     "repReward": 200,
-     "repStanding": "Elite Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Ore Scan Needed",
      "lawful": true,
      "faction": "Recco Battaglia",
@@ -88891,6 +88846,51 @@
      "repReward": 300,
      "repStanding": null,
      "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "URGENT CONVOY REFUEL",
+     "lawful": true,
+     "faction": "United Wayfarers Club",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "CRITICAL FLEET REFUEL",
+     "lawful": true,
+     "faction": "United Wayfarers Club",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 15000,
+     "repReward": 200,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "URGENT CAPITAL FLEET REFUEL",
+     "lawful": true,
+     "faction": "United Wayfarers Club",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 95250,
+     "repReward": 200,
+     "repStanding": "Elite Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
     {
@@ -89429,51 +89429,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "URGENT CONVOY REFUEL",
-     "lawful": true,
-     "faction": "United Wayfarers Club",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "CRITICAL FLEET REFUEL",
-     "lawful": true,
-     "faction": "United Wayfarers Club",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 15000,
-     "repReward": 200,
-     "repStanding": "Veteran Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "URGENT CAPITAL FLEET REFUEL",
-     "lawful": true,
-     "faction": "United Wayfarers Club",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 95250,
-     "repReward": 200,
-     "repStanding": "Elite Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Ore Scan Needed",
      "lawful": true,
      "faction": "Recco Battaglia",
@@ -89545,6 +89500,51 @@
      "repReward": 300,
      "repStanding": null,
      "scopeGuid": null,
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "URGENT CONVOY REFUEL",
+     "lawful": true,
+     "faction": "United Wayfarers Club",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "CRITICAL FLEET REFUEL",
+     "lawful": true,
+     "faction": "United Wayfarers Club",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 15000,
+     "repReward": 200,
+     "repStanding": "Veteran Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "URGENT CAPITAL FLEET REFUEL",
+     "lawful": true,
+     "faction": "United Wayfarers Club",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 95250,
+     "repReward": 200,
+     "repStanding": "Elite Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
     {
@@ -90162,126 +90162,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "Adagio Holdings in Need of Salvagers",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC / UCM)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC) ",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Large Deposit Of Ore To Confirm",
      "lawful": true,
      "faction": "Recco Battaglia",
@@ -90458,6 +90338,126 @@
      "repReward": 360,
      "repStanding": "Trusted Associate",
      "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Adagio Holdings in Need of Salvagers",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC / UCM)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC) ",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
     {
@@ -90503,126 +90503,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "Adagio Holdings in Need of Salvagers",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC / UCM)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC) ",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Large Deposit Of Ore To Confirm",
      "lawful": true,
      "faction": "Recco Battaglia",
@@ -90799,6 +90679,126 @@
      "repReward": 360,
      "repStanding": "Trusted Associate",
      "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Adagio Holdings in Need of Salvagers",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC / UCM)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC) ",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     }
    ]
@@ -90830,126 +90830,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "Adagio Holdings in Need of Salvagers",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC / UCM)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC) ",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Large Deposit Of Ore To Confirm",
      "lawful": true,
      "faction": "Recco Battaglia",
@@ -91126,6 +91006,126 @@
      "repReward": 360,
      "repStanding": "Trusted Associate",
      "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Adagio Holdings in Need of Salvagers",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC / UCM)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC) ",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     }
    ]
@@ -91157,126 +91157,6 @@
    "missions": [
     {
      "type": "career",
-     "title": "Adagio Holdings in Need of Salvagers",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Small Supply of RMC / UCM)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 0,
-     "repReward": 100,
-     "repStanding": "Neutral",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC) ",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Unknown",
-     "systems": [
-      "Unknown"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 800,
-     "repReward": 100,
-     "repStanding": "Jr. Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
-     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
-     "lawful": true,
-     "faction": "Adagio Holdings",
-     "system": "Nyx",
-     "systems": [
-      "Nyx"
-     ],
-     "minRep": 2200,
-     "repReward": 150,
-     "repStanding": "Contractor",
-     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
-     "event": null
-    },
-    {
-     "type": "career",
      "title": "Large Deposit Of Ore To Confirm",
      "lawful": true,
      "faction": "Recco Battaglia",
@@ -91453,6 +91333,126 @@
      "repReward": 360,
      "repStanding": "Trusted Associate",
      "scopeGuid": "3d5342a7-c3da-4ca0-872b-4b184efe5a07",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Adagio Holdings in Need of Salvagers",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Small Supply of RMC / UCM)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 0,
+     "repReward": 100,
+     "repStanding": "Neutral",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC) ",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Unknown",
+     "systems": [
+      "Unknown"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Med. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 800,
+     "repReward": 100,
+     "repStanding": "Jr. Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Supply of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
+     "event": null
+    },
+    {
+     "type": "career",
+     "title": "Salvager Needed (Lrg. Special Order of RMC / UCM / Components)",
+     "lawful": true,
+     "faction": "Adagio Holdings",
+     "system": "Nyx",
+     "systems": [
+      "Nyx"
+     ],
+     "minRep": 2200,
+     "repReward": 150,
+     "repStanding": "Contractor",
+     "scopeGuid": "d31bd373-35ab-4ea4-b0a7-0ccc867ef082",
      "event": null
     },
     {
