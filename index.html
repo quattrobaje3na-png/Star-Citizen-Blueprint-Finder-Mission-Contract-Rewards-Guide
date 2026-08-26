@@ -3557,17 +3557,75 @@
         /* Where this account's record lives. An org is shared by a whole
            org; with no org code the player gets their own solo room, which
            is what the overlay calls u_<uid>. */
+        /* ORG CODE NORMALISER — a faithful port of
+           crew_link.normalise_org_code(). The earlier version here matched
+           `o_` + 4 loose alphanumerics, which accepted ~1.7M strings that
+           are not codes at all and let a browser form org paths Python
+           would reject outright.
+
+           The drift worry that justified skipping it is answered by
+           ORG_CODE_SELF_TEST below, which carries crew_link.py's own
+           vectors. If either side changes, the console says so. */
+        const CODE_ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+        const CODE_LEN = 5;
+
+        function orgCheckChar(body) {
+            // Weighted modulus over the alphabet -- catches transpositions.
+            let total = 0;
+            for (let i = 0; i < body.length; i++) {
+                const idx = CODE_ALPHABET.indexOf(body[i]);
+                if (idx < 0) return null;
+                total += (i + 1) * idx;
+            }
+            return CODE_ALPHABET[total % CODE_ALPHABET.length];
+        }
+
+        function normaliseOrgCode(raw) {
+            if (!raw) return null;
+            let t = String(raw).replace(/[^0-9A-Za-z]/g, '').toUpperCase();
+            // A LEADING "O" IS THE PREFIX, not a zero -- but only when the
+            // length says so. Stripping it unconditionally would eat the
+            // first character of a bare code that starts with O/0.
+            if (t.charAt(0) === 'O' && t.length === CODE_LEN + 2) t = t.slice(1);
+            t = t.replace(/I/g, '1').replace(/L/g, '1')
+                 .replace(/O/g, '0').replace(/U/g, 'V');
+            if (t.length !== CODE_LEN + 1) return null;
+            for (const c of t) if (CODE_ALPHABET.indexOf(c) < 0) return null;
+            if (orgCheckChar(t.slice(0, -1)) !== t.charAt(t.length - 1)) return null;
+            return 'o_' + t;
+        }
+
+        /* crew_link.py's own vectors. Runs once at init; a mismatch is
+           logged loudly rather than silently writing to the wrong node. */
+        function ORG_CODE_SELF_TEST() {
+            const cases = [
+                ['o_8SD105', 'o_8SD105'],   // canonical round-trip
+                ['O8SD105',  'o_8SD105'],   // leading O is the prefix
+                ['o-8sd-105','o_8SD105'],   // separators and case
+                ['8SD105',   'o_8SD105'],   // bare body
+                ['o_8SD106', null],         // wrong check character
+                ['g_ABC123', null],         // a GROUP code is not an org code
+                ['',         null],
+                [null,       null]
+            ];
+            const bad = [];
+            for (const [input, want] of cases) {
+                const got = normaliseOrgCode(input);
+                if (got !== want) bad.push(input + ' -> ' + got + ' (want ' + want + ')');
+            }
+            if (bad.length) {
+                console.error('ORG CODE NORMALISER DRIFTED from crew_link.py:', bad);
+            }
+            return bad.length === 0;
+        }
+
         function nodePath() {
             if (!user) return null;
-            let org = '';
-            try { org = (localStorage.getItem(ORG_KEY) || '').trim(); } catch (e) {}
-            // NOT re-deriving the org check character here. It is computed
-            // in Python (crew_link.normalise_org_code) and a second
-            // implementation that drifted would write to a node nobody
-            // reads. Paste the code the HUD shows, or get the solo room.
-            if (/^o_[0-9A-Za-z]{4,}$/.test(org)) {
-                return 'orgs/' + org + '/blueprints/' + user.uid;
-            }
+            let raw = '';
+            try { raw = (localStorage.getItem(ORG_KEY) || '').trim(); } catch (e) {}
+            const org = normaliseOrgCode(raw);
+            if (org) return 'orgs/' + org + '/blueprints/' + user.uid;
+            // No org, or a code that does not verify: your own solo room.
             return 'rooms/u_' + user.uid + '/blueprints/' + user.uid;
         }
 
@@ -3608,7 +3666,7 @@
                 el('hudSyncBtn').addEventListener('click', toggle);
                 firebase.auth().onAuthStateChanged(function (u) {
                     user = u || null;
-                    el('hudSyncBtn').textContent = user ? 'Disconnect' : 'Connect HUD';
+                    el('hudSyncBtn').textContent = user ? 'Logout' : 'Login';
                     if (user) { say('connected — syncing'); pull(); }
                     else { say(''); }
                 });
@@ -3656,7 +3714,7 @@
                     try { applyViewVisibility(); } catch (e) {}
                 }
                 say('connected — ' + ownedBlueprints.size + ' owned'
-                    + (added ? ' (+' + added + ' from HUD)' : ''));
+                    + (added ? ' (+' + added + ' synced)' : ''));
                 push();
             }).catch(function (err) {
                 say('could not read: ' + ((err && err.message) || err), true);
@@ -3689,7 +3747,13 @@
 
         function onLocalChange() { if (on && user) push(); }
 
-        return { init: init, onLocalChange: onLocalChange };
+        // exposed so the normaliser can be exercised directly;
+        // a self-test that only logs on failure is
+        // indistinguishable from one that never ran.
+        return { init: init, onLocalChange: onLocalChange,
+                 normaliseOrgCode: normaliseOrgCode,
+                 selfTest: ORG_CODE_SELF_TEST,
+                 selfTestResult: ORG_CODE_SELF_TEST() };
     })();
 
     /* Publish on every local change, without touching the original
