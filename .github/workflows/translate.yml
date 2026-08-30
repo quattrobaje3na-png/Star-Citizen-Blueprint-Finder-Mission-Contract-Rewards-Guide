@@ -72,7 +72,13 @@ jobs:
           # never edits these, so the existing live site cannot be corrupted.
           cp index.html _site/
           cp blueprint_explorer_data.json _site/
+          # The Crafting Bench dataset. Publishing is an EXPLICIT list, so a
+          # new data file added to the repo is simply absent from the site
+          # until it is named here -- which is what happened to this one.
+          cp crafting_bench_data.json _site/
           [ -f README.md ] && cp README.md _site/ || true
+          # Linked from the README for the translation licences.
+          [ -f THIRD-PARTY-NOTICES.md ] && cp THIRD-PARTY-NOTICES.md _site/ || true
           # Translated builds alongside it.
           for L in de fr ja zh; do
             if [ -d "i18n/dist/$L" ]; then
