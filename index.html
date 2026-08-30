@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="robots" content="noindex, follow">
     <title>STAR CITIZEN BLUEPRINT FINDER: MISSION &amp; CONTRACTS REWARD GUIDE</title>
     <style>
         /* ── Fonts ──────────────────────────────────────────────────────── */
@@ -236,91 +238,6 @@
         .tab:hover  { background: var(--border); color: var(--text-main); }
         .tab.active { background: rgba(0, 229, 160, 0.1); border: 1px solid var(--accent); border-bottom: 2px solid var(--accent); color: var(--accent); }
 
-        /* ── Search overrides tabs ──────────────────────────────────────────
-           While a query is active every category is shown at once, so the tab
-           strip stops acting as a filter and becomes a per-category result
-           counter / jump link instead. */
-        .tab-count {
-            display: none;
-            margin-left: 8px;
-            padding: 1px 6px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            background: var(--accent);
-            color: #04140f;
-        }
-        .tab-container.searching .tab-count { display: inline-block; }
-        .tab-container.searching .tab {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            color: var(--text-muted);
-        }
-        .tab-container.searching .tab.has-matches { color: var(--text-main); }
-        .tab-container.searching .tab.no-matches  { opacity: 0.4; }
-        .tab-container.searching .tab.no-matches .tab-count {
-            background: var(--border);
-            color: var(--text-muted);
-        }
-
-        .search-scope-banner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin: 0 0 18px;
-            padding: 10px 16px;
-            border: 1px solid var(--accent);
-            border-left-width: 4px;
-            border-radius: 4px;
-            background: rgba(0, 229, 160, 0.07);
-            font-size: 0.85rem;
-            color: var(--text-main);
-        }
-        .search-scope-banner strong { color: var(--accent); }
-        .search-scope-clear {
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 5px 12px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .search-scope-clear:hover { color: var(--accent); border-color: var(--accent); }
-
-        .search-scope-empty {
-            margin: 0 0 18px;
-            padding: 18px;
-            border: 1px dashed var(--border);
-            border-radius: 4px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .view-heading {
-            margin: 4px 0 12px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--accent);
-        }
-        .view-heading-count {
-            margin-left: 8px;
-            color: var(--text-muted);
-            font-weight: 600;
-            letter-spacing: 0;
-            text-transform: none;
-        }
-
         /* System Filter Buttons */
         .system-filters {
             display: flex;
@@ -401,6 +318,15 @@
         .blueprint-card.weapon { border-left: 4px solid var(--weapon-color); }
         .blueprint-card.ammo   { border-left: 4px solid var(--ammo-color); }
         .blueprint-card.shipcomponent { border-left: 4px solid var(--component-color); }
+        /* Armour and flight suits are .armor-set-box on the blueprint side, so
+           the bench copies that box's tint rather than only its border colour,
+           and the two sides read identically. */
+        .blueprint-card.armor {
+            background: rgba(167,139,250,0.04);
+            border-color: rgba(167,139,250,0.3);
+            border-left: 4px solid var(--armor-color);
+        }
+        .blueprint-card.missionitem { border-left: 4px solid var(--gold); }
         .armor-set-box {
             background: rgba(167,139,250,0.04);
             border-color: rgba(167,139,250,0.3);
@@ -1064,7 +990,6 @@
         .planner-rank-tier-reps  { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); font-weight: 700; }
         .planner-rank-tier-once  { font-size: 0.72rem; color: var(--success); }
 
-
         /* Rank ladder table */
         .planner-rank-ladder {
             margin-top: 12px;
@@ -1377,7 +1302,484 @@
             border: 1px solid rgba(96,160,255,0.4);
             margin-left: 6px;
         }
+
+        /* ══ CRAFTING BENCH ══════════════════════════════════════════════
+           Added 2026-08-29. Reuses the finder's tokens and card shell so the
+           two modes cannot drift apart visually. */
+        /* Flush to the bottom edge of .explorer-header: the negative margins
+           cancel that container's 20px padding so the row meets all three
+           edges, and the outer corners follow its 8px radius. */
+        .mode-tab-row {
+            display: flex;
+            gap: 0;
+            margin: 18px -20px -20px;
+            border-top: 1px solid var(--border);
+            overflow: hidden;
+            border-radius: 0 0 7px 7px;
+        }
+        .mode-tab {
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 12px 18px;
+            background: var(--bg-base);
+            border: 0;
+            border-right: 1px solid var(--border);
+            border-bottom: 3px solid transparent;
+            border-radius: 0;
+            color: var(--text-muted);
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+        }
+        .mode-tab:last-child { border-right: 0; }
+        .mode-tab:hover { background: var(--border); color: var(--text-main); }
+        .mode-tab.active {
+            background: rgba(0,229,160,0.10);
+            border-color: rgba(0,229,160,0.45);
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+        .mode-tab-sub {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            color: var(--text-muted);
+            margin-top: 3px;
+        }
+
+        /* #main-grid is a flex column with gap:20px, and every blueprint side
+           panel is a direct child of it so it inherits that rhythm. The bench
+           is ONE child holding several panels, so without this its advisory
+           box, tabs and grid sat flush against each other. */
+        #craftMode {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        /* .controls-container is a flex ROW, which is right for the blueprint
+           side's single row of tabs and filters. The bench stacks two rows. */
+        #craftMode .controls-container {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 14px;
+        }
+        .craft-controls {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .craft-control-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .craft-select {
+            padding: 8px 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .quality-btn {
+            padding: 7px 13px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+        }
+        .quality-btn:hover { background: var(--border); color: var(--text-main); }
+        .quality-btn.active {
+            background: rgba(0,229,160,0.12);
+            border-color: rgba(0,229,160,0.45);
+            color: var(--accent);
+        }
+        /* A draggable bar with a hand-entry box beside it. Both write the same
+           value, so a crafter can drag for feel or type an exact quality. */
+        .q-slider-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1 1 260px;
+            min-width: 200px;
+        }
+        .q-slider { flex: 1 1 auto; min-width: 90px; accent-color: var(--accent); }
+        .q-box {
+            width: 74px;
+            flex: 0 0 auto;
+            padding: 6px 8px;
+            background: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+        }
+        .q-box:focus { outline: none; border-color: var(--accent); }
+        .slot-tune-row { display: flex; align-items: center; gap: 10px; }
+        .slot-tune-row .q-box { width: 66px; }
+
+        .craft-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        /* .blueprint-card is a fixed height:420px, which is right for the
+           mission lists it was built for. A craft card's height depends on how
+           many stats and materials the blueprint has, and grows again when the
+           slot tuning panel opens, so the fixed height was letting the panel
+           spill over the card below it. Size to content instead, and keep 420
+           as a floor so the grid still looks even. */
+        .craft-card {
+            height: auto;
+            min-height: 420px;
+            overflow: visible;
+        }
+        .craft-time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+        }
+        .craft-section-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 12px 0 6px;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            padding: 4px 0;
+            font-size: 0.78rem;
+            border-bottom: 1px solid rgba(23,32,48,0.6);
+        }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-name { color: var(--text-muted); }
+        .stat-figures { display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+        .stat-base b { color: var(--text-main); font-weight: 700; }
+        .stat-base {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-val  { font-weight: 700; font-variant-numeric: tabular-nums; }
+        .stat-up   { color: var(--success); }
+        .stat-down { color: var(--warning); }
+        .stat-row.derived {
+            background: rgba(0,229,160,0.06);
+            border-left: 2px solid var(--accent);
+            padding-left: 8px;
+            margin: 2px 0 6px;
+        }
+        .stat-row.derived .stat-name { color: var(--text-main); font-weight: 700; }
+        .stat-calc {
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 1px 4px;
+            margin-left: 6px;
+        }
+        .mat-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.76rem;
+            padding: 3px 0;
+        }
+        .mat-name { color: var(--text-main); }
+        .mat-qty  { color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .mat-slot {
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .craft-tune-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-muted);
+            font-family: inherit;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .craft-tune-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .craft-tune-panel { margin-top: 10px; }
+        .slot-tune { margin-bottom: 10px; }
+        .slot-tune-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+        .slot-tune-head b { color: var(--text-main); font-variant-numeric: tabular-nums; }
+        .slot-tune input[type=range] { width: 100%; accent-color: var(--accent); }
+        .cart-btn {
+            padding: 8px 14px;
+            background: rgba(0,229,160,0.10);
+            border: 1px solid rgba(0,229,160,0.45);
+            border-radius: 4px;
+            color: var(--accent);
+            font-family: inherit;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .cart-btn:hover { background: rgba(0,229,160,0.2); }
+        .cart-count-badge {
+            display: inline-block;
+            min-width: 18px;
+            padding: 0 5px;
+            margin-left: 6px;
+            border-radius: 9px;
+            background: var(--accent);
+            color: #04120c;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-align: center;
+        }
+        .craft-add-btn {
+            width: 100%;
+            margin-top: 6px;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid rgba(0,229,160,0.4);
+            border-radius: 4px;
+            color: var(--accent);
+            font-family: inherit;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .craft-add-btn:hover { background: rgba(0,229,160,0.12); }
+        .craft-add-btn.in-cart { border-color: var(--gold); color: var(--gold); }
+        .cart-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            padding: 30px 16px;
+            overflow-y: auto;
+        }
+        .cart-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 22px;
+        }
+        .cart-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .cart-head h2 { font-size: 1.1rem; margin: 0; }
+        .cart-close {
+            background: none;
+            border: 0;
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .cart-close:hover { color: var(--text-main); }
+        .cart-section-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 20px 0 8px;
+        }
+        .cart-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(23,32,48,0.7);
+            font-size: 0.82rem;
+        }
+        .cart-line-name { flex: 1 1 auto; color: var(--text-main); }
+        .cart-qty {
+            width: 58px;
+            padding: 5px 7px;
+            background: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.78rem;
+            text-align: right;
+        }
+        .cart-remove {
+            background: none;
+            border: 0;
+            color: var(--warning);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+        .cart-loc-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+        .cart-loc-input {
+            flex: 1 1 240px;
+            padding: 8px 10px;
+            background: var(--bg-base);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.82rem;
+        }
+        .cart-loc-input:focus { outline: none; border-color: var(--accent); }
+        .mat-block {
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+        }
+        .mat-block-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+        .mat-block-head .mat-need { color: var(--accent); font-variant-numeric: tabular-nums; }
+        .src-line {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            padding: 2px 0;
+        }
+        .src-line b { color: var(--text-main); font-weight: 600; }
+        .src-here { color: var(--accent); }
+        .src-rate { font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .cart-empty { font-size: 0.85rem; color: var(--text-muted); }
+        .fav-btn {
+            background: none;
+            border: 0;
+            padding: 0 2px;
+            margin-left: 6px;
+            font-size: 0.95rem;
+            line-height: 1;
+            cursor: pointer;
+            color: var(--border);
+            transition: color 0.15s, transform 0.15s;
+        }
+        .fav-btn:hover { color: var(--gold); transform: scale(1.15); }
+        .fav-btn.on { color: var(--gold); }
+        .craft-dis-btn {
+            width: 100%;
+            margin-top: 6px;
+            padding: 8px;
+            background: transparent;
+            border: 1px solid rgba(255,149,0,0.4);
+            border-radius: 4px;
+            color: var(--ammo-color);
+            font-family: inherit;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .craft-dis-btn:hover { background: rgba(255,149,0,0.12); }
+        .dis-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.76rem;
+            padding: 3px 0;
+        }
+        .dis-lost { color: var(--text-muted); text-decoration: line-through; }
+        .dis-lost-tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--warning);
+            text-decoration: none;
+            margin-left: 6px;
+        }
+        .variant-line {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+        .variant-count {
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--armor-color);
+            border: 1px solid rgba(167,139,250,0.4);
+            border-radius: 3px;
+            padding: 1px 5px;
+            margin-left: 6px;
+        }
+        .craft-note {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+        .craft-note b { color: var(--text-main); }
 </style>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
 </head>
 <body>
 
@@ -1429,7 +1831,17 @@
                     <div class="search-dropdown" id="searchDropdown"></div>
                 </div>
             </div>
+
         </div>
+
+            <div class="mode-tab-row" role="tablist" aria-label="Tool mode">
+                <button type="button" class="mode-tab active" id="modeTabBlueprints" role="tab" aria-selected="true"
+                        onclick="switchMode('blueprints', this)">Blueprints
+                    <span class="mode-tab-sub">Which contract drops it</span></button>
+                <button type="button" class="mode-tab" id="modeTabCraft" role="tab" aria-selected="false"
+                        onclick="switchMode('craft', this)">Crafting Bench
+                    <span class="mode-tab-sub">Materials and predicted stats</span></button>
+            </div>
     </div>
 
     <div class="advisory-box">
@@ -1517,13 +1929,13 @@
 
     <div class="controls-container">
         <div class="tab-and-filter-row">
-            <div class="tab-container" id="tabContainer">
-                <div class="tab active" data-view="weapons"     onclick="switchTab('weapons', this)">WEAPONS<span class="tab-count"></span></div>
-                <div class="tab"        data-view="armor"       onclick="switchTab('armor',   this)">ARMOR SETS<span class="tab-count"></span></div>
-                <div class="tab"        data-view="ammo"        onclick="switchTab('ammo',    this)">AMMO<span class="tab-count"></span></div>
-                <div class="tab"        data-view="components"  onclick="switchTab('components', this)">SHIP COMPONENTS<span class="tab-count"></span></div>
-                <div class="tab"        data-view="flightsuits" onclick="switchTab('flightsuits', this)">FLIGHT SUITS<span class="tab-count"></span></div>
-                <div class="tab"        data-view="shipweapons" onclick="switchTab('shipweapons', this)">SHIP WEAPONS<span class="tab-count"></span></div>
+            <div class="tab-container">
+                <div class="tab active" onclick="switchTab('weapons', this)">WEAPONS</div>
+                <div class="tab"        onclick="switchTab('armor',   this)">ARMOR SETS</div>
+                <div class="tab"        onclick="switchTab('ammo',    this)">AMMO</div>
+                <div class="tab"        onclick="switchTab('components', this)">SHIP COMPONENTS</div>
+                <div class="tab"        onclick="switchTab('flightsuits', this)">FLIGHT SUITS</div>
+                <div class="tab"        onclick="switchTab('shipweapons', this)">SHIP WEAPONS</div>
             </div>
 
             <div class="system-filters">
@@ -1538,7 +1950,6 @@
         </div>
     </div>
 
-    <!-- ═══ My Inventory Modal ═══════════════════════════════════════════════ -->
     <div id="inventoryModal" class="inventory-modal" onclick="closeInventoryOverlay(event)">
         <div class="inventory-content" onclick="event.stopPropagation()">
             <div class="inventory-header">
@@ -1559,7 +1970,6 @@
         </div>
     </div>
 
-    <!-- ═══ Grind Route Planner Modal ═══════════════════════════════════════ -->
     <div id="plannerModal" class="planner-modal" onclick="closePlannerOverlay(event)">
         <div class="planner-content" onclick="event.stopPropagation()">
             <div class="planner-header">
@@ -1604,53 +2014,133 @@
         </div>
     </div>
 
-    <!-- Shown only while a search is active: search results span every category,
-         regardless of which tab is selected. -->
-    <!-- Both lines are filled in from JS as ONE text node each. The i18n runtime
-         matches whole text nodes, so a sentence split across <strong>/<span>
-         children would be untranslatable; the counts and the query come back as
-         capture groups of a ui_strings pattern instead.
-         The category headings deliberately reuse the tab labels verbatim
-         (WEAPONS, ARMOR SETS, …) so they hit the existing dictionary entries. -->
-    <div id="searchScopeBanner" class="search-scope-banner" style="display:none;">
-        <span class="search-scope-text" id="searchScopeText"></span>
-        <button class="search-scope-clear" onclick="clearSearch()">&times; Clear search</button>
-    </div>
-    <div id="searchNoResults" class="search-scope-empty" style="display:none;"></div>
+    <div id="craftMode" style="display:none;">
 
-    <div class="view-heading" data-for="weapons" style="display:none;">WEAPONS<span class="view-heading-count"></span></div>
+        <div class="advisory-box">
+            <span>&#x1F527; Crafting Bench</span>
+            Every blueprint in the build, with the materials it consumes and the
+            stats it is predicted to produce. Deviations <b>sum</b> within a stat
+            and different stats <b>multiply</b>, so DPS is damage multiplied by
+            fire rate rather than the two added together. Quality is modelled
+            <b>per slot</b>, because each slot consumes a different material and
+            the slots do not move the same stats: on the P4-AR the frame and
+            stock shift recoil, and only the barrel touches damage.
+            Drag a bar or type an exact number. Quality <b>500 is the neutral point</b>: the curves are authored to sit
+            at 1.0 there, so a blueprint reading 0% across the board at 500 is
+            correct rather than broken.
+        </div>
+
+        <div class="controls-container">
+            <div class="tab-and-filter-row">
+                <div class="tab-container" id="craftTabs">
+                    <div class="tab active" onclick="switchCraftTab('weapon', this)">WEAPONS</div>
+                    <div class="tab"        onclick="switchCraftTab('armor', this)">ARMOR SETS</div>
+                    <div class="tab"        onclick="switchCraftTab('ammo', this)">AMMO</div>
+                    <div class="tab"        onclick="switchCraftTab('shipcomponent', this)">SHIP COMPONENTS</div>
+                    <div class="tab"        onclick="switchCraftTab('flightsuit', this)">FLIGHT SUITS</div>
+                    <div class="tab"        onclick="switchCraftTab('shipweapon', this)">SHIP WEAPONS</div>
+                    <div class="tab"        onclick="switchCraftTab('other', this)">MISSION ITEMS</div>
+                </div>
+            </div>
+
+            <div class="craft-controls">
+                <span class="craft-control-label">Sort</span>
+                <select class="craft-select" id="craftSort" onchange="renderCraft()">
+                    <option value="name">Name A to Z</option>
+                    <option value="dps">Biggest DPS gain</option>
+                    <option value="gain">Biggest single stat change</option>
+                    <option value="time">Fastest to craft</option>
+                    <option value="materials">Fewest materials</option>
+                </select>
+
+                <span class="craft-control-label">Material</span>
+                <select class="craft-select" id="craftMaterial" onchange="renderCraft()">
+                    <option value="">Any material</option>
+                </select>
+
+                <button type="button" class="quality-btn active" id="craftGroupBtn"
+                        aria-pressed="true" onclick="toggleCraftGroup(this)">Grouped finishes</button>
+
+                <button type="button" class="quality-btn" id="craftFavBtn"
+                        aria-pressed="false" onclick="toggleCraftFav(this)">&#9733; Favorites</button>
+
+                <button type="button" class="quality-btn" id="craftOwnedBtn"
+                        aria-pressed="false" onclick="toggleCraftOwned(this)">Show all</button>
+
+                <span class="craft-control-label">Material quality</span>
+                <div class="q-slider-wrap">
+                    <input type="range" class="q-slider" id="craftQualityRange" min="0" max="1000" step="10" value="500"
+                           aria-label="Quality for every material slot"
+                           oninput="setCraftQuality(this.value, false)" onchange="setCraftQuality(this.value, true)">
+                    <input type="number" class="q-box" id="craftQualityBox" min="0" max="1000" step="1" value="500"
+                           aria-label="Type a quality for every material slot"
+                           oninput="setCraftQuality(this.value, false)" onchange="setCraftQuality(this.value, true)">
+                </div>
+
+                <button type="button" class="cart-btn" onclick="openCart()">Crafting cart<span class="cart-count-badge" id="cartBadge">0</span></button>
+                <span class="craft-count" id="craftCount"></span>
+            </div>
+        </div>
+
+        <div id="craftView" class="item-group"></div>
+    </div>
+
+    <div id="cartModal" class="cart-modal" onclick="cartOverlay(event)">
+        <div class="cart-content" onclick="event.stopPropagation()">
+            <div class="cart-head">
+                <h2>&#x1F6D2; <span class="accent">Crafting Cart</span></h2>
+                <button type="button" class="cart-close" onclick="closeCart()">&times;</button>
+            </div>
+            <div class="craft-note">Everything you plan to craft, with one combined
+                material list and where to go and mine it.</div>
+            <div id="cartBody"></div>
+        </div>
+    </div>
+
     <div id="weaponsView" class="item-group"></div>
-    <div class="view-heading" data-for="armor" style="display:none;">ARMOR SETS<span class="view-heading-count"></span></div>
     <div id="armorView"   class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="ammo" style="display:none;">AMMO<span class="view-heading-count"></span></div>
     <div id="ammoView"    class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="components" style="display:none;">SHIP COMPONENTS<span class="view-heading-count"></span></div>
     <div id="componentsView" class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="flightsuits" style="display:none;">FLIGHT SUITS<span class="view-heading-count"></span></div>
     <div id="flightsuitsView" class="item-group" style="display:none;"></div>
-    <div class="view-heading" data-for="shipweapons" style="display:none;">SHIP WEAPONS<span class="view-heading-count"></span></div>
     <div id="shipweaponsView" class="item-group" style="display:none;"></div>
 
 </div>
 
-<!-- Firebase, for OPTIONAL HUD sync. The tool is fully usable if these
-     fail to load: `firebase` is simply undefined and the sync stays off. -->
-<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database-compat.js"></script>
 <script>
-    /* ── State ──────────────────────────────────────────────────────────── */
+    
     let weaponsList = [];
     let armorSets   = {};
     let ammoList    = [];
     let shipComponentsList = [];
-    let activeSystemFilters = new Set(['stanton', 'pyro', 'nyx']); // All active by default
 
-    /* ── My Inventory (owned blueprints) ──────────────────────────────────
-       Key scheme matches the planner's bpKey format so ownership filtering
-       lines up everywhere a blueprint is referenced:
-         weapon::<name>  ammo::<name>  component::<name>  armor::<piece name>
-    */
+    let bpTagByKey = {};      
+    let bpKeyByTag = {};      
+    let bpKeysByNorm = {};    
+
+    function normBpName(n) {
+        return String(n || '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, ' ')
+            .trim();
+    }
+
+    function indexBlueprint(key, item) {
+        const tag = item && item.blueprint;
+        if (tag) {
+            bpTagByKey[key] = tag;
+            bpKeyByTag[tag] = key;
+        }
+        const n = normBpName(key.slice(key.indexOf('::') + 2));
+        if (!n) return;
+
+        
+        
+        const list = (bpKeysByNorm[n] = bpKeysByNorm[n] || []);
+        if (list.indexOf(key) === -1) list.push(key);
+    }
+
+    let activeSystemFilters = new Set(['stanton', 'pyro', 'nyx']); 
+
     const OWNED_BP_STORAGE_KEY = 'scBlueprintFinder.ownedBlueprints.v1';
     let ownedBlueprints = new Set();
 
@@ -1675,12 +2165,13 @@
 
     function isOwnedBp(key) { return ownedBlueprints.has(key); }
 
-    /* ── Boot ───────────────────────────────────────────────────────────── */
     window.onload = async function () {
         const statusEl = document.getElementById('statusIndicator');
         loadOwnedBlueprints();
+    loadCart();
+    loadFavs();
         try {
-            const response = await fetch('blueprint_explorer_data.json');
+            const response = await fetch('blueprint_explorer_data.json?v=4.10.191.2241');
             if (!response.ok) throw new Error(`HTTP ${response.status}: File not found.`);
 
             const data = await response.json();
@@ -1696,7 +2187,6 @@
         }
     };
 
-    /* ── System Filter Toggle ───────────────────────────────────────────── */
     function toggleSystemFilter(system, btn) {
         if (activeSystemFilters.has(system)) {
             activeSystemFilters.delete(system);
@@ -1705,55 +2195,55 @@
             activeSystemFilters.add(system);
             btn.classList.add('active');
         }
-        render(); // Re-render with new filters
+        render(); 
     }
 
-    /* ── Filter missions by active systems ──────────────────────────────── */
     function filterMissionsBySystem(missions) {
-        if (activeSystemFilters.size === 0) return []; // No systems selected
+        if (activeSystemFilters.size === 0) return []; 
         return missions.filter(m => {
             const system = (m.system || '').toLowerCase();
-            // Include missions with unknown system (like flight suits) regardless of filter
+            
             if (system === 'unknown' || system === '') return true;
             return activeSystemFilters.has(system);
         });
     }
 
-    /* ── Data processing ────────────────────────────────────────────────── */
     function processDatabase(items) {
         weaponsList = [];
         armorSets   = {};
         ammoList    = [];
         shipComponentsList = [];
+        bpTagByKey = {}; bpKeyByTag = {}; bpKeysByNorm = {};
 
         items.forEach(item => {
-            if (!item.name) return; // skip items with no display name
+            if (!item.name) return; 
             const type = (item.type || '').toLowerCase();
             const name = item.name || '';
 
             if (type === 'weapon' || type === 'weapons' || type === 'fps weapon') {
                 weaponsList.push(item);
+                indexBlueprint('weapon::' + name, item);
             } else if (type === 'ammo') {
                 ammoList.push(item);
+                indexBlueprint('ammo::' + name, item);
             } else if (type === 'shipcomponent') {
                 shipComponentsList.push(item);
+                indexBlueprint('component::' + name, item);
             } else if (type === 'armor' || type === 'armour') {
                 let setName = item.armorSet;
 
                 if (!setName || setName === 'Unknown' || setName === '') {
-                    // Handle "Tailwind Flight Helmet Dominion Camo" and "Tailwind Flight Suit Dominion Camo"
-                    // Both should become: "Tailwind Dominion Camo"
 
-                    // Match: [Product] Flight [Helmet/Suit/etc] [Finish]
+                    
                     const flightMatch = name.match(/^(.+?)\s+Flight\s+(Helmet|Suit|Undersuit|Core|Arms|Legs|Backpack)\s*(.*)$/i);
 
                     if (flightMatch) {
-                        // "Tailwind" + "Dominion Camo" = "Tailwind Dominion Camo"
+                        
                         const product = flightMatch[1];
                         const finish = flightMatch[3] || '';
                         setName = (product + ' ' + finish).trim();
                     } else {
-                        // Fallback: generic piece-type removal
+                        
                         setName = name
                             .replace(/\b(Helmet|Core|Arms|Legs|Backpack|Undersuit|Suit)\b/gi, '')
                             .replace(/\s{2,}/g, ' ')
@@ -1774,6 +2264,7 @@
                     };
                 }
                 armorSets[setName].parts.push(name);
+                indexBlueprint('armor::' + name, item);
                 armorSets[setName].partsData[name] = item.missions || [];
                 (item.missions || []).forEach(m => {
                     const alreadyIn = armorSets[setName].missions.some(
@@ -1789,101 +2280,17 @@
         render();
     }
 
-    /* ── Tab switching ──────────────────────────────────────────────────── */
-    // Every browsable category, in display order. VIEWS is the single source of
-    // truth for both tab switching and the search-overrides-tabs behaviour.
-    const VIEWS = [
-        { view: 'weapons',     id: 'weaponsView'     },
-        { view: 'armor',       id: 'armorView'       },
-        { view: 'ammo',        id: 'ammoView'        },
-        { view: 'components',  id: 'componentsView'  },
-        { view: 'flightsuits', id: 'flightsuitsView' },
-        { view: 'shipweapons', id: 'shipweaponsView' }
-    ];
-
-    let currentTab = 'weapons';   // the tab the user last picked (restored when search clears)
-
     function switchTab(view, el) {
-        currentTab = view;
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         el.classList.add('active');
-
-        // While a search is active the tabs no longer filter — every category with
-        // a match stays on screen. Clicking a tab just jumps to that section.
-        if (isSearchActive()) {
-            applyViewVisibility();
-            const heading = document.querySelector(`.view-heading[data-for="${view}"]`);
-            const target  = (heading && heading.style.display !== 'none')
-                ? heading
-                : document.getElementById(viewIdFor(view));
-            if (target && target.style.display !== 'none') {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-            return;
-        }
-
-        applyViewVisibility();
+        document.getElementById('weaponsView').style.display = (view === 'weapons') ? 'grid' : 'none';
+        document.getElementById('armorView').style.display   = (view === 'armor')   ? 'grid' : 'none';
+        document.getElementById('ammoView').style.display    = (view === 'ammo')    ? 'grid' : 'none';
+        document.getElementById('componentsView').style.display = (view === 'components') ? 'grid' : 'none';
+        document.getElementById('flightsuitsView').style.display = (view === 'flightsuits') ? 'grid' : 'none';
+        document.getElementById('shipweaponsView').style.display = (view === 'shipweapons') ? 'grid' : 'none';
     }
 
-    function viewIdFor(view) {
-        const entry = VIEWS.find(v => v.view === view);
-        return entry ? entry.id : null;
-    }
-
-    function isSearchActive() {
-        const input = document.getElementById('searchInput');
-        return !!(input && input.value.trim());
-    }
-
-    /* Decide which category views are on screen.
-       - No search: classic single-tab behaviour.
-       - Search active: the query wins over the tab — show every category that has
-         at least one matching card, each under its own heading. */
-    let lastMatchCounts = null;   // per-view match tally from the current query
-
-    function applyViewVisibility(matchCounts) {
-        const searching = isSearchActive();
-        const tabBar    = document.getElementById('tabContainer');
-        if (tabBar) tabBar.classList.toggle('searching', searching);
-
-        // Callers that only change the tab (not the query) reuse the last tally
-        // so switching tabs mid-search doesn't blank the results.
-        if (matchCounts) lastMatchCounts = matchCounts;
-        else if (searching) matchCounts = lastMatchCounts;
-
-        VIEWS.forEach(v => {
-            const el      = document.getElementById(v.id);
-            const heading = document.querySelector(`.view-heading[data-for="${v.view}"]`);
-            const tab     = document.querySelector(`.tab[data-view="${v.view}"]`);
-            const count   = matchCounts ? (matchCounts[v.view] || 0) : 0;
-
-            if (searching) {
-                const show = count > 0;
-                if (el) el.style.display = show ? 'grid' : 'none';
-                if (heading) {
-                    heading.style.display = show ? 'block' : 'none';
-                    const c = heading.querySelector('.view-heading-count');
-                    if (c) c.textContent = `${count} result${count === 1 ? '' : 's'}`;
-                }
-                if (tab) {
-                    tab.classList.toggle('has-matches', show);
-                    tab.classList.toggle('no-matches', !show);
-                    const badge = tab.querySelector('.tab-count');
-                    if (badge) badge.textContent = count;
-                }
-            } else {
-                if (el) el.style.display = (v.view === currentTab) ? 'grid' : 'none';
-                if (heading) heading.style.display = 'none';
-                if (tab) {
-                    tab.classList.remove('has-matches', 'no-matches');
-                    const badge = tab.querySelector('.tab-count');
-                    if (badge) badge.textContent = '';
-                }
-            }
-        });
-    }
-
-    /* ── Modal ──────────────────────────────────────────────────────────── */
     function openModal(titleEnc, tagEnc, listEnc) {
         const title = dec(titleEnc);
         const tag   = dec(tagEnc);
@@ -1900,7 +2307,6 @@
         }
     }
 
-    /* ── Armor tile toggling ────────────────────────────────────────────── */
     function toggleMissionView(baseId, containerId, tile) {
         const siblings = tile.parentNode.querySelectorAll('.armor-tile.interactive');
         siblings.forEach(t => t.classList.remove('active-piece'));
@@ -1911,7 +2317,6 @@
         document.getElementById(containerId).style.display = 'flex';
     }
 
-    /* ── Helpers ─────────────────────────────────────────────────────────── */
     function enc(str) {
         return encodeURIComponent(String(str))
             .replace(/'/g, "%27")
@@ -1923,7 +2328,6 @@
         return JSON.stringify(missions.map(m => [m.title, m.type, m.lawful, m.system]));
     }
 
-    // Build a single mission list item
     function missionItemHTML(m) {
         const lawful   = (m.lawful === true || m.lawful === 'True' || m.lawful === 'true');
         const liClass  = lawful ? '' : ' unlawful';
@@ -1933,12 +2337,10 @@
             ? `<span class="mission-type-sep">·</span><span class="mission-faction-tag">${m.faction}</span>`
             : '';
 
-        // System badge
         const system = (m.system || '').toLowerCase();
         const systemClass = system === 'stanton' ? 'stanton' : system === 'pyro' ? 'pyro' : system === 'nyx' ? 'nyx' : '';
         const systemBadge = systemClass ? `<span class="mission-system-badge ${systemClass}">${m.system}</span>` : '';
 
-        // Rep rank badge
         let repBadge = '';
         let hasRep = false;
         if (m.repStanding) {
@@ -1948,7 +2350,6 @@
             repBadge = `<span class="mission-rep-badge${isNeutral ? ' neutral' : ''}" title="Requires ${m.repStanding}${m.minRep ? ' (' + m.minRep.toLocaleString() + ' rep)' : ''}${m.repReward ? '. Earns ' + m.repReward + ' rep/run' : ''}">${m.repStanding}${repGain}</span>`;
         }
 
-        // Partial completion badge
         let partialBadge = '';
         if (m.partialMinPct !== undefined) {
             partialBadge = `<span class="mission-partial-badge" title="This contract supports partial completion. Turn in ${m.partialMinPct}%+ of the objective to receive a reward.">PARTIAL ${m.partialMinPct}%+</span>`;
@@ -1971,22 +2372,15 @@
                `</li>`;
     }
 
-    // Build a complete mission block (header + list)
     function missionListHTML(label, missions) {
         return `<div class="mission-header">${label}</div>` +
                `<ul class="mission-list">${missions.map(missionItemHTML).join('')}</ul>`;
     }
 
-    // Build the expand button
     function expandBtn(titleEnc, tagEnc, listEnc) {
         return `<div class="expand-btn" onclick="openModal('${titleEnc}','${tagEnc}','${listEnc}')">&#x2922; Click to expand full list</div>`;
     }
 
-    /* ── Owned-blueprint helpers for armor sets ───────────────────────────
-       Armor is displayed/grouped as sets, but each piece is its own
-       blueprint (matches the planner's armor::<piece> key). Filter owned
-       pieces out per-set so a set disappears once every piece is owned,
-       and partially-owned sets only show the pieces still needed. */
     function unownedArmorParts(set) {
         return set.parts.filter(p => !isOwnedBp('armor::' + p));
     }
@@ -2001,7 +2395,6 @@
         return out;
     }
 
-    /* ── Render ─────────────────────────────────────────────────────────── */
     function render() {
         renderWeapons();
         renderAmmo();
@@ -2013,7 +2406,12 @@
 
         const wCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
-            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
+
+                
+                
+                const isShipWeapon = w.craftKind
+                    ? w.craftKind === 'shipweapon'
+                    : (name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun'));
             return !isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
         }).length;
         const aCount = ammoList.filter(a => !isOwnedBp('ammo::' + a.name) && filterMissionsBySystem(a.missions).length > 0).length;
@@ -2035,7 +2433,12 @@
         }).length;
         const swCount = weaponsList.filter(w => {
             const name = w.name.toLowerCase();
-            const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
+
+                
+                
+                const isShipWeapon = w.craftKind
+                    ? w.craftKind === 'shipweapon'
+                    : (name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun'));
             return isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
         }).length;
 
@@ -2043,12 +2446,10 @@
         status.style.color = 'var(--success)';
         status.textContent = `Database Loaded! ${wCount} weapons, ${aCount} ammo, ${sCount} armor sets, ${fsCount} flight suits, ${swCount} ship weapons, ${cCount} components.`;
 
-        // DOM for all .search-target cards was just rebuilt (innerHTML) — refresh the
-        // cached search metadata so applySearchFilter never has to re-query/re-read it.
+        
         rebuildSearchTargetCache();
 
-        // Re-apply whatever search query is currently active so filtering state
-        // survives a re-render (e.g. after toggling an owned blueprint).
+        
         const activeQuery = document.getElementById('searchInput') ? document.getElementById('searchInput').value : '';
         if (activeQuery) applySearchFilter(activeQuery);
     }
@@ -2056,9 +2457,14 @@
     function renderWeapons() {
         const items = weaponsList
             .filter(w => {
-                // FPS: EXCLUDE anything with Cannon, Gatling, Repeater, or Scattergun in name
+                
                 const name = w.name.toLowerCase();
-                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
+
+                
+                
+                const isShipWeapon = w.craftKind
+                    ? w.craftKind === 'shipweapon'
+                    : (name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun'));
                 return !isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
             });
 
@@ -2127,8 +2533,7 @@
     function renderFlightSuits() {
         const PART_ORDER = ['helmet', 'flight suit'];
 
-        // Filter for Tailwind variants and Racing flight suits only - MUST HAVE MISSIONS
-        // Sets where every piece is already owned are dropped entirely.
+        
         const available = Object.keys(armorSets)
             .filter(s => {
                 const nameLower = s.toLowerCase();
@@ -2138,7 +2543,6 @@
                 const hasFlightItem = parts.some(p => p.includes('flight suit') || p.includes('flight helmet'));
                 const hasMissions = filterMissionsBySystem(aggregateArmorMissions(armorSets[s], unownedParts)).length > 0;
 
-                // Only include if: Tailwind OR Racing (exclude Xanthule, A23, Why Not) AND has missions
                 const isTailwind = nameLower.includes('tailwind');
                 const isRacing = nameLower.includes('racing');
                 const isExcluded = nameLower.includes('why not') || nameLower.includes('mirai');
@@ -2152,12 +2556,11 @@
             const subtype  = set.subtype || 'armor';
             const unownedParts = unownedArmorParts(set);
 
-            // Completeness reflects the underlying game data (all pieces catalogued),
-            // not ownership — so it's computed from the full original part list.
+            
             const partLowFull = set.parts.map(p => p.toLowerCase());
             const hasHelmet = partLowFull.some(p => p.includes('helmet'));
             const hasFlightSuit = partLowFull.some(p => p.includes('flight suit'));
-            // Complete if has flight suit OR is a helmet-only set
+            
             const isComplete = hasFlightSuit || (hasHelmet && !hasFlightSuit);
 
             const filteredMissions = filterMissionsBySystem(aggregateArmorMissions(set, unownedParts));
@@ -2254,9 +2657,14 @@
     function renderShipWeapons() {
         const items = weaponsList
             .filter(w => {
-                // SHIP WEAPONS: ONLY Cannon, Gatling, Repeater, or Scattergun in name
+                
                 const name = w.name.toLowerCase();
-                const isShipWeapon = name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun');
+
+                
+                
+                const isShipWeapon = w.craftKind
+                    ? w.craftKind === 'shipweapon'
+                    : (name.includes('cannon') || name.includes('gatling') || name.includes('repeater') || name.includes('scattergun'));
                 return isShipWeapon && !isOwnedBp('weapon::' + w.name) && filterMissionsBySystem(w.missions).length > 0;
             })
             .sort((a, b) => a.name.localeCompare(b.name));
@@ -2279,59 +2687,46 @@
 
     function renderArmor() {
         const REQUIRED   = ['helmet', 'core', 'arms', 'legs'];
-
-        // A set is COMPLETE when every piece the game actually ships for it is
-        // catalogued -- which is not always helmet+core+arms+legs.
-        //
-        // ONE-PIECE SUITS were the gap. CDS superheavy names its torso piece
-        // "BUL-H4 Armor" and that single garment covers core, arms and legs;
-        // there are no separate blueprints for them and there never will be.
-        // REQUIRED.every() therefore could never be satisfied, so the set was
-        // badged INCOMPLETE permanently. Same shape as the flight-suit and
-        // undersuit exceptions already here.
-        //
-        // Detection is on the WORD, not a substring: \b(armor|armour|suit)\b
-        // deliberately does not fire on "undersuit" (no word break before
-        // "suit") and a genuine 4-piece set naming a piece "<X> Armor Core"
-        // still reports separates and falls through to REQUIRED.
-        //
-        // Defined ONCE and called from all three call sites -- the two sort
-        // comparators and the render -- because when this logic was inlined
-        // three times, patching one and missing another made the sort order
-        // and the badge disagree.
-        function isArmorSetComplete(partsLow) {
-            const has = (t) => partsLow.some(p => p.includes(t));
-            const hasHelmet = has('helmet');
-
-            if (has('flight suit')) return hasHelmet;
-            if (has('undersuit') && partsLow.length === 1) return true;
-
-            const hasOnePieceSuit = partsLow.some(p => /\b(armor|armour|suit)\b/.test(p));
-            const hasSeparates    = ['core', 'arms', 'legs'].some(r => has(r));
-            if (hasOnePieceSuit && !hasSeparates) return hasHelmet;
-
-            return REQUIRED.every(r => has(r));
-        }
-
         const PART_ORDER = ['helmet', 'core', 'arms', 'legs', 'backpack', 'undersuit'];
 
         const available = Object.keys(armorSets)
             .filter(s => {
                 const unowned = unownedArmorParts(armorSets[s]);
-                if (unowned.length === 0) return false; // every piece already owned
+                if (unowned.length === 0) return false; 
                 return filterMissionsBySystem(aggregateArmorMissions(armorSets[s], unowned)).length > 0;
             })
             .sort((a, b) => {
                 const setA = armorSets[a];
                 const setB = armorSets[b];
 
-                // Determine completion for each set
                 const partsA = setA.parts.map(p => p.toLowerCase());
                 const partsB = setB.parts.map(p => p.toLowerCase());
 
-                const isCompleteA = isArmorSetComplete(partsA);
+                const hasHelmetA = partsA.some(p => p.includes('helmet'));
+                const hasFlightSuitA = partsA.some(p => p.includes('flight suit'));
+                const hasUndersuitA = partsA.some(p => p.includes('undersuit'));
 
-                const isCompleteB = isArmorSetComplete(partsB);
+                let isCompleteA;
+                if (hasFlightSuitA) {
+                    isCompleteA = hasHelmetA && hasFlightSuitA;
+                } else if (hasUndersuitA && partsA.length === 1) {
+                    isCompleteA = true;
+                } else {
+                    isCompleteA = REQUIRED.every(r => partsA.some(p => p.includes(r)));
+                }
+
+                const hasHelmetB = partsB.some(p => p.includes('helmet'));
+                const hasFlightSuitB = partsB.some(p => p.includes('flight suit'));
+                const hasUndersuitB = partsB.some(p => p.includes('undersuit'));
+
+                let isCompleteB;
+                if (hasFlightSuitB) {
+                    isCompleteB = hasHelmetB && hasFlightSuitB;
+                } else if (hasUndersuitB && partsB.length === 1) {
+                    isCompleteB = true;
+                } else {
+                    isCompleteB = REQUIRED.every(r => partsB.some(p => p.includes(r)));
+                }
 
                 if (isCompleteA !== isCompleteB) return isCompleteA ? -1 : 1;
                 return a.localeCompare(b);
@@ -2342,16 +2737,29 @@
             const subtype  = set.subtype || 'armor';
             const unownedParts = unownedArmorParts(set);
 
-            // Completeness reflects the underlying game data (all pieces catalogued),
-            // not ownership — computed from the full original part list so a set
-            // doesn't get mislabeled INCOMPLETE just because you already own a piece.
+            
+            
             const partLow  = set.parts.map(p => p.toLowerCase());
 
-            const isComplete = isArmorSetComplete(partLow);
+            
+            const hasHelmet = partLow.some(p => p.includes('helmet'));
+            const hasFlightSuit = partLow.some(p => p.includes('flight suit'));
+            const hasUndersuit = partLow.some(p => p.includes('undersuit'));
+
+            let isComplete;
+            if (hasFlightSuit) {
+                
+                isComplete = hasHelmet && hasFlightSuit;
+            } else if (hasUndersuit && partLow.length === 1) {
+                
+                isComplete = true;
+            } else {
+                
+                isComplete = REQUIRED.every(r => partLow.some(p => p.includes(r)));
+            }
 
             const filteredMissions = filterMissionsBySystem(aggregateArmorMissions(set, unownedParts));
 
-            // Detect whether all remaining (unowned) pieces share the same mission pool
             let allSame = true;
             if (unownedParts.length > 1) {
                 const ref = serializeMissions(filterMissionsBySystem(set.partsData[unownedParts[0]]));
@@ -2377,16 +2785,15 @@
 
             let specificContainersHTML = '';
 
-            // Helper to extract just the piece name
             const shortPieceName = (fullName) => {
-                // For flight suits/undersuits, extract the variant/style name
+                
                 if (fullName.toLowerCase().includes('flight suit')) {
-                    // "Tailwind Flight Suit Dominion Camo" -> "Flight Suit"
+                    
                     return 'Flight Suit';
                 } else if (fullName.toLowerCase().includes('undersuit')) {
                     return 'Undersuit';
                 }
-                // Original logic for regular armor pieces
+                
                 const match = fullName.match(/\b(Helmet|Core|Arms|Legs|Backpack|Undersuit)\b(.*)$/i);
                 if (match) {
                     let rest = match[2].replace(new RegExp('\\b' + setName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i'), '').trim();
@@ -2395,7 +2802,6 @@
                 return fullName;
             };
 
-            // Show clickable tiles for each piece in the set
             const tilesHTML = sortedParts.map(p => {
                 const label = shortPieceName(p);
                 if (allSame) return `<div class="armor-tile">${label}</div>`;
@@ -2451,13 +2857,8 @@
         }).join('');
     }
 
-    /* ══════════════════════════════════════════════════════════════════════
-       MY INVENTORY  (owned-blueprint checklist)
-       ══════════════════════════════════════════════════════════════════════ */
+    
 
-    // Flat, de-duplicated catalog of every individual blueprint currently in
-    // the database — one row per bpKey (armor pieces, not whole sets, since
-    // each piece is its own blueprint).
     function buildInventoryCatalog() {
         const map = {};
         const add = (key, name, category) => { if (!map[key]) map[key] = { key, name, category }; };
@@ -2551,7 +2952,6 @@
         afterOwnershipChange();
     }
 
-    // Refresh every view that depends on ownership after a checkbox change.
     function afterOwnershipChange() {
         renderInventoryList();
         render();
@@ -2571,7 +2971,6 @@
         if (btnEl)   btnEl.textContent   = ownedBlueprints.size;
     }
 
-    // ── Download / Upload inventory as a JSON file ─────────────────────────
     function exportInventory() {
         const payload = {
             tool: 'sc-blueprint-finder-inventory',
@@ -2595,18 +2994,14 @@
         document.getElementById('inventoryImportInput').click();
     }
 
-    // Case/whitespace-normalized name -> bpKey lookup, built from the live catalog,
-    // used to match raw blueprint names (e.g. from a log-scanner script) to bpKeys.
-    // Single shared normalization rule for blueprint names, used everywhere a
-    // name from the site's own database is compared against a name coming
-    // from elsewhere (an uploaded file, the log-scanner script's output).
-    // Keeping this in one place — and mirroring the same rules in
-    // extract_blueprints.py — is what keeps "the same blueprint" recognized
-    // as the same thing no matter which side produced the text:
-    //   1. fold curly/smart quotes to plain ASCII quotes
-    //   2. collapse any run of whitespace to a single space
-    //   3. trim leading/trailing whitespace
-    //   4. compare case-insensitively
+    
+
+    
+
+    
+
+    
+    
     function normalizeBpName(name) {
         return String(name)
             .replace(/[\u2018\u2019\u201A\u2032]/g, "'")
@@ -2616,8 +3011,7 @@
             .toLowerCase();
     }
 
-    // Name -> bpKey lookup, built from the live catalog, used to match raw
-    // blueprint names (e.g. from a log-scanner script) to bpKeys.
+    
     function buildInventoryNameLookup() {
         const map = new Map();
         buildInventoryCatalog().forEach(e => {
@@ -2644,10 +3038,8 @@
         alert(`Imported ${keys.length} blueprint${keys.length !== 1 ? 's' : ''} ${sourceLabel} (${added} new — merged with your existing inventory).`);
     }
 
-    // Import a plain list of raw blueprint names — one per line — such as the
-    // blueprints.txt produced by a game-log scanning script. Names are matched
-    // against the live catalog (case/whitespace-insensitive); anything that
-    // doesn't match a known blueprint is reported back instead of silently dropped.
+    
+
     function importRawBlueprintNames(text) {
         const lines = text.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
         if (!lines.length) {
@@ -2690,7 +3082,7 @@
 
     function handleImportFile(event) {
         const file = event.target.files && event.target.files[0];
-        event.target.value = ''; // allow re-selecting the same file later
+        event.target.value = ''; 
         if (!file) return;
 
         const reader = new FileReader();
@@ -2698,9 +3090,8 @@
             const raw = String(reader.result);
             const trimmed = raw.trim();
 
-            // Our own Download export is JSON ({ owned: [...] } or a plain array).
-            // Anything else is treated as a plain list of blueprint names — one per
-            // line — like the blueprints.txt a log-scanning script would produce.
+            
+            
             if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
                 let data;
                 try {
@@ -2727,18 +3118,15 @@
         reader.readAsText(file);
     }
 
-    /* ── Search ─────────────────────────────────────────────────────────── */
-    /* ── Search autocomplete ──────────────────────────────────────────── */
+    
 
-    let searchIndex     = [];   // flat list of {label, meta, type, matchKey}
-    let searchDropActive = -1;  // keyboard-selected suggestion index
+    let searchIndex     = [];   
+    let searchDropActive = -1;  
     let searchCloseTimer = null;
 
-    // Build the search index once data is loaded
     function buildSearchIndex() {
         searchIndex = [];
 
-        // Item names (weapons, ammo, components)
         weaponsList.forEach(w => {
             if (!w.name) return;
             searchIndex.push({ label: w.name, meta: w.subtype || 'Weapon', type: 'item', matchKey: w.name.toLowerCase() });
@@ -2752,7 +3140,6 @@
             searchIndex.push({ label: c.name, meta: c.subtype || 'Component', type: 'item', matchKey: c.name.toLowerCase() });
         });
 
-        // Armor set names + individual pieces
         const setsSeen = new Set();
         Object.entries(armorSets).forEach(([setName, set]) => {
             if (!setsSeen.has(setName)) {
@@ -2764,7 +3151,6 @@
             });
         });
 
-        // Factions (filter to real ones)
         const factionsSeen = new Set();
         const allItems = [...weaponsList, ...ammoList, ...shipComponentsList,
             ...Object.values(armorSets).flatMap(s => s.parts.map(p => ({ missions: s.partsData[p] || [] })))];
@@ -2778,7 +3164,6 @@
             });
         });
 
-        // Deduplicate by matchKey
         const seen = new Set();
         searchIndex = searchIndex.filter(e => {
             if (seen.has(e.matchKey)) return false;
@@ -2786,7 +3171,6 @@
             return true;
         });
 
-        // Special keyword entry for partial completion filter
         searchIndex.unshift({ label: 'Partial Completion', meta: 'Filter', type: 'filter', matchKey: 'partial completion' });
     }
 
@@ -2800,7 +3184,6 @@
         if (!query || query.length < 1) return [];
         const q = query.toLowerCase();
 
-        // Score: starts-with = 2, word-starts-with = 1.5, contains = 1
         const scored = searchIndex
             .map(e => {
                 let score = 0;
@@ -2812,7 +3195,6 @@
             .filter(Boolean)
             .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label));
 
-        // Group by type: filters first, then factions, sets, items
         const filters  = scored.filter(e => e.type === 'filter');
         const factions = scored.filter(e => e.type === 'faction').slice(0, 3);
         const sets     = scored.filter(e => e.type === 'set').slice(0, 4);
@@ -2820,9 +3202,25 @@
         return [...filters, ...factions, ...sets, ...items].slice(0, 14);
     }
 
+    
+    function craftSuggestions(query) {
+        const q = String(query || '').toLowerCase().trim();
+        if (!q || !craftData) return [];
+        return craftData
+            .filter(b => b.display_name.toLowerCase().includes(q))
+            .sort((a, b) => {
+                const ai = a.display_name.toLowerCase().indexOf(q);
+                const bi = b.display_name.toLowerCase().indexOf(q);
+                return ai - bi || a.display_name.localeCompare(b.display_name);
+            })
+            .slice(0, 12)
+            .map(b => ({ label: b.display_name, type: 'item',
+                         meta: CRAFT_KIND_LABEL[b.kind] || b.kind, kind: b.kind }));
+    }
+
     function renderDropdown(query) {
         const dropdown = document.getElementById('searchDropdown');
-        const suggestions = getSuggestions(query);
+        const suggestions = craftMode() ? craftSuggestions(query) : getSuggestions(query);
         searchDropActive = -1;
 
         if (!suggestions.length) {
@@ -2833,7 +3231,6 @@
             return;
         }
 
-        // Build grouped HTML
         let html = '';
         let lastType = null;
         const sectionLabels = { filter: 'Filters', faction: 'Factions', set: 'Armor Sets', item: 'Items' };
@@ -2860,23 +3257,11 @@
         applySearchFilter(value);
     }
 
-    // Cache of search-target metadata, rebuilt once per render() instead of being
-    // re-read from the live DOM on every keystroke. Reading textContent + running
-    // querySelector/querySelectorAll across ~1500 cards on every 'input' event was
-    // the main cause of long (200ms+) input handling and poor INP.
+    
+
     let searchTargetCache = null;
 
     function rebuildSearchTargetCache() {
-        // Map each card back to the category view that owns it, so a search can
-        // report per-category match counts and un-hide the views that need it.
-        const viewOfEl = new Map();
-        VIEWS.forEach(v => {
-            const container = document.getElementById(v.id);
-            if (!container) return;
-            Array.prototype.forEach.call(container.querySelectorAll('.search-target'),
-                el => viewOfEl.set(el, v.view));
-        });
-
         searchTargetCache = Array.prototype.map.call(document.querySelectorAll('.search-target'), el => {
             const nameEl = el.querySelector('.search-text');
             const tagEl  = el.querySelector('.tag');
@@ -2886,7 +3271,6 @@
             );
             return {
                 el,
-                view: viewOfEl.get(el) || null,
                 name: nameEl ? nameEl.textContent.toLowerCase() : '',
                 tag: tagEl ? tagEl.textContent.toLowerCase() : '',
                 factions,
@@ -2900,26 +3284,14 @@
 
         if (!searchTargetCache) rebuildSearchTargetCache();
 
-        const banner    = document.getElementById('searchScopeBanner');
-        const emptyMsg  = document.getElementById('searchNoResults');
-
-        // If no query — show all cards and hand control back to the active tab
         if (!q) {
             searchTargetCache.forEach(entry => entry.el.style.display = '');
-            if (banner)   banner.style.display = 'none';
-            if (emptyMsg) emptyMsg.style.display = 'none';
-            lastMatchCounts = null;
-            applyViewVisibility();
             return;
         }
 
-        // Special keyword: 'partial' — show only cards that have at least one partial completion mission
         const isPartialSearch = q === 'partial' || q === 'partial completion' || q === 'partial complete';
 
-        // Single read-free pass (all data comes from the cache), then batched writes —
-        // avoids the read/write layout-thrashing pattern of querying+writing per element.
-        const matchCounts = {};
-        let total = 0;
+        
         searchTargetCache.forEach(entry => {
             let match;
             if (isPartialSearch) {
@@ -2928,46 +3300,44 @@
                 match = entry.name.includes(q) || entry.tag.includes(q) || entry.factions.some(f => f.includes(q));
             }
             entry.el.style.display = match ? '' : 'none';
-            if (match) {
-                total++;
-                if (entry.view) matchCounts[entry.view] = (matchCounts[entry.view] || 0) + 1;
-            }
         });
-
-        // The query outranks the tab selection: reveal every category that matched.
-        applyViewVisibility(matchCounts);
-
-        // Written as one whole text node each so the i18n runtime can match them
-        // (see the ui_strings.json patterns keyed on these two sentences).
-        const shown = query.trim();
-        if (banner) {
-            banner.style.display = total ? 'flex' : 'none';
-            const textEl = document.getElementById('searchScopeText');
-            if (textEl) {
-                textEl.textContent = `Showing ${total} ${total === 1 ? 'match' : 'matches'} `
-                    + `for “${shown}” across all categories — `
-                    + `tab filters are ignored while searching.`;
-            }
-        }
-        if (emptyMsg) {
-            emptyMsg.style.display = total ? 'none' : 'block';
-            emptyMsg.textContent = `No blueprints match “${shown}” in any category. `
-                + `Try a shorter term, or check your system filters and inventory.`;
-        }
     }
 
     function selectSuggestion(el) {
         const label = el.dataset.label;
+        const type  = el.dataset.type;
         const input = document.getElementById('searchInput');
         input.value = label;
         document.getElementById('searchClearBtn').style.display = 'block';
         closeSearchDropdown();
 
-        // Faction suggestions match the mission-faction-tag, item/set ones the name.
-        // No tab inference needed for any suggestion type: applySearchFilter reveals
-        // every category that matched, so a weapon picked while the Ammo tab is
-        // selected still shows up (and factions spanning several tabs show in full).
+        
+        if (craftMode() && craftData) {
+            const hit = craftData.filter(b => b.display_name === label)[0];
+            if (hit) {
+                const tabs = document.querySelectorAll('#craftTabs .tab');
+                const order = ['weapon', 'armor', 'ammo', 'shipcomponent',
+                               'flightsuit', 'shipweapon', 'other'];
+                const i = order.indexOf(hit.kind);
+                if (i >= 0 && tabs[i] && !tabs[i].classList.contains('active')) tabs[i].click();
+                applySearchFilter(label);
+                return;
+            }
+        }
+
+        
         applySearchFilter(label);
+        
+        if (type === 'faction') {
+
+            showAllTabsForFactionSearch();
+        }
+    }
+
+    function showAllTabsForFactionSearch() {
+
+        
+
     }
 
     function onSearchKeydown(e) {
@@ -3025,19 +3395,13 @@
         input.focus();
     }
 
-    // Legacy stub kept for safety (onkeyup in old HTML removed)
     function filterItems() { applySearchFilter(document.getElementById('searchInput').value); }
 
-    /* ══════════════════════════════════════════════════════════════════════
-       GRIND ROUTE PLANNER  (rep-aware)
-       ══════════════════════════════════════════════════════════════════════ */
-
-    let contractPools   = {};  // contractKey -> { items: Set<bpKey>, mission }
-    let scopesData      = {};  // guid -> { displayName, ranks[] }
+    let contractPools   = {};  
+    let scopesData      = {};  
     let plannerSelectedFaction    = null;
     let plannerSelectedBlueprints = new Set();
 
-    // Called once after processDatabase() builds all lists
     function computeContractPools() {
         contractPools = {};
         const add = (bpKey, missions) => {
@@ -3056,7 +3420,6 @@
         );
     }
 
-    // Store scopes from JSON for rank ladder lookups
     function loadScopes(scopesObj) {
         scopesData = scopesObj || {};
     }
@@ -3069,7 +3432,6 @@
         return p ? p.items.size : 1;
     }
 
-    // Build catalog: { bpKey, displayName, category, faction, missions[] }
     function buildPlannerCatalog() {
         const catalog = [];
         const addEntry = (bpKey, displayName, category, allMissions) => {
@@ -3107,7 +3469,7 @@
     function getBlueprintsForFaction(faction) {
         const catalog = buildPlannerCatalog();
         const byBp = {};
-        // Owned blueprints are excluded — no reason to grind for something you already have.
+        
         catalog.filter(e => e.faction === faction && !isOwnedBp(e.bpKey)).forEach(e => {
             if (!byBp[e.bpKey]) byBp[e.bpKey] = { key: e.bpKey, name: e.displayName, category: e.category, missions: [] };
             byBp[e.bpKey].missions.push(...e.missions);
@@ -3119,9 +3481,7 @@
         });
     }
 
-    // ── Rank ladder helpers ──────────────────────────────────────────────
-
-    // Derive the rank ladder for a faction from its missions' rep data
+    
     function getFactionRankLadder(faction) {
         const catalog = buildPlannerCatalog();
         const byRank = {};
@@ -3155,8 +3515,6 @@
         return null;
     }
 
-    // ── Planner UI ────────────────────────────────────────────────────────
-
     function openPlanner() {
         plannerSelectedFaction    = null;
         plannerSelectedBlueprints = new Set();
@@ -3176,7 +3534,7 @@
         const catalog = buildPlannerCatalog();
         const byFaction = {};
         catalog.forEach(e => {
-            if (isOwnedBp(e.bpKey)) return; // owned blueprints don't count as grind targets
+            if (isOwnedBp(e.bpKey)) return; 
             if (!byFaction[e.faction]) byFaction[e.faction] = new Set();
             byFaction[e.faction].add(e.bpKey);
         });
@@ -3261,7 +3619,6 @@
             ? (rep === 0 ? `Starting rank: ${r.rank} (0 rep)` : `Current rank: ${r.rank} (${rep.toLocaleString()} rep)`)
             : (rep === 0 ? 'Starting rank: Neutral (0 rep)' : `Current rep: ${rep.toLocaleString()}`);
 
-        // ── Render rank ladder ──────────────────────────────────────────
         const ladder = getFactionRankLadder(plannerSelectedFaction);
         if (!ladder.length) { ladderEl.innerHTML = ''; return; }
 
@@ -3289,8 +3646,6 @@
         ladderEl.innerHTML = html;
     }
 
-    // ── Main results renderer ─────────────────────────────────────────────
-
     function renderPlannerResults() {
         const box = document.getElementById('plannerResults');
         if (!plannerSelectedFaction) {
@@ -3305,7 +3660,6 @@
         const selBps    = allBps.filter(b => plannerSelectedBlueprints.has(b.key));
         const bpNameMap = Object.fromEntries(selBps.map(b => [b.key, b.name]));
 
-        // ── Build primary contract map (contracts dropping selected BPs) ──
         const primaryMap = {};
         selBps.forEach(bp =>
             (bp.missions || []).forEach(m => {
@@ -3321,7 +3675,6 @@
             box.innerHTML = `<div class="planner-results-empty">No contracts found for selected blueprints.</div>`; return;
         }
 
-        // ── Build all-faction contract map (for rep bridging) ─────────────
         const allFactionMap = {};
         const addFC = missions => (missions||[]).forEach(m => {
             if ((m.faction||'') !== plannerSelectedFaction) return;
@@ -3332,11 +3685,10 @@
         ammoList.forEach(a           => addFC(a.missions));
         shipComponentsList.forEach(c => addFC(c.missions));
         Object.values(armorSets).forEach(s => s.parts.forEach(p => addFC(s.partsData[p])));
-        // Merge primary coversBps into allFactionMap
+        
         primaryContracts.forEach(pc => { if (allFactionMap[pc.key]) allFactionMap[pc.key].coversBps = pc.coversBps; });
         const allContracts = Object.values(allFactionMap);
 
-        // ── Rep-aware simulation ──────────────────────────────────────────
         let rep = startRep;
         const usage       = Object.fromEntries(allContracts.map(c => [c.key, 0]));
         const guaranteed  = new Set();
@@ -3350,19 +3702,17 @@
             updateGuaranteed();
             if (allDone()) break;
 
-            // Available: not fully saturated AND rep requirement met
             const avail = allContracts.filter(c =>
                 usage[c.key] < c.poolSize &&
                 rep >= (c.mission.minRep ?? 0)
             );
             if (!avail.length) { stuck = true; break; }
 
-            // Priority: BP-covering contracts first, then by uncovered count, then rep reward
             const bpCovering = avail.filter(c => c.coversBps.size > 0 && uncovCount(c) > 0);
             let pick;
             if (bpCovering.length) {
                 bpCovering.sort((a, b) => {
-                    // Neutral (no gate) first
+                    
                     const an = (a.mission.minRep??0) === 0, bn = (b.mission.minRep??0) === 0;
                     if (an !== bn) return an ? -1 : 1;
                     const ud = uncovCount(b) - uncovCount(a);
@@ -3371,7 +3721,7 @@
                 });
                 pick = bpCovering[0];
             } else {
-                // All covered or locked — grind rep to unlock higher-tier contracts
+                
                 avail.sort((a, b) => (b.mission.repReward??0) - (a.mission.repReward??0));
                 pick = avail[0];
                 if ((pick.mission.repReward ?? 0) === 0) { stuck = true; break; }
@@ -3381,7 +3731,6 @@
         }
         updateGuaranteed();
 
-        // ── Build result rows ─────────────────────────────────────────────
         const used = allContracts
             .filter(c => usage[c.key] > 0)
             .map(c => ({
@@ -3406,7 +3755,6 @@
         const startRankObj  = rankForRep(plannerSelectedFaction, startRep);
         const endRankObj    = rankForRep(plannerSelectedFaction, rep);
 
-        // ── Render summary stats ──────────────────────────────────────────
         let html = `<div class="planner-summary">`;
         html += stat('BPs Selected',        selBps.length,              'theme');
         html += stat('Unique Contracts',    used.filter(c=>c.isPrimary).length, '');
@@ -3416,7 +3764,6 @@
         if (endRankObj)        html += stat('End Rank', endRankObj.rank, 'theme');
         html += `</div>`;
 
-        // Status banner
         const startRankName = startRankObj ? startRankObj.rank : 'Neutral';
         const endRankName   = endRankObj   ? endRankObj.rank   : '';
         if (!stuck && !uncovBps.length) {
@@ -3434,7 +3781,6 @@
             );
         }
 
-        // Rank path summary (if rep data exists)
         const ladder = getFactionRankLadder(plannerSelectedFaction);
         if (ladder.length > 1 && totalRepGain > 0) {
             const startIdx = ladder.findIndex(r => r.rank === (startRankObj?.rank));
@@ -3454,7 +3800,6 @@
             }
         }
 
-        // Contract list
         if (!used.length) {
             html += `<div class="planner-results-empty">No contracts available at your current rep. Try lowering your starting rep or selecting different blueprints.</div>`;
         } else {
@@ -3513,26 +3858,885 @@
         return `<div style="font-size:0.85rem;color:${col};margin-bottom:14px;line-height:1.5;padding:10px 12px;background:${bg};border-left:3px solid ${col};border-radius:4px;">${msg}</div>`;
     }
 
+    var craftData      = null;    
+    var craftSources   = [];      
+    var craftLoading   = false;
+    var craftTab       = 'weapon';
+    var craftQuality   = 500;     
 
-    /* ── HUD SYNC — ENTIRELY OPTIONAL ────────────────────────────────────
-       Nothing above this point knows or cares that it exists. With no
-       account, or with the SDK blocked, the inventory lives in
-       localStorage exactly as it always has and every feature works.
+    var craftOverrides = {};      
+    var craftOpen      = {};      
+    var craftOwnedOnly = false;   
+    var craftGrouped   = true;    
+    var craftOpenDis   = {};      
+    var craftGroupIndex = {};     
+    var craftFavs      = {};      
+    var craftFavOnly   = false;
+    var FAV_KEY        = 'sc_craft_favs_v1';
+    var craftBlacklist = [];      
+    var blueprintViewsShown = ['weaponsView'];   
 
-       Signing in adds a SECOND copy in the shared backend so the overlay,
-       the Org Bank Fabricator and this tool all read one record.
+    var PROP_TO_LABEL = {
+        "Weapon_Recoil_Smoothness":        "Recoil Smoothness",
+        "Weapon_Recoil_Handling":          "Recoil Handling",
+        "Weapon_Recoil_Kick":              "Recoil Kick",
+        "Weapon_Damage":                   "Damage",
+        "Weapon_FireRate":                 "Fire Rate",
+        "Weapon_RateOfFire":               "Fire Rate",
+        "FireRate":                        "Fire Rate",
+        "Weapon_ReloadSpeed":              "Reload Speed",
+        "Weapon_Spread":                   "Spread",
+        "Weapon_Tractor_FullStrengthDist": "Tractor Full-Strength Range",
+        "Weapon_Tractor_MaxDist":          "Tractor Max Range",
+        "Armor_DamageMitigation":          "Mitigation",
+        "Armor_TemperatureMax":            "Heat Resist",
+        "Armor_TemperatureMin":            "Cold Resist",
+        "Armor_RadiationCapacity":         "Rad Capacity",
+        "Armor_RadiationDissipation":      "Rad Dissipation",
+        "Health_MaxHealth":                "Max Health",
+        "Shield_MaxHealth":                "Shield HP",
+        "ItemResource_PowerGeneration":    "Power Generation",
+        "ItemResource_CoolantGeneration":  "Coolant Generation",
+        "Radar_MinAimAssistDistance":      "Aim Assist Min Range",
+        "Radar_MaxAimAssistDistance":      "Aim Assist Max Range",
+        "Quantum_Speed":                   "Quantum Speed",
+        "Quantum_FuelRequirement":         "Quantum Fuel Use"
+    };
 
-       WIRE FORMAT IS PLAIN NAMES. This tool keys its set by type --
-       `weapon::Foo` -- but the backend record predates it and stores bare
-       names, which is what the Fabricator reads. Publishing prefixed keys
-       would be invisible to every other consumer, so names are stripped on
-       the way out and the prefix is rebuilt from the catalogue on the way
-       back in.
+    var LABEL_DAMAGE    = PROP_TO_LABEL['Weapon_Damage']   || 'Damage';
+    var LABEL_FIRE_RATE = PROP_TO_LABEL['Weapon_FireRate'] || 'Fire Rate';
 
-       MERGE, NEVER REPLACE. Local and remote are unioned. A blueprint you
-       ticked on your phone and one the HUD saw in a mission both survive;
-       nothing is deleted by syncing.
-    */
+    
+
+    
+    var LOWER_IS_BETTER = {
+        'Recoil Smoothness': 1, 'Recoil Handling': 1, 'Recoil Kick': 1,
+        'Spread': 1, 'Quantum Fuel Use': 1
+    };
+    function statIsGood(st) {
+        if (st.bonus === 0) return true;
+        return LOWER_IS_BETTER[st.label] ? st.bonus < 0 : st.bonus > 0;
+    }
+
+    var CRAFT_KIND_CLASS = {
+        weapon: 'weapon', shipweapon: 'weapon', ammo: 'ammo',
+        shipcomponent: 'shipcomponent', armor: 'armor', flightsuit: 'armor',
+        other: 'missionitem'
+    };
+
+    var CRAFT_KIND_LABEL = {
+        weapon: 'Weapon', armor: 'Armor', flightsuit: 'Flight Suit', ammo: 'Ammo',
+        shipweapon: 'Ship Weapon', shipcomponent: 'Ship Component', other: 'Mission Item'
+    };
+
+    function pickBand(bands, q) {
+        var i;
+        for (i = 0; i < bands.length; i++) {
+            if (q >= bands[i].startQuality && q <= bands[i].endQuality) return bands[i];
+        }
+
+        
+        var lo = bands[0], hi = bands[0];
+        for (i = 1; i < bands.length; i++) {
+            if (bands[i].startQuality < lo.startQuality) lo = bands[i];
+            if (bands[i].endQuality   > hi.endQuality)   hi = bands[i];
+        }
+        return q < lo.startQuality ? lo : hi;
+    }
+
+    
+    
+    function predictStats(bp, mode, qualityFor) {
+        var pct = {}, flat = {}, k;
+
+        for (var slot in bp.ingredients) {
+            var ing  = bp.ingredients[slot];
+            var mods = ing.modifiers || [];
+            var q    = (mode === 'perfect') ? 1000 : craftQuality;
+            if (typeof qualityFor === 'function') {
+                var over = qualityFor(slot, ing.material_name, q);
+                if (typeof over === 'number' && !isNaN(over)) q = Math.max(0, Math.min(1000, over));
+            }
+            var bands = {};
+
+            for (var i = 0; i < mods.length; i++) {
+                var m = mods[i];
+                var label = PROP_TO_LABEL[m.gameplayProperty] || m.gameplayProperty;
+
+                if (m.kind === 'linear_integer_additive') {
+                    if (typeof m.additiveModifierAtStart !== 'number' ||
+                        typeof m.additiveModifierAtEnd   !== 'number') continue;
+                    (bands[label] = bands[label] || []).push(m);
+                    continue;
+                }
+
+                var s0 = m.modifierAtStart, s1 = m.modifierAtEnd;
+                if (typeof s0 !== 'number' || typeof s1 !== 'number') continue;
+                var span  = (m.endQuality - m.startQuality);
+                var ratio = span ? (q - m.startQuality) / span : 0;
+                ratio = Math.max(0, Math.min(1, ratio));
+                pct[label] = (pct[label] || 0) + ((s0 + (s1 - s0) * ratio) - 1);
+            }
+
+            
+            
+            for (k in bands) {
+                var chosen = pickBand(bands[k], q);
+                var b0 = chosen.additiveModifierAtStart, b1 = chosen.additiveModifierAtEnd;
+                var bspan  = (chosen.endQuality - chosen.startQuality);
+                var bratio = bspan ? (q - chosen.startQuality) / bspan : 0;
+                bratio = Math.max(0, Math.min(1, bratio));
+                flat[k] = (flat[k] || 0) + (b0 + (b1 - b0) * bratio);
+            }
+        }
+
+        var out = [];
+        for (k in pct)  out.push({ label: k, bonus: pct[k] * 100, unit: '%' });
+        for (k in flat) out.push({ label: k, bonus: flat[k],      unit: 'flat' });
+
+        
+
+        var dmg = pct[LABEL_DAMAGE], rate = pct[LABEL_FIRE_RATE];
+        if (typeof dmg === 'number' || typeof rate === 'number') {
+            var d = 1 + (dmg || 0), r = 1 + (rate || 0);
+            out.push({ label: 'DPS', bonus: (d * r - 1) * 100, unit: '%', derived: true });
+        }
+
+        out.sort(function (a, b) {
+            if (!!a.derived !== !!b.derived) return a.derived ? -1 : 1;
+            return Math.abs(b.bonus) - Math.abs(a.bonus);
+        });
+        return out;
+    }
+
+    function craftNum(v, dp) {
+        return v.toFixed(dp);
+    }
+    function statText(st) {
+        var sign = st.bonus >= 0 ? '+' : '';
+        return st.unit === 'flat'
+            ? sign + craftNum(st.bonus, Math.abs(st.bonus) % 1 ? 2 : 0)
+            : sign + st.bonus.toFixed(1) + '%';
+    }
+
+    function unitLabel(ing) {
+        return ing && ing.quantity_unit === 'items' ? ' ea' : ' SCU';
+    }
+    function craftTimeText(sec) {
+        if (!sec) return 'Instant';
+        if (sec < 60) return sec + 's';
+        var m = Math.floor(sec / 60), r = sec % 60;
+        return r ? m + 'm ' + r + 's' : m + 'm';
+    }
+
+    
+    function craftQualityFor(bp) {
+        var ov = craftOverrides[bp.id] || {};
+        return function (slot) {
+            return (typeof ov[slot] === 'number') ? ov[slot] : craftQuality;
+        };
+    }
+
+    async function loadCraftData() {
+        if (craftData || craftLoading) return;
+        craftLoading = true;
+        var view = document.getElementById('craftView');
+        view.innerHTML = '<div class="craft-note">Loading the crafting database...</div>';
+        try {
+            const response = await fetch('crafting_bench_data.json?v=4.10.191.2241');
+            if (!response.ok) throw new Error('HTTP ' + response.status + ': File not found.');
+            const data = await response.json();
+            if (!data.blueprints) throw new Error("Missing 'blueprints' array.");
+            craftData = data.blueprints;
+            craftSources = data.sources || [];
+            craftBlacklist = data.dismantle_blacklist || [];
+            buildMaterialFilter();
+            renderCraft();
+            if (document.getElementById('cartModal').style.display === 'block') renderCart();
+        } catch (err) {
+            view.innerHTML = '<div class="craft-note">Could not load the crafting database: ' +
+                             err.message + '</div>';
+        } finally {
+            craftLoading = false;
+        }
+    }
+
+    
+
+    function craftOwnedNames() {
+        var set = new Set();
+        ownedBlueprints.forEach(function (key) {
+            var i = key.indexOf('::');
+            set.add(normalizeBpName(i >= 0 ? key.slice(i + 2) : key));
+        });
+        return set;
+    }
+
+    function toggleCraftOwned(el) {
+        craftOwnedOnly = !craftOwnedOnly;
+        el.classList.toggle('active', craftOwnedOnly);
+        el.setAttribute('aria-pressed', craftOwnedOnly ? 'true' : 'false');
+        el.textContent = craftOwnedOnly ? 'Unlocked only' : 'Show all';
+        renderCraft();
+    }
+
+    function craftSortValue(bp, how) {
+        var st = predictStats(bp, 'preset', craftQualityFor(bp));
+        if (how === 'dps') {
+            var d = st.filter(function (x) { return x.label === 'DPS'; })[0];
+            return d ? -d.bonus : 1e9;
+        }
+        if (how === 'gain') {
+            var best = 0;
+            st.forEach(function (x) { if (x.unit === '%') best = Math.max(best, Math.abs(x.bonus)); });
+            return -best;
+        }
+        if (how === 'time')      return bp.craft_time_seconds || 0;
+        if (how === 'materials') return Object.keys(bp.ingredients).length;
+        return 0;
+    }
+
+    function renderCraft() {
+        if (!craftData) return;
+        var how  = document.getElementById('craftSort').value;
+        var list = craftData.filter(function (b) { return b.kind === craftTab; });
+        var mat = document.getElementById('craftMaterial').value;
+        if (mat) list = list.filter(function (b) { return usesMaterial(b, mat); });
+        var hiddenByOwned = 0;
+        if (craftOwnedOnly) {
+            var owned = craftOwnedNames();
+            var before = list.length;
+            list = list.filter(function (b) { return owned.has(normalizeBpName(b.display_name)); });
+            hiddenByOwned = before - list.length;
+        }
+
+        list = list.slice().sort(function (a, b) {
+            if (how !== 'name') {
+                var d = craftSortValue(a, how) - craftSortValue(b, how);
+                if (d) return d;
+            }
+            return a.display_name.localeCompare(b.display_name);
+        });
+
+        
+        var groups = null, collapsed = 0;
+        if (craftGrouped) {
+            groups = groupBlueprints(list);
+            collapsed = list.length - groups.length;
+            var repList = groups.map(function (g) { return g.rep; });
+            var byRep = {};
+            groups.forEach(function (g) { byRep[g.rep.id] = g; });
+            craftGroupIndex = byRep;
+            list = repList;
+        } else {
+            craftGroupIndex = {};
+        }
+
+        if (craftFavOnly) list = list.filter(isFav);
+
+        document.getElementById('craftCount').textContent =
+            list.length + (craftGrouped ? ' item' : ' blueprint') + (list.length === 1 ? '' : 's') +
+            (craftGrouped ? ', ' + collapsed + ' finishes merged' : '') +
+            (craftOwnedOnly ? ' unlocked, ' + hiddenByOwned + ' hidden' : '');
+
+        if (craftFavOnly && !list.length) {
+            document.getElementById('craftView').innerHTML =
+                '<div class="craft-note">Nothing in this category is starred yet' +
+                (favCount() ? ', though you have ' + favCount() + ' favorite' +
+                              (favCount() === 1 ? '' : 's') + ' in other categories' : '') +
+                '. Use the star on any card, or switch off <b>Favorites only</b>.</div>';
+            return;
+        }
+
+        if (craftOwnedOnly && !list.length) {
+            document.getElementById('craftView').innerHTML =
+                '<div class="craft-note">Nothing in this category is marked as unlocked yet. ' +
+                'Tick the blueprints you own under <b>My Inventory</b> on the Blueprints tab, ' +
+                'or switch back to <b>Show all</b>.</div>';
+            return;
+        }
+
+        document.getElementById('craftView').innerHTML = list.map(function (bp) {
+            var qf    = craftQualityFor(bp);
+
+            var statHTML = statsHTMLFor(bp);
+
+            var matHTML = Object.keys(bp.ingredients).map(function (slot) {
+                var ing = bp.ingredients[slot];
+                return '<div class="mat-row">' +
+                         '<span class="mat-name">' + (ing.material_name || 'Unknown') +
+                           ' <span class="mat-slot">' + slot + '</span></span>' +
+                         '<span class="mat-qty">' + ing.quantity + unitLabel(ing) + '</span>' +
+                       '</div>';
+            }).join('');
+
+            var grp  = craftGroupIndex[bp.id];
+            var open = !!craftOpen[bp.id];
+            var openDis = !!craftOpenDis[bp.id];
+            var tuneHTML = open ? '<div class="craft-tune-panel">' +
+                Object.keys(bp.ingredients).map(function (slot) {
+                    var ing = bp.ingredients[slot], q = qf(slot);
+                    var call = 'setSlotQuality(\'' + enc(bp.id) + '\', \'' + enc(slot) + '\', this.value)';
+                    var mat  = (ing.material_name || 'this material');
+                    return '<div class="slot-tune">' +
+                             '<div class="slot-tune-head"><span>' + slot + ' &middot; ' + mat + '</span></div>' +
+                             '<div class="slot-tune-row">' +
+                               '<input type="range" class="q-slider" min="0" max="1000" step="10" value="' + q +
+                                 '" aria-label="Quality of ' + mat + '" oninput="' + call + '">' +
+                               '<input type="number" class="q-box" min="0" max="1000" step="1" value="' + q +
+                                 '" aria-label="Type the quality of ' + mat + '" oninput="' + call + '">' +
+                             '</div>' +
+                           '</div>';
+                }).join('') + '</div>' : '';
+
+            return '<div class="blueprint-card craft-card ' + (CRAFT_KIND_CLASS[bp.kind] || '') +
+                     ' search-target" id="craft-' + bp.id + '">' +
+                     '<div class="card-header">' +
+                       '<span class="card-name search-text">' +
+                         ((grp && grp.variants.length > 1) ? grp.stem : bp.display_name) +
+                         (grp && grp.variants.length > 1
+                            ? '<span class="variant-count">' + grp.variants.length + ' finishes</span>'
+                            : '') + '</span>' +
+                       '<span class="tag">' + (CRAFT_KIND_LABEL[bp.kind] || bp.kind) + '</span>' +
+                       '<button type="button" class="fav-btn' + (isFav(bp) ? ' on' : '') +
+                         '" title="Favorite" aria-label="Favorite" onclick="toggleFav(\'' +
+                         enc(bp.id) + '\')">★</button>' +
+                     '</div>' +
+                     '<div class="craft-time">Craft time ' + craftTimeText(bp.craft_time_seconds) + '</div>' +
+                     (grp && grp.variants.length > 1
+                        ? '<div class="variant-line" title="' +
+                            grp.variants.map(function (v) { return v.display_name; }).join(', ') +
+                          '">Also as: ' +
+                            grp.variants.slice(0, 3).map(function (v) { return v.display_name; }).join(', ') +
+                            (grp.variants.length > 3
+                                ? ' and ' + (grp.variants.length - 3) + ' more' : '') +
+                          '</div>'
+                        : '') +
+                     '<div class="craft-section-label">Predicted stat change</div>' +
+                     '<div class="craft-stats" data-bp="' + bp.id + '">' + statHTML + '</div>' +
+                     '<div class="craft-section-label">Materials</div>' + matHTML +
+                     '<button type="button" class="craft-add-btn' + (craftCart[bp.id] ? ' in-cart' : '') +
+                       '" onclick="addToCart(\'' + enc(bp.id) + '\')">' + (craftCart[bp.id] ? 'In cart (' + craftCart[bp.id] + ')' : 'Add to cart') +
+                     '</button>' +
+                     '<button type="button" class="craft-tune-btn" onclick="toggleCraftTune(\'' +
+                       enc(bp.id) + '\')">' + (open ? 'Hide material quality' : 'Tune material quality') + '</button>' +
+                     tuneHTML +
+                     '<button type="button" class="craft-dis-btn" onclick="toggleDisassemble(\'' +
+                       enc(bp.id) + '\')">' + (openDis ? 'Hide disassemble' : 'Disassemble') + '</button>' +
+                     (openDis ? disassembleHTML(bp) : '') +
+                   '</div>';
+        }).join('');
+
+        
+        
+        rebuildSearchTargetCache();
+        var activeQuery = document.getElementById('searchInput')
+            ? document.getElementById('searchInput').value : '';
+        if (activeQuery) applySearchFilter(activeQuery);
+    }
+
+    function switchCraftTab(kind, el) {
+        document.querySelectorAll('#craftTabs .tab').forEach(function (t) { t.classList.remove('active'); });
+        el.classList.add('active');
+        craftTab = kind;
+        renderCraft();
+    }
+
+    function statBaseText(bp, st) {
+        var base = bp.base && bp.base[st.label];
+        if (!base) return '';
+        var v = base[0], unit = base[1] || '';
+        var after = (st.unit === 'flat') ? v + st.bonus : v * (1 + st.bonus / 100);
+        var dp = (Math.abs(v) >= 100 || v % 1 === 0) ? 1 : 3;
+        var base = v.toFixed(dp), got = after.toFixed(dp);
+        return '<span class="stat-base">' + base + unit +
+               (base === got ? '' : ' → <b>' + got + unit + '</b>') + '</span>';
+    }
+
+    function statsHTMLFor(bp) {
+        var stats = predictStats(bp, 'preset', craftQualityFor(bp));
+        if (!stats.length) return '<div class="craft-note">This blueprint carries no stat modifiers.</div>';
+        return stats.map(function (st) {
+            var cls = statIsGood(st) ? 'stat-up' : 'stat-down';
+            return '<div class="stat-row' + (st.derived ? ' derived' : '') + '">' +
+                     '<span class="stat-name">' + st.label +
+                       (st.derived ? '<span class="stat-calc">calc</span>' : '') + '</span>' +
+                     '<span class="stat-figures">' + statBaseText(bp, st) +
+                       '<span class="stat-val ' + cls + '">' + statText(st) + '</span></span>' +
+                   '</div>';
+        }).join('');
+    }
+
+    
+    
+    function repaintCraftStats(onlyId) {
+        if (!craftData) return;
+        var byId = {};
+        craftData.forEach(function (b) { byId[b.id] = b; });
+        var sel = '#craftView .craft-stats' + (onlyId ? '[data-bp="' + onlyId + '"]' : '');
+        Array.prototype.forEach.call(document.querySelectorAll(sel), function (n) {
+            var bp = byId[n.dataset.bp];
+            if (bp) n.innerHTML = statsHTMLFor(bp);
+        });
+    }
+
+    function clampQuality(v) {
+        var n = parseInt(v, 10);
+        return isNaN(n) ? null : Math.max(0, Math.min(1000, n));
+    }
+
+    function setCraftQuality(v, commit) {
+        var q = clampQuality(v);
+        if (q === null) return;
+        craftQuality = q;
+        var range = document.getElementById('craftQualityRange');
+        var box   = document.getElementById('craftQualityBox');
+        if (range && String(range.value) !== String(q)) range.value = q;
+        if (box && document.activeElement !== box) box.value = q;
+        if (commit) renderCraft(); else repaintCraftStats(null);
+    }
+
+    function setSlotQuality(idEnc, slotEnc, value) {
+        var q = clampQuality(value);
+        if (q === null) return;
+        var id = dec(idEnc), slot = dec(slotEnc);
+        (craftOverrides[id] = craftOverrides[id] || {})[slot] = q;
+
+        
+        var card = document.getElementById('craft-' + id);
+        var bp   = craftData ? craftData.filter(function (b) { return b.id === id; })[0] : null;
+        if (card && bp) {
+            var idx  = Object.keys(bp.ingredients).indexOf(slot);
+            var rows = card.querySelectorAll('.slot-tune');
+            if (idx >= 0 && rows[idx]) {
+                var r = rows[idx].querySelector('.q-slider'), b = rows[idx].querySelector('.q-box');
+                if (r && document.activeElement !== r) r.value = q;
+                if (b && document.activeElement !== b) b.value = q;
+            }
+        }
+        repaintCraftStats(id);
+    }
+
+    function toggleCraftTune(idEnc) {
+        var id = dec(idEnc);
+        craftOpen[id] = !craftOpen[id];
+        renderCraft();
+    }
+
+    var craftCart = {};
+    var cartLocation = '';
+    var CART_KEY = 'sc_craft_cart_v1';
+
+    function loadCart() {
+        try {
+            var raw = localStorage.getItem(CART_KEY);
+            if (raw) craftCart = JSON.parse(raw) || {};
+        } catch (e) { craftCart = {}; }
+        updateCartBadge();
+    }
+    function saveCart() {
+        try { localStorage.setItem(CART_KEY, JSON.stringify(craftCart)); } catch (e) {}
+    }
+    function updateCartBadge() {
+        var n = 0;
+        for (var k in craftCart) n += craftCart[k];
+        var b = document.getElementById('cartBadge');
+        if (b) b.textContent = n;
+    }
+
+    function addToCart(idEnc) {
+        var id = dec(idEnc);
+        craftCart[id] = (craftCart[id] || 0) + 1;
+        saveCart(); updateCartBadge(); renderCraft();
+    }
+    function setCartQty(idEnc, v) {
+        var id = dec(idEnc), n = parseInt(v, 10);
+        if (isNaN(n) || n < 1) n = 1;
+        craftCart[id] = Math.min(999, n);
+        saveCart(); updateCartBadge(); renderCartMats();
+    }
+    function removeFromCart(idEnc) {
+        delete craftCart[dec(idEnc)];
+        saveCart(); updateCartBadge(); renderCart(); renderCraft();
+    }
+    function clearCart() {
+        craftCart = {};
+        saveCart(); updateCartBadge(); renderCart(); renderCraft();
+    }
+
+    function openCart() {
+        document.getElementById('cartModal').style.display = 'block';
+        if (!craftData) { loadCraftData().then(renderCart); } else { renderCart(); }
+    }
+    function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
+    function cartOverlay(e) { if (e.target.id === 'cartModal') closeCart(); }
+
+    function setCartLocation(v) { cartLocation = v; renderCartMats(); }
+
+    
+    
+    function cartMaterials() {
+        var totals = {};
+        if (!craftData) return totals;
+        var byId = {};
+        craftData.forEach(function (b) { byId[b.id] = b; });
+        for (var id in craftCart) {
+            var bp = byId[id];
+            if (!bp) continue;
+            var mult = craftCart[id];
+            for (var slot in bp.ingredients) {
+                var ing = bp.ingredients[slot];
+                var key = ing.material_name + '|' + (ing.quantity_unit || 'SCU');
+                totals[key] = (totals[key] || 0) + (ing.quantity || 0) * mult;
+            }
+        }
+        return totals;
+    }
+
+    function sourcesFor(material) {
+        if (!craftSources.length) return [];
+        var here = (cartLocation || '').trim().toLowerCase();
+        var homeSystem = '';
+        craftSources.forEach(function (loc) {
+            if (loc.name.toLowerCase() === here) homeSystem = loc.system;
+        });
+        if (!homeSystem) {
+            craftSources.forEach(function (loc) {
+                if (loc.system.toLowerCase() === here) homeSystem = loc.system;
+            });
+        }
+        var out = [];
+        craftSources.forEach(function (loc) {
+            if (loc.mats[material]) {
+                out.push({ name: loc.name, system: loc.system,
+                           chance: loc.mats[material][0], method: loc.mats[material][1],
+                           home: homeSystem ? (loc.system === homeSystem) : false });
+            }
+        });
+        out.sort(function (a, b) {
+            if (a.home !== b.home) return a.home ? -1 : 1;
+            return b.chance - a.chance || a.name.localeCompare(b.name);
+        });
+        return out;
+    }
+
+    function matBlockHTML(k) {
+        var totals = cartMaterials();
+            var parts = k.split('|'), name = parts[0], unit = parts[1];
+            var qty = totals[k];
+            var qtyText = (unit === 'items')
+                ? (Math.round(qty * 100) / 100) + ' ea'
+                : (Math.round(qty * 1000) / 1000) + ' SCU';
+            var src = sourcesFor(name).slice(0, 4);
+            var srcHTML = src.length
+                ? src.map(function (r) {
+                    return '<div class="src-line' + (r.home ? ' src-here' : '') + '">' +
+                             '<span><b>' + r.name + '</b> &middot; ' + r.system + ' &middot; ' + r.method + '</span>' +
+                             '<span class="src-rate">' + r.chance.toFixed(1) + '%</span>' +
+                           '</div>';
+                  }).join('')
+                : '<div class="src-line">No mining location in the dataset yields this. ' +
+                  'It comes from somewhere else, such as salvage or a shop.</div>';
+            return '<div class="mat-block">' +
+                     '<div class="mat-block-head"><span>' + name + '</span>' +
+                       '<span class="mat-need">' + qtyText + '</span></div>' + srcHTML +
+                   '</div>';
+    }
+
+    function renderCart() {
+        var box = document.getElementById('cartBody');
+        if (!box) return;
+        var ids = Object.keys(craftCart);
+        if (!ids.length) {
+            box.innerHTML = '<div class="cart-section-label">Cart</div>' +
+                '<div class="cart-empty">Nothing in the cart yet. Add a blueprint from the ' +
+                'Crafting Bench and its materials will be totalled here.</div>';
+            return;
+        }
+        if (!craftData) { box.innerHTML = '<div class="cart-empty">Loading...</div>'; return; }
+
+        var byId = {};
+        craftData.forEach(function (b) { byId[b.id] = b; });
+
+        var lines = ids.map(function (id) {
+            var bp = byId[id];
+            var nm = bp ? bp.display_name : id;
+            return '<div class="cart-line">' +
+                     '<span class="cart-line-name">' + nm + '</span>' +
+                     '<input type="number" class="cart-qty" min="1" max="999" value="' + craftCart[id] +
+                       '" aria-label="How many to craft" oninput="setCartQty(\'' + enc(id) + '\', this.value)">' +
+                     '<button type="button" class="cart-remove" title="Remove" ' +
+                       'onclick="removeFromCart(\'' + enc(id) + '\')">&times;</button>' +
+                   '</div>';
+        }).join('');
+
+        var datalist = '<datalist id="cartLocList">' +
+            craftSources.map(function (l) {
+                return '<option value="' + l.name + '">' + l.system + '</option>';
+            }).join('') +
+            ['Stanton', 'Pyro', 'Nyx'].map(function (sysName) {
+                return '<option value="' + sysName + '">Whole system</option>';
+            }).join('') + '</datalist>';
+
+        box.innerHTML =
+            '<div class="cart-section-label">Crafting (' + ids.length + ')</div>' + lines +
+            '<div class="cart-line" style="border-bottom:0;justify-content:flex-end;">' +
+              '<button type="button" class="craft-tune-btn" style="width:auto;margin:0;" ' +
+              'onclick="clearCart()">Empty the cart</button></div>' +
+            '<div class="cart-section-label">Where are you starting from?</div>' +
+            '<div class="cart-loc-row">' +
+              '<input type="text" class="cart-loc-input" list="cartLocList" value="' +
+                (cartLocation || '') + '" placeholder="Type a location or a system..." ' +
+                'oninput="setCartLocation(this.value)">' + datalist +
+            '</div>' +
+            '<div class="craft-note">The mining dataset records a system for each location and no ' +
+            'coordinates, so locations in your system are listed first and everything is then ' +
+            'ordered by yield rate. Percentages are the chance of that material appearing in a ' +
+            'rock at that location.</div>' +
+            '<div id="cartMats"></div>';
+        renderCartMats();
+    }
+
+    
+    
+    function renderCartMats() {
+        var box = document.getElementById('cartMats');
+        if (!box || !craftData) return;
+        var totals = cartMaterials();
+        var keys = Object.keys(totals).sort(function (a, b) { return totals[b] - totals[a]; });
+        box.innerHTML = '<div class="cart-section-label">Materials needed (' + keys.length + ')</div>' +
+            keys.map(matBlockHTML).join('');
+    }
+
+    function fingerprintOf(bp) {
+        var rec = [], mods = [];
+        Object.keys(bp.ingredients || {}).forEach(function (k) {
+            var ing = bp.ingredients[k];
+            rec.push(ing.material_name + '\u0000' + Number(ing.quantity).toFixed(6));
+            (ing.modifiers || []).forEach(function (m) {
+                mods.push([m.gameplayProperty, m.kind, m.modifierAtEnd,
+                           m.additiveModifierAtEnd].join('\u0000'));
+            });
+        });
+        return rec.sort().join('|') + '#' + mods.sort().join('|');
+    }
+
+    
+    function deriveCosmeticTokens(list) {
+        var byStem = { 1: {}, 2: {} };
+        list.forEach(function (b) {
+            var parts = String(b.display_name).split(' ');
+            [1, 2].forEach(function (n) {
+                if (parts.length < n + 1) return;
+                var stem = parts.slice(0, -n).join(' ');
+                var tok  = parts.slice(-n).join(' ');
+                var box  = byStem[n];
+                (box[stem] = box[stem] || {})[tok] = fingerprintOf(b);
+            });
+        });
+        var cosmetic = {};
+        [1, 2].forEach(function (n) {
+            var differs = {}, matches = {};
+            Object.keys(byStem[n]).forEach(function (stem) {
+                var toks = byStem[n][stem], names = Object.keys(toks);
+                if (names.length < 2) return;
+                names.forEach(function (t) {
+                    var varies = names.some(function (o) { return o !== t && toks[o] !== toks[t]; });
+                    if (varies) differs[t] = (differs[t] || 0) + 1;
+                    else        matches[t] = (matches[t] || 0) + 1;
+                });
+            });
+            Object.keys(matches).forEach(function (t) {
+                if (matches[t] >= 2 && !differs[t]) cosmetic[t] = n;
+            });
+        });
+        return cosmetic;
+    }
+
+    function stemOf(name, cosmetic) {
+        var parts = String(name).split(' ');
+        for (var n = 2; n >= 1; n--) {
+            if (parts.length >= n + 1 && cosmetic[parts.slice(-n).join(' ')]) {
+                return parts.slice(0, -n).join(' ');
+            }
+        }
+        return name;
+    }
+
+    function groupBlueprints(list) {
+        var cosmetic = deriveCosmeticTokens(list);
+        var byKey = {}, out = [];
+        list.forEach(function (b) {
+            var stem = stemOf(b.display_name, cosmetic);
+            var key = stem + '\u0000' + fingerprintOf(b);
+            if (!byKey[key]) {
+                byKey[key] = { rep: b, stem: stem, variants: [] };
+                out.push(byKey[key]);
+            }
+            byKey[key].variants.push(b);
+
+            if (b.display_name.length < byKey[key].rep.display_name.length) byKey[key].rep = b;
+        });
+        out.forEach(function (g) {
+            g.variants.sort(function (a, b) { return a.display_name.localeCompare(b.display_name); });
+        });
+        return out;
+    }
+
+    function loadFavs() {
+        try {
+            var raw = localStorage.getItem(FAV_KEY);
+            if (raw) craftFavs = JSON.parse(raw) || {};
+        } catch (e) { craftFavs = {}; }
+    }
+    function saveFavs() {
+        try { localStorage.setItem(FAV_KEY, JSON.stringify(craftFavs)); } catch (e) {}
+    }
+    function toggleFav(idEnc) {
+        var id = dec(idEnc);
+        if (craftFavs[id]) delete craftFavs[id]; else craftFavs[id] = 1;
+        saveFavs();
+        renderCraft();
+    }
+
+    function isFav(bp) {
+        if (craftFavs[bp.id]) return true;
+        var g = craftGroupIndex[bp.id];
+        if (!g) return false;
+        return g.variants.some(function (v) { return !!craftFavs[v.id]; });
+    }
+    function favCount() {
+        var n = 0;
+        for (var k in craftFavs) n++;
+        return n;
+    }
+    function toggleCraftFav(el) {
+        craftFavOnly = !craftFavOnly;
+        el.classList.toggle('active', craftFavOnly);
+        el.setAttribute('aria-pressed', craftFavOnly ? 'true' : 'false');
+        el.innerHTML = craftFavOnly ? '★ Favorites only' : '★ Favorites';
+        renderCraft();
+    }
+
+    function toggleCraftGroup(el) {
+        craftGrouped = !craftGrouped;
+        el.classList.toggle('active', craftGrouped);
+        el.setAttribute('aria-pressed', craftGrouped ? 'true' : 'false');
+        el.textContent = craftGrouped ? 'Grouped finishes' : 'Every finish';
+        renderCraft();
+    }
+
+    function buildMaterialFilter() {
+        var sel = document.getElementById('craftMaterial');
+        if (!sel || sel.options.length > 1) return;
+        var seen = {};
+        craftData.forEach(function (b) {
+            for (var slot in b.ingredients) {
+                var n = b.ingredients[slot].material_name;
+                if (n) seen[n] = (seen[n] || 0) + 1;
+            }
+        });
+        Object.keys(seen).sort().forEach(function (n) {
+            var o = document.createElement('option');
+            o.value = n;
+            o.textContent = n + ' (' + seen[n] + ')';
+            sel.appendChild(o);
+        });
+    }
+
+    function usesMaterial(bp, name) {
+        for (var slot in bp.ingredients) {
+            if (bp.ingredients[slot].material_name === name) return true;
+        }
+        return false;
+    }
+
+    function toggleDisassemble(idEnc) {
+        var id = dec(idEnc);
+        craftOpenDis[id] = !craftOpenDis[id];
+        renderCraft();
+    }
+
+    function disassembleHTML(bp) {
+        var rows = Object.keys(bp.ingredients).map(function (slot) {
+            var ing = bp.ingredients[slot];
+            var lost = craftBlacklist.indexOf(ing.material_name) >= 0;
+            return '<div class="dis-row' + (lost ? ' dis-lost' : '') + '">' +
+                     '<span>' + (ing.material_name || 'Unknown') +
+                       (lost ? '<span class="dis-lost-tag">not returned</span>' : '') + '</span>' +
+                     '<span class="mat-qty">' + ing.quantity + unitLabel(ing) + '</span>' +
+                   '</div>';
+        }).join('');
+        var lostCount = Object.keys(bp.ingredients).filter(function (slot) {
+            return craftBlacklist.indexOf(bp.ingredients[slot].material_name) >= 0;
+        }).length;
+        return '<div class="craft-section-label">If you dismantle this</div>' + rows +
+               '<div class="craft-note" style="margin-top:6px;">' +
+               (lostCount ? lostCount + ' of these ' + (lostCount === 1 ? 'is' : 'are') +
+                            ' on the game\u2019s dismantle blacklist and never ' + (lostCount === 1 ? 'comes' : 'come') + ' back. ' : '') +
+               'The records name which resources are recoverable but not what fraction, ' +
+               'so the amounts above are the recipe amounts, not a measured return.</div>';
+    }
+
+    function craftMode() {
+        var n = document.getElementById('craftMode');
+        return !!n && n.style.display !== 'none';
+    }
+
+    function switchMode(mode, el) {
+        document.querySelectorAll('.mode-tab').forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+        });
+        el.classList.add('active');
+        el.setAttribute('aria-selected', 'true');
+
+        var craft = (mode === 'craft');
+
+        
+        
+        ['.advisory-box', '.legend-box', '.controls-container'].forEach(function (sel) {
+            document.querySelectorAll('#main-grid > ' + sel).forEach(function (n) {
+                n.style.display = craft ? 'none' : '';
+            });
+        });
+
+        
+
+        var VIEWS = ['weaponsView', 'armorView', 'ammoView', 'componentsView',
+                     'flightsuitsView', 'shipweaponsView'];
+        if (craft) {
+            blueprintViewsShown = VIEWS.filter(function (id) {
+                var n = document.getElementById(id);
+                return n && getComputedStyle(n).display !== 'none';
+            });
+            VIEWS.forEach(function (id) {
+                var n = document.getElementById(id);
+                if (n) n.style.display = 'none';
+            });
+        } else {
+            if (!blueprintViewsShown.length) blueprintViewsShown = ['weaponsView'];
+            VIEWS.forEach(function (id) {
+                var n = document.getElementById(id);
+                if (n) n.style.display = (blueprintViewsShown.indexOf(id) >= 0) ? 'grid' : 'none';
+            });
+        }
+
+        document.getElementById('craftMode').style.display = craft ? '' : 'none';
+
+        var input = document.getElementById('searchInput');
+        if (input) {
+            input.placeholder = craft
+                ? 'Search craftable items by name...'
+                : 'Search by item name, type, or faction\u2026';
+        }
+
+        if (craft) loadCraftData();
+        updateCartBadge();
+        
+        if (input && input.value) applySearchFilter(input.value);
+    }
+
     const HUDSync = (function () {
         const CFG = {
             apiKey:            "AIzaSyBGFyBVTX6kDWpbY1bSkmo9fzdmkFBeQws",
@@ -3544,6 +4748,9 @@
             appId:             "1:583590414773:web:1013f80e39ca36f06671fc"
         };
         const ORG_KEY = 'scBlueprintFinder.orgKey.v1';
+
+        
+        const SYNC_TS_KEY = 'scBlueprintFinder.syncTs.v1';
         let db = null, user = null, on = false, pending = null;
 
         function el(id) { return document.getElementById(id); }
@@ -3554,23 +4761,13 @@
             e.className = isErr ? 'err' : '';
         }
 
-        /* Where this account's record lives. An org is shared by a whole
-           org; with no org code the player gets their own solo room, which
-           is what the overlay calls u_<uid>. */
-        /* ORG CODE NORMALISER — a faithful port of
-           crew_link.normalise_org_code(). The earlier version here matched
-           `o_` + 4 loose alphanumerics, which accepted ~1.7M strings that
-           are not codes at all and let a browser form org paths Python
-           would reject outright.
+        
 
-           The drift worry that justified skipping it is answered by
-           ORG_CODE_SELF_TEST below, which carries crew_link.py's own
-           vectors. If either side changes, the console says so. */
         const CODE_ALPHABET = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
         const CODE_LEN = 5;
 
         function orgCheckChar(body) {
-            // Weighted modulus over the alphabet -- catches transpositions.
+            
             let total = 0;
             for (let i = 0; i < body.length; i++) {
                 const idx = CODE_ALPHABET.indexOf(body[i]);
@@ -3583,9 +4780,8 @@
         function normaliseOrgCode(raw) {
             if (!raw) return null;
             let t = String(raw).replace(/[^0-9A-Za-z]/g, '').toUpperCase();
-            // A LEADING "O" IS THE PREFIX, not a zero -- but only when the
-            // length says so. Stripping it unconditionally would eat the
-            // first character of a bare code that starts with O/0.
+
+            
             if (t.charAt(0) === 'O' && t.length === CODE_LEN + 2) t = t.slice(1);
             t = t.replace(/I/g, '1').replace(/L/g, '1')
                  .replace(/O/g, '0').replace(/U/g, 'V');
@@ -3595,16 +4791,14 @@
             return 'o_' + t;
         }
 
-        /* crew_link.py's own vectors. Runs once at init; a mismatch is
-           logged loudly rather than silently writing to the wrong node. */
         function ORG_CODE_SELF_TEST() {
             const cases = [
-                ['o_8SD105', 'o_8SD105'],   // canonical round-trip
-                ['O8SD105',  'o_8SD105'],   // leading O is the prefix
-                ['o-8sd-105','o_8SD105'],   // separators and case
-                ['8SD105',   'o_8SD105'],   // bare body
-                ['o_8SD106', null],         // wrong check character
-                ['g_ABC123', null],         // a GROUP code is not an org code
+                ['o_8SD105', 'o_8SD105'],   
+                ['O8SD105',  'o_8SD105'],   
+                ['o-8sd-105','o_8SD105'],   
+                ['8SD105',   'o_8SD105'],   
+                ['o_8SD106', null],         
+                ['g_ABC123', null],         
                 ['',         null],
                 [null,       null]
             ];
@@ -3614,7 +4808,7 @@
                 if (got !== want) bad.push(input + ' -> ' + got + ' (want ' + want + ')');
             }
             if (bad.length) {
-                console.error('ORG CODE NORMALISER DRIFTED from crew_link.py:', bad);
+                console.error('Org code normaliser self-test failed:', bad);
             }
             return bad.length === 0;
         }
@@ -3625,7 +4819,7 @@
             try { raw = (localStorage.getItem(ORG_KEY) || '').trim(); } catch (e) {}
             const org = normaliseOrgCode(raw);
             if (org) return 'orgs/' + org + '/blueprints/' + user.uid;
-            // No org, or a code that does not verify: your own solo room.
+            
             return 'rooms/u_' + user.uid + '/blueprints/' + user.uid;
         }
 
@@ -3634,22 +4828,18 @@
             return i < 0 ? key : key.slice(i + 2);
         }
 
-        /* Rebuild this tool's prefixed key from a bare name, by asking the
-           catalogue what kind of thing it is. A name that matches nothing
-           is kept as-is rather than dropped -- the HUD may legitimately
-           know about a blueprint this build's data file does not. */
+        
+
         function keysForName(name) {
-            const out = [];
             try {
-                if (weaponsList.some(w => w.name === name)) out.push('weapon::' + name);
-                if (ammoList.some(a => a.name === name)) out.push('ammo::' + name);
-                if (shipComponentsList.some(c => c.name === name)) out.push('component::' + name);
-                for (const k in armorSets) {
-                    const parts = (armorSets[k] && armorSets[k].parts) || [];
-                    if (parts.indexOf(name) !== -1) { out.push('armor::' + name); break; }
-                }
-            } catch (e) { /* catalogue not loaded yet */ }
-            return out.length ? out : [name];
+                const hit = bpKeysByNorm[normBpName(name)];
+                if (hit && hit.length) return hit.slice();
+            } catch (e) {  }
+            return [name];
+        }
+
+        function keyForTag(tag) {
+            try { return bpKeyByTag[tag] || null; } catch (e) { return null; }
         }
 
         function available() {
@@ -3657,7 +4847,7 @@
         }
 
         function init() {
-            if (!available()) return;          // blocked/offline: stay local
+            if (!available()) return;          
             try {
                 if (!firebase.apps.length) firebase.initializeApp(CFG);
                 db = firebase.database();
@@ -3680,9 +4870,8 @@
             if (user) { firebase.auth().signOut(); return; }
             firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
                 .catch(function (err) {
-                    // The overwhelmingly common cause is the site's domain
-                    // not being listed under Firebase Auth -> Authorized
-                    // domains. No code change fixes that.
+
+                    
                     const m = (err && err.code) === 'auth/unauthorized-domain'
                         ? 'this domain is not authorised in Firebase'
                         : ((err && err.message) || 'sign-in failed');
@@ -3690,7 +4879,6 @@
                 });
         }
 
-        /* Remote -> local, unioned. */
         function pull() {
             const path = nodePath();
             if (!db || !path) return;
@@ -3698,17 +4886,43 @@
             db.ref(path).once('value').then(function (snap) {
                 const v = snap.val() || {};
                 let owned = v.owned || [];
-                // RTDB hands back a sparse array as an object.
+                
                 if (!Array.isArray(owned)) owned = Object.keys(owned)
                     .sort().map(function (k) { return owned[k]; });
+
+                const remoteTs = Number(v.ts || 0);
+                let lastSync = 0;
+                try { lastSync = Number(localStorage.getItem(SYNC_TS_KEY) || 0); } catch (e) {}
+                const remoteIsNewer = remoteTs > lastSync;
+
+                let tags = v.tags || [];
+                if (!Array.isArray(tags)) tags = Object.keys(tags)
+                    .sort().map(function (k) { return tags[k]; });
+
+                
+                if (remoteIsNewer) ownedBlueprints = new Set();
                 let added = 0;
+                const claimed = {};
+
+                
+                tags.forEach(function (t) {
+                    if (typeof t !== 'string') return;
+                    const k = keyForTag(t);
+                    if (!k) return;
+                    claimed[normBpName(k.slice(k.indexOf('::') + 2))] = true;
+                    if (!ownedBlueprints.has(k)) { ownedBlueprints.add(k); added++; }
+                });
                 owned.forEach(function (n) {
                     if (typeof n !== 'string') return;
+                    if (claimed[normBpName(n)]) return;   
                     keysForName(n).forEach(function (k) {
                         if (!ownedBlueprints.has(k)) { ownedBlueprints.add(k); added++; }
                     });
                 });
-                if (added) {
+                if (remoteIsNewer) {
+                    try { localStorage.setItem(SYNC_TS_KEY, String(remoteTs)); } catch (e) {}
+                }
+                if (added || remoteIsNewer) {
                     saveOwnedBlueprints();
                     try { updateInventoryCounts(); } catch (e) {}
                     try { applyViewVisibility(); } catch (e) {}
@@ -3721,7 +4935,6 @@
             });
         }
 
-        /* Local -> remote. Debounced: ticking ten boxes is one write. */
         function push() {
             const path = nodePath();
             if (!db || !path || !user) return;
@@ -3730,35 +4943,55 @@
                 const names = Array.from(new Set(
                     Array.from(ownedBlueprints).map(bareName)))
                     .filter(function (n) { return n && n.length <= 80; });
-                // ONLY these four fields. The rules carry
-                // `$other: false`, so one stray key rejects the whole write.
+
+                
+
+                const tagList = Array.from(new Set(
+                    Array.from(ownedBlueprints)
+                        .map(function (k) { return bpTagByKey[k]; })
+                        .filter(Boolean)));
                 db.ref(path).set({
                     name:  (user.displayName || 'Blueprint Finder').slice(0, 40),
                     count: names.length,
                     owned: names,
+                    tags:  tagList,
                     ts:    firebase.database.ServerValue.TIMESTAMP
                 }).then(function () {
+
+                    
+                    db.ref(path + '/ts').once('value').then(function (sn) {
+                        try { localStorage.setItem(SYNC_TS_KEY, String(Number(sn.val() || 0))); } catch (e) {}
+                    }).catch(function () {});
                     say('synced — ' + names.length + ' owned');
                 }).catch(function (err) {
-                    say('could not save: ' + ((err && err.message) || err), true);
+
+                    
+
+                    db.ref(path).set({
+                        name:  (user.displayName || 'Blueprint Finder').slice(0, 40),
+                        count: names.length,
+                        owned: names,
+                        ts:    firebase.database.ServerValue.TIMESTAMP
+                    }).then(function () {
+                        say('synced — ' + names.length + ' owned (names only)');
+                    }).catch(function () {
+                        say('could not save: ' + ((err && err.message) || err), true);
+                    });
                 });
             }, 800);
         }
 
         function onLocalChange() { if (on && user) push(); }
 
-        // exposed so the normaliser can be exercised directly;
-        // a self-test that only logs on failure is
-        // indistinguishable from one that never ran.
+        
+        
         return { init: init, onLocalChange: onLocalChange,
+                 keysForName: keysForName, keyForTag: keyForTag,
                  normaliseOrgCode: normaliseOrgCode,
                  selfTest: ORG_CODE_SELF_TEST,
                  selfTestResult: ORG_CODE_SELF_TEST() };
     })();
 
-    /* Publish on every local change, without touching the original
-       function: it is wrapped, not edited, so the offline path is exactly
-       the code that has always run. */
     (function () {
         const _save = saveOwnedBlueprints;
         saveOwnedBlueprints = function () {
@@ -3767,8 +5000,6 @@
         };
     })();
 
-    /* Start it after the page has booted, so the catalogue is loaded and
-       `keysForName` can do its job. Failure here must never stop the tool. */
     window.addEventListener('load', function () {
         setTimeout(function () { try { HUDSync.init(); } catch (e) {} }, 0);
     });
