@@ -2171,7 +2171,7 @@
     loadCart();
     loadFavs();
         try {
-            const response = await fetch('blueprint_explorer_data.json?v=4.10.191.2241');
+            const response = await fetch('blueprint_explorer_data.json?v=4.10.193.11644');
             if (!response.ok) throw new Error(`HTTP ${response.status}: File not found.`);
 
             const data = await response.json();
@@ -4043,7 +4043,7 @@
         var view = document.getElementById('craftView');
         view.innerHTML = '<div class="craft-note">Loading the crafting database...</div>';
         try {
-            const response = await fetch('crafting_bench_data.json?v=4.10.191.2241');
+            const response = await fetch('crafting_bench_data.json?v=4.10.193.11644');
             if (!response.ok) throw new Error('HTTP ' + response.status + ': File not found.');
             const data = await response.json();
             if (!data.blueprints) throw new Error("Missing 'blueprints' array.");
