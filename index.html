@@ -4464,7 +4464,9 @@
     function sourceLink(r) {
         return '<a class="tool-link" target="_blank" rel="noopener" href="' + TOOL_MAP + '#mine/' +
             encodeURIComponent(r.system) + '/' + encodeURIComponent(r.name) +
-            '" title="Show ' + r.name + ' on the map"><b>' + r.name + '</b></a>';
+            /* the last part tells the map this came from the Blueprint Finder,
+               so it is filed under its Crafting tab */
+            '/craft" title="Show ' + r.name + ' on the map"><b>' + r.name + '</b></a>';
     }
     /* One link that opens the Mining Material Finder's trip planner with every
        mined material in the cart already chosen. */
