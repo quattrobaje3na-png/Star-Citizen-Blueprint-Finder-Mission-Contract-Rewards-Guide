@@ -1515,6 +1515,14 @@
             padding: 3px 0;
         }
         .mat-name { color: var(--text-main); }
+        a.tool-link { color: inherit; text-decoration: underline; text-decoration-style: dotted;
+            text-underline-offset: 3px; text-decoration-color: var(--accent); }
+        a.tool-link:hover { color: var(--accent); }
+        .tool-link-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 12px; }
+        a.tool-link-btn { display: inline-block; background: var(--accent); color: var(--bg-base);
+            font-family: var(--heading); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em;
+            text-transform: uppercase; text-decoration: none; padding: 8px 12px; border-radius: 4px; }
+        .tool-link-note { color: var(--text-muted); font-size: 0.78rem; }
         .mat-qty  { color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
         .mat-slot {
             font-size: 0.6rem;
@@ -4164,7 +4172,7 @@
             var matHTML = Object.keys(bp.ingredients).map(function (slot) {
                 var ing = bp.ingredients[slot];
                 return '<div class="mat-row">' +
-                         '<span class="mat-name">' + (ing.material_name || 'Unknown') +
+                         '<span class="mat-name">' + (ing.material_name ? matLinked(ing.material_name) : 'Unknown') +
                            ' <span class="mat-slot">' + slot + '</span></span>' +
                          '<span class="mat-qty">' + ing.quantity + unitLabel(ing) + '</span>' +
                        '</div>';
@@ -4420,6 +4428,61 @@
         return out;
     }
 
+    /* LINKS OUT TO THE MAP AND THE MINING TOOL.
+       A material that can be mined links to the Location Finder, which shows
+       every body it is found on. Three hand-mined materials are not in the
+       map's list, so those open the Mining Material Finder instead. A
+       material nothing in the mining data yields (a creature part, a shop
+       item) gets no link, because there is nowhere to send the reader.
+       The game writes some names with a suffix, "Saldynium (Ore)"; the other
+       tools use the bare name, so the suffix comes off before a link is made. */
+    var TOOL_MAP  = 'https://citizen-starter-guide.com/star-citizen-location-finder/';
+    var TOOL_MINE = 'https://citizen-starter-guide.com/star-citizen-mining-material-finder/';
+    var MAP_LACKS = { 'Carinite': 1, 'Sadaryx': 1, 'Saldynium': 1 };
+    function matClean(name) {
+        return String(name || '').replace(/\s*\((Ore|Raw)\)\s*$/, '');
+    }
+    function matMined(name) {
+        /* The three the map lacks are hand mined in caves and stations; the
+           mining tool lists them even where this tool's own table does not. */
+        return sourcesFor(name).length > 0 || !!MAP_LACKS[matClean(name)];
+    }
+    function matMapLink(name) {
+        if (!matMined(name)) return '';
+        var clean = matClean(name);
+        return MAP_LACKS[clean]
+            ? TOOL_MINE + '#plan/' + encodeURIComponent(clean)
+            : TOOL_MAP + '#find/' + encodeURIComponent(clean);
+    }
+    function matLinked(name) {
+        var href = matMapLink(name);
+        return href
+            ? '<a class="tool-link" target="_blank" rel="noopener" href="' + href +
+              '" title="See where to find ' + matClean(name) + '">' + name + '</a>'
+            : name;
+    }
+    function sourceLink(r) {
+        return '<a class="tool-link" target="_blank" rel="noopener" href="' + TOOL_MAP + '#mine/' +
+            encodeURIComponent(r.system) + '/' + encodeURIComponent(r.name) +
+            '" title="Show ' + r.name + ' on the map"><b>' + r.name + '</b></a>';
+    }
+    /* One link that opens the Mining Material Finder's trip planner with every
+       mined material in the cart already chosen. */
+    function mineTheseHTML(names) {
+        var seen = {}, list = [];
+        names.forEach(function (n) {
+            var c = matClean(n);
+            if (matMined(n) && !seen[c] && list.length < 8) { seen[c] = 1; list.push(c); }
+        });
+        if (!list.length) return '';
+        return '<div class="tool-link-row"><a class="tool-link-btn" target="_blank" rel="noopener" href="' +
+            TOOL_MINE + '#plan/' + list.map(encodeURIComponent).join(',') +
+            '">Plan A Mining Trip For These</a>' +
+            '<span class="tool-link-note">Opens the Mining Material Finder with ' +
+            (list.length === 1 ? 'this material' : 'these ' + list.length + ' materials') +
+            ' chosen, then on to the map for the route.</span></div>';
+    }
+
     function matBlockHTML(k) {
         var totals = cartMaterials();
             var parts = k.split('|'), name = parts[0], unit = parts[1];
@@ -4431,14 +4494,14 @@
             var srcHTML = src.length
                 ? src.map(function (r) {
                     return '<div class="src-line' + (r.home ? ' src-here' : '') + '">' +
-                             '<span><b>' + r.name + '</b> &middot; ' + r.system + ' &middot; ' + r.method + '</span>' +
+                             '<span>' + sourceLink(r) + ' &middot; ' + r.system + ' &middot; ' + r.method + '</span>' +
                              '<span class="src-rate">' + r.chance.toFixed(1) + '%</span>' +
                            '</div>';
                   }).join('')
                 : '<div class="src-line">No mining location in the dataset yields this. ' +
                   'It comes from somewhere else, such as salvage or a shop.</div>';
             return '<div class="mat-block">' +
-                     '<div class="mat-block-head"><span>' + name + '</span>' +
+                     '<div class="mat-block-head"><span>' + matLinked(name) + '</span>' +
                        '<span class="mat-need">' + qtyText + '</span></div>' + srcHTML +
                    '</div>';
     }
@@ -4505,6 +4568,7 @@
         var totals = cartMaterials();
         var keys = Object.keys(totals).sort(function (a, b) { return totals[b] - totals[a]; });
         box.innerHTML = '<div class="cart-section-label">Materials needed (' + keys.length + ')</div>' +
+            mineTheseHTML(keys.map(function (k) { return k.split('|')[0]; })) +
             keys.map(matBlockHTML).join('');
     }
 
